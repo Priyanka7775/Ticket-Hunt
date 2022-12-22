@@ -1,12 +1,11 @@
 mat-card{
-    width: 500px;
+    width: 550px;
     margin: auto;
     margin-top: 2rem;
     padding: 30px 20px;
-    border: 1px solid #81C6C1;
 }
 mat-card-title{
-    color: #81C6C1;
+    color: #f44336;
 }
 form{
     display: flex;
