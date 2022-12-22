@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TileComponent } from './dashboard/tile/tile.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // Material Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -50,7 +51,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatStepperModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
