@@ -1,6 +1,6 @@
 mat-card{
     width: 800px;
-    margin: auto;
+    margin-left: 30px;
     margin-top: 30px;
 }
 mat-card-title{
@@ -27,3 +27,32 @@ mat-chip{
 }
 
 /* Media Query */
+
+@media only screen and (max-width: 1400px) {
+    mat-card{
+        width: 640px;
+        margin: auto;
+        margin-top: 30px;
+    }
+    mat-card-title{
+        padding: 10px 15px;
+    }
+        
+}
+
+@media only screen and (max-width: 900px) {
+    mat-card{
+        width: 340px;
+        margin: auto;
+        margin-top: 30px;
+    }
+    mat-card-title{
+        padding: 10px 15px;
+        font-size: 17px;
+    }
+    mat-card-title button{
+      top: -40px;
+      right: -10px;  
+    }
+      
+}

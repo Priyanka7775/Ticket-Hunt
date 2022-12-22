@@ -25,8 +25,8 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'tile',
-    component: TileComponent
+    path: 'tile/:id',
+    component: TileComponent,
   },
   {
     path: '404',
