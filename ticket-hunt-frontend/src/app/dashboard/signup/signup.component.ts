@@ -11,10 +11,6 @@ export class SignupComponent {
   //Constructor
   constructor(private fb: FormBuilder) { }
   
-  //  Save Method for the data
-  saveCustomer(customer: FormGroup) {
-    
-  }
   // Basic Information 
   customer = this.fb.group({
     name: ['', Validators.required],
