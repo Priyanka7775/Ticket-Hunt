@@ -24,6 +24,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
+import { UserComponent } from './dashboard/user/user.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatChipsModule } from '@angular/material/chips';
     HeaderComponent,
     DashboardComponent,
     TileComponent,
+    UserComponent,
     
   ],
   imports: [
