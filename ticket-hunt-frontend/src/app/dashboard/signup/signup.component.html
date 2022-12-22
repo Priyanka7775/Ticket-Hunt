@@ -8,14 +8,20 @@
                 <ng-template matStepLabel>Personal Details</ng-template>
                 <mat-form-field>
                     <mat-label>Name</mat-label>
-                    <input type="text" required matInput formControlName="name">
+                    <input type="text" required matInput formControlName="name" onkeydown="return /[a-z]/i.test(event.key)">
                     <mat-error class="error" *ngIf="customer.controls['name'].hasError('required')">Name is required</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>City</mat-label>
-                    <input type="text" required matInput formControlName="city" required>
+                    <input type="text" required matInput formControlName="city" required onkeydown="return /[a-z]/i.test(event.key)">
                     <mat-error class="error" *ngIf="customer.controls['city'].hasError('required')">City is required</mat-error>
-                    </mat-form-field>
+                </mat-form-field>
+                 <mat-form-field>
+                     <mat-label>Phone</mat-label>
+                    <input type="number" required matInput formControlName="phone" required>
+                    <mat-error class="error" *ngIf="customer.controls['phone'].hasError('required')">Phone is required</mat-error>
+                    <mat-error class="error" *ngIf="customer.controls['phone'].hasError('pattern')">Valid phone number contains 10 digit starting with 7/8/9</mat-error>
+                </mat-form-field>
                     <mat-form-field>
                         <mat-label>Email</mat-label>
                         <input type="email" required matInput formControlName="email">

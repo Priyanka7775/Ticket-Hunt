@@ -16,6 +16,11 @@ export class SignupComponent {
   customer = this.fb.group({
     name: ['', Validators.required],
     city: ['', Validators.required], 
+     phone: ['',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern('(9|8|7)[0-9]{9}'),
+      ])],
       email: ['', Validators.compose([
             Validators.required,
             Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
@@ -44,7 +49,7 @@ export class SignupComponent {
   saveUser(customer: FormGroup, interest: FormGroup) {
     // Converting interest data to String Array
     let interested: String[] = [];
-    
+
     //Checking for user interest in the selection
 
     if (interest.get('action')?.value) {
@@ -66,6 +71,7 @@ export class SignupComponent {
        email: customer.get('email')?.value,
         password: customer.get('password')?.value, 
         city: customer.get('city')?.value,
+        phone: customer.get('phone')?.value,
         interest: interested,
        role: interest.get('role')?.value
     }
@@ -73,7 +79,9 @@ export class SignupComponent {
     console.log(userData);
   }
 }
-  
+
+// Out function to check password and confirm password is same or different 
+
 export function verifypwd(pass: string, cnfPass: string): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const password = control.get(pass)?.value;
