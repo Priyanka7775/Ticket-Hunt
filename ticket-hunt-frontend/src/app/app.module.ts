@@ -27,6 +27,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
 import { EventComponent } from './dashboard/event/event.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { CreateComponent } from './dashboard/event/create/create.component';
     MatCheckboxModule,
     MatRadioModule,
     MatChipsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
