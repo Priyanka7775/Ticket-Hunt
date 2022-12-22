@@ -1,0 +1,32 @@
+/* Main container style*/
+
+.container{
+    padding: 20px;
+}
+
+
+/* Movie Tile */
+.tiles{
+    display: flex;
+}
+.tile{
+    margin: 0 20px ;
+    width: 300px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.tile-image{
+    width: 100%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    border-radius: 10px;
+}
+
+/* Popular */
+.popular{
+    margin: 25px 0;
+}
+.recommended{
+    margin: 25px 0;
+}
