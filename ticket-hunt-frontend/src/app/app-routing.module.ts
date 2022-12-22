@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateComponent } from './dashboard/event/create/create.component';
+import { EventComponent } from './dashboard/event/event.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { LoginComponent } from './dashboard/login/login.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
@@ -33,6 +35,15 @@ const routes: Routes = [
     path: 'user',
     component: UserComponent
   },
+  {
+    path: 'event', 
+    component: EventComponent
+  },
+  {
+    path: 'event/create', 
+    component: CreateComponent
+  }
+  ,
   {
     path: '404',
     component: NotFoundComponent
