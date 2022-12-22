@@ -5,6 +5,7 @@ import { LoginComponent } from './dashboard/login/login.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
+import { UserComponent } from './dashboard/user/user.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'tile/:id',
     component: TileComponent,
+  },
+  {
+    path: 'user',
+    component: UserComponent
   },
   {
     path: '404',

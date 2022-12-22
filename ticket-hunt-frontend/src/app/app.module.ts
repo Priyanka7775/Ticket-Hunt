@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './dashboard/user/user.component';
 
 // Material Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,7 +25,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
-import { UserComponent } from './dashboard/user/user.component';
 
 @NgModule({
   declarations: [

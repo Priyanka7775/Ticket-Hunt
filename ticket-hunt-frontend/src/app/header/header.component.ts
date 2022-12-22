@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  constructor() { }
+  
+  toggle() {
+    const menu = document.getElementById('event-menu');
+    if (menu?.classList.contains('menu-active')) {
+      menu?.classList.remove('menu-active');
+      menu.classList.add('menu-inactive');
+    } else {
+      menu?.classList.remove('menu-inactive');
+      menu?.classList.add('menu-active');
+    }
+  }
 }
