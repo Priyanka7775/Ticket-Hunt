@@ -11,6 +11,10 @@ import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+
+// Material Imports
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,12 +23,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     NotFoundComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
