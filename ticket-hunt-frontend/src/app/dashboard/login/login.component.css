@@ -1,0 +1,29 @@
+mat-card{
+    width: 500px;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 30px 20px;
+    border: 1px solid #81C6C1;
+}
+mat-card-title{
+    color: #81C6C1;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+mat-form-field{
+    margin: 15px 0;
+    width: 100%;
+}
+button{
+    margin-top: 20px;
+    width: 150px;
+}
+mat-card-footer{
+    padding: 20px;
+}
+mat-card-footer a{
+    text-decoration: none;
+}
