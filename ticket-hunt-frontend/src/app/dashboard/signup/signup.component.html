@@ -42,14 +42,21 @@
                 </form>
             </mat-step>
             <mat-step [stepControl]="interest" [editable]="isEditable">
-                <form [formGroup]="interest">
+                <form [formGroup]="interest" (submit)="saveData(interest)">
                 <ng-template matStepLabel>Intrestes </ng-template>  
                 <section class="interest-section" [formGroup]="interest">
                     <h4>Select your interest:</h4>
-                    <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
-                    <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
-                    <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="action">Action</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="drama">Drama</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="horror">Horror</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="science">Si-Fi</mat-checkbox></p>
                 </section>
+                  <section class="interest-section" [formGroup]="role">
+                    <h4>Account Type:</h4>
+                    <p><mat-checkbox formControlName="user" value="user">Personal</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="event" value="event">Event Manager</mat-checkbox></p>
+                </section>
+               
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext>Next</button>

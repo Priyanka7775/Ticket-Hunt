@@ -32,12 +32,21 @@ export class SignupComponent {
       cnfPassword:['', Validators.required]
   }, {validator: verifypwd('password', 'cnfPassword')});
   interest = this.fb.group({
-     pepperoni: false,
-     extracheese: false,
-     mushroom: false,
+     action: false,
+     drama: false,
+     horror: false,
+     science: false, 
   });
+  role = this.fb.group({
+    event: [false, Validators.required],
+    user:[false, Validators.required]
+  })
   isEditable = false;
 
+  saveData(event:FormGroup) {
+    console.log(event.value);
+    console.log(this.role.value);
+  }
 }
   
 export function verifypwd(pass: string, cnfPass: string): ValidatorFn {
