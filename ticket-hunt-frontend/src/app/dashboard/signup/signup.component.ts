@@ -15,7 +15,7 @@ export class SignupComponent {
   saveCustomer(customer: FormGroup) {
     
   }
-
+  // Basic Information 
   customer = this.fb.group({
     name: ['', Validators.required],
     city: ['', Validators.required], 
@@ -30,22 +30,22 @@ export class SignupComponent {
             ),
           ])],
       cnfPassword:['', Validators.required]
-  }, {validator: verifypwd('password', 'cnfPassword')});
+  }, { validator: verifypwd('password', 'cnfPassword') });
+
+  // Second form Data 
   interest = this.fb.group({
      action: false,
      drama: false,
      horror: false,
-     science: false, 
+     science: false,
+     role: ['', Validators.required],
   });
-  role = this.fb.group({
-    event: [false, Validators.required],
-    user:[false, Validators.required]
-  })
+
   isEditable = false;
 
-  saveData(event:FormGroup) {
+  saveData(event: FormGroup) {
+    console.log(this.customer.value);
     console.log(event.value);
-    console.log(this.role.value);
   }
 }
   

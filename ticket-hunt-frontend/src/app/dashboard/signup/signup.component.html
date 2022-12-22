@@ -1,8 +1,7 @@
 <div class="container">
     <mat-card>
-        <button mat-raised-button (click)="isEditable = !isEditable">
-            {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-            </button>
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
             <mat-stepper linear #stepper>
             <mat-step [stepControl]="customer" [editable]="isEditable">
                 <form [formGroup]="customer">
@@ -51,10 +50,12 @@
                     <p><mat-checkbox formControlName="horror">Horror</mat-checkbox></p>
                     <p><mat-checkbox formControlName="science">Si-Fi</mat-checkbox></p>
                 </section>
-                  <section class="interest-section" [formGroup]="role">
-                    <h4>Account Type:</h4>
-                    <p><mat-checkbox formControlName="user" value="user">Personal</mat-checkbox></p>
-                    <p><mat-checkbox formControlName="event" value="event">Event Manager</mat-checkbox></p>
+                  <section class="interest-section">
+                    <span>Account Type:</span>
+                   <mat-radio-group aria-label="Select an option" formControlName="role">
+                        <mat-radio-button value="user">Personal</mat-radio-button>
+                        <mat-radio-button value="event">Event Manager</mat-radio-button>
+                   </mat-radio-group>
                 </section>
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
@@ -66,16 +67,16 @@
                 <ng-template matStepLabel>Done</ng-template>
                 <p>You are now done.</p>
                 <div>
-                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button color="primary">Submit</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
                 </div>
             </mat-step>
             </mat-stepper>
+    </mat-card-content>
     </mat-card>
     
 
     <!-- <mat-card>
-    <mat-card-title>Sign Up</mat-card-title>
     <mat-card-content>
             <form [formGroup]="customer" (submit)="saveCustomer(customer)">
              
