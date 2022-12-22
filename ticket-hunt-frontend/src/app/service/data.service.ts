@@ -12,5 +12,7 @@ export class DataService {
   getAllMovies() {
     return this.http.get<Array<Movie>>('http://localhost:3000/movies');
   }
-  
+  getMovieById(id: number) {
+    return this.http.get<Array<Movie>>('http://localhost:3000/movies/?id=' + id);
+  }
 }

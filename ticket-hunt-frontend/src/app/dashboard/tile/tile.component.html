@@ -1,8 +1,8 @@
 <div class="container" *ngIf="id">
-    <mat-card>
-        <mat-card-title>
-            Avatar: The way of Water <br>
-            <span>2022 </span>
+    <mat-card *ngFor="let movie of movies">
+        <mat-card-title >
+            {{movie?.name}}<br>
+            <span>{{movie?.year}} </span>
             <button mat-icon-button>
                 <mat-icon class="icon">share</mat-icon>
             </button>
@@ -11,7 +11,7 @@
             </button>
         </mat-card-title>
         <mat-card-content>
-            <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
+            <img src="../../../assets/images/{{movie?.cover}}.jpg" alt="Avatar" class="tile-image">
             <p title="Plot">Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However, they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must fight a difficult war against the humans.</p>
             <span class="genre"><mat-chip>Action</mat-chip><mat-chip>Si-Fi</mat-chip><mat-chip>Drama</mat-chip></span>
         </mat-card-content>
