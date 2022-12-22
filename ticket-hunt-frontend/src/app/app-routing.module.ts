@@ -4,6 +4,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { LoginComponent } from './dashboard/login/login.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { SignupComponent } from './dashboard/signup/signup.component';
+import { TileComponent } from './dashboard/tile/tile.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'signup', 
     component: SignupComponent
+  },
+  {
+    path: 'tile',
+    component: TileComponent
   },
   {
     path: '404',

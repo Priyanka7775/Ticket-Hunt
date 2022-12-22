@@ -11,6 +11,7 @@ import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { TileComponent } from './dashboard/tile/tile.component';
 
 // Material Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { TileComponent } from './dashboard/tile/tile.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TileComponent } from './dashboard/tile/tile.component';
     MatInputModule,
     MatStepperModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
