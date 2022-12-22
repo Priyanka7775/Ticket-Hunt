@@ -49,8 +49,8 @@
             <input matInput placeholder="eg 62" required>
         </mat-form-field>
         <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious mat-raised-button>Back</button>
+            <button mat-button matStepperNext mat-raised-button>Next</button>
         </div>
         </form>
     </mat-step>
@@ -59,8 +59,8 @@
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
         <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button mat-raised-button (click)="save();">Submit</button>
+        <button mat-button (click)="stepper.reset()" mat-raised-button>Reset</button>
         </div>
     </mat-step>
         </mat-stepper>

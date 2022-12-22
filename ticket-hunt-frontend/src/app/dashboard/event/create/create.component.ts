@@ -15,5 +15,9 @@ export class CreateComponent {
     });
     isLinear = false;
 
-    constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) { }
+  
+  save() {
+    alert('saved');
+  }
 }

@@ -4,6 +4,9 @@
 mat-stepper {
     width: 700px;
 }
+button{
+  margin: 0 10px;
+}
 #event-info{
     display: flex;
     flex-direction: column;
