@@ -8,7 +8,9 @@ mat-stepper {
     display: flex;
     flex-direction: column;
 }
-
+.main{
+    display: flex;
+}
 
 /* Style for image upload */
 .upload-image{

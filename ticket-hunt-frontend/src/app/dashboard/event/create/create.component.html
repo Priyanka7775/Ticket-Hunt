@@ -1,6 +1,7 @@
 <div class="container">
     <h1>Add an Event</h1>
-    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <div class="main">
+        <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
 
         <!-- First form  -->
 
@@ -62,5 +63,10 @@
         <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
     </mat-step>
-</mat-stepper>
+        </mat-stepper>
+    <div class="image-shift">
+        <div id="img-two">Image two</div>
+        <div id="img-two">Image two</div>
+    </div>
+    </div>
 </div>
