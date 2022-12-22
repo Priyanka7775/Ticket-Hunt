@@ -8,23 +8,23 @@ import { SignupComponent } from './dashboard/signup/signup.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home', 
+    redirectTo: 'home', 
     pathMatch: 'full'
   },
   {
-    path: '/home',
+    path: 'home',
     component: HomeComponent, 
   },
   {
-    path: '/login', 
+    path: 'login', 
     component: LoginComponent
   },
   {
-    path: '/signup', 
+    path: 'signup', 
     component: SignupComponent
   },
   {
-    path: '/404',
+    path: '404',
     component: NotFoundComponent
   }
 ];
