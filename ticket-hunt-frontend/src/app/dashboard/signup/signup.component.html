@@ -41,14 +41,15 @@
                 </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-                <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Intrestes </ng-template>
-                <mat-form-field appearance="fill">
-                    <mat-label>Address</mat-label>
-                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                        required>
-                </mat-form-field>
+            <mat-step [stepControl]="interest" [editable]="isEditable">
+                <form [formGroup]="interest">
+                <ng-template matStepLabel>Intrestes </ng-template>  
+                <section class="interest-section" [formGroup]="interest">
+                    <h4>Select your interest:</h4>
+                    <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
+                </section>
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext>Next</button>

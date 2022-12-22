@@ -34,3 +34,8 @@ mat-radio-button{
 .mat-mdc-form-field {
   margin-top: 16px;
 }
+
+.interest-section{
+    text-align: left;
+    width: 100%;
+}

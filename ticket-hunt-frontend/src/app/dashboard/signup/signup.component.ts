@@ -31,8 +31,10 @@ export class SignupComponent {
           ])],
       cnfPassword:['', Validators.required]
   }, {validator: verifypwd('password', 'cnfPassword')});
-  secondFormGroup = this.fb.group({
-    secondCtrl: ['', Validators.required],
+  interest = this.fb.group({
+     pepperoni: false,
+     extracheese: false,
+     mushroom: false,
   });
   isEditable = false;
 
