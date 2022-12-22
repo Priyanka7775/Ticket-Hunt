@@ -1,53 +1,82 @@
 <div class="container">
     <mat-card>
-    <mat-card-title>Sign Up</mat-card-title>
-    <mat-card-content>
-            <form [formGroup]="customer" (submit)="saveCustomer(customer)">
+        <button mat-raised-button (click)="isEditable = !isEditable">
+            {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+            </button>
+            <mat-stepper linear #stepper>
+            <mat-step [stepControl]="customer" [editable]="isEditable">
+                <form [formGroup]="customer">
+                <ng-template matStepLabel>Personal Details</ng-template>
                 <mat-form-field>
                     <mat-label>Name</mat-label>
                     <input type="text" required matInput formControlName="name">
                     <mat-error class="error" *ngIf="customer.controls['name'].hasError('required')">Name is required</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-label>Age</mat-label>
-                    <input type="text" required matInput formControlName="age" pattern="\d*" maxlength="2">
-                    <mat-error class="error" *ngIf="customer.controls['age'].hasError('required')">Age is required</mat-error>
-                    <mat-error class="error" *ngIf="customer.controls['age'].hasError('verifyAge')">Age must be 18 years and above</mat-error>
-                </mat-form-field>
-                <!-- <mat-radio-group aria-label="Select an option" formControlName="gender">
-                    <span>Gender: </span>
-                    <mat-radio-button value="male">Male</mat-radio-button>
-                    <mat-radio-button value="female">Female</mat-radio-button>
-                </mat-radio-group> -->
-                <mat-form-field>
                     <mat-label>City</mat-label>
                     <input type="text" required matInput formControlName="city" required>
                     <mat-error class="error" *ngIf="customer.controls['city'].hasError('required')">City is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input type="email" required matInput formControlName="email">
+                        <mat-error class="error" *ngIf="customer.controls['email'].hasError('required')">Email is required</mat-error>
+                        <mat-error class="error" *ngIf="customer.controls['email'].hasError('pattern')"> Enter a valid email address</mat-error>    
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input type="password" required matInput formControlName="password">
+                        <mat-error class="error" *ngIf="customer.controls['password'].hasError('required')">Password is required</mat-error>
+                        <mat-error class="error" *ngIf="customer.controls['password'].hasError('pattern')">Password should have min 8 letter password, with at least a symbol,
+            upper and lower case letters and a number</mat-error>    
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" required matInput formControlName="cnfPassword">
+                        <mat-error class="error" *ngIf="customer.controls['cnfPassword'].hasError('required')">Confirm Password is required</mat-error>
+                        <mat-error class="error" *ngIf="customer.get('cnfPassword')?.hasError('noMatch')">Password & Confirm Password should match</mat-error>  
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Email</mat-label>
-                    <input type="email" required matInput formControlName="email">
-                    <mat-error class="error" *ngIf="customer.controls['email'].hasError('required')">Email is required</mat-error>
-                    <mat-error class="error" *ngIf="customer.controls['email'].hasError('pattern')"> Enter a valid email address</mat-error>    
+                <div>
+                    <button mat-button matStepperNext [disabled]="customer.invalid">Next</button>
+                </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Intrestes </ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                        required>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input type="password" required matInput formControlName="password">
-                    <mat-error class="error" *ngIf="customer.controls['password'].hasError('required')">Password is required</mat-error>
-                    <mat-error class="error" *ngIf="customer.controls['password'].hasError('pattern')">Password should have min 8 letter password, with at least a symbol,
-          upper and lower case letters and a number</mat-error>    
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Confirm Password</mat-label>
-                    <input type="password" required matInput formControlName="cnfPassword">
-                    <mat-error class="error" *ngIf="customer.controls['cnfPassword'].hasError('required')">Confirm Password is required</mat-error>
-                    <mat-error class="error" *ngIf="customer.get('cnfPassword')?.hasError('noMatch')">Password & Confirm Password should match</mat-error>  
-                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+            </mat-stepper>
+    </mat-card>
+    
+
+    <!-- <mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
+            <form [formGroup]="customer" (submit)="saveCustomer(customer)">
+             
                 <div>
                     <button type="submit" mat-raised-button color="primary" [disabled]="customer.invalid">Sign Up</button>
                     <button type="reset" mat-raised-button color="primary">Reset</button>
                 </div>
             </form>
     </mat-card-content>
-</mat-card>
+</mat-card> -->
 </div>

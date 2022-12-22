@@ -7,14 +7,18 @@ import { FormBuilder, ValidationErrors, ValidatorFn, Validators, AbstractControl
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+
   //Constructor
   constructor(private fb: FormBuilder) { }
   
-    customer = this.fb.group({
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      gender:['', Validators.required],
-      city: ['', Validators.required], 
+  //  Save Method for the data
+  saveCustomer(customer: FormGroup) {
+    
+  }
+
+  customer = this.fb.group({
+    name: ['', Validators.required],
+    city: ['', Validators.required], 
       email: ['', Validators.compose([
             Validators.required,
             Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
@@ -26,12 +30,12 @@ export class SignupComponent {
             ),
           ])],
       cnfPassword:['', Validators.required]
-    }, { validator: verifypwd('password', 'cnfPassword') })
-  
-  //  Save Method for the data
-  saveCustomer(customer: FormGroup) {
-    
-  }
+  }, {validator: verifypwd('password', 'cnfPassword')});
+  secondFormGroup = this.fb.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isEditable = false;
+
 }
   
 export function verifypwd(pass: string, cnfPass: string): ValidatorFn {
