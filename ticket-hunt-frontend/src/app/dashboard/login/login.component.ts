@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
-  
+
   constructor(private fb: FormBuilder) { }
   
     user = this.fb.group({
@@ -21,6 +21,6 @@ export class LoginComponent {
       })
 
       login(user: FormGroup) {
-        
+        // Code here for Authentication
       }
 }
