@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { TileComponent } from './dashboard/tile/tile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatRadioModule } from '@angular/material/radio';
     NotFoundComponent,
     HeaderComponent,
     DashboardComponent,
+    TileComponent,
     
   ],
   imports: [
