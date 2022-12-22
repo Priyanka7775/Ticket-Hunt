@@ -41,7 +41,7 @@
                 </form>
             </mat-step>
             <mat-step [stepControl]="interest" [editable]="isEditable">
-                <form [formGroup]="interest" (submit)="saveData(interest)">
+                <form [formGroup]="interest">
                 <ng-template matStepLabel>Intrestes </ng-template>  
                 <section class="interest-section" [formGroup]="interest">
                     <h4>Select your interest:</h4>
@@ -67,7 +67,7 @@
                 <ng-template matStepLabel>Done</ng-template>
                 <p>You are now done.</p>
                 <div>
-                <button mat-button color="primary">Submit</button>
+                <button mat-button color="primary" (click)="saveUser(customer, interest)">Submit</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
                 </div>
             </mat-step>

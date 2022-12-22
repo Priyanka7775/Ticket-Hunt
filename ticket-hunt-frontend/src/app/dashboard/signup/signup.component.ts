@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ValidationErrors, ValidatorFn, Validators, AbstractControl, FormGroup} from '@angular/forms';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -39,9 +40,37 @@ export class SignupComponent {
 
   isEditable = false;
 
-  saveData(event: FormGroup) {
-    console.log(this.customer.value);
-    console.log(event.value);
+  // Once form is subbmited below method is called
+  saveUser(customer: FormGroup, interest: FormGroup) {
+    // Converting interest data to String Array
+    let interested: String[] = [];
+    
+    //Checking for user interest in the selection
+
+    if (interest.get('action')?.value) {
+      interested.push('action')
+    }
+    if (interest.get('drama')?.value) {
+      interested.push('drama')
+    }
+    if (interest.get('horror')?.value) {
+      interested.push('horror')
+    }
+    if (interest.get('science')?.value) {
+      interested.push('science')
+    }
+
+      // Saving all data to user
+      const userData: User = {
+       name: customer.get('name')?.value, 
+       email: customer.get('email')?.value,
+        password: customer.get('password')?.value, 
+        city: customer.get('city')?.value,
+        interest: interested,
+       role: interest.get('role')?.value
+    }
+    // Logging data for testing - Use userData to submit data 
+    console.log(userData);
   }
 }
   
