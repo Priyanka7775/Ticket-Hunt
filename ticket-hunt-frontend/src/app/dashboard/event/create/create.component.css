@@ -15,6 +15,26 @@ button{
     display: flex;
 }
 
+/* Slider */
+#img-one{
+  width: 500px;
+  margin: auto;
+}
+#img-one img{
+  width: 100%;
+}
+.slide-active{
+  transform: scaleY(1);
+  transform-origin: top center;
+  transition: .2s;
+
+}
+.slide-inactive{
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: .2s;
+}
+
 /* Style for image upload */
 .upload-image{
     margin: 15px 0;

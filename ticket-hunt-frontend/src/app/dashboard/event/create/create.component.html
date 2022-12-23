@@ -28,7 +28,7 @@
             <input matInput placeholder="Last name, First name" formControlName="venue" required>
         </mat-form-field>
         <div>
-            <button mat-button matStepperNext mat-raised-button>Next</button>
+            <button mat-button matStepperNext mat-raised-button (click)="slideToggler()">Next</button>
         </div>
         </form>
     </mat-step>
@@ -50,7 +50,7 @@
         </mat-form-field>
         <div>
             <button mat-button matStepperPrevious mat-raised-button>Back</button>
-            <button mat-button matStepperNext mat-raised-button>Next</button>
+            <button mat-button matStepperNext mat-raised-button (click)="slideToggler()">Next</button>
         </div>
         </form>
     </mat-step>
@@ -64,9 +64,12 @@
         </div>
     </mat-step>
         </mat-stepper>
+
+        <!-- Animations for form -->
     <div class="image-shift">
-        <div id="img-two">Image two</div>
+        <div id="img-one" class="slide-active"><img src="../../../../assets/images/event.jpg" alt="Event One"></div>
         <div id="img-two">Image two</div>
     </div>
     </div>
 </div>
+S

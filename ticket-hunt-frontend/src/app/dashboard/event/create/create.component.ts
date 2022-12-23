@@ -23,7 +23,16 @@ export class CreateComponent {
 
   constructor(private _formBuilder: FormBuilder) { }
   
-
+  slideToggler() {
+    const slideO = document.getElementById('img-one');
+    if (slideO?.classList.contains('slide-active')) {
+      slideO?.classList.remove('slide-active')
+      slideO?.classList.add('slide-inactive')
+    } else {
+      slideO?.classList.remove('slide-inactive')
+      slideO?.classList.add('slide-active')
+    }
+  }
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
 
