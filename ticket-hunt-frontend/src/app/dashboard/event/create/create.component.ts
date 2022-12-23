@@ -7,11 +7,16 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+  basic = this._formBuilder.group({
+    name: ['', Validators.required],
+    date: [''],
+    time: [''],
+    venue: [''],
     });
-    secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+    secondry = this._formBuilder.group({
+      image: [''],
+      organizer: [''],
+      seats: ['']
     });
     isLinear = false;
 
