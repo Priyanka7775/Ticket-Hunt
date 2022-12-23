@@ -17,6 +17,8 @@ export class CreateComponent {
 
   constructor(private _formBuilder: FormBuilder) { }
   
+
+  // Method to be called when form is submitted
   save() {
     alert('saved');
   }
