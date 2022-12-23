@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EventData } from 'src/app/model/event.model';
 
 @Component({
   selector: 'app-create',
@@ -24,7 +25,22 @@ export class CreateComponent {
   
 
   // Method to be called when form is submitted
-  save() {
-    alert('saved');
+  save(basic: FormGroup, secondry: FormGroup) {
+
+    // Converted this data to event type data
+
+    let eventData: EventData = {
+      name: basic.get('name')?.value,
+      date: basic.get('date')?.value,
+      time: basic.get('time')?.value,
+      venue: basic.get('venue')?.value,
+      image: secondry.get('image')?.value,
+      organizer: secondry.get('organizer')?.value,
+      seats: secondry.get('seats')?.value
+    }
+
+    // Use this data to save into database
+    console.log(eventData);
+    
   }
 }
