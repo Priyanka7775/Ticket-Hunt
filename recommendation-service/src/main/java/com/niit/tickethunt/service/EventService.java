@@ -4,6 +4,8 @@ import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
+
 public class EventService implements IEventService{
 
     private EventRepository eventRepository;
@@ -15,12 +17,12 @@ public class EventService implements IEventService{
 
     @Override
     public Event save(Event event) {
-        return null;
+        return eventRepository.save(event);
     }
 
     @Override
-    public Event findById(int Id) {
-        return null;
+    public Optional<Event> findById(int id) {
+        return eventRepository.findById((long) id);
     }
 
     @Override
