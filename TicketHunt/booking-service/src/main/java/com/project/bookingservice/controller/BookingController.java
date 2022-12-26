@@ -63,6 +63,19 @@ public class BookingController {
 
     }
 
+    @GetMapping("/bookings")
+    public ResponseEntity<?> getAllBookings(){
+        ResponseEntity responseEntity;
+        try{
+            responseEntity = new ResponseEntity(bookingService.getAllBookings(), HttpStatus.OK);
+        }catch (Exception exception){
+            responseEntity = new ResponseEntity(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+
+    }
+
+
 
 
 }
