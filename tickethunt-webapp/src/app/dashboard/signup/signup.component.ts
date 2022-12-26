@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ValidationErrors, ValidatorFn, Validators, AbstractControl, FormGroup} from '@angular/forms';
 import { User } from 'src/app/model/user.model';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
+import { Interest } from 'src/app/model/interest.model';
 
 @Component({
   selector: 'app-signup',
@@ -35,11 +38,8 @@ export class SignupComponent {
   }, { validator: verifypwd('password', 'cnfPassword') });
 
   // Second form Data 
-  interest = this.fb.group({
-     action: false,
-     drama: false,
-     horror: false,
-     science: false,
+  interestData = this.fb.group({
+    interest: ['', Validators.required], 
      role: ['', Validators.required],
   });
 
@@ -47,23 +47,6 @@ export class SignupComponent {
 
   // Once form is subbmited below method is called
   saveUser(customer: FormGroup, interest: FormGroup) {
-    // Converting interest data to String Array
-    let interested: String[] = [];
-
-    //Checking for user interest in the selection
-
-    if (interest.get('action')?.value) {
-      interested.push('action')
-    }
-    if (interest.get('drama')?.value) {
-      interested.push('drama')
-    }
-    if (interest.get('horror')?.value) {
-      interested.push('horror')
-    }
-    if (interest.get('science')?.value) {
-      interested.push('science')
-    }
 
       // Saving all data to user
       const userData: User = {
@@ -72,12 +55,56 @@ export class SignupComponent {
         password: customer.get('password')?.value, 
         city: customer.get('city')?.value,
         phone: customer.get('phone')?.value,
-        interest: interested,
+        interest: this.interests,
        role: interest.get('role')?.value
     }
     // Logging data for testing - Use userData to submit data 
     console.log(userData);
   }
+
+  // Chip Functionality
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+
+  interests: String[] = [];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.interests.push(value);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(value: String): void {
+    const index = this.interests.indexOf(value);
+
+    if (index >= 0) {
+      this.interests.splice(index, 1);
+    }
+  }
+
+  edit(fruit: String, event: MatChipEditedEvent) {
+    const value = event.value.trim();
+
+    // Remove fruit if it no longer has a name
+    if (!value) {
+      this.remove(fruit);
+      return;
+    }
+
+    // Edit existing fruit
+    const index = this.interests.indexOf(fruit);
+    if (index > 0) {
+      this.interests[index] = value;
+    }
+  }
+
+
 }
 
 // Out function to check password and confirm password is same or different 
@@ -94,4 +121,3 @@ export function verifypwd(pass: string, cnfPass: string): ValidatorFn {
     return null;
   }
 }
-  
