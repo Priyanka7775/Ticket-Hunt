@@ -1,7 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { EventData } from 'src/app/model/event.model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create',
@@ -49,7 +51,7 @@ export class CreateComponent implements OnInit {
 
     let eventData: EventData = {
       name: basic.get('name')?.value,
-      date: basic.get('date')?.value,
+      date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
       time: basic.get('time')?.value,
       venue: basic.get('venue')?.value,
       image: secondry.get('image')?.value,
