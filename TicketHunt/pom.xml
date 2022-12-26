@@ -12,6 +12,7 @@
 	<artifactId>TicketHunt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TicketHunt</name>
+	<packaging>pom</packaging>
 	<description>Ticket Hunt - Capstone Project</description>
 	<properties>
 		<java.version>11</java.version>
@@ -28,6 +29,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<modules>
+		<module>MovieEventService</module>
+	</modules>
 
 	<build>
 		<plugins>
