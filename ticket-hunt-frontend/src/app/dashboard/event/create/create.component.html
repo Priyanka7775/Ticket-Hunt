@@ -13,7 +13,7 @@
             <input matInput formControlName="name" required>
         </mat-form-field>
          <mat-form-field appearance="fill">
-            <input matInput [matDatepicker]="picker" min="{{defaultDate | date: 'yyyy-MM-dd'}}" formControlName="date" placeholder="{{defaultDate | date:'dd/MM/yyyy'}}">
+            <input matInput [matDatepicker]="picker" min="{{defaultDate | date: 'yyyy-MM-dd'}}" formControlName="date" placeholder="{{defaultDate | date:'MM/dd/yyyy'}}">
             <mat-hint>MM-DD-YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -27,7 +27,7 @@
         <ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
          <mat-form-field appearance="fill">
             <mat-label>Venue</mat-label>
-            <input matInput placeholder="Last name, First name" formControlName="venue" required>
+            <input matInput placeholder="Eg, XYZ Street" formControlName="venue" required>
         </mat-form-field>
         <div>
             <button mat-button matStepperNext mat-raised-button>Next</button>
@@ -61,7 +61,7 @@
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
         <div>
-        <button mat-button mat-raised-button (click)="save(basic, secondry);">Submit</button>
+        <button mat-button mat-raised-button (click)="save(basic, secondry);" [disabled]="basic.invalid || secondry.invalid">Submit</button>
         <button mat-button (click)="stepper.reset()" mat-raised-button>Reset</button>
         </div>
     </mat-step>

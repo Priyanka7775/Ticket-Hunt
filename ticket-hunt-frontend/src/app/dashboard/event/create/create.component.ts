@@ -16,14 +16,14 @@ export class CreateComponent implements OnInit {
  
   basic = this._formBuilder.group({
     name: ['', Validators.required],
-    date: [''],
-    time: [''],
-    venue: [''],
+    date: ['', Validators.required],
+    time: ['', Validators.required],
+    venue: ['', Validators.required],
     });
     secondry = this._formBuilder.group({
-      image: [''],
-      organizer: [''],
-      seats: ['']
+      image: ['', Validators.required],
+      organizer: ['', Validators.required],
+      seats: ['', Validators.required]
     });
     isLinear = false;
 
