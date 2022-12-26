@@ -13,7 +13,7 @@ import { formatDate } from '@angular/common';
 
 export class CreateComponent implements OnInit {
 
- 
+ // Form Data and Validations
   basic = this._formBuilder.group({
     name: ['', Validators.required],
     date: ['', Validators.required],
@@ -32,26 +32,28 @@ export class CreateComponent implements OnInit {
 
   }
   
-  slideToggler() {
-    const slideO = document.getElementById('img-one');
-    if (slideO?.classList.contains('slide-active')) {
-      slideO?.classList.remove('slide-active')
-      slideO?.classList.add('slide-inactive')
-    } else {
-      slideO?.classList.remove('slide-inactive')
-      slideO?.classList.add('slide-active')
-    }
-  }
+  // Toggler 
+  // slideToggler() {
+  //   const slideO = document.getElementById('img-one');
+  //   if (slideO?.classList.contains('slide-active')) {
+  //     slideO?.classList.remove('slide-active')
+  //     slideO?.classList.add('slide-inactive')
+  //   } else {
+  //     slideO?.classList.remove('slide-inactive')
+  //     slideO?.classList.add('slide-active')
+  //   }
+  // }
 
-  // Default placeholder date 
+  // Default placeholder date
 
+  // Current Date Placeholder
   defaultDate = new Date();
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
 
-    // Converted this data to event type data
 
+    // Converted this data to event type data
     let eventData: EventData = {
       name: basic.get('name')?.value,
       date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
@@ -67,6 +69,7 @@ export class CreateComponent implements OnInit {
     
   }
 
+  // Property for mat-ti
   /** Override the ante meridiem abbreviation. */
   @Input() anteMeridiemAbbreviation = 'am';
 
