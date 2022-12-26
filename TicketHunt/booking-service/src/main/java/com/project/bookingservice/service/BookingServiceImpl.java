@@ -2,10 +2,7 @@ package com.project.bookingservice.service;
 
 import com.project.bookingservice.domain.Booking;
 import com.project.bookingservice.domain.Seats;
-import com.project.bookingservice.exceptions.EventAlreadyExistException;
-import com.project.bookingservice.exceptions.EventNotFoundException;
-import com.project.bookingservice.exceptions.SeatAlreadyBookedException;
-import com.project.bookingservice.exceptions.UserNotFoundException;
+import com.project.bookingservice.exceptions.*;
 import com.project.bookingservice.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -58,6 +55,27 @@ public class BookingServiceImpl implements BookingService {
             booking.setSeatList(seatsList);
         }
 
+        return bookingRepository.save(booking);
+    }
+
+
+    @Override
+    public Booking cancelTickets(String eventId, String email, String seatNo) throws EventNotFoundException, SeatNotFoundException, UserNotFoundException {
+
+        boolean flag = false;
+        if (bookingRepository.findById(eventId).isEmpty()) {
+            throw new EventNotFoundException();
+        }
+
+
+        Booking booking = bookingRepository.findByEventId(eventId);
+        List<Seats> seatsList = booking.getSeatList();
+        flag = seatsList.removeIf(x -> x.getSeatNumber().equals(seatNo));
+        if (!flag) {
+            throw new SeatNotFoundException();
+        }
+
+        booking.setSeatList(seatsList);
         return bookingRepository.save(booking);
     }
 }

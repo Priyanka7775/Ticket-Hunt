@@ -2,10 +2,7 @@ package com.project.bookingservice.service;
 
 import com.project.bookingservice.domain.Booking;
 import com.project.bookingservice.domain.Seats;
-import com.project.bookingservice.exceptions.EventAlreadyExistException;
-import com.project.bookingservice.exceptions.EventNotFoundException;
-import com.project.bookingservice.exceptions.SeatAlreadyBookedException;
-import com.project.bookingservice.exceptions.UserNotFoundException;
+import com.project.bookingservice.exceptions.*;
 
 public interface BookingService {
 
@@ -13,6 +10,7 @@ public interface BookingService {
 
     Booking bookSeats(String eventId, String email, Seats seats) throws EventNotFoundException, UserNotFoundException, SeatAlreadyBookedException;
 
+    Booking cancelTickets(String eventId, String email, String seats) throws EventNotFoundException, SeatNotFoundException, UserNotFoundException;
 
 
 
