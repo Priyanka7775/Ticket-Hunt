@@ -16,5 +16,5 @@ public interface BookingService {
 
     List<Booking> getAllBookings();
 
-
+    Booking findByEmail(String email);
 }

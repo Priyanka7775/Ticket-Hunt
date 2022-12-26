@@ -84,4 +84,10 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.findAll();
     }
 
+
+    @Override
+    public Booking findByEmail(String email) {
+        return bookingRepository.findByEmail(email);
+    }
+
 }
