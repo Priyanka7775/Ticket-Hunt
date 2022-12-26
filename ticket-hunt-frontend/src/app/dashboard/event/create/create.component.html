@@ -5,27 +5,29 @@
 
         <!-- First form  -->
 
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup" id="event-info">
+    <mat-step [stepControl]="basic">
+        <form [formGroup]="basic" id="event-info">
         <ng-template matStepLabel>Fill out event information</ng-template>
         <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="name" required>
         </mat-form-field>
          <mat-form-field appearance="fill">
-             <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
+            <input matInput [matDatepicker]="picker" min="{{defaultDate | date: 'yyyy-MM-dd'}}" formControlName="date" placeholder="{{defaultDate | date:'MM/dd/yyyy'}}">
+            <mat-hint>MM-DD-YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
          <mat-form-field appearance="fill">
-            <mat-label>Time</mat-label>
-            <input matInput placeholder="MM:HH" formControlName="firstCtrl" required>
+           <input matInput
+           name="selected_time_A" formControlName="time" [ngxMatTimepicker]="pickerA" placeholder="8:00 AM" readonly min="8:00 AM" max="10:00 PM" />
+        <mat-icon matSuffix (click)="pickerA.open()">watch_later </mat-icon>
+        <mat-hint>Please select time between 8:00 AM to 10:00 PM</mat-hint>
         </mat-form-field>
+        <ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
          <mat-form-field appearance="fill">
             <mat-label>Venue</mat-label>
-            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            <input matInput placeholder="Eg, XYZ Street" formControlName="venue" required>
         </mat-form-field>
         <div>
             <button mat-button matStepperNext mat-raised-button>Next</button>
@@ -33,20 +35,20 @@
         </form>
     </mat-step>
     <!-- Second form -->
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup" id="event-info">
+    <mat-step [stepControl]="secondry">
+        <form [formGroup]="secondry" id="event-info">
         <ng-template matStepLabel>Fill out your address</ng-template>
         <div class="upload-image">
             <label for="">Select an image</label>
-            <input type="file" class="file-input">
+            <input type="file" class="file-input" formControlName="image">
         </div>
         <mat-form-field appearance="fill">
             <mat-label>Oragnizer name</mat-label>
-            <input matInput placeholder="Organizer name" required>
+            <input matInput placeholder="Organizer name" required formControlName="organizer">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Total Seats</mat-label>
-            <input matInput placeholder="eg 62" required>
+            <input matInput placeholder="eg 62" required formControlName="seats">
         </mat-form-field>
         <div>
             <button mat-button matStepperPrevious mat-raised-button>Back</button>
@@ -59,14 +61,16 @@
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
         <div>
-        <button mat-button mat-raised-button (click)="save();">Submit</button>
+        <button mat-button mat-raised-button (click)="save(basic, secondry);" [disabled]="basic.invalid || secondry.invalid">Submit</button>
         <button mat-button (click)="stepper.reset()" mat-raised-button>Reset</button>
         </div>
     </mat-step>
         </mat-stepper>
+
+        <!-- Animations for form -->
     <div class="image-shift">
-        <div id="img-two">Image two</div>
-        <div id="img-two">Image two</div>
+        <div id="img-one" class="slide-active"><img src="../../../../assets/images/event.jpg" alt="Event One"></div>
     </div>
     </div>
 </div>
+S
