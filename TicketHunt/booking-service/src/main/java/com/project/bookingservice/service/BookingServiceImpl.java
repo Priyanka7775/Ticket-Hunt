@@ -90,4 +90,21 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.findByEmail(email);
     }
 
+
+    @Override
+    public double totalCost(String eventId, String email) {
+
+        double cost = 0;
+        Booking booking = bookingRepository.findByEventIdAndEmail(eventId,  email);
+        List<Seats> seatsList = booking.getSeatList();
+
+        for (Seats var : seatsList) {
+
+            cost = cost + var.getPrice();
+
+        }
+
+        System.out.println(cost);
+        return cost;
+    }
 }
