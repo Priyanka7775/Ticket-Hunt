@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/TicketHunt/pom.xml" />
         <option value="$PROJECT_DIR$/TicketHunt/booking-service/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
