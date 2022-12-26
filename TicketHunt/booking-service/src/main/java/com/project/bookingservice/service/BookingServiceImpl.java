@@ -78,4 +78,10 @@ public class BookingServiceImpl implements BookingService {
         booking.setSeatList(seatsList);
         return bookingRepository.save(booking);
     }
+
+    @Override
+    public List<Booking> getAllBookings() {
+        return bookingRepository.findAll();
+    }
+
 }

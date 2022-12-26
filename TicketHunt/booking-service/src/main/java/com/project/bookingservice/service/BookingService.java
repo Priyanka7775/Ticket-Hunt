@@ -4,6 +4,8 @@ import com.project.bookingservice.domain.Booking;
 import com.project.bookingservice.domain.Seats;
 import com.project.bookingservice.exceptions.*;
 
+import java.util.List;
+
 public interface BookingService {
 
     Booking addBooking(Booking booking) throws EventAlreadyExistException;
@@ -12,6 +14,7 @@ public interface BookingService {
 
     Booking cancelTickets(String eventId, String email, String seats) throws EventNotFoundException, SeatNotFoundException, UserNotFoundException;
 
+    List<Booking> getAllBookings();
 
 
 }
