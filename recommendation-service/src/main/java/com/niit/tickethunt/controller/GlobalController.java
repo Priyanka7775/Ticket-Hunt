@@ -28,6 +28,6 @@ public class GlobalController {
 
     @GetMapping("event/{id}")
     public ResponseEntity<?> getById(@PathVariable int id){
-        new ResponseEntity<>(eventService.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(eventService.findById(id), HttpStatus.OK);
     }
 }
