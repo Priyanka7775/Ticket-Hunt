@@ -1,16 +1,19 @@
-import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { EventData } from 'src/app/model/event.model';
 import { formatDate } from '@angular/common';
 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
+
 export class CreateComponent implements OnInit {
+
+ 
   basic = this._formBuilder.group({
     name: ['', Validators.required],
     date: [''],
