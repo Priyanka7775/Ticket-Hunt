@@ -29,6 +29,7 @@ import { EventComponent } from './dashboard/event/event.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';  
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatChipsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMatTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

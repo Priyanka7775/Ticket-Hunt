@@ -16,14 +16,18 @@ button{
 }
 
 /* Slider */
+.image-shift{
+  width: 65%;
+}
 #img-one{
-  width: 500px;
+  width: 570px;
   margin: auto;
 }
 #img-one img{
   width: 100%;
 }
-.slide-active{
+
+/* .slide-active{
   transform: scaleY(1);
   transform-origin: top center;
   transition: .2s;
@@ -33,7 +37,7 @@ button{
   transform: scaleY(0);
   transform-origin: top center;
   transition: .2s;
-}
+} */
 
 /* Style for image upload */
 .upload-image{

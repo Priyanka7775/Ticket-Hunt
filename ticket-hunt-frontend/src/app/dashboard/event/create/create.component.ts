@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 import { EventData } from 'src/app/model/event.model';
 
 @Component({
@@ -7,7 +8,7 @@ import { EventData } from 'src/app/model/event.model';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit {
   basic = this._formBuilder.group({
     name: ['', Validators.required],
     date: [''],
@@ -22,6 +23,9 @@ export class CreateComponent {
     isLinear = false;
 
   constructor(private _formBuilder: FormBuilder) { }
+  ngOnInit(): void {
+
+  }
   
   slideToggler() {
     const slideO = document.getElementById('img-one');
@@ -33,6 +37,11 @@ export class CreateComponent {
       slideO?.classList.add('slide-active')
     }
   }
+
+  // Default placeholder date 
+
+  defaultDate = new Date();
+
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
 
@@ -52,4 +61,16 @@ export class CreateComponent {
     console.log(eventData);
     
   }
+
+  /** Override the ante meridiem abbreviation. */
+  @Input() anteMeridiemAbbreviation = 'am';
+
+  /** Override the post meridiem abbreviation. */
+  @Input() postMeridiemAbbreviation = 'pm';
+
+  /* Sets the clock mode, 12-hour or 24-hour clocks are supported. */
+  @Input() mode: '12h' | '24h' = '24h';
+
+  /* Set the color of the timepicker control */
+  @Input() color: ThemePalette = 'primary';
 }
