@@ -4,6 +4,7 @@ import com.project.bookingservice.domain.Booking;
 import com.project.bookingservice.domain.Seats;
 import com.project.bookingservice.exceptions.EventAlreadyExistException;
 import com.project.bookingservice.exceptions.SeatAlreadyBookedException;
+import com.project.bookingservice.exceptions.SeatNotFoundException;
 import com.project.bookingservice.repository.BookingRepository;
 import com.project.bookingservice.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,23 @@ public class BookingController {
         }
 
     }
+
+    @DeleteMapping("/cancel/{eventId}/{email}/{seats}")
+    public ResponseEntity<?> cancelSeats(@PathVariable String eventId,@PathVariable String email,@PathVariable String seats) throws SeatNotFoundException {
+
+        try {
+            bookingService.cancelTickets(eventId, email, seats);
+            responseEntity = new ResponseEntity("Successfully deleted !!!", HttpStatus.OK);
+        } catch (SeatNotFoundException e) {
+            throw new SeatNotFoundException();
+        }
+        catch (Exception exception){
+            responseEntity = new ResponseEntity(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+
+    }
+
 
 
 }
