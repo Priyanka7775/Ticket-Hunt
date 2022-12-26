@@ -31,8 +31,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
-import { EditComponent } from './dashboard/event/edit/edit.component';
-import { ViewComponent } from './dashboard/event/view/view.component';  
+import { EditEventComponent } from './dashboard/event/edit/edit.component';
+import { ViewEventComponent } from './dashboard/event/view/view.component';  
 
 @NgModule({
   declarations: [
@@ -47,8 +47,8 @@ import { ViewComponent } from './dashboard/event/view/view.component';
     UserComponent,
     EventComponent,
     CreateComponent,
-    EditComponent,
-    ViewComponent,
+    EditEventComponent,
+    ViewEventComponent,
   ],
   imports: [
     BrowserModule,

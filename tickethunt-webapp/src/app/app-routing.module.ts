@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from './dashboard/event/create/create.component';
+import { EditEventComponent } from './dashboard/event/edit/edit.component';
 import { EventComponent } from './dashboard/event/event.component';
+import { ViewEventComponent } from './dashboard/event/view/view.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { LoginComponent } from './dashboard/login/login.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: 'event/create', 
     component: CreateComponent
+  },
+  {
+    path: 'event/view',
+    component: ViewEventComponent
+  },
+  {
+    path: 'event/edit',
+    component: EditEventComponent
   }
   ,
   {
