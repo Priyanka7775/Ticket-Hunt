@@ -3,6 +3,7 @@ package com.project.bookingservice.controller;
 import com.project.bookingservice.domain.Booking;
 import com.project.bookingservice.domain.Seats;
 import com.project.bookingservice.exceptions.EventAlreadyExistException;
+import com.project.bookingservice.exceptions.EventNotFoundException;
 import com.project.bookingservice.exceptions.SeatAlreadyBookedException;
 import com.project.bookingservice.exceptions.SeatNotFoundException;
 import com.project.bookingservice.repository.BookingRepository;
@@ -85,6 +86,18 @@ public class BookingController {
             throw new SeatNotFoundException();
         }
     }
+
+    @GetMapping("/{email}")
+    public  ResponseEntity<?> GetBookingById(@PathVariable String email) throws EventNotFoundException {
+
+        try {
+            return new ResponseEntity<>(bookingService.findByEmail(email), HttpStatus.OK);
+
+        } catch (Exception e) {
+            throw new EventNotFoundException();
+        }
+    }
+
 
 
 
