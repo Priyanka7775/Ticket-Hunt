@@ -1,6 +1,6 @@
 export type EventData = {
     id?: String, 
-    name?: String,
+    title?: String,
     date?: String, 
     time?: String, 
     venue?: String, 

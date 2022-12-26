@@ -15,7 +15,7 @@ export class CreateComponent implements OnInit {
 
  // Form Data and Validations
   basic = this._formBuilder.group({
-    name: ['', Validators.required],
+    title: ['', Validators.required],
     date: ['', Validators.required],
     time: ['', Validators.required],
     venue: ['', Validators.required],
@@ -55,7 +55,7 @@ export class CreateComponent implements OnInit {
 
     // Converted this data to event type data
     let eventData: EventData = {
-      name: basic.get('name')?.value,
+      title: basic.get('name')?.value,
       date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
       time: basic.get('time')?.value,
       venue: basic.get('venue')?.value,
