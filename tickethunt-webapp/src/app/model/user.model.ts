@@ -1,3 +1,5 @@
+import { Interest } from "./interest.model"
+
 export type User = {
     name?: String, 
     email?: String, 

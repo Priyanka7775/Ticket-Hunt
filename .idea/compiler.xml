@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="RecommendationService" />
         <module name="MovieEventService" />
+        <module name="PaymentService" />
         <module name="RecomendationService" />
         <module name="booking-service" />
       </profile>
@@ -16,6 +17,7 @@
     <bytecodeTargetLevel>
       <module name="booking-service" target="17" />
       <module name="MovieEventService" target="17" />
+      <module name="PaymentService" target="11" />
       <module name="RecomendationService" target="17" />
       <module name="RecommendationService" target="17" />
       <module name="TicketHunt" target="11" />
@@ -25,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="MovieEventService" options="-parameters" />
+      <module name="PaymentService" options="-parameters" />
       <module name="RecomendationService" options="-parameters" />
       <module name="RecommendationService" options="-parameters" />
       <module name="TicketHunt" options="-parameters" />

@@ -46,16 +46,37 @@
                 </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="interest" [editable]="isEditable">
-                <form [formGroup]="interest">
+            <mat-step [stepControl]="interestData" [editable]="isEditable">
+                <form [formGroup]="interestData">
                 <ng-template matStepLabel>Intrestes </ng-template>  
-                <section class="interest-section" [formGroup]="interest">
+                <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label>Favorite Geners</mat-label>
+                <mat-chip-grid #chipGrid aria-label="Enter fruits" formControlName="interest">
+                    <mat-chip-row *ngFor="let value of interests"
+                                (removed)="remove(value)"
+                                [editable]="true"
+                                (edited)="edit(value, $event)">
+                    {{value}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + value">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                    </mat-chip-row>
+                    <input placeholder="Action, Comedy, Drama etc...."
+                        [matChipInputFor]="chipGrid"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)"/>
+                    </mat-chip-grid>
+                <mat-error class="error" *ngIf="interestData.controls['interest'].hasError('required')">At least one genre is required </mat-error>
+                </mat-form-field>
+
+                <!-- <section class="interest-section" [formGroup]="interest">
                     <h4>Select your interest:</h4>
                     <p><mat-checkbox formControlName="action">Action</mat-checkbox></p>
                     <p><mat-checkbox formControlName="drama">Drama</mat-checkbox></p>
                     <p><mat-checkbox formControlName="horror">Horror</mat-checkbox></p>
                     <p><mat-checkbox formControlName="science">Si-Fi</mat-checkbox></p>
-                </section>
+                </section> -->
                   <section class="interest-section">
                     <span>Account Type:</span>
                    <mat-radio-group aria-label="Select an option" formControlName="role">
@@ -79,7 +100,7 @@
                     <mat-card-footer>By signing up you agree above terms & condtions</mat-card-footer>
                 </mat-card>
                 <div class="save-user">
-                <button mat-button color="primary" mat-raised-button (click)="saveUser(customer, interest)">Submit</button>
+                <button mat-button color="primary" mat-raised-button (click)="saveUser(customer, interestData)">Submit</button>
                 <button mat-button (click)="stepper.reset()" mat-raised-button>Reset</button>
                 </div>
             </mat-step>
