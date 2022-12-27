@@ -88,7 +88,7 @@ public class BookingController {
     }
 
     @GetMapping("/{email}")
-    public  ResponseEntity<?> GetBookingById(@PathVariable String email) throws EventNotFoundException {
+    public  ResponseEntity<?> GetBookingByEmailId(@PathVariable String email) throws EventNotFoundException {
 
         try {
             return new ResponseEntity<>(bookingService.findByEmail(email), HttpStatus.OK);
@@ -98,6 +98,17 @@ public class BookingController {
         }
     }
 
+    @GetMapping("/view/{eventId}")
+    public ResponseEntity<?> getBookingByEventId(@PathVariable String eventId) throws EventNotFoundException {
+
+        try {
+            return new ResponseEntity<>(bookingService.findByEventId(eventId), HttpStatus.OK);
+
+        } catch (Exception e) {
+            throw new EventNotFoundException();
+        }
+
+    }
 
 
 
