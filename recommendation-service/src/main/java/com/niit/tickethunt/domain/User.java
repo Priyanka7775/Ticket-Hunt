@@ -17,7 +17,6 @@ public class User {
    private Long id;
    private String name;
    private String email;
-   private String password;
    private String city;
    private String role;
    private List<String> interest;

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v4/")
 public class GlobalController {
-    private final EventService eventService;
-    private final UserService userService;
+    private EventService eventService;
+    private UserService userService;
 
     @Autowired
     public GlobalController(EventService eventService, UserService userService) {

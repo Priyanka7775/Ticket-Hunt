@@ -22,4 +22,5 @@ public class Event {
     private String image;
     private String organizer;
     private String seats;
+    private double price;
 }
