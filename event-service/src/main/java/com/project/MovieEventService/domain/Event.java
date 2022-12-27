@@ -20,6 +20,7 @@ public class Event {
     private String venue;
     private String image;
    private int totalSeat;
+   private String eventType;
 
 
 }

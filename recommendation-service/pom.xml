@@ -14,7 +14,7 @@
 	<name>RecommendationService</name>
 	<description>Recommendation Service for TicketHunt</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
