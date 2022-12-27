@@ -1,4 +1,4 @@
-package com.project.PaymentService;
+package com.project.paymentservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
