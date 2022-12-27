@@ -7,6 +7,7 @@ package com.niit.jdp.userservice.service;
 
 import com.niit.jdp.userservice.domain.User;
 import com.niit.jdp.userservice.exception.UserAlreadyExistsException;
+import com.niit.jdp.userservice.exception.UserNotFoundException;
 import com.niit.jdp.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+    public User findByEmail(String email) throws UserNotFoundException {
+        User user =userRepository.findByEmail(email);
+        if(user== null){
+            throw new UserNotFoundException();
+        }
+        return user;
+}
 }
