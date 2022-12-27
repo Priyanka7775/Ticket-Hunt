@@ -19,7 +19,8 @@ public class Event {
     private String time;
     private String venue;
     private String image;
-   private int totalSeat;
+    private int totalSeat;
+    private String eventType;
 
 
 }
