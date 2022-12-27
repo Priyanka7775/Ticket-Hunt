@@ -32,4 +32,7 @@ button{
     object-position: center center;
     width: 250px;
     height: 250px;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
