@@ -5,5 +5,19 @@
  */
 package com.niit.jdp.userservice.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+
+@Document
 public class User {
+    private String name;
+    private String email;
+    private String password;
+    private String city;
+    private String role;
+    private List<String> interest;
+    private long phone;
+
+
 }
