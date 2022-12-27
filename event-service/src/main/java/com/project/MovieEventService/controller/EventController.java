@@ -1,7 +1,7 @@
 package com.project.MovieEventService.controller;
 
 import com.project.MovieEventService.domain.Event;
-import com.project.MovieEventService.domain.Movie;
+//import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.service.EventService;
@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("eventdata/")
@@ -20,14 +22,14 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @PostMapping("addMovie")
-    public ResponseEntity<?> addMovie(@RequestBody Movie movie){
-        return new ResponseEntity<>(eventService.addMovie(movie), HttpStatus.CREATED);
-    }
-    @GetMapping("movie")
-    public ResponseEntity<?> getAllMovie(){
-        return new ResponseEntity<>(eventService.viewAllMovie(),HttpStatus.OK);
-    }
+//    @PostMapping("addMovie")
+//    public ResponseEntity<?> addMovie(@RequestBody Movie movie){
+//        return new ResponseEntity<>(eventService.addMovie(movie), HttpStatus.CREATED);
+//    }
+//    @GetMapping("movie")
+//    public ResponseEntity<?> getAllMovie(){
+//        return new ResponseEntity<>(eventService.viewAllMovie(),HttpStatus.OK);
+//    }
 
     @PostMapping("addEvent")
     public ResponseEntity<?> addEvent(@RequestBody Event event) throws EventAlreadyFoundException {
@@ -78,5 +80,10 @@ public class EventController {
     @PutMapping("updateEvent/{eventId}")
     public ResponseEntity<?>updateTrack(@RequestBody Event event, @PathVariable String eventId){
         return new ResponseEntity<>(eventService.updateEventDetails(eventId,event),HttpStatus.OK);
+    }
+
+    @GetMapping("getEvent/{eventType}")
+    public List<Event> getAllByEventType(@PathVariable String eventType){
+        return eventService.findByEventType(eventType);
     }
 }

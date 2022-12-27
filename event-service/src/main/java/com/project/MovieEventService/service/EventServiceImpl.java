@@ -1,11 +1,11 @@
 package com.project.MovieEventService.service;
 
 import com.project.MovieEventService.domain.Event;
-import com.project.MovieEventService.domain.Movie;
+//import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.repository.EventRepository;
-import com.project.MovieEventService.repository.MovieRepository;
+//import com.project.MovieEventService.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,23 +16,12 @@ import java.util.Optional;
 public class EventServiceImpl implements EventService{
     @Autowired
     private EventRepository eventRepository;
-    @Autowired
-    private MovieRepository movieRepository;
 
-    public EventServiceImpl(EventRepository eventRepository, MovieRepository movieRepository) {
+    public EventServiceImpl(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
-        this.movieRepository = movieRepository;
+
     }
 
-    @Override
-    public Movie addMovie(Movie movie) {
-        return movieRepository.save(movie);
-    }
-
-    @Override
-    public List<Movie> viewAllMovie() {
-        return movieRepository.findAll();
-    }
 
     @Override
     public List<Event> viewAllEvents() {
@@ -46,7 +35,7 @@ public class EventServiceImpl implements EventService{
             throw new EventNotFoundException();
         }
         return event;
-       // return eventRepository.findByEmail(email);
+
     }
 
     @Override
@@ -91,5 +80,13 @@ public class EventServiceImpl implements EventService{
             existingEvent.setTotalSeat(event.getTotalSeat());
         }
         return eventRepository.save(existingEvent);
+    }
+
+    @Override
+    public List <Event> findByEventType(String eventType) {
+        if(eventType.equals("movie")){
+            return eventRepository.findByEventType("movie");
+        }
+        return eventRepository.findByEventType("event");
     }
 }
