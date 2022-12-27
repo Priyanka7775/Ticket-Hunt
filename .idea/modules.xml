@@ -4,9 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/event-service/MovieEventService.iml" filepath="$PROJECT_DIR$/event-service/MovieEventService.iml" />
       <module fileurl="file://$PROJECT_DIR$/recommendation-service/RecomendationService.iml" filepath="$PROJECT_DIR$/recommendation-service/RecomendationService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recommendation-service/RecommendationService.iml" filepath="$PROJECT_DIR$/recommendation-service/RecommendationService.iml" />
       <module fileurl="file://$PROJECT_DIR$/TicketHunt/TicketHunt.iml" filepath="$PROJECT_DIR$/TicketHunt/TicketHunt.iml" />
       <module fileurl="file://$PROJECT_DIR$/booking-service/booking-service.iml" filepath="$PROJECT_DIR$/booking-service/booking-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tickethunt.iml" filepath="$PROJECT_DIR$/.idea/tickethunt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
     </modules>
   </component>
 </project>
