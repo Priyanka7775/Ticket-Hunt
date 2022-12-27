@@ -19,13 +19,7 @@ public class Event {
     private String time;
     private String venue;
     private String image;
-<<<<<<< HEAD
     private int totalSeat;
     private String eventType;
-=======
-   private int totalSeat;
-   private String eventType;
->>>>>>> 5050aa6a75fbc2b1172714b1556f379f29a02f49
-
 
 }

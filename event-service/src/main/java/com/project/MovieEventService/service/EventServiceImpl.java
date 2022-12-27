@@ -16,10 +16,8 @@ import java.util.Optional;
 public class EventServiceImpl implements EventService{
     @Autowired
     private EventRepository eventRepository;
-
     public EventServiceImpl(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
-
     }
 
 
@@ -85,8 +83,8 @@ public class EventServiceImpl implements EventService{
     @Override
     public List <Event> findByEventType(String eventType) {
         if(eventType.equals("movie")){
-            return eventRepository.findByEventType("movie");
+            return eventRepository.findAllByEventType("movie");
         }
-        return eventRepository.findByEventType("event");
+        return eventRepository.findAllByEventType("event");
     }
 }

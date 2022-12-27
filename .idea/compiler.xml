@@ -19,7 +19,7 @@
       <module name="booking-service" target="11" />
       <module name="MovieEventService" target="11" />
       <module name="payment-service" target="11" />
-      <module name="RecomendationService" target="17" />
+      <module name="RecomendationService" target="11" />
       <module name="RecommendationService" target="11" />
       <module name="TicketHunt" target="11" />
       <module name="tickethunt" target="11" />
