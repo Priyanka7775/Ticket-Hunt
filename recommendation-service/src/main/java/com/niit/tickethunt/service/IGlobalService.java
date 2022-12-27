@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public interface IGlobalService<T> {
 
-    List<Event> getAll();
-    Event save(T t);
+    List<T> getAll();
+    T save(T t);
 
-    Optional<Event> findById(int id);
+    Optional<T> findById(int id);
 
-    Event update(Event event);
+    T update(T t);
 }
