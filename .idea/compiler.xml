@@ -7,9 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="payment-service" />
-        <module name="RecommendationService" />
-        <module name="PaymentService" />
         <module name="MovieEventService" />
         <module name="RecomendationService" />
         <module name="booking-service" />
@@ -18,10 +15,7 @@
     <bytecodeTargetLevel>
       <module name="booking-service" target="11" />
       <module name="MovieEventService" target="17" />
-      <module name="payment-service" target="11" />
-      <module name="PaymentService" target="11" />
       <module name="RecomendationService" target="17" />
-      <module name="RecommendationService" target="17" />
       <module name="TicketHunt" target="11" />
       <module name="tickethunt" target="11" />
     </bytecodeTargetLevel>
@@ -29,12 +23,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="MovieEventService" options="-parameters" />
-      <module name="PaymentService" options="-parameters" />
       <module name="RecomendationService" options="-parameters" />
-      <module name="RecommendationService" options="-parameters" />
       <module name="TicketHunt" options="-parameters" />
       <module name="booking-service" options="-parameters" />
-      <module name="payment-service" options="-parameters" />
     </option>
   </component>
 </project>

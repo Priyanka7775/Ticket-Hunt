@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/booking-service/booking-service.iml" filepath="$PROJECT_DIR$/booking-service/booking-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tickethunt.iml" filepath="$PROJECT_DIR$/.idea/tickethunt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
     </modules>
   </component>
 </project>
