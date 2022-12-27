@@ -14,10 +14,10 @@
 
 	</parent>
 	<groupId>com.project</groupId>
-	<artifactId>PaymentService</artifactId>
+	<artifactId>payment-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PaymentService</name>
-	<description>Payment Service for Ticket Hunt Application</description>
+	<name>payment-service</name>
+	<description>Payment Service of Ticket Hunt Application</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
