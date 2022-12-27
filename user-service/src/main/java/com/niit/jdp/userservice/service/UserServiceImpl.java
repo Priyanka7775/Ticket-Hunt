@@ -5,6 +5,24 @@
  */
 package com.niit.jdp.userservice.service;
 
-public class UserServiceImpl {
-    
+import com.niit.jdp.userservice.domain.User;
+
+import java.util.List;
+
+public class UserServiceImpl implements IUserService {
+
+    @Override
+    public User addBooking(User user) {
+        return null;
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return null;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return null;
+    }
 }
