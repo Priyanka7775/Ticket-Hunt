@@ -5,6 +5,7 @@ import com.project.bookingservice.domain.Seats;
 import com.project.bookingservice.exceptions.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BookingService {
 
@@ -18,6 +19,7 @@ public interface BookingService {
 
     Booking findByEmail(String email);
 
+    Optional<Booking> findByEventId(String evenId);
 
     double totalCost(String eventId, String email) throws SeatAlreadyBookedException;
 
