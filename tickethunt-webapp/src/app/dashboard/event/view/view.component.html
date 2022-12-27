@@ -1,23 +1,33 @@
 <div class="container">
     <div class="row">
-        <h1>Event List</h1>
-            <div *ngFor="let event of events">
-                <div>
-                    <span>{{event.id}}</span><br>
-                    <span>{{event.title}}</span><br>
-                    <span>{{event.date}}</span><br>
-                    <span>{{event.time}}</span><br>
-                    <span>{{event.venue}}</span><br>
-                    <mat-card-actions>
+        <h1>Events List</h1>
+        <mat-card *ngFor="let event of events">
+            <mat-card-title>{{event.title}}</mat-card-title>
+            <div class="event-info">
+                <mat-card-content>
+                <div class="event event-date">
+                    <mat-icon class="icon">calendar_month</mat-icon> <span> {{event.date}}</span>
+                </div>
+                <div class="event event-time">
+                    <mat-icon class="icon">schedule</mat-icon> <span> {{event.time}}</span>
+                </div>
+                <div class="event event-location">
+                    <mat-icon class="icon">location_on</mat-icon> <span> {{event.venue}}</span>
+                </div>
+                <mat-card-actions>
                         <button color="accent" mat-icon-button (click)="editNote()">
-                            <mat-icon>edit</mat-icon>
+                            <mat-icon class="icon">edit</mat-icon>
                         </button>
                         <button color="accent" mat-icon-button (click)="deleteNote(event.id)">
                             <mat-icon>delete</mat-icon>
                         </button>
-                    </mat-card-actions>
-                </div>
+                </mat-card-actions>
+            </mat-card-content>
+            <div class="event-image">
+                <img src="../../../../assets/images/tomorrow-war.jpg" alt="Event Image">
             </div>
-          
+            </div>
+        </mat-card>
+  
         </div>
         </div>
