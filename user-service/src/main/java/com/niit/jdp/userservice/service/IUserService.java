@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IUserService {
 
-    User addBooking(User user) ;
+    User addUser(User user) ;
 
     List<User> getAllUser();
 

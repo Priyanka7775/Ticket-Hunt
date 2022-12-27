@@ -12,7 +12,7 @@ import java.util.List;
 public class UserServiceImpl implements IUserService {
 
     @Override
-    public User addBooking(User user) {
+    public User addUser(User user) {
         return null;
     }
 
