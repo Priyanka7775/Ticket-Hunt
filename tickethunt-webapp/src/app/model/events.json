@@ -1,0 +1,84 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "2",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "3",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "4",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "5",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "6",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "7",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    },
+    {
+      "id": "8",
+      "title": "music concert",
+      "date": "26-09-2022",
+      "time": "9:00",
+      "venue": "Mumbai",
+      "image": "image",
+      "organizer": "organizer",
+      "seats": 100
+    }
+  ]
+}

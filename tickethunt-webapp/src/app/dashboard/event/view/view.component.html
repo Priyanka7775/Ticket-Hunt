@@ -1,1 +1,23 @@
-<p>view works!</p>
+<div class="container">
+    <div class="row">
+        <h1>Event List</h1>
+            <div *ngFor="let event of events">
+                <div>
+                    <span>{{event.id}}</span><br>
+                    <span>{{event.title}}</span><br>
+                    <span>{{event.date}}</span><br>
+                    <span>{{event.time}}</span><br>
+                    <span>{{event.venue}}</span><br>
+                    <mat-card-actions>
+                        <button color="accent" mat-icon-button (click)="editNote()">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button color="accent" mat-icon-button (click)="deleteNote(event.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </div>
+          
+        </div>
+        </div>

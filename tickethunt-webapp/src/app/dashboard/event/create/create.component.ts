@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { EventData } from 'src/app/model/event.model';
+
 import { formatDate } from '@angular/common';
+import { EventData } from 'src/app/model/event';
 
 
 @Component({
