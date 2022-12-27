@@ -18,7 +18,7 @@ public class GlobalController {
 
     @GetMapping("events")
     public ResponseEntity<?> getAllEvents(){
-        return new ResponseEntity<>(eventService.getEvents(), HttpStatus.OK);
+        return new ResponseEntity<>(eventService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("event/save")

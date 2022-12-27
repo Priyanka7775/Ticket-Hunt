@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class EventService implements IEventService{
+public class EventService implements IGlobalService<Event> {
 
     private EventRepository eventRepository;
 
@@ -18,7 +18,7 @@ public class EventService implements IEventService{
     }
 
     @Override
-    public List<Event> getEvents() {
+    public List<Event> getAll() {
         return eventRepository.findAll();
     }
 

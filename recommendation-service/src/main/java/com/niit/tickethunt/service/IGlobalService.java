@@ -5,10 +5,10 @@ import com.niit.tickethunt.domain.Event;
 import java.util.List;
 import java.util.Optional;
 
-public interface IEventService {
+public interface IGlobalService<T> {
 
-    List<Event> getEvents();
-    Event save(Event event);
+    List<Event> getAll();
+    Event save(T t);
 
     Optional<Event> findById(int id);
 
