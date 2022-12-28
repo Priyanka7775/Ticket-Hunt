@@ -22,15 +22,6 @@ public class EventController {
         this.eventService = eventService;
     }
 
-//    @PostMapping("addMovie")
-//    public ResponseEntity<?> addMovie(@RequestBody Movie movie){
-//        return new ResponseEntity<>(eventService.addMovie(movie), HttpStatus.CREATED);
-//    }
-//    @GetMapping("movie")
-//    public ResponseEntity<?> getAllMovie(){
-//        return new ResponseEntity<>(eventService.viewAllMovie(),HttpStatus.OK);
-//    }
-
     @PostMapping("addEvent")
     public ResponseEntity<?> addEvent(@RequestBody Event event) throws EventAlreadyFoundException {
       ResponseEntity responseEntity=null;

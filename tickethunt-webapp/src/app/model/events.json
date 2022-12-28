@@ -1,16 +1,6 @@
 {
   "events": [
     {
-      "id": "1",
-      "title": "music concert",
-      "date": "26-09-2022",
-      "time": "9:00",
-      "venue": "Mumbai",
-      "image": "image",
-      "organizer": "organizer",
-      "seats": 100
-    },
-    {
       "id": "2",
       "title": "music concert",
       "date": "26-09-2022",
