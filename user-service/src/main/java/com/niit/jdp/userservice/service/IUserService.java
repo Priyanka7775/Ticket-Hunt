@@ -1,16 +1,18 @@
 package com.niit.jdp.userservice.service;
 
 import com.niit.jdp.userservice.domain.User;
+import com.niit.jdp.userservice.exception.UserAlreadyExistsException;
+import com.niit.jdp.userservice.exception.UserNotFoundException;
 
 import java.util.List;
 
 public interface IUserService {
 
-    User addUser(User user) ;
+    User addUser(User user) throws UserAlreadyExistsException;
 
     List<User> getAllUser();
 
-    User findByEmail(String email);
+    User findByEmail(String email) throws UserNotFoundException;
 
 
 

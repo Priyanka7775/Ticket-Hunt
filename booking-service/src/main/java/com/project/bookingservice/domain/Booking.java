@@ -14,12 +14,12 @@ public class Booking {
 
 
     private String email;
-    private String name;
+    private String eventName;
     @Id
     private String eventId;
     private List<Seats> seatList;
     private int totalSeats;
-    private Date eventDate;
+    private String date;
     private String transactionId;
 
 

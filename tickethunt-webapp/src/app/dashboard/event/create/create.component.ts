@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 
 import { formatDate } from '@angular/common';
-import { EventData } from 'src/app/model/event';
+import { EventData } from 'src/app/model/event.model';
 
 
 @Component({
@@ -24,7 +24,8 @@ export class CreateComponent implements OnInit {
     secondry = this._formBuilder.group({
       image: ['', Validators.required],
       organizer: ['', Validators.required],
-      seats: ['', Validators.required]
+      seats: ['', Validators.required],
+      price: ['', Validators.required]
     });
     isLinear = false;
 
@@ -56,13 +57,14 @@ export class CreateComponent implements OnInit {
 
     // Converted this data to event type data
     let eventData: EventData = {
-      title: basic.get('name')?.value,
+      title: basic.get('title')?.value,
       date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
       time: basic.get('time')?.value,
       venue: basic.get('venue')?.value,
       image: secondry.get('image')?.value,
       organizer: secondry.get('organizer')?.value,
-      seats: secondry.get('seats')?.value
+      seats: secondry.get('seats')?.value,
+      price: secondry.get('price')?.value
     }
 
     // Use this data to save into database

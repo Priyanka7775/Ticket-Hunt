@@ -7,20 +7,18 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 
+import java.util.List;
 @Node
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Event {
-
-    @Id @GeneratedValue
-    private Long id;
-    private String name;
-    private String date;
-    private String time;
-    private String venue;
-    private String image;
-    private String organizer;
-    private String seats;
-    private double price;
+public class User {
+   @Id @GeneratedValue
+   private Long id;
+   private String name;
+   private String email;
+   private String city;
+   private String role;
+   private List<String> interest;
+   private long phone;
 }

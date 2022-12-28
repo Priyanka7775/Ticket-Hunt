@@ -7,4 +7,5 @@ export type EventData = {
     image?: String,
     organizer?: String, 
     seats?: Number,
+    price?: Number,
 }

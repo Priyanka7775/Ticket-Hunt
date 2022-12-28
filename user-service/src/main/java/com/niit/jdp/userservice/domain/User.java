@@ -5,41 +5,24 @@
  */
 package com.niit.jdp.userservice.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.annotation.processing.Generated;
 import java.util.List;
 
 @Document
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @Getter
-    @Setter
+    private int id;
     private String name;
-    @Id
-    @Getter
-    @Setter
     private String email;
-    @Getter
-    @Setter
     private String password;
-    @Getter
-    @Setter
     private String city;
-    @Getter
-    @Setter
     private String role;
-    @Getter
-    @Setter
     private List<String> interest;
-    @Getter
-    @Setter
     private long phone;
-
-
 }
