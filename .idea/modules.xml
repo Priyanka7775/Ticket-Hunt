@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/recommendation-service/RecomendationService.iml" filepath="$PROJECT_DIR$/recommendation-service/RecomendationService.iml" />
       <module fileurl="file://$PROJECT_DIR$/recommendation-service/RecommendationService.iml" filepath="$PROJECT_DIR$/recommendation-service/RecommendationService.iml" />
       <module fileurl="file://$PROJECT_DIR$/TicketHunt/TicketHunt.iml" filepath="$PROJECT_DIR$/TicketHunt/TicketHunt.iml" />
-      <module fileurl="file://$PROJECT_DIR$/authentication-services/authentication.iml" filepath="$PROJECT_DIR$/authentication-services/authentication.iml" />
       <module fileurl="file://$PROJECT_DIR$/booking-service/booking-service.iml" filepath="$PROJECT_DIR$/booking-service/booking-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tickethunt.iml" filepath="$PROJECT_DIR$/.idea/tickethunt.iml" />
