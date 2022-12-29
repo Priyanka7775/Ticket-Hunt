@@ -37,6 +37,14 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
+    public Event getEventById(String eventId) throws EventNotFoundException {
+        if(eventRepository.findByEventId(eventId)==null){
+            throw new EventNotFoundException();
+        }
+        return eventRepository.findByEventId(eventId);
+    }
+
+    @Override
     public boolean deleteEvent(String eventId) throws EventNotFoundException {
         boolean result=false;
         if(eventRepository.findById(eventId).isEmpty()){

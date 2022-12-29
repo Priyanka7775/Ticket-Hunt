@@ -77,4 +77,18 @@ public class EventController {
     public List<Event> getAllByEventType(@PathVariable String eventType){
         return eventService.findByEventType(eventType);
     }
+
+    @GetMapping("getEvent1/{eventId}")
+    public ResponseEntity<?>getEventByEventId(@PathVariable String eventId)throws EventNotFoundException{
+        ResponseEntity responseEntity=null;
+        try{
+            responseEntity=new ResponseEntity<>(eventService.getEventById(eventId),HttpStatus.OK);
+
+        }catch (EventNotFoundException eventNotFoundException){
+            throw new EventNotFoundException();
+        }catch (Exception exception){
+            responseEntity=new ResponseEntity<>(exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
 }
