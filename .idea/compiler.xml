@@ -8,14 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="payment-service" />
+        <module name="booking-service" />
         <module name="user-service" />
         <module name="RecommendationService" />
         <module name="MovieEventService" />
         <module name="RecomendationService" />
-        <module name="booking-service" />
+        <module name="authentication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authentication" target="11" />
       <module name="booking-service" target="11" />
       <module name="MovieEventService" target="11" />
       <module name="payment-service" target="11" />
@@ -32,6 +34,7 @@
       <module name="RecomendationService" options="-parameters" />
       <module name="RecommendationService" options="-parameters" />
       <module name="TicketHunt" options="-parameters" />
+      <module name="authentication" options="-parameters" />
       <module name="booking-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
