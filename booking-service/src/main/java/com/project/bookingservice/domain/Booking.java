@@ -17,6 +17,7 @@ public class Booking {
     private String eventName;
     @Id
     private String eventId;
+    private String venue;
     private List<Seats> seatList;
     private int totalSeats;
     private String date;
