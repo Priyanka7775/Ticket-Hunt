@@ -11,10 +11,12 @@
         <module name="user-service" />
         <module name="RecommendationService" />
         <module name="MovieEventService" />
+        <module name="authentication" />
         <module name="booking-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authentication" target="11" />
       <module name="booking-service" target="11" />
       <module name="MovieEventService" target="11" />
       <module name="payment-service" target="11" />
@@ -27,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="MovieEventService" options="-parameters" />
       <module name="RecommendationService" options="-parameters" />
+      <module name="authentication" options="-parameters" />
       <module name="booking-service" options="-parameters" />
       <module name="payment-service" options="-parameters" />
       <module name="user-service" options="-parameters" />

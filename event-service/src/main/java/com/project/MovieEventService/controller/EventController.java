@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -91,4 +93,43 @@ public class EventController {
         }
         return responseEntity;
     }
+
+
+    @PostMapping("push")
+    public ResponseEntity<Void> saveEvent(@RequestParam("eventId") String eventId,
+                                          @RequestParam("email") String email,
+                                          @RequestParam("eventName") String eventName,
+                                          @RequestParam("organizerName") String organizerName,
+                                          @RequestParam("date")String date,
+                                          @RequestParam("time")String time,
+                                          @RequestParam("venue")String venue,
+                                          @RequestParam("image") MultipartFile image,
+                                          @RequestParam("totalSeat") int totalSeat,
+                                          @RequestParam("eventType") String eventType) {
+        try {
+            Event event = new Event();
+            event.setEventId(eventId);
+            event.setEmail(email);
+            event.setEventName(eventName);
+            event.setOrganizerName(organizerName);
+            event.setDate(date);
+            event.setTime(time);
+            event.setVenue(venue);
+            event.setImage(image.getBytes());
+            event.setTotalSeat(totalSeat);
+            event.setEventType(eventType);
+            eventService.saveImage(event);
+            return ResponseEntity.ok().build();
+        } catch (IOException e) {
+            // Handle exception
+        }
+        return null;
+    }
+
+//    @PostMapping("image")
+//    public ResponseEntity<?> uploadImage(@RequestParam("image")MultipartFile file) throws IOException {
+//        String uploadImage = eventService.uploadImage(file);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(uploadImage);
+//    }
 }

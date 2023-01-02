@@ -1,6 +1,7 @@
 package com.project.MovieEventService.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -8,7 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document
+
+@Builder
+@Document(collection = "images")
 public class Event {
     @Id
     private String eventId;
@@ -18,7 +21,7 @@ public class Event {
     private String date;
     private String time;
     private String venue;
-    private String image;
+    private byte[]  image;
     private int totalSeat;
     private String eventType;
 
