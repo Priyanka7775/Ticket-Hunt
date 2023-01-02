@@ -6,7 +6,7 @@ import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
-import com.project.MovieEventService.util.ImageUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
