@@ -9,7 +9,6 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.annotation.processing.Generated;
 import java.util.List;
 
 @Document
@@ -19,6 +18,7 @@ import java.util.List;
 public class User {
     private int id;
     private String name;
+    @Id
     private String email;
     private String password;
     private String city;
