@@ -6,9 +6,12 @@ import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,4 +98,21 @@ public class EventServiceImpl implements EventService{
         }
         return eventRepository.findAllByEventType("event");
     }
+
+    public void saveImage(Event image) {
+        eventRepository.save(image);
+    }
+
+//    public String uploadImage(MultipartFile file) throws IOException {
+//
+//        Event imageData = eventRepository.save(Event.builder()
+//                .image(ImageUtils.compressImage(file.getBytes())).build());
+//        if (imageData != null) {
+//            return "file uploaded successfully : " + file.getOriginalFilename();
+//        }
+//        return null;
+//    }
+
+
+
 }

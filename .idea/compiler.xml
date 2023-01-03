@@ -11,6 +11,7 @@
         <module name="user-service" />
         <module name="RecommendationService" />
         <module name="MovieEventService" />
+        <module name="authentication" />
         <module name="booking-service" />
         <module name="authentication" />
       </profile>
