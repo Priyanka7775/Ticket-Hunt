@@ -46,7 +46,7 @@ public class UserController {
         return responseEntity;
     }
     @GetMapping("/email/{email}")
-    public ResponseEntity<?> fetchUseByEmail(@PathVariable String email) throws UserNotFoundException {
+    public ResponseEntity<?> fetchUserByEmail(@PathVariable String email) throws UserNotFoundException {
             ResponseEntity responseEntity = null;
             try{
                 responseEntity = new ResponseEntity(iUserService.findByEmail(email),HttpStatus.NOT_FOUND);
@@ -57,6 +57,18 @@ public class UserController {
             }
             return responseEntity;
         }
+        @DeleteMapping("/delete/{email}")
+        public ResponseEntity<?> deleteUserByEmail(@PathVariable String email, User user) throws UserNotFoundException {
+        ResponseEntity responseEntity = null;
+            try{
+        responseEntity = new ResponseEntity(iUserService.deleteByEmail(email, user),HttpStatus.NOT_FOUND);
+    }catch(UserNotFoundException exception){
+        throw new UserNotFoundException();}
+            catch(Exception e){
+        responseEntity = new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+            return responseEntity;
+}
 
     }
 
