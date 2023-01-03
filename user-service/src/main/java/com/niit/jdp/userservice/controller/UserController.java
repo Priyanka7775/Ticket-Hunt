@@ -58,7 +58,7 @@ public class UserController {
             return responseEntity;
         }
         @DeleteMapping("/delete/{email}")
-        public ResponseEntity<?> deleteUserByEmail(@PathVariable String email, User user) throws UserNotFoundException {
+        public ResponseEntity<?> deleteUserByEmail(@PathVariable String email,@RequestBody User user) throws UserNotFoundException {
         ResponseEntity responseEntity = null;
             try{
         responseEntity = new ResponseEntity(iUserService.deleteByEmail(email, user),HttpStatus.NOT_FOUND);
@@ -69,6 +69,10 @@ public class UserController {
     }
             return responseEntity;
 }
+    @PutMapping("update/{email}")
+    public ResponseEntity<?>updateUser(@RequestBody User user, @PathVariable String email) throws UserNotFoundException {
+        return new ResponseEntity<>(iUserService.updateUser(email,user),HttpStatus.OK);
+    }
 
     }
 
