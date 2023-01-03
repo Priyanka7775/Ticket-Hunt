@@ -47,17 +47,6 @@ public class UserServiceImpl implements IUserService {
 }
 
     @Override
-    public boolean deleteByEmail(String email,User user) throws UserNotFoundException {
-        boolean result=false;
-        if(userRepository.findById(user.getEmail()).isEmpty()){
-            throw new UserNotFoundException();
-        }else{
-            userRepository.deleteById(email);
-            return true;
-        }
-    }
-
-    @Override
     public User updateUser(String email, User user) throws UserNotFoundException {
         Optional<User> optionalUser=userRepository.findById(email);
         if(optionalUser.isEmpty()){
