@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
@@ -57,6 +59,26 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User updateUser(String email, User user) throws UserNotFoundException {
-        return null;
+        Optional<User> optionalUser=userRepository.findById(email);
+        if(optionalUser.isEmpty()){
+            return null;
+        }
+        User existingUser=optionalUser.get();
+        if (user.getEmail()!=null){
+            existingUser.setEmail(user.getEmail());
+        }if (user.getName()!=null){
+            existingUser.setName(user.getName());
+        }if (user.getPassword()!=null){
+            existingUser.setPassword(user.getPassword());
+        }if (user.getCity()!=null){
+            existingUser.setCity(user.getCity());
+        }if (user.getRole()!=null){
+            existingUser.setRole(user.getRole());
+        }if (user.getInterest()!=null){
+            existingUser.setInterest(user.getInterest());
+        }if (user.getPhone()!=0){
+            existingUser.setPhone(user.getPhone());
+        }
+        return userRepository.save(existingUser);
     }
 }
