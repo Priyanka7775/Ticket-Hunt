@@ -72,6 +72,13 @@ export class CreateComponent implements OnInit {
     
   }
 
+  onFileSelected(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      console.log(file);
+    }
+  }
+
   // Property for mat-ti
   /** Override the ante meridiem abbreviation. */
   @Input() anteMeridiemAbbreviation = 'am';

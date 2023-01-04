@@ -43,7 +43,7 @@
         <ng-template matStepLabel>Fill out your address</ng-template>
         <div class="upload-image">
             <label for="">Select an image</label>
-            <input type="file" class="file-input" formControlName="image">
+            <input type="file" class="file-input" formControlName="image" multiple (change)="onFileSelected($event)">
         </div>
         <mat-form-field appearance="fill">
             <mat-label>Oragnizer name</mat-label>
