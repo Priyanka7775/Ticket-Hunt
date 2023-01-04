@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BookingServiceService } from '../service/booking.service';
 
@@ -13,7 +13,6 @@ export class BookingComponent implements OnInit{
   public rows: Array<String> = [];
   public seats: Array<any> = [];
   public seatAvailable: Array<any> = [];
-  /* private refresh!: EventEmitter<void>; */
   booking!: FormGroup;
   price = 0;
 
@@ -37,17 +36,13 @@ export class BookingComponent implements OnInit{
   
 
   ngOnInit() {
-   /*  this.refresh = new EventEmitter<void>(); */
+   
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D','E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     this.getSeatsOfEvent('1');
     // used to refresh screen
-    this.getData();
-   
-      this.getSeatsOfEvent('1');
-
-       
+    this.getData();       
     
   }
   
@@ -189,8 +184,6 @@ export class BookingComponent implements OnInit{
 
         this.bookingData = response;
         this.eventDate = response.date
-
-        alert(this.seatData)
 
       }
     )
