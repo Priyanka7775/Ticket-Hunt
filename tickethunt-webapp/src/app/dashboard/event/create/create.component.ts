@@ -4,6 +4,8 @@ import { ThemePalette } from '@angular/material/core';
 
 import { formatDate } from '@angular/common';
 import { EventData } from 'src/app/model/event.model';
+import { FileHandle } from 'src/app/model/file-handle.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -29,7 +31,7 @@ export class CreateComponent implements OnInit {
     });
     isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer) { }
   ngOnInit(): void {
 
   }
@@ -75,7 +77,14 @@ export class CreateComponent implements OnInit {
   onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-      console.log(file);
+      const fileHandle: FileHandle = {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        )
+      }
+      console.log(fileHandle);
+      
     }
   }
 
