@@ -68,13 +68,21 @@ export class CreateComponent implements OnInit {
         seats: secondry.get('seats')?.value,
         price: secondry.get('price')?.value
       }
-    console.log(eventData);
+      this.prepareFormData(eventData);
     // Use this data to save into database
-
     }
     
   }
+  prepareFormData(data: EventData): FormData{
+    const formData = new FormData;
 
+    formData.append('event', new Blob([JSON.stringify(data)], { type: 'application/json' }));
+    if (data.image?.file) {
+      formData.append('imageFile', data.image?.file, data.image?.file.name)
+    }
+    console.log(formData.get('event'));
+    return formData;
+  }
   onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
