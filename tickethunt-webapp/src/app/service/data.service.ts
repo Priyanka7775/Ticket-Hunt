@@ -19,8 +19,8 @@ export class DataService {
   getAllEvents(){
     return this.http.get<Array<Event>>('http://localhost:3000/events')
   }
-  editPost(event?: any) {
-    return this.http.put<Event>(`${"http://localhost:3000/events/view"}`,event);
+  editPost(id?: string,event?: any) {
+    return this.http.put<Event>("http://localhost:3000/events/"+id,event);
   }
   getEvent1(id?: number) : Observable<Event> {
     return this.http.get<Event>(`${"http://localhost:3000/events"}/${id}`);

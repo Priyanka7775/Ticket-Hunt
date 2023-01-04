@@ -15,9 +15,11 @@
                     <mat-icon class="icon">location_on</mat-icon> <span> {{event.venue}}</span>
                 </div>
                 <mat-card-actions>
-                        <button color="accent" mat-icon-button (click)="editNote()">
+                    <a routerLink="../edit/{{event.id}}">
+                        <button color="accent" mat-icon-button >
                             <mat-icon class="icon">edit</mat-icon>
                         </button>
+                        </a>
                         <button color="accent" mat-icon-button (click)="deleteNote(event.id)">
                             <mat-icon>delete</mat-icon>
                         </button>

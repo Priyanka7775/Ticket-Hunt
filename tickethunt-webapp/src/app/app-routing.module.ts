@@ -50,7 +50,7 @@ const routes: Routes = [
     component: ViewEventComponent
   },
   {
-    path: 'event/edit',
+    path: 'event/edit/:id',
     component: EditEventComponent
   }
   ,
