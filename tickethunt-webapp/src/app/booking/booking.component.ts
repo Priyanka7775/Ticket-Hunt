@@ -33,15 +33,11 @@ export class BookingComponent implements OnInit{
     })
   }
 
-  
-
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
       this.id = param.get('id');
     })
-    if (this.id === '') {
-      this.router.navigate(['home']);
-    }
+
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D','E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
