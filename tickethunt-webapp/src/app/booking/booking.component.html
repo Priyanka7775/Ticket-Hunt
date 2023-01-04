@@ -1,0 +1,94 @@
+<h1>Ticket Booking Page</h1>
+
+<div
+  style="width: 50px;margin-top: 50px; margin-left: 128px; margin-bottom: 58px; display: block"
+>
+  <span [ngClass]="{ 'seat-disabled': true }">reserved</span>
+  <span [ngClass]="{ 'seat-selected': true }">selected</span>
+  <span [ngClass]="{ 'seat-select': true }">available</span>
+</div>
+
+<div class="container">
+      <table>
+        <tr *ngFor="let row of rows">
+          <td *ngFor="let seat of seats">
+            <div
+              [ngClass]="{
+                'seat-select':
+                  !checkSeatStatus(row + '' + seat) &&
+                  !isSeatSelected(row + '' + seat),
+                'seat-selected': checkSeatStatus(row + '' + seat),
+                'seat-disabled': isSeatReserved(row + '' + seat)
+              }"
+              (click)="seatSelect(row + '' + seat)"
+              class="seat"
+            >
+              {{ row + "" + seat }}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <form
+        [formGroup]="booking"
+        (ngSubmit)="bookSeat()"
+        class="form-container"
+      >
+        <div class="form-group">
+          <label for="seatnumber">Seat Number:</label>
+          <br>
+          <input
+            type="text"
+            class="form-control"
+            id="seatnumber"
+            formControlName="seatNumber"
+          />
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="bookingdate">Date of Booking:</label>
+          <br>
+          <input
+            type="date"
+            class="form-control"
+            id="bookingdate"
+            formControlName="dateOfBooking"
+            min="{{ currentDate | date : 'yyyy-MM-dd' }}"
+            max="{{ eventDate }}"
+          />
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <br>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="price"
+            value="{{ totalprice() }}"
+            readonly
+          />
+        </div>
+        <br>
+        <button
+          type="submit"
+          [disabled]="booking.invalid"
+          mat-raised-button color="primary"
+        >
+          Book Seat
+        </button>
+      </form>
+    </div>
+  
+  <div>
+    <button
+      routerLink="/booking-history"
+      style="float: right" mat-raised-button color="primary"
+    >
+      Booking History
+    </button>
+  </div>
+
+  

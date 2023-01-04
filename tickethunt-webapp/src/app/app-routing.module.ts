@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookingComponent } from './booking/booking.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
 import { EventComponent } from './dashboard/event/event.component';
@@ -52,7 +53,10 @@ const routes: Routes = [
   {
     path: 'event/edit/:id',
     component: EditEventComponent
-  }
+  },
+  {
+    path: 'booking', 
+    component: BookingComponent}
   ,
   {
     path: '404',

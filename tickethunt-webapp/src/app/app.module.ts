@@ -32,7 +32,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
-import { ViewEventComponent } from './dashboard/event/view/view.component';  
+import { ViewEventComponent } from './dashboard/event/view/view.component';
+import { BookingComponent } from './booking/booking.component';  
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ViewEventComponent } from './dashboard/event/view/view.component';
     CreateComponent,
     EditEventComponent,
     ViewEventComponent,
+    BookingComponent,
   ],
   imports: [
     BrowserModule,
