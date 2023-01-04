@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { BookingComponent } from './booking/booking.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
@@ -58,6 +59,10 @@ const routes: Routes = [
     path: 'booking', 
     component: BookingComponent}
   ,
+  {
+    path: 'booking-history', 
+    component: BookingHistoryComponent},
+
   {
     path: '404',
     component: NotFoundComponent

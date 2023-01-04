@@ -1,0 +1,49 @@
+
+<h1>Your Booking History</h1>
+
+
+
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Show Name</th>
+          <th>Show Venue</th>
+          <th>Show Date</th>
+          <th>Booked Seats</th>
+          <th>Price</th>
+          <th>Date Of Booking</th>
+        </tr>
+      </thead>
+      <br>
+      <ng-container>
+        <tr>
+          <td>{{ bookingData.eventName }}</td>
+          <td>{{ bookingData.venue }}</td>
+          <td>{{ bookingData.date }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let data of bookingData.seatList; let i = index">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{ data.seatNumber }}</td>
+          <td>{{ data.price }}</td>
+          <td>{{ data.dateOfBooking | date }}</td>
+          <td>
+            <button
+              (click)="delete(data.seatNumber)"
+              style="margin-left: 20px"
+              mat-button color="warn"
+            >
+              Cancel Booking
+            </button>
+          </td>
+        </tr>
+        <br>
+      </ng-container>
+    </table>
+</div>

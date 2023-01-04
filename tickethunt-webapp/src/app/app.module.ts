@@ -29,11 +29,13 @@ import { EventComponent } from './dashboard/event/event.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
 import { ViewEventComponent } from './dashboard/event/view/view.component';
-import { BookingComponent } from './booking/booking.component';  
+import { BookingComponent } from './booking/booking.component';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';  
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { BookingComponent } from './booking/booking.component';
     EditEventComponent,
     ViewEventComponent,
     BookingComponent,
+    BookingHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { BookingComponent } from './booking/booking.component';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMatTimepickerModule
+    NgxMatTimepickerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
