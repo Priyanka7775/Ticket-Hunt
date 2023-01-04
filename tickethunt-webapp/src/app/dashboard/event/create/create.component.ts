@@ -6,6 +6,7 @@ import { formatDate } from '@angular/common';
 import { EventData } from 'src/app/model/event.model';
 import { FileHandle } from 'src/app/model/file-handle.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { EventService } from 'src/app/service/event.service';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class CreateComponent implements OnInit {
     });
     isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer) { }
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService:EventService) { }
   ngOnInit(): void {
 
   }
@@ -68,11 +69,12 @@ export class CreateComponent implements OnInit {
         seats: secondry.get('seats')?.value,
         price: secondry.get('price')?.value
       }
-      this.prepareFormData(eventData);
     // Use this data to save into database
+
     }
     
   }
+
   prepareFormData(data: EventData): FormData{
     const formData = new FormData;
 
@@ -80,9 +82,9 @@ export class CreateComponent implements OnInit {
     if (data.image?.file) {
       formData.append('imageFile', data.image?.file, data.image?.file.name)
     }
-    console.log(formData.get('event'));
     return formData;
   }
+
   onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];

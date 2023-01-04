@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/model/movie.model';
 import { DataService } from 'src/app/service/data.service';
 
@@ -10,7 +10,7 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class TileComponent implements OnInit {
   
-  constructor(private route: ActivatedRoute, private dataService:DataService) { }
+  constructor(private route: ActivatedRoute, private dataService:DataService, private router:Router) { }
   
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
@@ -26,5 +26,7 @@ export class TileComponent implements OnInit {
     let id = parseInt(this.id);
     this.dataService.getMovieById(id).subscribe(value => this.movies = value);
   }
-  
+  book() {
+    this.router.navigate(['booking/' + this.id]);
+  }
 }
