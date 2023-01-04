@@ -57,7 +57,8 @@ const routes: Routes = [
   },
   {
     path: 'booking/:id', 
-    component: BookingComponent}
+    component: BookingComponent
+  }
   ,
   {
     path: 'booking-history', 

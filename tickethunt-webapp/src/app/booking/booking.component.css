@@ -1,106 +1,123 @@
-
 table {
-    border: 2px solid;
-    margin: auto;
-    width: 80% !important;
-    height: 70% !important;
-    margin-left: 75px;
-  }
-  
-  .seat-select {
-    cursor: pointer;
-    background: rgba(74, 158, 74, 0.582);
-    border-radius: 3px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    color: black;
-    font-size: 30px;
-  }
-  
-  .seat-selected {
-    cursor: pointer;
-    background: rgba(230, 230, 230, 0.637);
-    color: black;
-    border-radius: 3px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    font-size:30px;
-  }
-  
-  .seat-disabled {
-    cursor: not-allowed;
-    background: rgba(212, 43, 43, 0.767);
-    color: black;
-    border-radius: 3px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-     font-size: 30px;
-  }
-  
-  #submitButton {
-    display: block;
-    margin: auto;
-    margin-top: 5px;
-    font-size: 21px;
-  }
-  
-  
-  
-  td {
-  
-    font-size: 18px;
-  }
-  
-  input {width: 205px;}
-  
-  
-  .form-container {
-    margin-top: 50px;
-    padding-left: 355px;
-    font-size: 20px;
-  
-  }
-  
-  .container {
-   margin-left: 50px;
-   padding-left: 80px;
-    color: #202926; font-family: 'Trocchi', serif; font-size: 40px; font-weight: normal; line-height: 48px; margin: 0;
-  }
-  
-  input {
-    width: 448px;
-    height: 40px;
-    font-size: larger;
-  }
+  width: 80% !important;
+  height: 70% !important;
+  margin: auto;
+}
 
+.seat-select {
+  cursor: pointer;
+  border: 1px solid rgba(74, 158, 74, 0.582);
+  border-radius: 3px;
+  margin: 10px;
+  text-align: center;
+  font-size: 17px;
+}
 
-  h1{
+.seat-select:hover {
+  background: rgba(74, 158, 74, 0.582);
+  border-radius: 3px;
+}
+
+.seat-selected {
+  cursor: pointer;
+  background: rgba(74, 158, 74, 0.582);
+  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.seat-disabled {
+  cursor: not-allowed;
+  background: rgba(212, 43, 43, 0.767);
+  color: black;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#submitButton {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  font-size: 21px;
+}
+
+td {
+  font-size: 18px;
+}
+
+input {
+  width: 205px;
+}
+
+.form-container {
+  margin-top: 50px;
+  padding-left: 355px;
+  font-size: 20px;
+}
+
+.container {
+  color: #202926;
+  font-family: "Trocchi", serif;
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 48px;
+  margin-top: 25px;
+}
+
+input {
+  width: 448px;
+  height: 40px;
+  font-size: larger;
+}
+
+h1 {
   padding-top: 75px;
   font-size: 55px;
   text-align: center;
-  
-  }
+}
 
-  label {
+label {
+  font-size: 25px;
+}
 
-    font-size: 25px;
-  }
-  
-  .data{
-  
-    margin-left: 500px;
-    margin-top: -450px;
-  
-  
-  }
+.data {
+  margin-left: 500px;
+  margin-top: -450px;
+}
 
+button {
+  margin-top: 25px;
+  margin-left: 185px;
+}
 
-  button {
-    margin-top: 25px;
-    margin-left: 185px;
+/* Card Styling */
 
-  }
-  
+mat-card {
+  width: 1000px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+mat-card-title {
+  margin-left: 20px;
+}
+
+.chip {
+  border-radius: 50px;
+  margin: 5px;
+  padding: 10px 15px;
+}
+.chip.reserved {
+  background-color: rgba(212, 43, 43, 0.767);
+}
+.chip.selected {
+  background-color: rgba(74, 158, 74, 0.582);
+}
+.chip.available {
+  border: 1px solid rgba(74, 158, 74, 0.582);
+}
