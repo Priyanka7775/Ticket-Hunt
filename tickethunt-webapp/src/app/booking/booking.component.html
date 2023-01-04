@@ -1,5 +1,8 @@
 <mat-card>
-  <mat-card-title>Ticket Booking Page</mat-card-title>
+  <mat-card-title>
+    <div class="title">{{movies[0].name}}</div>
+    <div class="venue">PVR Cinema | 22 January 2023</div>
+  </mat-card-title>
   <mat-card-content>
     <div class="container">
       <table>
@@ -18,10 +21,15 @@
         </tr>
       </table>
     </div>
-    <div style="width: 50px;margin-top: 50px; margin-bottom: 58px; display: block">
-      <span class="chip reserved">reserved</span>
-      <span class="chip selected">selected</span>
-      <span class="chip available">available</span>
+    <div class="info">
+      <div style="width: 80%;margin-top: 50px; margin-bottom: 58px;">
+        <span class="chip reserved">reserved</span>
+        <span class="chip selected">selected</span>
+        <span class="chip available">available</span>
+      </div>
+      <div class="price">
+        <span>Total: &#8377; {{ totalprice() }}</span>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>
@@ -31,13 +39,10 @@
 
 
 <div>
-  <form [formGroup]="booking" (ngSubmit)="bookSeat()" class="form-container">
+  <form [formGroup]="booking" (ngSubmit)="bookSeat()" class="form-container" hidden>
     <mat-form-field>
       <mat-label for="seatnumber">Seat Number:</mat-label>
-      <input type="text" id="seatnumber" formControlName="seatNumber" matInput [disabled]="true"/>
-    </mat-form-field>
-    <mat-form-field>
-         
+      <input type="text" id="seatnumber" formControlName="seatNumber" matInput [disabled]="true" />
     </mat-form-field>
     <div class="form-group">
       <label for="bookingdate">Date of Booking:</label>
@@ -49,7 +54,7 @@
     <div class="form-group">
       <label for="price">Price:</label>
       <br>
-      <input type="text" class="form-control" formControlName="price" value="{{ totalprice() }}" readonly />
+      <input type="text" class="form-control" formControlName="price" value="" readonly />
     </div>
     <br>
     <button type="submit" [disabled]="booking.invalid" mat-raised-button color="primary">

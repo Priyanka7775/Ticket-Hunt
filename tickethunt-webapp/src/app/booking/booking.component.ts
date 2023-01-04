@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Movie } from '../model/movie.model';
 import { BookingServiceService } from '../service/booking.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-booking',
@@ -28,7 +30,8 @@ export class BookingComponent implements OnInit {
     private bookingsService: BookingServiceService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataService: DataService
   ) {
     this.booking = this.fb.group({
       seatNumber: new FormControl('', [Validators.required]),
@@ -41,13 +44,20 @@ export class BookingComponent implements OnInit {
     this.route.paramMap.subscribe((param) => {
       this.id = param.get('id');
     });
-
+    this.loadData();
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     this.getSeatsOfEvent('1');
     // used to refresh screen
     this.getData();
+  }
+
+  movies: Movie[] = [];
+
+  loadData() {
+    let id = parseInt(this.id);
+    this.dataService.getMovieById(id).subscribe((data) => (this.movies = data));
   }
 
   bookings: any;

@@ -104,9 +104,14 @@ mat-card {
 }
 
 mat-card-title {
-  margin-left: 20px;
+  margin-left: 25px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
 }
-
+.venue {
+  font-size: 12px;
+}
 .chip {
   border-radius: 50px;
   margin: 5px;
@@ -120,4 +125,12 @@ mat-card-title {
 }
 .chip.available {
   border: 1px solid rgba(74, 158, 74, 0.582);
+}
+.info {
+  display: flex;
+  flex-direction: row;
+}
+.price {
+  align-self: center;
+  font-weight: bold;
 }
