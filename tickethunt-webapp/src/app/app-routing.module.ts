@@ -56,7 +56,7 @@ const routes: Routes = [
     component: EditEventComponent
   },
   {
-    path: 'booking', 
+    path: 'booking/:id', 
     component: BookingComponent}
   ,
   {

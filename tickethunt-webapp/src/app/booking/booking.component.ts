@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingServiceService } from '../service/booking.service';
 
 
@@ -21,10 +22,9 @@ export class BookingComponent implements OnInit{
   
   currentDate:any = new Date();
 
- 
+  id: any;
 
-  constructor(private bookingsService: BookingServiceService,private fb: FormBuilder
-   ){
+  constructor(private bookingsService: BookingServiceService,private fb: FormBuilder, private route:ActivatedRoute, private router:Router){
     this.booking=this.fb.group({
       seatNumber:new FormControl('',[Validators.required]),
       dateOfBooking:new FormControl('',[Validators.required]),
@@ -36,7 +36,12 @@ export class BookingComponent implements OnInit{
   
 
   ngOnInit() {
-   
+    this.route.paramMap.subscribe(param => {
+      this.id = param.get('id');
+    })
+    if (this.id === '') {
+      this.router.navigate(['home']);
+    }
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D','E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -62,23 +67,14 @@ export class BookingComponent implements OnInit{
 
     this.bookingsService.getParticularBookings(eventId).subscribe(
       (response: any)=> {
-
         this.bookings = response
         console.log(response)
-
         this.updateOccupiedSeats();
         this.selectedSeats = [];
-
-       
-
-
-
         /* alert(this.eventDate) */
     })
     
   }
-
-
 
   isSeatSelected(seatNumber: any) {
     return this.selectedSeats.includes(seatNumber);
@@ -88,7 +84,6 @@ export class BookingComponent implements OnInit{
 
     for(const booking of this.bookings.seatList){
 
-     
         this.occupiedSeats.push(booking.seatNumber);
       
     }
