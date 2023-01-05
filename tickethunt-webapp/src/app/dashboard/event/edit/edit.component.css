@@ -1,0 +1,10 @@
+#cardcontent{
+    max-width: 600px;
+    margin-left: 500px;
+    margin-top: 100px;
+}#field{
+    max-width: 200px;
+    margin-left:200px;
+}#save{
+    margin-left: 250px;
+}

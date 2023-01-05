@@ -16,19 +16,19 @@ import { UserComponent } from './dashboard/user/user.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home', 
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: 'home',
-    component: HomeComponent, 
+    component: HomeComponent,
   },
   {
-    path: 'login', 
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: 'signup', 
+    path: 'signup',
     component: SignupComponent
   },
   {
@@ -40,11 +40,11 @@ const routes: Routes = [
     component: UserComponent
   },
   {
-    path: 'event', 
+    path: 'event',
     component: EventComponent
   },
   {
-    path: 'event/create', 
+    path: 'event/create',
     component: CreateComponent
   },
   {
@@ -56,13 +56,14 @@ const routes: Routes = [
     component: EditEventComponent
   },
   {
-    path: 'booking/:id', 
+    path: 'booking/:id',
     component: BookingComponent
   }
   ,
   {
-    path: 'booking-history', 
-    component: BookingHistoryComponent},
+    path: 'booking-history',
+    component: BookingHistoryComponent
+  },
 
   {
     path: '404',

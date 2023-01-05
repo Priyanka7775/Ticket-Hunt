@@ -10,7 +10,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './dashboard/user/user.component';
@@ -29,13 +29,14 @@ import { EventComponent } from './dashboard/event/event.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
 import { ViewEventComponent } from './dashboard/event/view/view.component';
 import { BookingComponent } from './booking/booking.component';
-import { BookingHistoryComponent } from './booking-history/booking-history.component';  
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { BookingHistoryComponent } from './booking-history/booking-history.compo
     ViewEventComponent,
     BookingComponent,
     BookingHistoryComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ import { BookingHistoryComponent } from './booking-history/booking-history.compo
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatInputModule,
     MatStepperModule,

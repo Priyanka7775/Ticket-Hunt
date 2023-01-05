@@ -14,13 +14,8 @@ export class EditEventComponent {
   @Input()
   events:any;
   
+  
   ngOnInit(): void {
-    // this.dataService.getAllEvents().subscribe(
-    //   response=>{
-    //     console.log("events")
-    //     this.events=response;
-    //   }
-    // )
     this.activatedRoute.paramMap.subscribe(
       params=>{
         let id = params.get("id") ?? 0;
