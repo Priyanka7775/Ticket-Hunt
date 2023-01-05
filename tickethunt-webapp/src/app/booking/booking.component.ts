@@ -122,6 +122,23 @@ export class BookingComponent implements OnInit {
     return false;
   }
 
+  getSeatColor(seatNumber: string) {
+    if (this.occupiedSeats.includes(seatNumber)) {
+
+      return 'rgba(212, 43, 43, 0.767)';
+
+    }
+    if (!this.selectedSeats.includes(seatNumber)) {
+
+      return 'whitesmoke';
+    }
+    
+    else {
+      return "rgba(74, 158, 74, 0.582)";
+    }
+  }
+
+
   public seatSelect(seatNumber: string) {
     if (this.selectedSeats.includes(seatNumber)) {
       // If the seat is already selected, remove it from the array

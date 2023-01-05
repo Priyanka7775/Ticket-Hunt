@@ -1,68 +1,102 @@
-<mat-card>
-  <mat-card-title>
-    <div class="title">{{movies[0].name}}</div>
-    <div class="venue">PVR Cinema | 22 January 2023</div>
-  </mat-card-title>
-  <mat-card-content>
-    <div class="container">
-      <table>
-        <tr *ngFor="let row of rows">
-          <td *ngFor="let seat of seats">
-            <div [ngClass]="{
-                    'seat-select':
-                      !checkSeatStatus(row + '' + seat) &&
-                      !isSeatSelected(row + '' + seat),
-                    'seat-selected': checkSeatStatus(row + '' + seat),
-                    'seat-disabled': isSeatReserved(row + '' + seat)
-                  }" (click)="seatSelect(row + '' + seat)" class="seat">
-              {{ row + "" + seat }}
-            </div>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="info">
-      <div style="width: 80%;margin-top: 50px; margin-bottom: 58px;">
-        <span class="chip reserved">reserved</span>
-        <span class="chip selected">selected</span>
-        <span class="chip available">available</span>
-      </div>
-      <div class="price">
-        <span>Total: &#8377; {{ totalprice() }}</span>
-      </div>
-    </div>
-
-
-
-
- 
 <div>
-  <form [formGroup]="booking" (ngSubmit)="bookSeat()" class="form-container" hidden>
-    <mat-form-field>
-      <mat-label for="seatnumber">Seat Number:</mat-label>
-      <input type="text" id="seatnumber" formControlName="seatNumber" matInput [disabled]="true" />
-    </mat-form-field>
-    <div class="form-group">
-      <label for="bookingdate">Date of Booking:</label>
-      <br>
-      <input type="date" class="form-control" id="bookingdate" formControlName="dateOfBooking"
-        min="{{ currentDate | date : 'yyyy-MM-dd' }}" max="{{ eventDate }}" />
-    </div>
+  <div class="title">
+    <div >{{movies[0].name}}</div>
     <br>
-    <div class="form-group">
-      <label for="price">Price:</label>
+    <div >PVR Cinema | 22 January 2023</div>
+  </div>
+ 
+   
+    <div
+    style="width: 30px; margin-left: 928px; margin-bottom: 58px; display: block">
+    <span [ngClass]="{ 'seat-disabled': true }">reserved</span>
+    <span [ngClass]="{ 'seat-selected': true }">selected</span>
+    <span [ngClass]="{ 'seat-select': true }">available</span>
+  </div>
+
+  <div class="container">
+    <table>
+      <tr *ngFor="let row of rows">
+        <td *ngFor="let seat of seats">
+          <div
+            [ngClass]="{
+              'seat-select':
+                !checkSeatStatus(row + '' + seat) &&
+                !isSeatSelected(row + '' + seat),
+              'seat-selected': checkSeatStatus(row + '' + seat),
+              'seat-disabled': isSeatReserved(row + '' + seat)
+            }"
+            [ngStyle]="{'background-color': getSeatColor(row + '' + seat)}"            (click)="seatSelect(row + '' + seat)"
+
+          >
+            {{ row + "" + seat }}
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <form
+      [formGroup]="booking"
+      (ngSubmit)="bookSeat()"
+      class="form-container"
+    >
+      <div class="form-group">
+        <label for="seatnumber">Seat Number:</label>
+        <br>
+        <input
+          type="text"
+          class="form-control"
+          id="seatnumber"
+          formControlName="seatNumber"
+        />
+      </div>
       <br>
-      <input type="text" class="form-control" formControlName="price" value="" readonly />
-    </div>
-    <br>
-    <button type="submit" [disabled]="booking.invalid" mat-raised-button color="primary">
-      Book Seat
-    </button>
-  </form>
+      <div class="form-group">
+        <label for="bookingdate">Date of Booking:</label>
+        <br>
+        <input
+          type="date"
+          class="form-control"
+          id="bookingdate"
+          formControlName="dateOfBooking"
+          min="{{ currentDate | date : 'yyyy-MM-dd' }}"
+          max="{{ eventDate }}"
+        />
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <br>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="price"
+          value="{{ totalprice() }}"
+          readonly
+        />
+      </div>
+      <br>
+      <button
+        type="submit"
+        [disabled]="booking.invalid"
+        mat-stroked-button color="primary"
+      >
+        Book Seat
+      </button>
+    </form>
+  </div>
+
 </div>
 
+
+
 <div>
-  <button routerLink="/booking-history" style="float: right" mat-raised-button color="primary">
+  <button
+    routerLink="/booking-history"
+    style="float: right"
+    mat-flat-button color="warn"
+  >
     Booking History
   </button>
 </div>
