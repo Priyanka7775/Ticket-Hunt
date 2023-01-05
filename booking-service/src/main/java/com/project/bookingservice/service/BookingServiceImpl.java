@@ -46,6 +46,10 @@ public class BookingServiceImpl implements BookingService {
         }
         System.out.println(seats);
         Booking booking = bookingRepository.findByEventId(eventId);
+
+        if(!booking.getEmail().equals(email)){
+            throw new UserNotFoundException();
+        }
         if (booking.getSeatList() == null) {
             booking.setSeatList(Arrays.asList(seats));
         } else {
