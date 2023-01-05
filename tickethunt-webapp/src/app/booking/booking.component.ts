@@ -152,7 +152,6 @@ export class BookingComponent implements OnInit {
     return totalCost;
   }
 
-<<<<<<< HEAD
   getData(){
 
     this.bookingsService.bookingHistoryOfUser().subscribe(
@@ -163,16 +162,15 @@ export class BookingComponent implements OnInit {
 
       }
     )
-=======
-  getData() {
+
+  /* getData() {
     this.bookingsService.bookingHistoryOfUser().subscribe((response: any) => {
-      /*  this.bookingData = Object.keys(response).map(key => response[key]);
-        
-        this.seatData = response.seatList; */
+    
 
       this.bookingData = response;
       this.eventDate = response.date;
     });
->>>>>>> 64d67f30887c5f8d3ecbd74773dd2dbe14ccc993
   }
+  } */
+}
 }
