@@ -2,10 +2,7 @@ package com.project.bookingservice.controller;
 
 import com.project.bookingservice.domain.Booking;
 import com.project.bookingservice.domain.Seats;
-import com.project.bookingservice.exceptions.EventAlreadyExistException;
-import com.project.bookingservice.exceptions.EventNotFoundException;
-import com.project.bookingservice.exceptions.SeatAlreadyBookedException;
-import com.project.bookingservice.exceptions.SeatNotFoundException;
+import com.project.bookingservice.exceptions.*;
 import com.project.bookingservice.repository.BookingRepository;
 import com.project.bookingservice.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
