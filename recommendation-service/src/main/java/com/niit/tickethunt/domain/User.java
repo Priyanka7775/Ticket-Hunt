@@ -24,5 +24,5 @@ public class User {
    private long phone;
 
    @Relationship(type = "BOOKED", direction = Relationship.Direction.OUTGOING)
-   private Booking booking;
+   private List<Booking> booking;
 }
