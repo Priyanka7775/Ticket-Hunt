@@ -56,8 +56,9 @@ const routes: Routes = [
     component: EditEventComponent
   },
   {
-    path: 'booking', 
-    component: BookingComponent}
+    path: 'booking/:id', 
+    component: BookingComponent
+  }
   ,
   {
     path: 'booking-history', 
