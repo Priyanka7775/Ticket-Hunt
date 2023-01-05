@@ -8,10 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="payment-service" />
+        <module name="booking-service" />
         <module name="user-service" />
         <module name="RecommendationService" />
         <module name="MovieEventService" />
-        <module name="booking-service" />
+        <module name="RecomendationService" />
         <module name="authentication" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="booking-service" target="11" />
       <module name="MovieEventService" target="11" />
       <module name="payment-service" target="11" />
+      <module name="RecomendationService" target="11" />
       <module name="RecommendationService" target="11" />
       <module name="tickethunt" target="11" />
       <module name="user-service" target="11" />
@@ -28,6 +30,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="MovieEventService" options="-parameters" />
+      <module name="RecomendationService" options="-parameters" />
       <module name="RecommendationService" options="-parameters" />
       <module name="authentication" options="-parameters" />
       <module name="booking-service" options="-parameters" />
