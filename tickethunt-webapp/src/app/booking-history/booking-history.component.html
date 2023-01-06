@@ -16,26 +16,25 @@
         </tr>
       </thead>
       <br>
-      <ng-container>
-        <tr>
-          <td>{{ bookingData.eventName }}</td>
-          <td>{{ bookingData.venue }}</td>
-          <td>{{ bookingData.date }}</td>
-          <td></td>
+      <ng-container *ngFor="let data of bookingData;">
+        <tr >
+          <td>{{ data.eventName }}</td>
+          <td>{{ data.venue }}</td>
+          <td>{{ data.date }}</td>
           <td></td>
           <td></td>
           <td></td>
         </tr>
-        <tr *ngFor="let data of bookingData.seatList; let i = index">
+        <tr *ngFor="let seat of data.seatList; let i = index">
           <td></td>
           <td></td>
           <td></td>
-          <td>{{ data.seatNumber }}</td>
-          <td>{{ data.price }}</td>
-          <td>{{ data.dateOfBooking | date }}</td>
+          <td>{{ seat.seatNumber }}</td>
+          <td>{{ seat.price }}</td>
+          <td>{{ seat.dateOfBooking | date }}</td>
           <td>
             <button
-              (click)="delete(data.seatNumber)"
+              (click)="delete(seat.seatNumber)"
               style="margin-left: 20px"
               mat-button color="warn"
             >

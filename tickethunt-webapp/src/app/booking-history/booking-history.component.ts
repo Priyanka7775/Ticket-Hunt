@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Bookings } from '../model/bookings';
 import { BookingServiceService } from '../service/booking.service';
 
 @Component({
@@ -25,10 +26,14 @@ getData(){
     (response:any) => {
 
       this.bookingData = response;
+      console.log(response);
+
+    
 
     }
   )
 }
+
 
 
 
