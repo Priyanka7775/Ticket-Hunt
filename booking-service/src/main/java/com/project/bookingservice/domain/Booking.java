@@ -14,6 +14,7 @@ public class Booking {
     private String email;
     private String eventName;
     @Id
+    private String bookingId;
     private String eventId;
     private String venue;
     private List<Seats> seatList;

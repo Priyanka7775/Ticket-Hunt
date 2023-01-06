@@ -74,16 +74,6 @@ public class BookingController {
 
     }
 
-    @GetMapping("/cost/{eventId}/{email}")
-    public  ResponseEntity<?> TotalCost(@PathVariable String eventId,@PathVariable String email) throws SeatNotFoundException {
-
-        try {
-            return new ResponseEntity<>(bookingService.totalCost(eventId, email), HttpStatus.OK);
-
-        } catch (Exception e) {
-            throw new SeatNotFoundException();
-        }
-    }
 
     @GetMapping("/{email}")
     public  ResponseEntity<?> GetBookingByEmailId(@PathVariable String email) throws EventNotFoundException {

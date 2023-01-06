@@ -13,9 +13,9 @@ export class BookingServiceService {
 
   url = "http://localhost:8081/bookings/view/";
 
-  bookSeat = "http://localhost:8081/bookings/book/2/rohit@gmail.com";
+  bookSeat = "http://localhost:8081/bookings/book/1/kamlesh@gmail.com";
 
-  bookingHistory = "http://localhost:8081/bookings/rohit@gmail.com"
+  bookingHistory = "http://localhost:8081/bookings/kamlesh@gmail.com"
 
   cancel = "http://localhost:8081/bookings/cancel/1/rohit@gmail.com/"
 

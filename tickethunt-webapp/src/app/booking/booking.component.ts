@@ -48,7 +48,7 @@ export class BookingComponent implements OnInit {
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    this.getSeatsOfEvent('2');
+    this.getSeatsOfEvent('1');
     // used to refresh screen
     /* this.getData(); */
   }

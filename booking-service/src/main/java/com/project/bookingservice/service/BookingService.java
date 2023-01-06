@@ -17,10 +17,8 @@ public interface BookingService {
 
     List<Booking> getAllBookings();
 
-    Booking findByEmail(String email);
+    List<Booking> findByEmail(String email);
 
-    Optional<Booking> findByEventId(String evenId);
-
-    double totalCost(String eventId, String email) throws SeatAlreadyBookedException;
+    Booking findByEventId(String evenId);
 
 }

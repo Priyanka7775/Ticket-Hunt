@@ -41,7 +41,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking bookSeats(String eventId, String email, Seats seats) throws EventNotFoundException, UserNotFoundException, SeatAlreadyBookedException {
 
-        if (bookingRepository.findById(eventId).isEmpty()) {
+        if (bookingRepository.findByEventId(eventId) == null) {
             throw new EventNotFoundException();
         }
         System.out.println(seats);
@@ -54,10 +54,6 @@ public class BookingServiceImpl implements BookingService {
             booking.setSeatList(Arrays.asList(seats));
         } else {
             List<Seats> seatsList = booking.getSeatList();
-            if (bookingRepository.findByEventIdAndSeatListSeatNumber(eventId, seats.getSeatNumber()) != null) {
-                System.out.println(bookingRepository.findByEventIdAndSeatListSeatNumber(eventId, seats.getSeatNumber()));
-                throw new SeatAlreadyBookedException();
-            }
             seatsList.add(seats);
             booking.setSeatList(seatsList);
         }
@@ -70,10 +66,9 @@ public class BookingServiceImpl implements BookingService {
     public Booking cancelTickets(String eventId, String email, String seatNo) throws EventNotFoundException, SeatNotFoundException, UserNotFoundException {
 
         boolean flag = false;
-        if (bookingRepository.findById(eventId).isEmpty()) {
+        if (bookingRepository.findByEventId(eventId) == null) {
             throw new EventNotFoundException();
         }
-
 
         Booking booking = bookingRepository.findByEventId(eventId);
         List<Seats> seatsList = booking.getSeatList();
@@ -93,29 +88,12 @@ public class BookingServiceImpl implements BookingService {
 
 
     @Override
-    public Booking findByEmail(String email) {
+    public List<Booking> findByEmail(String email) {
         return bookingRepository.findByEmail(email);
     }
 
     @Override
-    public Optional<Booking> findByEventId(String evenId) {
-        return bookingRepository.findById(evenId);
-    }
-
-    @Override
-    public double totalCost(String eventId, String email) {
-
-        double cost = 0;
-        Booking booking = bookingRepository.findByEventIdAndEmail(eventId,  email);
-        List<Seats> seatsList = booking.getSeatList();
-
-        for (Seats var : seatsList) {
-
-            cost = cost + var.getPrice();
-
-        }
-
-        System.out.println(cost);
-        return cost;
+    public Booking findByEventId(String evenId) {
+        return bookingRepository.findByEventId(evenId);
     }
 }
