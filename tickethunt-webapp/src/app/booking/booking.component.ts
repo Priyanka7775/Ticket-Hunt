@@ -49,8 +49,7 @@ export class BookingComponent implements OnInit {
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     this.getSeatsOfEvent('1');
-    // used to refresh screen
-    /* this.getData(); */
+   
   }
 
   movies: Movie[] = [];
@@ -74,10 +73,9 @@ export class BookingComponent implements OnInit {
       .getParticularBookings(eventId)
       .subscribe((response: any) => {
         this.bookings = response;
-        console.log(response);
         this.updateOccupiedSeats();
         this.selectedSeats = [];
-        /* alert(this.eventDate) */
+      
       });
   }
 
@@ -86,8 +84,11 @@ export class BookingComponent implements OnInit {
   }
 
   updateOccupiedSeats(): void {
-    for (const booking of this.bookings.seatList) {
-      this.occupiedSeats.push(booking.seatNumber);
+    for (const booking of this.bookings) {
+      this.eventDate = booking.date
+      for(const seat of booking.seatList) {
+      this.occupiedSeats.push(seat.seatNumber);
+      }
     }
   }
 
@@ -164,30 +165,8 @@ export class BookingComponent implements OnInit {
       this.price = 350;
     }
     let totalCost = this.price * this.selectedSeats.length;
-    console.log(totalCost);
 
     return totalCost;
   }
 
-  getData(){
-
-    this.bookingsService.bookingHistoryOfUser().subscribe(
-      (response: any) => {
-
-        this.bookingData = response;
-        this.eventDate = response.date
-
-      }
-    )
-
-  /* getData() {
-    this.bookingsService.bookingHistoryOfUser().subscribe((response: any) => {
-    
-
-      this.bookingData = response;
-      this.eventDate = response.date;
-    });
-  }
-  } */
-}
 }

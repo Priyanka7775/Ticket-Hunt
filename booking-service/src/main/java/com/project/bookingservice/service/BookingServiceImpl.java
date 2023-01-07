@@ -41,12 +41,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking bookSeats(String eventId, String email, Seats seats) throws EventNotFoundException, UserNotFoundException, SeatAlreadyBookedException {
 
-        if (bookingRepository.findByEventId(eventId) == null) {
+        if (bookingRepository.findByEventIdAndEmail(eventId, email) == null) {
             throw new EventNotFoundException();
         }
         System.out.println(seats);
-        Booking booking = bookingRepository.findByEventId(eventId);
-
+        Booking booking = bookingRepository.findByEventIdAndEmail(eventId, email);
         if(!booking.getEmail().equals(email)){
             throw new UserNotFoundException();
         }
@@ -66,11 +65,11 @@ public class BookingServiceImpl implements BookingService {
     public Booking cancelTickets(String eventId, String email, String seatNo) throws EventNotFoundException, SeatNotFoundException, UserNotFoundException {
 
         boolean flag = false;
-        if (bookingRepository.findByEventId(eventId) == null) {
+        if ( bookingRepository.findByEventIdAndEmail(eventId, email) == null) {
             throw new EventNotFoundException();
         }
 
-        Booking booking = bookingRepository.findByEventId(eventId);
+        Booking booking = bookingRepository.findByEventIdAndEmail(eventId, email);
         List<Seats> seatsList = booking.getSeatList();
         flag = seatsList.removeIf(x -> x.getSeatNumber().equals(seatNo));
         if (!flag) {
@@ -93,7 +92,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Booking findByEventId(String evenId) {
+    public  List<Booking> findByEventId(String evenId) {
         return bookingRepository.findByEventId(evenId);
     }
 }

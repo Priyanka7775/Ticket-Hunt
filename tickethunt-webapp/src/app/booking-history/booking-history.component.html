@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <table class="table">
+    <table class="table" >
       <thead>
         <tr>
           <th>Show Name</th>
@@ -16,8 +16,8 @@
         </tr>
       </thead>
       <br>
-      <ng-container *ngFor="let data of bookingData;">
-        <tr >
+      <ng-container  *ngFor="let data of bookingData;">
+        <tr  *ngIf="data.seatList && data.seatList.length > 0 && data.seatList[0].seatNumber">
           <td>{{ data.eventName }}</td>
           <td>{{ data.venue }}</td>
           <td>{{ data.date }}</td>

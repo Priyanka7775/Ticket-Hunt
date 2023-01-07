@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface BookingRepository extends MongoRepository<Booking, String> {
 
-    Booking findByEventId(String evenId);
+    List<Booking> findByEventId(String evenId);
 
     List<Booking> findByEmail(String email);
 
@@ -17,7 +17,7 @@ public interface BookingRepository extends MongoRepository<Booking, String> {
 //
 //    Booking findByEventIdAndSeatListSeatNumber(String evenId, String seatNumber);
 //
-//    Booking findByEventIdAndEmail(String eventId, String email);
+    Booking findByEventIdAndEmail(String eventId, String email);
 
 
 }

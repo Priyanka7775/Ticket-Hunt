@@ -25,9 +25,10 @@ getData(){
   this.bookingsService.bookingHistoryOfUser().subscribe(
     (response:any) => {
 
+      
       this.bookingData = response;
       console.log(response);
-
+      
     
 
     }
