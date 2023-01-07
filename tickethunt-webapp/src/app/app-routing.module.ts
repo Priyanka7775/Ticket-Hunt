@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { BookingComponent } from './booking/booking.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CreateComponent } from './dashboard/event/create/create.component';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
 import { EventComponent } from './dashboard/event/event.component';
@@ -12,6 +13,7 @@ import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -63,6 +65,16 @@ const routes: Routes = [
   {
     path: 'booking-history',
     component: BookingHistoryComponent
+  },
+
+  {
+    path: 'payment',
+    component: PaymentComponent
+  },
+
+  {
+    path: 'confirmation',
+    component: ConfirmationComponent
   },
 
   {

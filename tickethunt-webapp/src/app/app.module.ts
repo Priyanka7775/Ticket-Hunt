@@ -37,6 +37,7 @@ import { ViewEventComponent } from './dashboard/event/view/view.component';
 import { BookingComponent } from './booking/booking.component';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PaymentComponent } from './payment/payment.component';
     BookingComponent,
     BookingHistoryComponent,
     PaymentComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,
