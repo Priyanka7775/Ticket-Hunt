@@ -12,5 +12,5 @@ import java.util.Date;
 public class Seats {
     private String seatNumber;
     private double price;
-    private Date dateOfBooking;
+    private String dateOfBooking;
 }

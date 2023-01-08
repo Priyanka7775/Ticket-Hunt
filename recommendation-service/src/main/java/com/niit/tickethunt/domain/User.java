@@ -23,6 +23,6 @@ public class User {
    private List<String> interest;
    private long phone;
 
-   @Relationship(type = "BOOKED", direction = Relationship.Direction.OUTGOING)
+   @Relationship(type = "BOOKED", direction = Relationship.Direction.INCOMING)
    private List<Booking> booking;
 }
