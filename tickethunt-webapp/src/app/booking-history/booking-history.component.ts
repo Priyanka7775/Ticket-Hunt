@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Bookings } from '../model/bookings';
 import { BookingServiceService } from '../service/booking.service';
 
 @Component({
@@ -24,11 +25,16 @@ getData(){
   this.bookingsService.bookingHistoryOfUser().subscribe(
     (response:any) => {
 
+      
       this.bookingData = response;
+      console.log(response);
+      
+    
 
     }
   )
 }
+
 
 
 

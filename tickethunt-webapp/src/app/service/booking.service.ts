@@ -13,7 +13,9 @@ export class BookingServiceService {
 
   url = "http://localhost:8081/bookings/view/";
 
-  bookSeat = "http://localhost:8081/bookings/book/1/rohit@gmail.com";
+  id = localStorage.getItem('id');
+
+  bookSeat = `http://localhost:8081/bookings/book/1/rohit@gmail.com`;
 
   bookingHistory = "http://localhost:8081/bookings/rohit@gmail.com"
 

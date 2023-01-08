@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
+import { OrderService } from '../service/order.service';
+import { RouteService } from '../service/route.service';
+
+declare var Razorpay: any;
 
 @Component({
   selector: 'app-payment',
@@ -6,5 +12,132 @@ import { Component } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+
+  paymentForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
+    amount: ['', Validators.required]
+  })
+
+  get name() {
+    return this.paymentForm.get('name');
+  }
+
+  get email() {
+    return this.paymentForm.get('email');
+  }
+
+  get phoneNumber() {
+    return this.paymentForm.get('phoneNumber');
+  }
+
+  get amount() {
+    return this.paymentForm.get('amount');
+  }
+
+  // form: any = {
+  //   name1: this.name?.value,
+  //   email1: this.email?.value,
+  //   phoneNumber1: this.phoneNumber?.value,
+  //   amount1: this.amount?.value
+  // };
+
+
+  constructor(private http: HttpClient,
+    private orderService: OrderService,
+    private routeService: RouteService,
+    private formBuilder: FormBuilder) {
+
+  }
+
+  ngOnInit() {
+  }
+
+  paymentId: string = '';
+  error: string = '';
+
+  options = {
+    "key": "",
+    "amount": "",
+    "name": "Ticket Hunt",
+    "description": "Ticket Booking",
+    "image": "https://www.javachinna.com/wp-content/uploads/2020/02/android-chrome-512x512-1.png",
+    "order_id": "",
+    "handler": function (response: any) {
+      var event = new CustomEvent("payment.success",
+        {
+          detail: response,
+          bubbles: true,
+          cancelable: true
+        }
+      );
+      window.dispatchEvent(event);
+    }
+    ,
+    "prefill": {
+      "name": "",
+      "email": "",
+      "contact": ""
+    },
+    "notes": {
+      "address": ""
+    },
+    "theme": {
+      "color": "#3399cc"
+    }
+  };
+
+  onSubmit(): void {
+    // console.log(this.amount?.value)
+    // console.log(this.form.amount1.value)
+    this.paymentId = '';
+    this.error = '';
+    this.orderService.createOrder(this.name?.value!, this.email?.value!, this.phoneNumber?.value!, this.amount?.value).subscribe(
+      data => {
+        this.options.key = data.secretId;
+        this.options.order_id = data.razorpayOrderId;
+        this.options.amount = data.applicationFee; //paise
+        this.options.prefill.name = this.name?.value!;;
+        this.options.prefill.email = this.email?.value!;
+        this.options.prefill.contact = this.phoneNumber?.value!;
+
+        if (data.pgName === 'razor2') {
+          this.options.image = "";
+          var rzp1 = new Razorpay(this.options);
+          rzp1.open();
+        } else {
+          var rzp2 = new Razorpay(this.options);
+          rzp2.open();
+        }
+
+
+        rzp1.on('payment.failed', function (response: { error: { code: any; description: any; source: any; step: any; reason: any; metadata: { order_id: any; payment_id: any; }; }; }) {
+          // Todo - store this information in the server
+          console.log(response);
+          console.log(response.error.code);
+          console.log(response.error.description);
+          console.log(response.error.source);
+          console.log(response.error.step);
+          console.log(response.error.reason);
+          console.log(response.error.metadata.order_id);
+          console.log(response.error.metadata.payment_id);
+          //this.error = response.error.reason;
+        }
+        );
+      }
+      ,
+      (err: { error: { message: string; }; }) => {
+        this.error = err.error.message;
+      }
+    );
+  }
+
+  @HostListener('window:payment.success', ['$event'])
+  onPaymentSuccess(event: { detail: any; }): void {
+    console.log(event.detail);
+    this.routeService.toConfirmation();
+  }
+
 
 }
