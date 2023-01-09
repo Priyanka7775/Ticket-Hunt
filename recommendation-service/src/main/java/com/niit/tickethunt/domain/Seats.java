@@ -12,8 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Seats {
-    @Id @GeneratedValue
-    private Long index;
     private String seatNumber;
     private double price;
     private String dateOfBooking;
