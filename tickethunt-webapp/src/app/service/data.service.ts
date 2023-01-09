@@ -17,18 +17,18 @@ export class DataService {
     return this.http.get<Array<Movie>>('http://localhost:3000/movies/?id=' + id);
   }
   getAllEvents(){
-    return this.http.get<Array<Event>>('http://localhost:3000/events')
+    return this.http.get<Array<Event>>('http://localhost:8088/eventdata/event')
   }
   editPost(id?: string,event?: any) {
-    return this.http.put<Event>("http://localhost:3000/events/"+id,event);
+    return this.http.put<Event>("http://localhost:8088/eventdata/updateEvent/"+id,event);
   }
-  getEvent1(id?: number) : Observable<Event> {
-    return this.http.get<Event>(`${"http://localhost:3000/events"}/${id}`);
+  getEvent1(id?: any) : Observable<Event> {
+    return this.http.get<Event>(`${"http://localhost:8088/eventdata/getEvent1"}/${id}`);
   }
   
 
   deletePost(id?: string){
     console.log("test deletepost")
-    return this.http.delete("http://localhost:3000/events/"+id)
+    return this.http.delete("http://localhost:8088/eventdata/delete/"+id)
   }
 }

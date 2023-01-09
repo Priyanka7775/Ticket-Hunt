@@ -9,6 +9,6 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   post(eventData: FormData) {
-    return this.http.post('http://localhost:3000/events', eventData);
+    return this.http.post('http://localhost:8088/eventdata/push', eventData);
   }
 }

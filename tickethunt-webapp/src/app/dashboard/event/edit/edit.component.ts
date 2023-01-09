@@ -17,9 +17,12 @@ export class EditEventComponent {
   
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(
+     
       params=>{
-        let id = params.get("id") ?? 0;
-        this.dataService.getEvent1(+id).subscribe(data => {
+        let id = params.get("id");
+        console.log(id);
+        this.dataService.getEvent1(id).subscribe(data => {
+              console.log(data);
               this.event = data;
              })
       }
@@ -27,7 +30,7 @@ export class EditEventComponent {
     
   }
   editNote() {
-    this.dataService.editPost(this.event.id,this.event).subscribe(data => {
+    this.dataService.editPost(this.event.eventId,this.event).subscribe(data => {
       this.event = data;
       this.router.navigateByUrl("event/view");
     })
