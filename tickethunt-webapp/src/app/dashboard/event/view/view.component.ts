@@ -21,12 +21,6 @@ export class ViewEventComponent implements OnInit {
   event:any ={}
   
   ngOnInit(): void {
-    // this.activatedRoute.paramMap.subscribe(params => {
-    //   let id = params.get("id") ?? 0;
-    //   this.dataService.getEvent1(+id).subscribe(data => {
-    //     this.event = data;
-    //   })
-    // });
     this.dataService.getAllEvents().subscribe(
       response=>{
         console.log("events")
@@ -41,9 +35,10 @@ export class ViewEventComponent implements OnInit {
     })
   }
 
-  deleteNote(id:any){
-    this.dataService.deletePost(id).subscribe(data =>{
+  deleteNote(eventId:any){
+    this.dataService.deletePost(eventId).subscribe(data =>{
       console.log("test delete")
+      alert("successfully deleted")
       location.reload();
     });
     

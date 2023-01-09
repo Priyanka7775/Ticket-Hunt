@@ -2,7 +2,7 @@
     <div class="row">
         <h1>Events List</h1>
         <mat-card *ngFor="let event of events">
-            <mat-card-title>{{event.title}}</mat-card-title>
+            <mat-card-title>{{event.eventName}}</mat-card-title>
             <div class="event-info">
                 <mat-card-content>
                 <div class="event event-date">
@@ -15,12 +15,12 @@
                     <mat-icon class="icon">location_on</mat-icon> <span> {{event.venue}}</span>
                 </div>
                 <mat-card-actions>
-                    <a routerLink="../edit/{{event.id}}">
+                    <a routerLink="../edit/{{event.eventId}}">
                         <button color="accent" mat-icon-button >
                             <mat-icon class="icon">edit</mat-icon>
                         </button>
                         </a>
-                        <button color="accent" mat-icon-button (click)="deleteNote(event.id)">
+                        <button color="accent" mat-icon-button (click)="deleteNote(event.eventId)">
                             <mat-icon>delete</mat-icon>
                         </button>
                 </mat-card-actions>

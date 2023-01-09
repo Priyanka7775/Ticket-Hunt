@@ -40,15 +40,19 @@ public class UserService implements IGlobalService<User> {
         return userRepository.save(user);
     }
 
-    public Optional<User> addBooking(Booking booking, int eventId, int userId) throws UserNotFoundException {
+    public User addBooking(Booking booking, int eventId, int userId) throws UserNotFoundException {
         Optional<User> user = userRepository.findById((long) userId);
         List<Booking> bookings = new ArrayList<>();
+        new User();
+        User userUpdate;
         if (user.isEmpty()) {
             throw new UserNotFoundException("User not found");
         } else {
             bookings.add(booking);
             user.get().setBooking(bookings);
+            userUpdate = user.get();
+            userRepository.addBooking(booking, eventId, userId);
         }
-        return user;
+        return userRepository.save(userUpdate);
     }
 }

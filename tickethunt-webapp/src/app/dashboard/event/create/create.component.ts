@@ -27,8 +27,8 @@ export class CreateComponent implements OnInit {
     secondry = this._formBuilder.group({
       image: ['' , Validators.required],
       organizer: ['', Validators.required],
-      seats: ['', Validators.required],
-      price: ['', Validators.required]
+      seats: ['', Validators.required]
+      // price: ['', Validators.required]
     });
     isLinear = false;
 
@@ -60,14 +60,14 @@ export class CreateComponent implements OnInit {
     // Converted this data to event type data
     if (this.fileHandler.length > 0) {
       let eventData: EventData = {
-        title: basic.get('title')?.value,
+        eventName: basic.get('eventName')?.value,
         date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
         time: basic.get('time')?.value,
         venue: basic.get('venue')?.value,
         image: this.fileHandler[0],
-        organizer: secondry.get('organizer')?.value,
-        seats: secondry.get('seats')?.value,
-        price: secondry.get('price')?.value
+        organizerName: secondry.get('organizerName')?.value,
+        totalSeat: secondry.get('totalSeat')?.value,
+        // price: secondry.get('price')?.value
       }
     // Use this data to save into database
 
