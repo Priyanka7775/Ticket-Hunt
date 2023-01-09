@@ -35,7 +35,12 @@ public class GlobalController {
 
     @PostMapping("event/save")
     public ResponseEntity<?> saveEvent(@RequestBody Event event) {
-        return new ResponseEntity<>(eventService.save(event), HttpStatus.CREATED);
+        try{
+            return new ResponseEntity<>(eventService.save(event), HttpStatus.CREATED);
+        }catch (Exception e){
+            System.out.println(e.getMessage() + e.getLocalizedMessage());
+            return new ResponseEntity<>("failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("event/{id}")
