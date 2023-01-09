@@ -4,27 +4,27 @@ import com.niit.tickethunt.domain.Booking;
 import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.domain.User;
 import com.niit.tickethunt.exception.UserNotFoundException;
+import com.niit.tickethunt.service.BookingService;
 import com.niit.tickethunt.service.EventService;
 import com.niit.tickethunt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/v4/")
 public class GlobalController {
-    private EventService eventService;
-    private UserService userService;
+    private final EventService eventService;
+    private final UserService userService;
+
+    private final BookingService bookingService;
 
     @Autowired
-    public GlobalController(EventService eventService, UserService userService) {
+    public GlobalController(EventService eventService, UserService userService, BookingService bookingService) {
         this.eventService = eventService;
         this.userService = userService;
+        this.bookingService = bookingService;
     }
 
     /* Event CRUD related APIs */
@@ -35,9 +35,9 @@ public class GlobalController {
 
     @PostMapping("event/save")
     public ResponseEntity<?> saveEvent(@RequestBody Event event) {
-        try{
+        try {
             return new ResponseEntity<>(eventService.save(event), HttpStatus.CREATED);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage() + e.getLocalizedMessage());
             return new ResponseEntity<>("failed", HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -68,13 +68,19 @@ public class GlobalController {
 
     /* Booking CRUD related APIs */
 
-    @PostMapping("user/booking/{user}")
+    @PostMapping("booking/{user}")
     public ResponseEntity<?> saveBooking(@RequestBody Booking booking, @PathVariable String user) throws UserNotFoundException {
         int userId = 1;
-        if(Integer.parseInt(String.valueOf(user).split("")[0]) == 0){
+        if (Integer.parseInt(String.valueOf(user).split("")[0]) == 0) {
             userId = 0;
         }
-        int eventId = Integer.parseInt(String.valueOf(user).split("")[1]);
-        return new ResponseEntity<>(userService.addBooking(booking, eventId, userId), HttpStatus.OK);
+        int bookingId = Integer.parseInt(String.valueOf(user).split("")[1]);
+        bookingService.addRelation(bookingId, userId);
+        return new ResponseEntity<>(bookingService.save(booking), HttpStatus.CREATED);
+    }
+
+    @GetMapping("bookings")
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(bookingService.getAll(), HttpStatus.OK);
     }
 }

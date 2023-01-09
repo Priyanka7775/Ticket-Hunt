@@ -34,4 +34,12 @@ public class BookingService implements IGlobalService<Booking> {
     public Booking update(Booking booking) {
         return null;
     }
+
+    public String addRelation(int bookingId, int userId){
+        if(findById(bookingId).isEmpty()){
+            return "Invalid booking id";
+        }
+        bookingRepository.addBooking(bookingId, userId);
+        return "Added";
+    }
 }
