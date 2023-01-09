@@ -13,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Booking {
-    @Id
-    private Long id;
     private List<Seats> seatList;
     private int totalSeats;
     private String date;
