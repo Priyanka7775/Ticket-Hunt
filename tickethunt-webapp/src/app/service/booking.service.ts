@@ -30,9 +30,9 @@ export class BookingServiceService {
     return this.http.get<Bookings>(this.url);
   }
 
-  bookSeats(seat: any) : Observable<any> {
+  bookSeats(seat: any, id: any) : Observable<any> {
 
-    return this.http.post<Seats>(this.bookSeat, seat);
+    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/rohit@gmail.com`, seat);
 
 
   }
@@ -43,9 +43,9 @@ export class BookingServiceService {
     return this.http.get<Bookings>(this.bookingHistory)
   }
 
-  cancelSeats(seat: any) : Observable<any> {
+  cancelSeats(seat: any, eventId: any) : Observable<any> {
 
-    return this.http.delete<any>(this.cancel+seat)
+    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/rohit@gmail.com/${seat}`)
 
   }
 

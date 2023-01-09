@@ -34,7 +34,7 @@
           <td>{{ seat.dateOfBooking | date }}</td>
           <td>
             <button
-              (click)="delete(seat.seatNumber)"
+              (click)="delete(seat.seatNumber,data.eventId)"
               style="margin-left: 20px"
               mat-button color="warn"
             >
