@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    private int id;
+    private String id;
     private String name;
     @Id
     private String email;

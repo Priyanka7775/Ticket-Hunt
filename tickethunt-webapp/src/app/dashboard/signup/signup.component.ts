@@ -4,6 +4,7 @@ import { User } from 'src/app/model/user.model';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import { Interest } from 'src/app/model/interest.model';
+import { SignupService } from 'src/app/service/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ import { Interest } from 'src/app/model/interest.model';
 export class SignupComponent {
 
   //Constructor
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private signupService: SignupService) { }
   
   // Basic Information 
   customer = this.fb.group({
@@ -59,7 +60,10 @@ export class SignupComponent {
        role: interest.get('role')?.value
     }
     // Logging data for testing - Use userData to submit data 
-    console.log(userData);
+    this.signupService.post(userData).subscribe(next=>{
+      alert('saved')
+    })
+
   }
 
   // Chip Functionality
