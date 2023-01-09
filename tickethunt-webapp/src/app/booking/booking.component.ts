@@ -35,7 +35,7 @@ export class BookingComponent implements OnInit {
   ) {
     this.booking = this.fb.group({
       seatNumber: new FormControl('', [Validators.required]),
-      dateOfBooking: new FormControl('', [Validators.required]),
+      dateOfBooking: [this.currentDate],
       price: [this.price],
     });
   }
