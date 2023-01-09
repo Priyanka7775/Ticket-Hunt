@@ -46,8 +46,8 @@ public class EventController {
     public ResponseEntity<?>deleteEvent(@PathVariable String eventId) throws EventNotFoundException {
        ResponseEntity responseEntity=null;
        try{
-           eventService.deleteEvent(eventId);
-           responseEntity=new ResponseEntity<>("Succesfully Deleted",HttpStatus.OK);
+
+           responseEntity=new ResponseEntity<>( eventService.deleteEvent(eventId),HttpStatus.OK);
        }catch (EventNotFoundException eventNotFoundException){
            throw new EventNotFoundException();
        }catch (Exception exception){
