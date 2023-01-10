@@ -6,6 +6,7 @@ label {
 .card-container.card {
     max-width: 400px !important;
     padding: 40px 40px;
+    margin-left: 1000px;
 }
 
 .card {
@@ -23,4 +24,14 @@ label {
 
 #id1 {
     display: block;
+}
+
+.movieData{
+
+
+    margin-top: 150px;
+    position: fixed;
+    margin-left: 150px;
+   
+    
 }

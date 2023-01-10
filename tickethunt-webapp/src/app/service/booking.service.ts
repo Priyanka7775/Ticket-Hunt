@@ -30,7 +30,7 @@ export class BookingServiceService {
     return this.http.get<Bookings>(this.url);
   }
 
-  bookSeats(seat: any, id: any) : Observable<any> {
+  bookSeats(seat: Seats, id: any) : Observable<any> {
 
     return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/rohit@gmail.com`, seat);
 
