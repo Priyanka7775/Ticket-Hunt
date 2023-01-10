@@ -38,12 +38,12 @@ getData(){
 
 
 
-delete(seat: any) {
+delete(seat: any, eventId: any) {
 
   
   alert("successfully canceled seat =>"+seat)
   window.location.reload();
-  this.bookingsService.cancelSeats(seat).subscribe(
+  this.bookingsService.cancelSeats(seat, eventId).subscribe(
     (response:any) => {
 
     }

@@ -17,26 +17,29 @@ import { EventService } from 'src/app/service/event.service';
 
 export class CreateComponent implements OnInit {
 
- // Form Data and Validations
+  // Form Data and Validations
   basic = this._formBuilder.group({
-    title: ['', Validators.required],
+    eventId: ['', Validators.required],
+    eventName: ['', Validators.required],
+    email: ['', Validators.required],
     date: ['', Validators.required],
     time: ['', Validators.required],
     venue: ['', Validators.required],
-    });
-    secondry = this._formBuilder.group({
-      image: ['' , Validators.required],
-      organizer: ['', Validators.required],
-      seats: ['', Validators.required],
-      price: ['', Validators.required]
-    });
-    isLinear = false;
+  });
+  secondry = this._formBuilder.group({
+    image: ['', Validators.required],
+    organizerName: ['', Validators.required],
+    seats: ['', Validators.required],
+    eventType: ['', Validators.required]
+    // price: ['', Validators.required]
+  });
+  isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService:EventService) { }
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService) { }
   ngOnInit(): void {
 
   }
-  
+
   // Toggler 
   // slideToggler() {
   //   const slideO = document.getElementById('img-one');
@@ -54,28 +57,35 @@ export class CreateComponent implements OnInit {
   // Current Date Placeholder
   defaultDate = new Date();
   fileHandler: FileHandle[] = [];
+  file1: any;
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
     // Converted this data to event type data
     if (this.fileHandler.length > 0) {
       let eventData: EventData = {
-        title: basic.get('title')?.value,
+        eventId: basic.get('eventId')?.value,
+        email: basic.get('email')?.value,
+        eventName: basic.get('eventName')?.value,
         date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
         time: basic.get('time')?.value,
         venue: basic.get('venue')?.value,
         image: this.fileHandler[0],
-        organizer: secondry.get('organizer')?.value,
-        seats: secondry.get('seats')?.value,
-        price: secondry.get('price')?.value
+        organizerName: secondry.get('organizerName')?.value,
+        totalSeat: secondry.get('seats')?.value,
+        eventType: secondry.get('eventType')?.value,
+        // price: secondry.get('price')?.value
       }
-    // Use this data to save into database
+      console.log(eventData.eventId)
+      // Use this data to save into database
+      this.eventService.post(eventData).subscribe(data =>
+        console.log(data))
 
     }
-    
+
   }
 
-  prepareFormData(data: EventData): FormData{
+  prepareFormData(data: EventData): FormData {
     const formData = new FormData;
 
     formData.append('event', new Blob([JSON.stringify(data)], { type: 'application/json' }));
@@ -96,6 +106,10 @@ export class CreateComponent implements OnInit {
       }
       this.fileHandler.push(fileHandle);
     }
+    // let reader = new FileReader();
+    // if (event.target.files && event.target.files.length > 0) {
+    //   this.file1 = event.target.files[0];
+    // }
   }
 
   // Property for mat-ti

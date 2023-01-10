@@ -19,6 +19,7 @@ import java.util.List;
 @CrossOrigin("*")
 public class EventController {
     private EventService eventService;
+
     @Autowired
     public EventController(EventService eventService) {
         this.eventService = eventService;
@@ -26,86 +27,87 @@ public class EventController {
 
     @PostMapping("addEvent")
     public ResponseEntity<?> addEvent(@RequestBody Event event) throws EventAlreadyFoundException {
-      ResponseEntity responseEntity=null;
-       try{
-           responseEntity=new ResponseEntity<>(eventService.addEvent(event), HttpStatus.CREATED);
-       }catch (EventAlreadyFoundException eventAlreadyFoundException){
-           throw new EventAlreadyFoundException();
-       }catch (Exception exception){
-           responseEntity= new ResponseEntity<>(exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-       }
-        return responseEntity ;
+        ResponseEntity responseEntity = null;
+        try {
+            responseEntity = new ResponseEntity<>(eventService.addEvent(event), HttpStatus.CREATED);
+        } catch (EventAlreadyFoundException eventAlreadyFoundException) {
+            throw new EventAlreadyFoundException();
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
 
     }
+
     @GetMapping("event")
-    public ResponseEntity<?> getAllEvent(){
-        return new ResponseEntity<>(eventService.viewAllEvents(),HttpStatus.OK);
+    public ResponseEntity<?> getAllEvent() {
+        return new ResponseEntity<>(eventService.viewAllEvents(), HttpStatus.OK);
     }
 
     @DeleteMapping("delete/{eventId}")
-    public ResponseEntity<?>deleteEvent(@PathVariable String eventId) throws EventNotFoundException {
-       ResponseEntity responseEntity=null;
-       try{
-           eventService.deleteEvent(eventId);
-           responseEntity=new ResponseEntity<>("Succesfully Deleted",HttpStatus.OK);
-       }catch (EventNotFoundException eventNotFoundException){
-           throw new EventNotFoundException();
-       }catch (Exception exception){
-           responseEntity= new ResponseEntity<>(exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-       }
-        return responseEntity ;
+    public ResponseEntity<?> deleteEvent(@PathVariable String eventId) throws EventNotFoundException {
+        ResponseEntity responseEntity = null;
+        try {
+
+            responseEntity = new ResponseEntity<>(eventService.deleteEvent(eventId), HttpStatus.OK);
+        } catch (EventNotFoundException eventNotFoundException) {
+            throw new EventNotFoundException();
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
     }
 
     @GetMapping("event/{email}")
-    public ResponseEntity<?> getAllEventByEmail(@PathVariable String email)throws EventNotFoundException{
-       ResponseEntity responseEntity=null;
-       try{
-           responseEntity=new ResponseEntity<>(eventService.getAllEventOfUser(email),HttpStatus.OK);
-       }catch (EventNotFoundException eventNotFoundException){
-           throw new EventNotFoundException();
-       }catch (Exception exception){
-           responseEntity= new ResponseEntity<>(exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-       }
-        return responseEntity ;
+    public ResponseEntity<?> getAllEventByEmail(@PathVariable String email) throws EventNotFoundException {
+        ResponseEntity responseEntity = null;
+        try {
+            responseEntity = new ResponseEntity<>(eventService.getAllEventOfUser(email), HttpStatus.OK);
+        } catch (EventNotFoundException eventNotFoundException) {
+            throw new EventNotFoundException();
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
 
     }
 
     @PutMapping("updateEvent/{eventId}")
-    public ResponseEntity<?>updateTrack(@RequestBody Event event, @PathVariable String eventId){
-        return new ResponseEntity<>(eventService.updateEventDetails(eventId,event),HttpStatus.OK);
+    public ResponseEntity<?> updateTrack(@RequestBody Event event, @PathVariable String eventId) {
+        return new ResponseEntity<>(eventService.updateEventDetails(eventId, event), HttpStatus.OK);
     }
 
     @GetMapping("getEvent/{eventType}")
-    public List<Event> getAllByEventType(@PathVariable String eventType){
+    public List<Event> getAllByEventType(@PathVariable String eventType) {
         return eventService.findByEventType(eventType);
     }
 
     @GetMapping("getEvent1/{eventId}")
-    public ResponseEntity<?>getEventByEventId(@PathVariable String eventId)throws EventNotFoundException{
-        ResponseEntity responseEntity=null;
-        try{
-            responseEntity=new ResponseEntity<>(eventService.getEventById(eventId),HttpStatus.OK);
+    public ResponseEntity<?> getEventByEventId(@PathVariable String eventId) throws EventNotFoundException {
+        ResponseEntity responseEntity = null;
+        try {
+            responseEntity = new ResponseEntity<>(eventService.getEventById(eventId), HttpStatus.OK);
 
-        }catch (EventNotFoundException eventNotFoundException){
+        } catch (EventNotFoundException eventNotFoundException) {
             throw new EventNotFoundException();
-        }catch (Exception exception){
-            responseEntity=new ResponseEntity<>(exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
     }
 
 
     @PostMapping("push")
-    public ResponseEntity<Void> saveEvent(@RequestParam("eventId") String eventId,
-                                          @RequestParam("email") String email,
-                                          @RequestParam("eventName") String eventName,
-                                          @RequestParam("organizerName") String organizerName,
-                                          @RequestParam("date")String date,
-                                          @RequestParam("time")String time,
-                                          @RequestParam("venue")String venue,
-                                          @RequestParam("image") MultipartFile image,
-                                          @RequestParam("totalSeat") int totalSeat,
-                                          @RequestParam("eventType") String eventType) {
+    public ResponseEntity<?> saveEvent(@RequestParam("eventId") String eventId,
+                                       @RequestParam("email") String email,
+                                       @RequestParam("eventName") String eventName,
+                                       @RequestParam("organizerName") String organizerName,
+                                       @RequestParam("date") String date,
+                                       @RequestParam("time") String time,
+                                       @RequestParam("venue") String venue,
+                                       @RequestParam(required = false, value = "image") MultipartFile image,
+                                       @RequestParam("totalSeat") int totalSeat,
+                                       @RequestParam("eventType") String eventType) {
         try {
             Event event = new Event();
             event.setEventId(eventId);
@@ -119,8 +121,9 @@ public class EventController {
             event.setTotalSeat(totalSeat);
             event.setEventType(eventType);
             eventService.saveImage(event);
-            return ResponseEntity.ok().build();
-        } catch (IOException e) {
+            return new ResponseEntity<>(event, HttpStatus.OK);
+            //return ResponseEntity.ok().build();
+        } catch (Exception e) {
             // Handle exception
         }
         return null;

@@ -35,7 +35,7 @@ export class BookingComponent implements OnInit {
   ) {
     this.booking = this.fb.group({
       seatNumber: new FormControl('', [Validators.required]),
-      dateOfBooking: new FormControl('', [Validators.required]),
+      dateOfBooking: [this.currentDate],
       price: [this.price],
     });
   }
@@ -48,7 +48,7 @@ export class BookingComponent implements OnInit {
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    this.getSeatsOfEvent('1');
+    this.getSeatsOfEvent(this.id);
    
   }
 
@@ -68,9 +68,9 @@ export class BookingComponent implements OnInit {
 
   eventDate: Date = new Date();
 
-  getSeatsOfEvent(eventId: string) {
+  getSeatsOfEvent(id: string) {
     this.bookingsService
-      .getParticularBookings(eventId)
+      .getParticularBookings(id)
       .subscribe((response: any) => {
         this.bookings = response;
         this.updateOccupiedSeats();
@@ -101,7 +101,7 @@ export class BookingComponent implements OnInit {
       this.booking.controls['seatNumber'].setValue(seat);
       alert('selected seats are=>' + seat);
       this.bookingsService
-        .bookSeats(this.booking.value)
+        .bookSeats(this.booking.value, this.id)
         .subscribe((response: any) => {
           console.log(logData);
           window.location.reload();
