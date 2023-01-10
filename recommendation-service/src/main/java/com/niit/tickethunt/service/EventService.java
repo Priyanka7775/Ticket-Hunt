@@ -1,6 +1,8 @@
 package com.niit.tickethunt.service;
 
 import com.niit.tickethunt.domain.Event;
+import com.niit.tickethunt.exception.EventNotFoundException;
+import com.niit.tickethunt.exception.UserNotFoundException;
 import com.niit.tickethunt.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +30,9 @@ public class EventService implements IGlobalService<Event> {
     }
 
     @Override
-    public Optional<Event> findById(int id) {
+    public Optional<Event> findById(int id) throws EventNotFoundException {
+        if(eventRepository.findById((long) id).isEmpty())
+            throw new EventNotFoundException("User not found");
         return eventRepository.findById((long) id);
     }
 

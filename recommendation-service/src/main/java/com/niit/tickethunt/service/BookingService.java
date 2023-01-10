@@ -3,10 +3,12 @@ package com.niit.tickethunt.service;
 import com.niit.tickethunt.domain.Booking;
 import com.niit.tickethunt.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class BookingService implements IGlobalService<Booking> {
     private final BookingRepository bookingRepository;
 
@@ -42,4 +44,9 @@ public class BookingService implements IGlobalService<Booking> {
         bookingRepository.addBooking(bookingId, userId);
         return "Added";
     }
+
+    public Booking findByEmail(String email){
+        return bookingRepository.findByEmail(email);
+    }
 }
+

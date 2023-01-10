@@ -3,6 +3,7 @@ package com.niit.tickethunt.controller;
 import com.niit.tickethunt.domain.Booking;
 import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.domain.User;
+import com.niit.tickethunt.exception.EventNotFoundException;
 import com.niit.tickethunt.exception.UserNotFoundException;
 import com.niit.tickethunt.service.BookingService;
 import com.niit.tickethunt.service.EventService;
@@ -44,7 +45,7 @@ public class GlobalController {
     }
 
     @GetMapping("event/{id}")
-    public ResponseEntity<?> getById(@PathVariable int id) {
+    public ResponseEntity<?> getById(@PathVariable int id) throws EventNotFoundException {
         return new ResponseEntity<>(eventService.findById(id), HttpStatus.OK);
     }
 
@@ -66,17 +67,22 @@ public class GlobalController {
         return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
     }
 
+    @GetMapping("user/booked/{id} ")
+    public ResponseEntity<?> addEvent(@PathVariable String id) {
+        int userId = 1;
+        if (Integer.parseInt(String.valueOf(id).split("")[0]) == 0) {
+            userId = 0;
+        }
+        int eventId = Integer.parseInt(String.valueOf(id).split("")[1]);
+        return new ResponseEntity<>(userService.addBooking(eventId, userId), HttpStatus.OK);
+    }
     /* Booking CRUD related APIs */
 
     @PostMapping("booking/{user}")
-    public ResponseEntity<?> saveBooking(@RequestBody Booking booking, @PathVariable String user) throws UserNotFoundException {
-        int userId = 1;
-        if (Integer.parseInt(String.valueOf(user).split("")[0]) == 0) {
-            userId = 0;
-        }
-        int bookingId = Integer.parseInt(String.valueOf(user).split("")[1]);
-        bookingService.addRelation(bookingId, userId);
-        return new ResponseEntity<>(bookingService.save(booking), HttpStatus.CREATED);
+    public ResponseEntity<?> saveBooking(@RequestBody Booking booking, @PathVariable int user){
+        bookingService.save(booking);
+        Booking book  = bookingService.findByEmail(booking.getEmail());
+        return new ResponseEntity<>(bookingService.addRelation(Math.toIntExact(book.getId()), user), HttpStatus.CREATED);
     }
 
     @GetMapping("bookings")
