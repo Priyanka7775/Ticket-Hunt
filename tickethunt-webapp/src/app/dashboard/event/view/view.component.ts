@@ -12,22 +12,22 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewEventComponent implements OnInit {
-  
-  constructor(private dataService: DataService,private activatedRoute: ActivatedRoute ) { }
+
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
   @Input()
-  events:any;
+  events: any;
 
-  event:any ={}
-  
+  event: any = {}
+
   ngOnInit(): void {
     this.dataService.getAllEvents().subscribe(
-      response=>{
+      response => {
         console.log("events")
-        this.events=response;
+        this.events = response;
       }
     )
-    
+
   }
   editNote() {
     this.dataService.editPost(this.event).subscribe(data => {
@@ -35,15 +35,15 @@ export class ViewEventComponent implements OnInit {
     })
   }
 
-  deleteNote(eventId:any){
-    this.dataService.deletePost(eventId).subscribe(data =>{
+  deleteNote(eventId: any) {
+    this.dataService.deletePost(eventId).subscribe(data => {
       console.log("test delete")
       alert("successfully deleted")
       location.reload();
     });
-    
+
   }
 
 
- 
+
 }

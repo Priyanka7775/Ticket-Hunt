@@ -1,10 +1,12 @@
 package com.project.MovieEventService.controller;
 
+import com.google.gson.Gson;
 import com.project.MovieEventService.domain.Event;
 //import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.service.EventService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +17,34 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("eventdata/")
+@RequestMapping("eventData/")
 @CrossOrigin("*")
+@Slf4j
 public class EventController {
     private EventService eventService;
+
+    private ResponseEntity responseEntity;
 
     @Autowired
     public EventController(EventService eventService) {
         this.eventService = eventService;
+    }
+
+    @PostMapping("property")
+    public ResponseEntity<Event> registerEvent(@RequestParam("event") String event, @RequestParam("file") MultipartFile multipartFile) throws EventAlreadyFoundException {
+        Gson gson = new Gson();
+        Event eventFileObj = gson.fromJson(event, Event.class);
+        try {
+            Event registeredEvent = eventService.registerEvent(eventFileObj, multipartFile);
+            responseEntity = new ResponseEntity<>(registeredEvent, HttpStatus.OK);
+        } catch (EventAlreadyFoundException | IOException e) {
+            log.error("Error" + e.getMessage());
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            log.error("Exception " + e.getMessage());
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
     }
 
     @PostMapping("addEvent")

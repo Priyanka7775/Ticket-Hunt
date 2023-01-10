@@ -57,18 +57,24 @@
             <!-- Second form -->
             <mat-step [stepControl]="secondry">
                 <form [formGroup]="secondry" id="event-info">
-                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <ng-template matStepLabel>Other Details</ng-template>
+
                     <div class="upload-image">
-                        <label for="">Select an image</label>
-                        <input type="file" class="file-input" formControlName="image" multiple
-                            (change)="onFileSelected($event)">
+                        <label for="choose-file">Select an image</label>
+                        <input type="file" id="choose-file" formControlName="image" multiple
+                           (change)="onFileChanged($any($event).target.files)"  #fileInput>
                     </div>
+
+
                     <mat-form-field appearance="fill">
                         <mat-label>Oragnizer name</mat-label>
                         <input matInput placeholder="Organizer name" required formControlName="organizerName">
-                        <mat-error class="error" *ngIf="secondry.controls['organizerName'].hasError('required')">Organizer's
+                        <mat-error class="error"
+                            *ngIf="secondry.controls['organizerName'].hasError('required')">Organizer's
                             name is required</mat-error>
                     </mat-form-field>
+
+
                     <mat-form-field appearance="fill">
                         <mat-label>Event Type</mat-label>
                         <input matInput placeholder="Organizer name" required formControlName="eventType">

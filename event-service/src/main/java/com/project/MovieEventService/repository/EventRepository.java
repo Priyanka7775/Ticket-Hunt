@@ -6,10 +6,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface EventRepository extends MongoRepository<Event,String> {
+public interface EventRepository extends MongoRepository<Event, String> {
     Event findByEmail(String email);
-//    Event findByEventType(String eventType);
+
+    //    Event findByEventType(String eventType);
     List<Event> findAllByEventType(String eventType);
+
     Event findByEventId(String eventId);
 
 

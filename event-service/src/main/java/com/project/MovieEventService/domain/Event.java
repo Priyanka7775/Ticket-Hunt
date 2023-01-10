@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class Event {
     private String date;
     private String time;
     private String venue;
-    private byte[]  image;
+    private byte[] image;
     private int totalSeat;
     private String eventType;
 

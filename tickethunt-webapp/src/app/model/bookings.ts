@@ -21,7 +21,7 @@ export class Seats {
      public  dateOfBooking: Date;
     
 
-    constructor(seatNum: String, isSelected: boolean, price: number,
+    constructor(seatNum: String, price: number,
         dateOfBooking: Date) {
         this.seatNumber = seatNum;
         this.dateOfBooking = dateOfBooking;
