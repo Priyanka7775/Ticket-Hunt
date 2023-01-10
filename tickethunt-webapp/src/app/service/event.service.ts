@@ -8,19 +8,24 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  post(eventData: any) {
-    let params1 = new HttpParams();
+  post(event: any, images: File) {
+    const data: FormData = new FormData();
+    data.append('file', images);
+    data.append('event', JSON.stringify(event));
 
-    params1 = params1.append('eventId', eventData.eventId)
-    params1 = params1.append('email', eventData.email)
-    params1 = params1.append('eventName', eventData.eventName)
-    params1 = params1.append('organizerName', eventData.organizerName)
-    params1 = params1.append('date', eventData.date)
-    params1 = params1.append('time', eventData.time)
-    params1 = params1.append('venue', eventData.venue)
-    params1 = params1.append('image', eventData.image)
-    params1 = params1.append('totalSeat', eventData.totalSeat)
-    params1 = params1.append('eventType', eventData.eventType)
-    return this.http.post('http://localhost:8088/eventdata/push', params1);
+    return this.http.post('http://localhost:8088/eventData/property', data);
+    // let params1 = new HttpParams();
+
+    // params1 = params1.append('eventId', eventData.eventId)
+    // params1 = params1.append('email', eventData.email)
+    // params1 = params1.append('eventName', eventData.eventName)
+    // params1 = params1.append('organizerName', eventData.organizerName)
+    // params1 = params1.append('date', eventData.date)
+    // params1 = params1.append('time', eventData.time)
+    // params1 = params1.append('venue', eventData.venue)
+    // params1 = params1.append('image', eventData.image)
+    // params1 = params1.append('totalSeat', eventData.totalSeat)
+    // params1 = params1.append('eventType', eventData.eventType)
+
   }
 }

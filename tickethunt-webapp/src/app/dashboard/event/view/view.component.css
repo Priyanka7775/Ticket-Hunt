@@ -1,33 +1,41 @@
-.container{
+.container {
     padding: 30px;
 }
-mat-card{
+
+mat-card {
     width: 700px;
     padding: 10px;
     margin: 10px;
 }
-mat-card-content{
+
+mat-card-content {
     width: 55%;
 }
-mat-card-title{
+
+mat-card-title {
     text-transform: capitalize;
     margin: 20px;
     border-bottom: 1px solid #d4d4d4;
 }
-.event{
+
+.event {
     display: flex;
     align-items: center;
 }
-.event mat-icon{
+
+.event mat-icon {
     margin: 10px 15px;
 }
-button{
+
+button {
     margin: 10px 20px;
 }
-.event-info{
+
+.event-info {
     display: flex;
 }
-.event-image img{
+
+.event-image img {
     object-fit: cover;
     object-position: center center;
     width: 250px;
