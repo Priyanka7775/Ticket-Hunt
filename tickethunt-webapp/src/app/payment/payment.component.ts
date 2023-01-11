@@ -157,18 +157,17 @@ export class PaymentComponent {
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
-   
+    let transactionId = event.detail.razorpay_order_id
     for (let seat of this.selectedSeats) {
-    let  seats = new Seats(seat, this.totalPrice, new Date)
+    let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
     this.bookseat
     .bookSeats(seats, this.id)
     .subscribe((response: any) => {
     console.log(response)
-      window.location.reload();
+    /*   window.location.reload(); */
     });
   }
-    console.log(event.detail);
-    this.routeService.toConfirmation();
+    this.routeService.toConfirmation(); 
   }
 
 
