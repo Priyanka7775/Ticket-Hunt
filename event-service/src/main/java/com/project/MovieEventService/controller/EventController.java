@@ -30,7 +30,7 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @PostMapping("property")
+    @PostMapping("registerEvent")
     public ResponseEntity<Event> registerEvent(@RequestParam("event") String event, @RequestParam("file") MultipartFile multipartFile) throws EventAlreadyFoundException {
         Gson gson = new Gson();
         Event eventFileObj = gson.fromJson(event, Event.class);

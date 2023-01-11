@@ -15,20 +15,32 @@ export class ViewEventComponent implements OnInit {
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
+  eventDetails: any;
+  retrieveImage: any;
+  base64Data: any;
+
   @Input()
   events: any;
 
   event: any = {}
 
   ngOnInit(): void {
-    this.dataService.getAllEvents().subscribe(
-      response => {
-        console.log("events")
-        this.events = response;
-      }
-    )
-
+    this.getAllEvents()
   }
+
+
+  getAllEvents() {
+    this.dataService.getEvent1(12).subscribe(response => {
+      console.log(response)
+      this.eventDetails = response
+      //this.base64Data = this.eventDetails.image;
+      //console.log(this.base64Data)
+      this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
+      //console.log(this.retrieveImage)
+
+    })
+  }
+
   editNote() {
     this.dataService.editPost(this.event).subscribe(data => {
       this.event = data;
