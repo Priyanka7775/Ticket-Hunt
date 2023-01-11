@@ -13,7 +13,7 @@ export class EventService {
     data.append('file', images);
     data.append('event', JSON.stringify(event));
 
-    return this.http.post('http://localhost:8088/eventData/property', data);
+    return this.http.post('http://localhost:8088/eventData/registerEvent', data);
     // let params1 = new HttpParams();
 
     // params1 = params1.append('eventId', eventData.eventId)
