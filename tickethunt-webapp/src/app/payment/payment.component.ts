@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OrderService } from '../service/order.service';
 import { RouteService } from '../service/route.service';
+import { ActivatedRoute } from '@angular/router';
+import { BookingServiceService } from '../service/booking.service';
+import { Seats } from '../model/bookings';
 
 declare var Razorpay: any;
 
@@ -17,7 +20,7 @@ export class PaymentComponent {
     name: ['', Validators.required],
     email: ['', Validators.required],
     phoneNumber: ['', Validators.required],
-    amount: ['', Validators.required]
+    amount: [0, Validators.required]
   })
 
   get name() {
@@ -47,11 +50,29 @@ export class PaymentComponent {
   constructor(private http: HttpClient,
     private orderService: OrderService,
     private routeService: RouteService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private bookseat: BookingServiceService) {
 
   }
 
+  showName= "";
+  selectedSeats= "";
+  totalPrice = 0;
+  date = "";
+  id="";
+
+
   ngOnInit() {
+    this.showName = this.route.snapshot.queryParams['showName'];
+    this.selectedSeats = this.route.snapshot.queryParams['seats'];
+    this.totalPrice = this.route.snapshot.queryParams['price'];
+    this.date = this.route.snapshot.queryParams['date'];
+    this.id = this.route.snapshot.queryParams['id'];
+
+    console.log(this.date)
+    this.paymentForm.controls['amount'].setValue(this.totalPrice)
+
   }
 
   paymentId: string = '';
@@ -135,8 +156,18 @@ export class PaymentComponent {
 
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
-    console.log(event.detail);
-    this.routeService.toConfirmation();
+
+    let transactionId = event.detail.razorpay_order_id
+    for (let seat of this.selectedSeats) {
+    let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
+    this.bookseat
+    .bookSeats(seats, this.id)
+    .subscribe((response: any) => {
+    console.log(response)
+    /*   window.location.reload(); */
+    });
+  }
+    this.routeService.toConfirmation(); 
   }
 
 

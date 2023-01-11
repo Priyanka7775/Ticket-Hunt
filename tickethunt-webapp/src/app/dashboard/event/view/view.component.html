@@ -1,35 +1,35 @@
 <div class="container">
     <div class="row">
         <h1>Events List</h1>
-        <mat-card *ngFor="let event of events">
-            <mat-card-title>{{event.eventName}}</mat-card-title>
+        <mat-card *ngFor="let e of eventDetails">
+            <mat-card-title>{{e.eventName}}</mat-card-title>
             <div class="event-info">
                 <mat-card-content>
-                <div class="event event-date">
-                    <mat-icon class="icon">calendar_month</mat-icon> <span> {{event.date}}</span>
-                </div>
-                <div class="event event-time">
-                    <mat-icon class="icon">schedule</mat-icon> <span> {{event.time}}</span>
-                </div>
-                <div class="event event-location">
-                    <mat-icon class="icon">location_on</mat-icon> <span> {{event.venue}}</span>
-                </div>
-                <mat-card-actions>
-                    <a routerLink="../edit/{{event.eventId}}">
-                        <button color="accent" mat-icon-button >
-                            <mat-icon class="icon">edit</mat-icon>
-                        </button>
+                    <div class="event event-date">
+                        <mat-icon class="icon">calendar_month</mat-icon> <span> {{e.date}}</span>
+                    </div>
+                    <div class="event event-time">
+                        <mat-icon class="icon">schedule</mat-icon> <span> {{e.time}}</span>
+                    </div>
+                    <div class="event event-location">
+                        <mat-icon class="icon">location_on</mat-icon> <span> {{e.venue}}</span>
+                    </div>
+                    <mat-card-actions>
+                        <a routerLink="../edit/{{e.eventId}}">
+                            <button color="accent" mat-icon-button>
+                                <mat-icon class="icon">edit</mat-icon>
+                            </button>
                         </a>
-                        <button color="accent" mat-icon-button (click)="deleteNote(event.eventId)">
+                        <button color="accent" mat-icon-button (click)="deleteNote(e.eventId)">
                             <mat-icon>delete</mat-icon>
                         </button>
-                </mat-card-actions>
-            </mat-card-content>
-            <div class="event-image">
-                <img src="../../../../assets/images/tomorrow-war.jpg" alt="Event Image">
-            </div>
+                    </mat-card-actions>
+                </mat-card-content>
+                <div class="event-image">
+                    <img src="data:image/png;base64,{{e.image}}" alt="">
+                </div>
             </div>
         </mat-card>
 
-        </div>
-        </div>
+    </div>
+</div>

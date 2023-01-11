@@ -7,6 +7,7 @@ import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,11 +17,28 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EventServiceImpl implements EventService{
+@Slf4j
+public class EventServiceImpl implements EventService {
     @Autowired
     private EventRepository eventRepository;
+
     public EventServiceImpl(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
+    }
+
+    @Override
+    public Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException {
+        log.debug("Entered the register profile()");
+        Event registeredEvent = new Event();
+        Optional<Event> registerEvent = eventRepository.findById(event.getEventName());
+        if (registerEvent.isPresent()) {
+            log.error("Property is already present");
+            throw new EventAlreadyFoundException();
+        } else {
+            event.setImage(file.getBytes());
+            registeredEvent = eventRepository.save(event);
+            return registeredEvent;
+        }
     }
 
 
@@ -30,18 +48,18 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event getAllEventOfUser(String email)throws EventNotFoundException {
-        Event event=eventRepository.findByEmail(email);
-        if(event== null){
+    public List<Event> getAllEventOfUser(String email) throws EventNotFoundException {
+        List<Event> event = eventRepository.findByEmail(email);
+        if (event == null) {
             throw new EventNotFoundException();
         }
-        return event;
+        return eventRepository.findByEmail(email);
 
     }
 
     @Override
     public Event getEventById(String eventId) throws EventNotFoundException {
-        if(eventRepository.findByEventId(eventId)==null){
+        if (eventRepository.findByEventId(eventId) == null) {
             throw new EventNotFoundException();
         }
         return eventRepository.findByEventId(eventId);
@@ -49,18 +67,18 @@ public class EventServiceImpl implements EventService{
 
     @Override
     public boolean deleteEvent(String eventId) throws EventNotFoundException {
-        boolean result=false;
-        if(eventRepository.findById(eventId).isEmpty()){
+        boolean result = false;
+        if (eventRepository.findById(eventId).isEmpty()) {
             throw new EventNotFoundException();
-        }else{
+        } else {
             eventRepository.deleteById(eventId);
             return true;
         }
     }
 
     @Override
-    public Event addEvent(Event event)throws EventAlreadyFoundException {
-        if (eventRepository.findById(event.getEventId()).isPresent()){
+    public Event addEvent(Event event) throws EventAlreadyFoundException {
+        if (eventRepository.findById(event.getEventId()).isPresent()) {
             throw new EventAlreadyFoundException();
         }
         return eventRepository.save(event);
@@ -68,32 +86,38 @@ public class EventServiceImpl implements EventService{
 
     @Override
     public Event updateEventDetails(String eventId, Event event) {
-        Optional<Event> optionalEvent=eventRepository.findById(eventId);
-        if(optionalEvent.isEmpty()){
+        Optional<Event> optionalEvent = eventRepository.findById(eventId);
+        if (optionalEvent.isEmpty()) {
             return null;
         }
-        Event existingEvent=optionalEvent.get();
-        if (event.getEmail()!=null){
+        Event existingEvent = optionalEvent.get();
+        if (event.getEmail() != null) {
             existingEvent.setEmail(event.getEmail());
-        }if (event.getEventName()!=null){
+        }
+        if (event.getEventName() != null) {
             existingEvent.setEventName(event.getEventName());
-        }if (event.getOrganizerName()!=null){
+        }
+        if (event.getOrganizerName() != null) {
             existingEvent.setOrganizerName(event.getOrganizerName());
-        }if (event.getDate()!=null){
+        }
+        if (event.getDate() != null) {
             existingEvent.setDate(event.getDate());
-        }if (event.getTime()!=null){
+        }
+        if (event.getTime() != null) {
             existingEvent.setTime(event.getTime());
-        }if (event.getVenue()!=null){
+        }
+        if (event.getVenue() != null) {
             existingEvent.setVenue(event.getVenue());
-        }if (event.getTotalSeat()!=-1){
+        }
+        if (event.getTotalSeat() != -1) {
             existingEvent.setTotalSeat(event.getTotalSeat());
         }
         return eventRepository.save(existingEvent);
     }
 
     @Override
-    public List <Event> findByEventType(String eventType) {
-        if(eventType.equals("movie")){
+    public List<Event> findByEventType(String eventType) {
+        if (eventType.equals("movie")) {
             return eventRepository.findAllByEventType("movie");
         }
         return eventRepository.findAllByEventType("event");
@@ -102,6 +126,7 @@ public class EventServiceImpl implements EventService{
     public void saveImage(Event image) {
         eventRepository.save(image);
     }
+
 
 //    public String uploadImage(MultipartFile file) throws IOException {
 //
@@ -112,7 +137,6 @@ public class EventServiceImpl implements EventService{
 //        }
 //        return null;
 //    }
-
 
 
 }

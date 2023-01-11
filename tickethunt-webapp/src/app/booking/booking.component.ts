@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -75,6 +76,7 @@ export class BookingComponent implements OnInit {
         this.bookings = response;
         this.updateOccupiedSeats();
         this.selectedSeats = [];
+        console.log(this.bookings)
       
       });
   }
@@ -94,18 +96,27 @@ export class BookingComponent implements OnInit {
 
   bookSeat() {
     const logData = this.booking.value;
-    console.log(logData);
+    let cost = this.price * this.selectedSeats.length;
+    
+    this.router.navigate(['/payment'], {
+      queryParams: { showName: this.movies[0].name,
+      seats: this.selectedSeats, price: cost,
+      date: this.eventDate,
+      id: this.id }
+    })
+    
+
     this.booking.controls['price'].setValue(this.price);
 
     for (let seat of this.selectedSeats) {
       this.booking.controls['seatNumber'].setValue(seat);
       alert('selected seats are=>' + seat);
-      this.bookingsService
+      /* this.bookingsService
         .bookSeats(this.booking.value, this.id)
         .subscribe((response: any) => {
           console.log(logData);
           window.location.reload();
-        });
+        }); */
     }
   }
 
@@ -155,6 +166,7 @@ export class BookingComponent implements OnInit {
         this.selectedSeats = this.selectedSeats.filter((s) => s !== seatNumber);
       } else {
         /*  this.selectedSeats.push(seatNumber);  */
+  
         this.booking.controls['seatNumber'].setValue(this.selectedSeats);
       }
     }

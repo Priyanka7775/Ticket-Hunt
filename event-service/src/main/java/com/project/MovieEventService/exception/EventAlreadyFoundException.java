@@ -1,4 +1,4 @@
 package com.project.MovieEventService.exception;
 
-public class EventAlreadyFoundException extends Exception{
+public class EventAlreadyFoundException extends Exception {
 }

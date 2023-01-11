@@ -9,6 +9,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { EventService } from 'src/app/service/event.service';
 
 
+interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -16,6 +20,8 @@ import { EventService } from 'src/app/service/event.service';
 })
 
 export class CreateComponent implements OnInit {
+
+  
 
   // Form Data and Validations
   basic = this._formBuilder.group({
@@ -58,11 +64,12 @@ export class CreateComponent implements OnInit {
   defaultDate = new Date();
   fileHandler: FileHandle[] = [];
   file1: any;
+  files: any[] = [];
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
+    alert("check")
     // Converted this data to event type data
-    if (this.fileHandler.length > 0) {
       let eventData: EventData = {
         eventId: basic.get('eventId')?.value,
         email: basic.get('email')?.value,
@@ -70,7 +77,6 @@ export class CreateComponent implements OnInit {
         date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
         time: basic.get('time')?.value,
         venue: basic.get('venue')?.value,
-        image: this.fileHandler[0],
         organizerName: secondry.get('organizerName')?.value,
         totalSeat: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
@@ -78,38 +84,70 @@ export class CreateComponent implements OnInit {
       }
       console.log(eventData.eventId)
       // Use this data to save into database
-      this.eventService.post(eventData).subscribe(data =>
+      this.eventService.post(eventData, this.files[0]).subscribe(data =>
         console.log(data))
 
-    }
+    
 
   }
 
-  prepareFormData(data: EventData): FormData {
-    const formData = new FormData;
+  // prepareFormData(data: EventData): FormData {
+  //   const formData = new FormData;
 
-    formData.append('event', new Blob([JSON.stringify(data)], { type: 'application/json' }));
-    if (data.image?.file) {
-      formData.append('imageFile', data.image?.file, data.image?.file.name)
-    }
-    return formData;
+  //   formData.append('event', new Blob([JSON.stringify(data)], { type: 'application/json' }));
+  //   if (data.image?.file) {
+  //     formData.append('imageFile', data.image?.file, data.image?.file.name)
+  //   }
+  //   return formData;
+  // }
+
+  // onFileSelected(event: any) {
+  //   if (event.target.files) {
+  //     const file = event.target.files[0];
+  //     const fileHandle: FileHandle = {
+  //       file: file,
+  //       url: this.sanitizer.bypassSecurityTrustUrl(
+  //         window.URL.createObjectURL(file)
+  //       )
+  //     }
+  //     this.fileHandler.push(fileHandle);
+  //   }
+  // }
+
+
+  // document: any.getElementById('choose-file').onchange = function (e? : HTMLInputEvent ){
+  //   let files:any  = e?.target.files[0];
+  // }
+
+
+  onFileChanged(files: any) {
+
+    this.prepareFilesList(files);
   }
 
-  onFileSelected(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      const fileHandle: FileHandle = {
-        file: file,
-        url: this.sanitizer.bypassSecurityTrustUrl(
-          window.URL.createObjectURL(file)
-        )
+  prepareFilesList(files: Array<any>) {
+    for (const item of files) {
+      item.progress = 0;
+      this.files.push(item);
+    }
+    this.uploadFilesSimulator(0);
+  }
+
+  uploadFilesSimulator(index: number) {
+    setTimeout(() => {
+      if (index === this.files.length) {
+        return;
+      } else {
+        const progressInterval = setInterval(() => {
+          if (this.files[index].progress === 100) {
+            clearInterval(progressInterval);
+            this.uploadFilesSimulator(index + 1);
+          } else {
+            this.files[index].progress += 5;
+          }
+        }, 200);
       }
-      this.fileHandler.push(fileHandle);
-    }
-    // let reader = new FileReader();
-    // if (event.target.files && event.target.files.length > 0) {
-    //   this.file1 = event.target.files[0];
-    // }
+    }, 1000);
   }
 
   // Property for mat-ti
