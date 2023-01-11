@@ -15,7 +15,7 @@ export class ViewEventComponent implements OnInit {
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
-  eventDetails: any;
+  eventDetails: any = {};
   retrieveImage: any;
   base64Data: any;
 
@@ -25,21 +25,36 @@ export class ViewEventComponent implements OnInit {
   event: any = {}
 
   ngOnInit(): void {
-    this.getAllEvents()
+    this.getEventByEmail();
   }
 
-
-  getAllEvents() {
-    this.dataService.getEvent1(12).subscribe(response => {
+  getEventByEmail() {
+    this.dataService.getEventByEmail('a').subscribe(response => {
       console.log(response)
       this.eventDetails = response
-      //this.base64Data = this.eventDetails.image;
-      //console.log(this.base64Data)
       this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
-      //console.log(this.retrieveImage)
-
     })
+
+    //console.log(response.length)
+
+    //this.base64Data = this.eventDetails.image;
+    //console.log(this.base64Data)
+    //this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
+    //console.log(this.retrieveImage)
   }
+
+
+  // getAllEvents() {
+  //   this.dataService.getEvent1(12).subscribe(response => {
+  //     console.log(response)
+  //     this.eventDetails = response
+  //     //this.base64Data = this.eventDetails.image;
+  //     //console.log(this.base64Data)
+  //     this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
+  //     //console.log(this.retrieveImage)
+
+  //   })
+  // }
 
   editNote() {
     this.dataService.editPost(this.event).subscribe(data => {

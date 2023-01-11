@@ -1,32 +1,32 @@
 <div class="container">
     <div class="row">
         <h1>Events List</h1>
-        <mat-card>
-            <mat-card-title>{{eventDetails.eventName}}</mat-card-title>
+        <mat-card *ngFor="let e of eventDetails">
+            <mat-card-title>{{e.eventName}}</mat-card-title>
             <div class="event-info">
                 <mat-card-content>
                     <div class="event event-date">
-                        <mat-icon class="icon">calendar_month</mat-icon> <span> {{eventDetails.date}}</span>
+                        <mat-icon class="icon">calendar_month</mat-icon> <span> {{e.date}}</span>
                     </div>
                     <div class="event event-time">
-                        <mat-icon class="icon">schedule</mat-icon> <span> {{eventDetails.time}}</span>
+                        <mat-icon class="icon">schedule</mat-icon> <span> {{e.time}}</span>
                     </div>
                     <div class="event event-location">
-                        <mat-icon class="icon">location_on</mat-icon> <span> {{eventDetails.venue}}</span>
+                        <mat-icon class="icon">location_on</mat-icon> <span> {{e.venue}}</span>
                     </div>
                     <mat-card-actions>
-                        <a routerLink="../edit/{{eventDetails.eventId}}">
+                        <a routerLink="../edit/{{e.eventId}}">
                             <button color="accent" mat-icon-button>
                                 <mat-icon class="icon">edit</mat-icon>
                             </button>
                         </a>
-                        <button color="accent" mat-icon-button (click)="deleteNote(eventDetails.eventId)">
+                        <button color="accent" mat-icon-button (click)="deleteNote(e.eventId)">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </mat-card-actions>
                 </mat-card-content>
                 <div class="event-image">
-                    <img [src]="retrieveImage" alt="">
+                    <img src="data:image/png;base64,{{e.image}}" alt="">
                 </div>
             </div>
         </mat-card>

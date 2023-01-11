@@ -16,7 +16,7 @@ public interface EventService {
 
     List<Event> viewAllEvents();
 
-    Event getAllEventOfUser(String email) throws EventNotFoundException;
+    List<Event> getAllEventOfUser(String email) throws EventNotFoundException;
 
     Event getEventById(String eventId) throws EventNotFoundException;
 
