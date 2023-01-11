@@ -1,7 +1,7 @@
 import { FileHandle } from "./file-handle.model";
 
 export type EventData = {
-    eventId?: String,
+    eventId?: String|null|undefined,
     email?: String,
     eventName?: String,
     date?: String,

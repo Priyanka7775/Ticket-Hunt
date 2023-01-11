@@ -20,12 +20,12 @@
                         <mat-error class="error" *ngIf="basic.controls['email'].hasError('required')">Event Name is
                             required</mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    <!-- <mat-form-field appearance="fill">
                         <mat-label>Event Id</mat-label>
                         <input matInput formControlName="eventId" required>
                         <mat-error class="error" *ngIf="basic.controls['eventId'].hasError('required')">Event ID is
                             required</mat-error>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <mat-form-field appearance="fill">
                         <input matInput [matDatepicker]="picker" min="{{defaultDate | date: 'yyyy-MM-dd'}}"
                             formControlName="date" placeholder="{{defaultDate | date:'MM/dd/yyyy'}}">
