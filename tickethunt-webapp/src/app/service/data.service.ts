@@ -38,4 +38,11 @@ export class DataService {
   getEventByEmail(emailId: string) {
     return this.http.get("http://localhost:8088/eventData/event/" + emailId);
   }
+
+  getAllEvents3(){
+    return this.http.get<Array<Event>>('http://localhost:8088/eventData/getEvent/movie')
+  }
+  getAllEvents2(){
+    return this.http.get<Array<Event>>('http://localhost:8088/eventData/getEvent/event')
+  }
 }

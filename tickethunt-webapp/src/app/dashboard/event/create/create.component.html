@@ -82,6 +82,12 @@
                             name is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
+                        <mat-label>Event description</mat-label>
+                        <input matInput placeholder="description" required formControlName="description">
+                        <mat-error class="error" *ngIf="secondry.controls['description'].hasError('required')">Organizer's
+                            name is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
                         <mat-label>Total Seats</mat-label>
                         <input matInput placeholder="eg 62" type="number" required formControlName="seats" min="1"
                             max="150">

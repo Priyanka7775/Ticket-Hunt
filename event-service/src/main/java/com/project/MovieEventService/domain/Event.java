@@ -25,5 +25,7 @@ public class Event {
     private byte[] image;
     private int totalSeat;
     private String eventType;
+    private String description;
+    private int price;
 
 }

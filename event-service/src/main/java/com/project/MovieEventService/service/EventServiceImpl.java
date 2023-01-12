@@ -58,7 +58,7 @@ public class EventServiceImpl implements EventService {
         producer.sendDtoToQueue(bookingDTO);
 
         Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                commonUser.getImage(), commonUser.getTotalSeat(), commonUser.getEventType());
+                commonUser.getImage(), commonUser.getTotalSeat(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice());
 
         return eventRepository.insert(event);
     }

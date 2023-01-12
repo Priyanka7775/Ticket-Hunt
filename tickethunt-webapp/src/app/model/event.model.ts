@@ -12,4 +12,5 @@ export type EventData = {
     eventType?: string,
     // price?: Number,
     // image?: any,
+    description?:string
 }

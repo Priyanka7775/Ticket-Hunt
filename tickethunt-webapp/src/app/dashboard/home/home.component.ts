@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
 import { DataService } from 'src/app/service/data.service';
 
@@ -11,16 +12,58 @@ export class HomeComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
-  movies: Movie[] = [];
+  @Input()
+  events1:any;
+  events2:any;
 
+  movies: Movie[] = [];
+  event:any ={}
+  image:string =''
+  
   ngOnInit(): void {
-    this.getAll();
+    // this.dataService.getAllEvents2().subscribe(
+    //   response=>{
+    //     console.log("events")
+    //     this.events=response;
+    //   }
+    // )
+    this.viewEvent();
+    this.viewMovie();
+    
+  }
+
+  viewMovie(){
+    this.dataService.getAllEvents3().subscribe(
+      response=>{
+        console.log("movie")
+        this.events1=response;
+      }
+    )
+  
+    
+  }
+
+  viewEvent(){
+    this.dataService.getAllEvents2().subscribe(
+      response=>{
+        console.log("events")
+        this.events2=response;
+      }
+    )
+  
+    
   }
   
-  getAll(){
-    this.dataService.getAllMovies().subscribe(movie => {
-      this.movies = movie;
-    })
-  }
+
+
+  // ngOnInit(): void {
+  //   this.getAll();
+  // }
+  
+  // getAll(){
+  //   this.dataService.getAllMovies().subscribe(movie => {
+  //     this.movies = movie;
+  //   })
+  // }
 
 }

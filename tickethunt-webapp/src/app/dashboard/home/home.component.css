@@ -35,3 +35,10 @@ a{
 .recommended{
     margin: 25px 0;
 }
+
+#all{
+    display: inline-flex;
+}.event-image{
+   
+    margin: 20px;
+}

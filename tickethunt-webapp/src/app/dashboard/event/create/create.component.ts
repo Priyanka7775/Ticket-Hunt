@@ -41,7 +41,9 @@ export class CreateComponent implements OnInit {
     image: ['', Validators.required],
     organizerName: ['', Validators.required],
     seats: ['', Validators.required],
-    eventType: ['', Validators.required]
+    eventType: ['', Validators.required],
+    description: ['', Validators.required],
+
     // price: ['', Validators.required]
   });
   isLinear = false;
@@ -84,6 +86,7 @@ export class CreateComponent implements OnInit {
         organizerName: secondry.get('organizerName')?.value,
         totalSeat: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
+        description: secondry.get('description')?.value,
         // price: secondry.get('price')?.value
       }
       console.log(eventData.eventId)
