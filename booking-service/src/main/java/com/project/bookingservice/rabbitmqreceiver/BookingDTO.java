@@ -1,27 +1,22 @@
-package com.project.bookingservice.domain;
+package com.project.bookingservice.rabbitmqreceiver;
 
-
+import com.project.bookingservice.domain.Seats;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 @Data
-@Document(collection = "bookings")
-public class Booking {
+public  class BookingDTO {
+
 
 
     private String email;
     private String eventName;
-    @Id
-    private String bookingId;
     private String eventId;
+    private String bookingId;
     private String venue;
     private List<Seats> seatList;
     private int totalSeats;
     private String date;
     private String time;
-
-
-
 }
