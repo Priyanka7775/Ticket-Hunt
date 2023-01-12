@@ -4,6 +4,7 @@ import com.project.MovieEventService.domain.Event;
 //import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
+import com.project.MovieEventService.rabbitmq.CommonUser;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -14,6 +15,7 @@ public interface EventService {
 
     Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException;
 
+    Event addEvent1(CommonUser commonUser);
     List<Event> viewAllEvents();
 
     List<Event> getAllEventOfUser(String email) throws EventNotFoundException;

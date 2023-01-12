@@ -4,6 +4,10 @@ import com.project.MovieEventService.domain.Event;
 //import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
+import com.project.MovieEventService.proxy.BookingProxy;
+import com.project.MovieEventService.rabbitmq.BookingDTO;
+import com.project.MovieEventService.rabbitmq.CommonUser;
+import com.project.MovieEventService.rabbitmq.Producer;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
 
@@ -21,6 +25,11 @@ import java.util.Optional;
 public class EventServiceImpl implements EventService {
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private Producer producer;
+
+    private BookingProxy bookingProxy;
 
     public EventServiceImpl(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
@@ -41,6 +50,18 @@ public class EventServiceImpl implements EventService {
         }
     }
 
+    @Override
+    public Event addEvent1(CommonUser commonUser) {
+
+        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
+                commonUser.getImage(), commonUser.getTotalSeat(), commonUser.getEventType());
+        producer.sendDtoToQueue(bookingDTO);
+
+        Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
+                commonUser.getImage(), commonUser.getTotalSeat(), commonUser.getEventType());
+
+        return eventRepository.insert(event);
+    }
 
     @Override
     public List<Event> viewAllEvents() {
