@@ -21,11 +21,16 @@ interface HTMLInputEvent extends Event {
 
 export class CreateComponent implements OnInit {
 
-  
+  random:any=Math.floor(Math.random()*1000)
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService) {
+    this.eventId?.setValue(this.random)
+   }
+  ngOnInit(): void {
+  }
 
   // Form Data and Validations
   basic = this._formBuilder.group({
-    eventId: ['', Validators.required],
+    eventId: [''],
     eventName: ['', Validators.required],
     email: ['', Validators.required],
     date: ['', Validators.required],
@@ -40,10 +45,8 @@ export class CreateComponent implements OnInit {
     // price: ['', Validators.required]
   });
   isLinear = false;
-
-  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService) { }
-  ngOnInit(): void {
-
+  get eventId(){
+    return this.basic.get('eventId')
   }
 
   // Toggler 
@@ -69,9 +72,10 @@ export class CreateComponent implements OnInit {
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
     alert("check")
+    console.log(this.eventId?.value)
     // Converted this data to event type data
       let eventData: EventData = {
-        eventId: basic.get('eventId')?.value,
+        eventId: this.eventId?.value,
         email: basic.get('email')?.value,
         eventName: basic.get('eventName')?.value,
         date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),

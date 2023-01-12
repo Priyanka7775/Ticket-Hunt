@@ -48,12 +48,12 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event getAllEventOfUser(String email) throws EventNotFoundException {
-        Event event = eventRepository.findByEmail(email);
+    public List<Event> getAllEventOfUser(String email) throws EventNotFoundException {
+        List<Event> event = eventRepository.findByEmail(email);
         if (event == null) {
             throw new EventNotFoundException();
         }
-        return event;
+        return eventRepository.findByEmail(email);
 
     }
 

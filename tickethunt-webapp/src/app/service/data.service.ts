@@ -34,4 +34,8 @@ export class DataService {
     console.log("test deletepost")
     return this.http.delete("http://localhost:8088/eventData/delete/" + id)
   }
+
+  getEventByEmail(emailId: string) {
+    return this.http.get("http://localhost:8088/eventData/event/" + emailId);
+  }
 }
