@@ -43,8 +43,7 @@ export class CreateComponent implements OnInit {
     seats: ['', Validators.required],
     eventType: ['', Validators.required],
     description: ['', Validators.required],
-
-    // price: ['', Validators.required]
+     price: ['', Validators.required]
   });
   isLinear = false;
   get eventId(){
@@ -87,7 +86,7 @@ export class CreateComponent implements OnInit {
         totalSeat: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
         description: secondry.get('description')?.value,
-        // price: secondry.get('price')?.value
+       price: secondry.get('price')?.value
       }
       console.log(eventData.eventId)
       // Use this data to save into database
