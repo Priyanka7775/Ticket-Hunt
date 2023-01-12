@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AuthenticationService } from 'src/app/service/authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,6 +21,22 @@ export class LoginComponent {
       })
 
       login(user: FormGroup) {
-        // Code here for Authentication
+        this.authService.login(this.loginForm.value).subscribe(
+          response=>{
+            console.log(response);
+            this.responseData=response;
+            console.log("token : "+this.responseData.token);
+            localStorage.setItem('jwtkey',this.responseData.token);
+            localStorage.setItem('userEmail',this.responseData.userEmail);
+            alert("Welcome user!"+this.responseData.userEmail);
+            if(this.authService.isUserLogedIn==true){
+              this.router.navigateByUrl("/songs")
+            }
+            else{
+              alert("Wrong Data");
+            }
+          }
+        );
+
       }
 }
