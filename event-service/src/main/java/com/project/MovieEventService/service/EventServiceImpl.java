@@ -13,6 +13,7 @@ import com.project.MovieEventService.repository.EventRepository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,12 +30,13 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private Producer producer;
 
+
     private BookingProxy bookingProxy;
 
-    public EventServiceImpl(EventRepository eventRepository) {
+    public EventServiceImpl(EventRepository eventRepository,  BookingProxy bookingProxy) {
         this.eventRepository = eventRepository;
+        this.bookingProxy =bookingProxy;
     }
-
     @Override
     public Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException {
         log.debug("Entered the register profile()");
@@ -46,6 +48,7 @@ public class EventServiceImpl implements EventService {
         } else {
             event.setImage(file.getBytes());
             registeredEvent = eventRepository.save(event);
+            ResponseEntity re = bookingProxy.saveBooking(event);
             return registeredEvent;
         }
     }

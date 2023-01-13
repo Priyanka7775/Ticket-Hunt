@@ -71,6 +71,7 @@ export class PaymentComponent {
     this.id = this.route.snapshot.queryParams['id'];
 
     console.log(this.date)
+    
     this.paymentForm.controls['amount'].setValue(this.totalPrice)
 
   }
@@ -157,16 +158,23 @@ export class PaymentComponent {
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
+    let arr = Array.from(this.selectedSeats);
+
     let transactionId = event.detail.razorpay_order_id
-    for (let seat of this.selectedSeats) {
+    for (let seat of arr) {
     let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
     this.bookseat
     .bookSeats(seats, this.id)
     .subscribe((response: any) => {
-    console.log(response)
-    /*   window.location.reload(); */
+      if (response.error) {
+        alert(`Error: ${response.error}`);
+      } else {
+        alert(`Booked seat: ${seat}`);
+      }
     });
   }
+  this.selectedSeats = "";
+  alert(this.selectedSeats)
     this.routeService.toConfirmation(); 
   }
 

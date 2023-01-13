@@ -94,8 +94,8 @@
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Total Seats</mat-label>
-                        <input matInput placeholder="eg 62" type="number" required formControlName="seats" min="1"
-                            max="150">
+                        <input matInput  type="number" required formControlName="seats" min="1"
+                            max="150" readonly [(ngModel)] = "totalSeats">
                         <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('required')">Total seats is
                             required</mat-error>
                         <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('max')">Total seats cannot

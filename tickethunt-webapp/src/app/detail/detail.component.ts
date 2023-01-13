@@ -23,6 +23,12 @@ export class DetailComponent {
         this.dataService.getEvent1(id).subscribe(data => {
               console.log(data);
               this.event = data;
+              localStorage.setItem("eventName", this.event.eventName);
+              localStorage.setItem("date", this.event.date);
+              localStorage.setItem("venue", this.event.venue);
+
+
+
               console.log(data);
              })
       }
@@ -30,7 +36,7 @@ export class DetailComponent {
     
   }
   book() {
-    this.router.navigate(['booking/' + this.event]);
+    this.router.navigate(['booking/' + this.event.eventId]);
   }
   
 }

@@ -69,6 +69,7 @@ export class CreateComponent implements OnInit {
   fileHandler: FileHandle[] = [];
   file1: any;
   files: any[] = [];
+  totalSeats=50;
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {

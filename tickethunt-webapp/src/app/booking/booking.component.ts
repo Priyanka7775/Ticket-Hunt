@@ -26,7 +26,7 @@ export class BookingComponent implements OnInit {
   currentDate: any = new Date();
 
   id: any;
-
+  eventName = localStorage.getItem('eventName');
   constructor(
     private bookingsService: BookingServiceService,
     private fb: FormBuilder,
@@ -42,10 +42,11 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((param) => {
+     this.route.paramMap.subscribe((param) => {
       this.id = param.get('id');
-    });
-    this.loadData();
+    }); 
+   
+    /* this.loadData(); */
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -54,11 +55,6 @@ export class BookingComponent implements OnInit {
   }
 
   movies: Movie[] = [];
-
-  loadData() {
-    let id = parseInt(this.id);
-    this.dataService.getMovieById(id).subscribe((data) => (this.movies = data));
-  }
 
   bookings: any;
   occupiedSeats: any[] = [];
@@ -86,20 +82,21 @@ export class BookingComponent implements OnInit {
   }
 
   updateOccupiedSeats(): void {
-    for (const booking of this.bookings) {
-      this.eventDate = booking.date
-      for(const seat of booking.seatList) {
+   
+      this.eventDate = this.bookings.date
+      for(const data of this.bookings){
+      for(const seat of data.seatList) {
       this.occupiedSeats.push(seat.seatNumber);
       }
     }
   }
 
   bookSeat() {
-    const logData = this.booking.value;
-    let cost = this.price * this.selectedSeats.length;
+/*     const logData = this.booking.value;
+ */    let cost = this.price * this.selectedSeats.length;
     
     this.router.navigate(['/payment'], {
-      queryParams: { showName: this.movies[0].name,
+      queryParams: { showName: this.eventName,
       seats: this.selectedSeats, price: cost,
       date: this.eventDate,
       id: this.id }
