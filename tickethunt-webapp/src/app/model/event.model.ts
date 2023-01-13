@@ -12,6 +12,7 @@ export type EventData = {
     eventType?: string,
     description?:string
     price?: Number,
+    rating?:Number
     // image?: any,
     
 }

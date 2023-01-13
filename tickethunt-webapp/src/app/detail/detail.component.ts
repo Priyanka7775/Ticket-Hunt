@@ -30,7 +30,7 @@ export class DetailComponent {
     
   }
   book() {
-    this.router.navigate(['booking/' + this.event]);
+    this.router.navigate(['booking/' + this.event.eventId]);
   }
   
 }

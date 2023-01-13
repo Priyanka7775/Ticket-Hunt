@@ -27,5 +27,6 @@ public class Event {
     private String eventType;
     private String description;
     private int price;
+    private double rating;
 
 }
