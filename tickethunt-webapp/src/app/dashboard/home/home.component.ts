@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private dataService: DataService,private route: Router) { }
   p:number=1;
+  p1:number=1;
   itemsPerPage:number=5;
+ 
   total:any
   @Input()
   events1:any;
