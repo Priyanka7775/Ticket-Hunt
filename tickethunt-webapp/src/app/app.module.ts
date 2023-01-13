@@ -41,6 +41,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { DetailComponent } from './detail/detail.component';
+import { NextDirective } from './next.directive';
+import { PrevDirective } from './prev.directive';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { DetailComponent } from './detail/detail.component';
     PaymentComponent,
     ConfirmationComponent,
     DetailComponent,
+    NextDirective,
+    PrevDirective,
   ],
   imports: [
     BrowserModule,

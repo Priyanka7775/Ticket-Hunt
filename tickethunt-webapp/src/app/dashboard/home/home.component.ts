@@ -12,11 +12,6 @@ import { DataService } from 'src/app/service/data.service';
 export class HomeComponent implements OnInit {
 
   constructor(private dataService: DataService,private route: Router) { }
-  p:number=1;
-  p1:number=1;
-  itemsPerPage:number=5;
- 
-  total:any
   @Input()
   events1:any;
   events2:any;
@@ -26,12 +21,6 @@ export class HomeComponent implements OnInit {
   image:string =''
   
   ngOnInit(): void {
-    // this.dataService.getAllEvents2().subscribe(
-    //   response=>{
-    //     console.log("events")
-    //     this.events=response;
-    //   }
-    // )
     this.viewEvent();
     this.viewMovie();
     
@@ -42,7 +31,7 @@ export class HomeComponent implements OnInit {
       response=>{
         console.log("movie")
         this.events1=response;
-        this.total=response.length;
+        
       }
       
     )
@@ -60,17 +49,12 @@ export class HomeComponent implements OnInit {
   
     
   }
+  navigateToMovieDetail(eventId:any){
+    this.route.navigate(["detail",eventId])
+  }
   
 
 
-  // ngOnInit(): void {
-  //   this.getAll();
-  // }
-  
-  // getAll(){
-  //   this.dataService.getAllMovies().subscribe(movie => {
-  //     this.movies = movie;
-  //   })
-  // }
+ 
 
 }
