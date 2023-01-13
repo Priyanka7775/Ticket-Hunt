@@ -18,8 +18,9 @@ public class CommonUser {
     private String eventType;
     private String description;
     private int price;
+    private double rating;
 
-    public CommonUser(String eventId, String email, String eventName, String organizerName, String date, String time, String venue, byte[] image, int totalSeat, String eventType, String description, int price) {
+    public CommonUser(String eventId, String email, String eventName, String organizerName, String date, String time, String venue, byte[] image, int totalSeat, String eventType, String description, int price, double rating) {
         this.eventId = eventId;
         this.email = email;
         this.eventName = eventName;
@@ -32,5 +33,6 @@ public class CommonUser {
         this.eventType = eventType;
         this.description = description;
         this.price = price;
+        this.rating = rating;
     }
 }
