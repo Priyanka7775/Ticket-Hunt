@@ -63,7 +63,7 @@ export class BookingComponent implements OnInit {
   bookingData: any;
   seatData: any[] = [];
 
-  eventDate: Date = new Date();
+  eventDate: any;
 
   getSeatsOfEvent(id: string) {
     this.bookingsService
@@ -71,7 +71,6 @@ export class BookingComponent implements OnInit {
       .subscribe((response: any) => {
         this.bookings = response;
         this.updateOccupiedSeats();
-        this.selectedSeats = [];
         console.log(this.bookings)
       
       });
@@ -83,9 +82,10 @@ export class BookingComponent implements OnInit {
 
   updateOccupiedSeats(): void {
    
-      this.eventDate = this.bookings.date
+    
       for(const data of this.bookings){
-      for(const seat of data.seatList) {
+/*         this.eventDate = data.date
+ */        for(const seat of data.seatList) {
       this.occupiedSeats.push(seat.seatNumber);
       }
     }

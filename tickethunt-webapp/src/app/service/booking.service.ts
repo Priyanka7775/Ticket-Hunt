@@ -45,7 +45,7 @@ export class BookingServiceService {
 
   cancelSeats(seat: any, eventId: any) : Observable<any> {
 
-    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/rohit@gmail.com/${seat}`)
+    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/qqq/${seat}`)
 
   }
 

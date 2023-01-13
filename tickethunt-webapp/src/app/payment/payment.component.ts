@@ -6,6 +6,7 @@ import { RouteService } from '../service/route.service';
 import { ActivatedRoute } from '@angular/router';
 import { BookingServiceService } from '../service/booking.service';
 import { Seats } from '../model/bookings';
+import { delay } from 'rxjs';
 
 declare var Razorpay: any;
 
@@ -158,11 +159,14 @@ export class PaymentComponent {
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
-    let arr = Array.from(this.selectedSeats);
-
+    
+  
     let transactionId = event.detail.razorpay_order_id
-    for (let seat of arr) {
+    for (let seat of this.selectedSeats) {
     let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
+     
+    setTimeout(() => {
+    }, 3000)
     this.bookseat
     .bookSeats(seats, this.id)
     .subscribe((response: any) => {
@@ -173,8 +177,6 @@ export class PaymentComponent {
       }
     });
   }
-  this.selectedSeats = "";
-  alert(this.selectedSeats)
     this.routeService.toConfirmation(); 
   }
 
