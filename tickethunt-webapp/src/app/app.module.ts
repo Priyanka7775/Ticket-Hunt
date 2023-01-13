@@ -15,6 +15,7 @@ import { TileComponent } from './dashboard/tile/tile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './dashboard/user/user.component';
 
+
 // Material Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,6 +39,8 @@ import { BookingComponent } from './booking/booking.component';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { NgxPaginationModule} from 'ngx-pagination';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     BookingHistoryComponent,
     PaymentComponent,
     ConfirmationComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMatTimepickerModule,
-    MatTableModule
+    MatTableModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

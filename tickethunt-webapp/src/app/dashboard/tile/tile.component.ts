@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/model/movie.model';
 import { DataService } from 'src/app/service/data.service';
@@ -11,6 +11,9 @@ import { DataService } from 'src/app/service/data.service';
 export class TileComponent implements OnInit {
   
   constructor(private route: ActivatedRoute, private dataService:DataService, private router:Router) { }
+ 
+  @Input()
+  events1:any;
   
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
@@ -19,6 +22,7 @@ export class TileComponent implements OnInit {
     this.getMovie();
   }
   id: any;
+  event:any ={}
 
   movies: Movie[]  = [];
 
@@ -29,4 +33,5 @@ export class TileComponent implements OnInit {
   book() {
     this.router.navigate(['booking/' + this.id]);
   }
+
 }

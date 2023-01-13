@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/model/movie.model';
 import { DataService } from 'src/app/service/data.service';
 
@@ -10,8 +11,10 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
-
+  constructor(private dataService: DataService,private route: Router) { }
+  p:number=1;
+  itemsPerPage:number=5;
+  total:any
   @Input()
   events1:any;
   events2:any;
@@ -37,7 +40,9 @@ export class HomeComponent implements OnInit {
       response=>{
         console.log("movie")
         this.events1=response;
+        this.total=response.length;
       }
+      
     )
   
     
