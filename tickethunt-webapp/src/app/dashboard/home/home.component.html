@@ -59,20 +59,27 @@
         <pagination-controls (pageChange)="p=$event"></pagination-controls>
     </div>
 
-    
+
     <h1>All Event</h1>
     <div class="all" id="all">
-        <div *ngFor="let event of events2">
-           
+       
+        <a routerLink="/detail/{{event.eventId}}" *ngFor="let event of events2 | paginate:{itemsPerPage:itemsPerPage,currentPage:p}">
+            
             <div class="event-image" >
                 <img src="data:image/png;base64,{{event.image}}" alt="" style="width:250px; height:250px ">
             </div>
+            <span class="detail-eventName">{{event.eventName}}</span><br>
+           
             <h1>{{event.eventName}}</h1>
             <h3>{{event.description}}</h3>
            
-        </div>
+        </a>
+        
+    
     </div>
-
+    <div>
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
    
    
     
