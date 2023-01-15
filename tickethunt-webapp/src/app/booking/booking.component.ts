@@ -107,7 +107,7 @@ export class BookingComponent implements OnInit {
 
     for (let seat of this.selectedSeats) {
       this.booking.controls['seatNumber'].setValue(seat);
-      alert('selected seats are=>' + seat);
+     /*  alert('selected seats are=>' + seat); */
       /* this.bookingsService
         .bookSeats(this.booking.value, this.id)
         .subscribe((response: any) => {

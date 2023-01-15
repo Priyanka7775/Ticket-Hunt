@@ -159,26 +159,31 @@ export class PaymentComponent {
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
+    console.log(typeof  this.selectedSeats);
     
   
     let transactionId = event.detail.razorpay_order_id
+    let seatsBooked = 0;
     for (let seat of this.selectedSeats) {
+    
     let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
-     
+    console.log(seat)
     setTimeout(() => {
-    }, 3000)
     this.bookseat
     .bookSeats(seats, this.id)
     .subscribe((response: any) => {
-      if (response.error) {
+     /*  if (response.error) {
         alert(`Error: ${response.error}`);
-      } else {
-        alert(`Booked seat: ${seat}`);
-      }
+      } else { */
+        console.log(seat)
+       /*  alert(`Booked seat: ${seat}`); */
+        seatsBooked++;
+        if (seatsBooked === this.selectedSeats.length) {
+          this.routeService.toConfirmation(); 
+        }
     });
+  }, 4000);
+   
   }
-    this.routeService.toConfirmation(); 
-  }
-
-
+}
 }
