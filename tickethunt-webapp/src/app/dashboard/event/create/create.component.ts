@@ -84,7 +84,7 @@ export class CreateComponent implements OnInit {
         time: basic.get('time')?.value,
         venue: basic.get('venue')?.value,
         organizerName: secondry.get('organizerName')?.value,
-        totalSeat: secondry.get('seats')?.value,
+        totalSeats: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
         description: secondry.get('description')?.value,
        price: secondry.get('price')?.value

@@ -14,10 +14,10 @@ public class BookingDTO {
     private String time;
     private String venue;
     private byte[] image;
-    private int totalSeat;
+    private int totalSeats;
     private String eventType;
 
-    public BookingDTO(String eventId, String email, String eventName, String organizerName, String date, String time, String venue, byte[] image, int totalSeat, String eventType) {
+    public BookingDTO(String eventId, String email, String eventName, String organizerName, String date, String time, String venue, byte[] image, int totalSeats, String eventType) {
         this.eventId = eventId;
         this.email = email;
         this.eventName = eventName;
@@ -26,7 +26,7 @@ public class BookingDTO {
         this.time = time;
         this.venue = venue;
         this.image = image;
-        this.totalSeat = totalSeat;
+        this.totalSeats = totalSeats;
         this.eventType = eventType;
     }
 }
