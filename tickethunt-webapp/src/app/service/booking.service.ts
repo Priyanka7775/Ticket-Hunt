@@ -31,7 +31,7 @@ export class BookingServiceService {
   }
 
   bookSeats(seat: Seats, id: any) : Observable<any> {
-
+    
     return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/qqq`, seat);
 
 
