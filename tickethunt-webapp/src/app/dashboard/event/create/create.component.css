@@ -1,5 +1,9 @@
 .container{
     padding: 30px;
+   /* background-image: url(../../../../assets/images/Image20230116131137.jpg);
+   background-size: 1000px;
+   */
+   
 }
 mat-stepper {
     width: 700px;
@@ -13,6 +17,8 @@ button{
 }
 .main{
     display: flex;
+    /* margin-left: 400px;
+     */
 }
 
 /* Slider */
@@ -73,4 +79,10 @@ button{
 }
 .file-input:active::before {
   background: -webkit-linear-gradient(top, #d4d4d4, #d4d4d4);
+}
+
+h1{
+ 
+  text-align: center;
+  font-size: 30px;
 }
