@@ -4,17 +4,17 @@
             <img src="data:image/png;base64,{{event.image}}" alt="" style="width:500px; height:500px ">
         </div>
         <div id="part2">
-            <h1 id="h1">{{event.eventName}}</h1>
+            <h1 id="name">{{event.eventName}}</h1>
 
-            <h1 id="h1">{{event.description}}</h1>
-            <span id="h1">
+            <h1 id="des">{{event.description}}</h1>
+            <span id="rating">
                 <mat-icon>star</mat-icon><span>{{event.rating}}</span>
 
             </span>
             <br>
-            <p id="h1">{{event.date}}</p>
-            <p id="h1">{{event.time}}</p>
-            <mat-card-footer id="h1">
+            <span id="date">{{event.date}}</span>
+            <h1 id="time">{{event.time}}</h1>
+            <mat-card-footer id="button">
                 <button mat-raised-button color="warn" (click)="book()">Book now</button>
             </mat-card-footer>
         </div>
