@@ -167,7 +167,7 @@ export class PaymentComponent {
     for (let seat of this.selectedSeats) {
     
     let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
-    console.log(seat)
+    console.log(seats)
     this.bookseat
     .bookSeats(seats, this.id)
     .subscribe((response: any) => {
