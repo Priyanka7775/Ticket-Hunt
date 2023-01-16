@@ -13,6 +13,7 @@ import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
+import { DetailComponent } from './detail/detail.component';
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
@@ -75,6 +76,10 @@ const routes: Routes = [
   {
     path: 'confirmation',
     component: ConfirmationComponent
+  },
+  {
+    path: 'detail/:id',
+    component: DetailComponent,
   },
 
   {

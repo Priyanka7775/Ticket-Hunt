@@ -29,9 +29,95 @@ a{
 }
 
 /* Popular */
-.popular{
+/* .popular{
     margin: 25px 0;
 }
 .recommended{
     margin: 25px 0;
+}
+
+#all{
+    display: inline-flex;
+}.event-image{
+   
+    margin: 20px;
+} */
+
+
+/* card-slider */
+.events{
+    padding: 20px 0px;
+    margin-top: 0px;
+   
+}
+.slider-wrap{
+    position: relative;
+     overflow: hidden;
+     overflow-inline:hidden;
+     height: 340px;;
+}
+.slider-main{
+    position: absolute;
+    width: 3000%;
+}
+.event{
+    display: inline-block;
+    width: 310px;
+    height: 180px;
+    position: relative;
+    margin: 0px 12px;
+    padding: 7px;
+    
+}
+
+.card{
+    cursor: pointer;
+    text-align: center;
+    height: 320px;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.8);
+    background-color:peru;
+    padding-top: 10px;
+    border-radius: 10px;
+
+    
+}
+img{
+    border-radius: 20px;
+    height: 230px;
+    width: 250px;
+    
+}
+
+.prev{
+    position: absolute;
+    left: 36px;
+    top: 120px;
+    transform: translate(-50%,-50%);
+}
+.next{
+    position: absolute;
+    right: -5px;
+    top: 120px;
+    transform: translate(-50%,-50%);
+}
+.heading{
+    margin-top: -50px;
+}
+mat-raised-button{
+    background-color: transparent;
+}
+
+
+h1 {
+    color: #0eade7;
+    font-family: arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom:10px;
+    text-align: center;
+    padding: 10px;
+   
+}#name{
+    font-size: 20px;
 }

@@ -13,7 +13,7 @@ label {
     background-color: #f7f7f7;
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
-    margin-top: 50px;
+    margin-top: -250px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 20px;
@@ -26,12 +26,12 @@ label {
     display: block;
 }
 
-.movieData{
+.container {
 
 
-    margin-top: 150px;
-    position: fixed;
+    margin-top: 250px;
     margin-left: 150px;
+
    
     
 }

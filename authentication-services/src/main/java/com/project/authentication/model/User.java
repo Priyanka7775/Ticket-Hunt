@@ -1,4 +1,4 @@
-package com.preproject.authentication.model;
+package com.project.authentication.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

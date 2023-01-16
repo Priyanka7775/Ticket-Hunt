@@ -41,8 +41,8 @@ getData(){
 delete(seat: any, eventId: any) {
 
   
-  alert("successfully canceled seat =>"+seat)
-  window.location.reload();
+/*   alert("successfully canceled seat =>"+seat)
+ */  window.location.reload();
   this.bookingsService.cancelSeats(seat, eventId).subscribe(
     (response:any) => {
 

@@ -1,15 +1,18 @@
 import { FileHandle } from "./file-handle.model";
 
 export type EventData = {
-    eventId?: String,
+    eventId?: String|null|undefined,
     email?: String,
     eventName?: String,
     date?: String,
     time?: String,
     venue?: String,
     organizerName?: String,
-    totalSeat?: Number,
+    totalSeats?: Number,
     eventType?: string,
-    // price?: Number,
+    description?:string
+    price?: Number,
+    rating?:string
     // image?: any,
+    
 }

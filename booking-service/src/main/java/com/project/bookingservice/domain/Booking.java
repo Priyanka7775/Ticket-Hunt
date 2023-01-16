@@ -20,6 +20,7 @@ public class Booking {
     private List<Seats> seatList;
     private int totalSeats;
     private String date;
+    private String time;
 
 
 

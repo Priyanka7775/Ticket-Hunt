@@ -15,11 +15,11 @@ export class BookingServiceService {
 
   id = localStorage.getItem('id');
 
-  bookSeat = `http://localhost:8081/bookings/book/1/rohit@gmail.com`;
+  bookSeat = `http://localhost:8081/bookings/book/1/qqq`;
 
-  bookingHistory = "http://localhost:8081/bookings/rohit@gmail.com"
+  bookingHistory = "http://localhost:8081/bookings/qqq"
 
-  cancel = "http://localhost:8081/bookings/cancel/1/rohit@gmail.com/"
+  cancel = "http://localhost:8081/bookings/cancel/1/qqq/"
 
   getParticularBookings(eventId: any) : Observable<any>{
     return this.http.get<Bookings>(this.url+eventId);
@@ -32,7 +32,7 @@ export class BookingServiceService {
 
   bookSeats(seat: Seats, id: any) : Observable<any> {
 
-    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/rohit@gmail.com`, seat);
+    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/a`, seat);
 
 
   }
@@ -45,7 +45,7 @@ export class BookingServiceService {
 
   cancelSeats(seat: any, eventId: any) : Observable<any> {
 
-    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/rohit@gmail.com/${seat}`)
+    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/qqq/${seat}`)
 
   }
 

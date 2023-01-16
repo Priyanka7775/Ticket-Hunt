@@ -5,6 +5,7 @@ import com.project.MovieEventService.domain.Event;
 //import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
+import com.project.MovieEventService.rabbitmq.CommonUser;
 import com.project.MovieEventService.service.EventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,13 @@ public class EventController {
         return responseEntity;
 
     }
+
+    @PostMapping("/common")
+    public  ResponseEntity<?> addEvent(@RequestBody CommonUser commonUser) {
+
+        return new ResponseEntity<>(eventService.addEvent1(commonUser), HttpStatus.OK);
+    }
+
 
     @GetMapping("event")
     public ResponseEntity<?> getAllEvent() {
@@ -128,7 +136,7 @@ public class EventController {
                                        @RequestParam("time") String time,
                                        @RequestParam("venue") String venue,
                                        @RequestParam(required = false, value = "image") MultipartFile image,
-                                       @RequestParam("totalSeat") int totalSeat,
+                                       @RequestParam("totalSeat") int totalSeats,
                                        @RequestParam("eventType") String eventType) {
         try {
             Event event = new Event();
@@ -140,7 +148,7 @@ public class EventController {
             event.setTime(time);
             event.setVenue(venue);
             event.setImage(image.getBytes());
-            event.setTotalSeat(totalSeat);
+            event.setTotalSeats(totalSeats);
             event.setEventType(eventType);
             eventService.saveImage(event);
             return new ResponseEntity<>(event, HttpStatus.OK);

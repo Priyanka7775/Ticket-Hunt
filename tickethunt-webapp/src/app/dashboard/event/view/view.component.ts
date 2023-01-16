@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventData } from 'src/app/model/event.model';
 // import { EVENTS } from 'src/app/model/events';
-
+import Swal from 'sweetalert2'
 import { DataService } from 'src/app/service/data.service';
 
 
@@ -65,12 +65,32 @@ export class ViewEventComponent implements OnInit {
   deleteNote(eventId: any) {
     this.dataService.deletePost(eventId).subscribe(data => {
       console.log("test delete")
-      alert("successfully deleted")
-      location.reload();
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+           
+          )
+          location.reload();
+        }
+       
+      })
+      
+       
     });
-
+    
   }
-
+ 
 
 
 }

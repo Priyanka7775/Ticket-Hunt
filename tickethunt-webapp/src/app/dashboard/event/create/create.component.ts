@@ -7,6 +7,7 @@ import { EventData } from 'src/app/model/event.model';
 import { FileHandle } from 'src/app/model/file-handle.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EventService } from 'src/app/service/event.service';
+import { Router } from '@angular/router';
 
 
 interface HTMLInputEvent extends Event {
@@ -21,11 +22,16 @@ interface HTMLInputEvent extends Event {
 
 export class CreateComponent implements OnInit {
 
-  
+  random:any=Math.floor(Math.random()*1000)
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService,private route:Router) {
+    this.eventId?.setValue(this.random)
+   }
+  ngOnInit(): void {
+  }
 
   // Form Data and Validations
   basic = this._formBuilder.group({
-    eventId: ['', Validators.required],
+    eventId: [''],
     eventName: ['', Validators.required],
     email: ['', Validators.required],
     date: ['', Validators.required],
@@ -36,14 +42,13 @@ export class CreateComponent implements OnInit {
     image: ['', Validators.required],
     organizerName: ['', Validators.required],
     seats: ['', Validators.required],
-    eventType: ['', Validators.required]
-    // price: ['', Validators.required]
+    eventType: ['', Validators.required],
+    description: ['', Validators.required],
+     price: ['', Validators.required]
   });
   isLinear = false;
-
-  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService) { }
-  ngOnInit(): void {
-
+  get eventId(){
+    return this.basic.get('eventId')
   }
 
   // Toggler 
@@ -65,27 +70,33 @@ export class CreateComponent implements OnInit {
   fileHandler: FileHandle[] = [];
   file1: any;
   files: any[] = [];
+  totalSeats=50;
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
     alert("check")
+    console.log(this.eventId?.value)
     // Converted this data to event type data
       let eventData: EventData = {
-        eventId: basic.get('eventId')?.value,
+        eventId: this.eventId?.value,
         email: basic.get('email')?.value,
         eventName: basic.get('eventName')?.value,
         date: formatDate(basic.get('date')?.value, 'dd-MM-yyyy', 'en-US'),
         time: basic.get('time')?.value,
         venue: basic.get('venue')?.value,
         organizerName: secondry.get('organizerName')?.value,
-        totalSeat: secondry.get('seats')?.value,
+        totalSeats: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
-        // price: secondry.get('price')?.value
+        description: secondry.get('description')?.value,
+       price: secondry.get('price')?.value
+       
       }
       console.log(eventData.eventId)
       // Use this data to save into database
       this.eventService.post(eventData, this.files[0]).subscribe(data =>
         console.log(data))
+        this.route.navigateByUrl("event/view")
+
 
     
 

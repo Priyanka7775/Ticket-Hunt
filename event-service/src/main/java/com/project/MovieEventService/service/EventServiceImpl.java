@@ -4,11 +4,16 @@ import com.project.MovieEventService.domain.Event;
 //import com.project.MovieEventService.domain.Movie;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
+import com.project.MovieEventService.proxy.BookingProxy;
+import com.project.MovieEventService.rabbitmq.BookingDTO;
+import com.project.MovieEventService.rabbitmq.CommonUser;
+import com.project.MovieEventService.rabbitmq.Producer;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,10 +27,16 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private EventRepository eventRepository;
 
-    public EventServiceImpl(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
-    }
+    @Autowired
+    private Producer producer;
 
+
+    private BookingProxy bookingProxy;
+
+    public EventServiceImpl(EventRepository eventRepository,  BookingProxy bookingProxy) {
+        this.eventRepository = eventRepository;
+        this.bookingProxy =bookingProxy;
+    }
     @Override
     public Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException {
         log.debug("Entered the register profile()");
@@ -37,10 +48,23 @@ public class EventServiceImpl implements EventService {
         } else {
             event.setImage(file.getBytes());
             registeredEvent = eventRepository.save(event);
+            ResponseEntity re = bookingProxy.saveBooking(event);
             return registeredEvent;
         }
     }
 
+    @Override
+    public Event addEvent1(CommonUser commonUser) {
+
+        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
+                commonUser.getImage(), commonUser.getTotalSeats(), commonUser.getEventType());
+        producer.sendDtoToQueue(bookingDTO);
+
+        Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
+                commonUser.getImage(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
+
+        return eventRepository.insert(event);
+    }
 
     @Override
     public List<Event> viewAllEvents() {
@@ -109,8 +133,8 @@ public class EventServiceImpl implements EventService {
         if (event.getVenue() != null) {
             existingEvent.setVenue(event.getVenue());
         }
-        if (event.getTotalSeat() != -1) {
-            existingEvent.setTotalSeat(event.getTotalSeat());
+        if (event.getTotalSeats() != -1) {
+            existingEvent.setTotalSeats(event.getTotalSeats());
         }
         return eventRepository.save(existingEvent);
     }

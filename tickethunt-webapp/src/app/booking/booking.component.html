@@ -1,8 +1,12 @@
-<div>
-  <div class="title">
-    <div >{{movies[0].name}}</div>
+<div class="image">
+   <div class="title" *ngFor="let data of bookings">
+    Show Name: {{data.eventName}}
     <br>
-    <div >PVR Cinema | 22 January 2023</div>
+    <br>
+    Show Venue: {{data.venue}}
+    <br>
+    <br>
+    Show Date: {{data.date}}
   </div>
  
    

@@ -21,12 +21,12 @@ export class BookingComponent implements OnInit {
   public seats: Array<any> = [];
   public seatAvailable: Array<any> = [];
   booking!: FormGroup;
-  price = 0;
+  price : any;
 
   currentDate: any = new Date();
 
   id: any;
-
+  eventName = localStorage.getItem('eventName');
   constructor(
     private bookingsService: BookingServiceService,
     private fb: FormBuilder,
@@ -42,10 +42,11 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((param) => {
+     this.route.paramMap.subscribe((param) => {
       this.id = param.get('id');
-    });
-    this.loadData();
+    }); 
+   
+    /* this.loadData(); */
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -55,11 +56,6 @@ export class BookingComponent implements OnInit {
 
   movies: Movie[] = [];
 
-  loadData() {
-    let id = parseInt(this.id);
-    this.dataService.getMovieById(id).subscribe((data) => (this.movies = data));
-  }
-
   bookings: any;
   occupiedSeats: any[] = [];
   selectedSeats: any[] = [];
@@ -67,7 +63,7 @@ export class BookingComponent implements OnInit {
   bookingData: any;
   seatData: any[] = [];
 
-  eventDate: Date = new Date();
+  eventDate: any;
 
   getSeatsOfEvent(id: string) {
     this.bookingsService
@@ -75,7 +71,6 @@ export class BookingComponent implements OnInit {
       .subscribe((response: any) => {
         this.bookings = response;
         this.updateOccupiedSeats();
-        this.selectedSeats = [];
         console.log(this.bookings)
       
       });
@@ -86,20 +81,22 @@ export class BookingComponent implements OnInit {
   }
 
   updateOccupiedSeats(): void {
-    for (const booking of this.bookings) {
-      this.eventDate = booking.date
-      for(const seat of booking.seatList) {
+   
+    
+      for(const data of this.bookings){
+/*         this.eventDate = data.date
+ */        for(const seat of data.seatList) {
       this.occupiedSeats.push(seat.seatNumber);
       }
     }
   }
 
   bookSeat() {
-    const logData = this.booking.value;
-    let cost = this.price * this.selectedSeats.length;
+/*     const logData = this.booking.value;
+ */    let cost = this.price * this.selectedSeats.length;
     
     this.router.navigate(['/payment'], {
-      queryParams: { showName: this.movies[0].name,
+      queryParams: { showName: this.eventName,
       seats: this.selectedSeats, price: cost,
       date: this.eventDate,
       id: this.id }
@@ -110,7 +107,7 @@ export class BookingComponent implements OnInit {
 
     for (let seat of this.selectedSeats) {
       this.booking.controls['seatNumber'].setValue(seat);
-      alert('selected seats are=>' + seat);
+     /*  alert('selected seats are=>' + seat); */
       /* this.bookingsService
         .bookSeats(this.booking.value, this.id)
         .subscribe((response: any) => {
@@ -174,7 +171,7 @@ export class BookingComponent implements OnInit {
 
   totalprice() {
     if (this.selectedSeats.length == 1) {
-      this.price = 350;
+      this.price = localStorage.getItem("price");
     }
     let totalCost = this.price * this.selectedSeats.length;
 

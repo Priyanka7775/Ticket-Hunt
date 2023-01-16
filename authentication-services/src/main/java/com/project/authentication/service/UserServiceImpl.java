@@ -1,7 +1,7 @@
-package com.preproject.authentication.service;
+package com.project.authentication.service;
 
-import com.preproject.authentication.model.User;
-import com.preproject.authentication.repository.UserRepository;
+import com.project.authentication.model.User;
+import com.project.authentication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

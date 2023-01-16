@@ -1,10 +1,10 @@
 <div class="container">
     <h1>Add an Event</h1>
     <div class="main">
-        <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+        <mat-stepper class="bg-img" orientation="vertical" [linear]="isLinear" #stepper>
 
             <!-- First form  -->
-
+            <div >
             <mat-step [stepControl]="basic">
                 <form [formGroup]="basic" enctype="multipart/form-data" id="event-info">
                     <ng-template matStepLabel>Fill out event information</ng-template>
@@ -20,12 +20,12 @@
                         <mat-error class="error" *ngIf="basic.controls['email'].hasError('required')">Event Name is
                             required</mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    <!-- <mat-form-field appearance="fill">
                         <mat-label>Event Id</mat-label>
                         <input matInput formControlName="eventId" required>
                         <mat-error class="error" *ngIf="basic.controls['eventId'].hasError('required')">Event ID is
                             required</mat-error>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <mat-form-field appearance="fill">
                         <input matInput [matDatepicker]="picker" min="{{defaultDate | date: 'yyyy-MM-dd'}}"
                             formControlName="date" placeholder="{{defaultDate | date:'MM/dd/yyyy'}}">
@@ -73,30 +73,43 @@
                             *ngIf="secondry.controls['organizerName'].hasError('required')">Organizer's
                             name is required</mat-error>
                     </mat-form-field>
+                    
+                    
+                    <mat-label>Event Type</mat-label>
+                    <mat-radio-group aria-label="Select an option" required formControlName="eventType">
+                        <mat-radio-button value="movie">movie</mat-radio-button>
+                        <mat-radio-button value="event">event</mat-radio-button>  
+                    </mat-radio-group>
+                      
 
-
-                    <mat-form-field appearance="fill">
+                    <!-- <mat-form-field appearance="fill">
                         <mat-label>Event Type</mat-label>
-                        <input matInput placeholder="Organizer name" required formControlName="eventType">
+                        <input matInput  placeholder="Organizer name" required formControlName="eventType">
                         <mat-error class="error" *ngIf="secondry.controls['eventType'].hasError('required')">Organizer's
+                            name is required</mat-error>
+                    </mat-form-field> -->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Event description</mat-label>
+                        <input matInput placeholder="description" required formControlName="description">
+                        <mat-error class="error" *ngIf="secondry.controls['description'].hasError('required')">Organizer's
                             name is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Total Seats</mat-label>
-                        <input matInput placeholder="eg 62" type="number" required formControlName="seats" min="1"
-                            max="150">
+                        <input matInput  type="number" required formControlName="seats" min="1"
+                            max="150" readonly [(ngModel)] = "totalSeats">
                         <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('required')">Total seats is
                             required</mat-error>
                         <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('max')">Total seats cannot
                             exceed more than 150</mat-error>
                     </mat-form-field>
-                    <!-- <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill">
             <mat-label>Price of one seat</mat-label>
             <input matInput placeholder="eg 62" type="number" required formControlName="price" min="100" max="800"><mat-icon class="icon" matIconPrefix>currency_rupee</mat-icon>
             <mat-error class="error" *ngIf="secondry.controls['price'].hasError('required')">Price is required</mat-error>
             <mat-error class="error" *ngIf="secondry.controls['price'].hasError('min')"> Price cannot be less than &#8377; 100</mat-error>
             <mat-error class="error" *ngIf="secondry.controls['price'].hasError('max')"> Price cannot exceed more than &#8377; 800</mat-error>
-        </mat-form-field> -->
+        </mat-form-field>
                     <div>
                         <button mat-button matStepperPrevious mat-raised-button>Back</button>
                         <button mat-button matStepperNext mat-raised-button>Next</button>
@@ -113,6 +126,7 @@
                     <button mat-button (click)="stepper.reset()" mat-raised-button>Reset</button>
                 </div>
             </mat-step>
+        </div>
         </mat-stepper>
 
         <!-- Animations for form -->
