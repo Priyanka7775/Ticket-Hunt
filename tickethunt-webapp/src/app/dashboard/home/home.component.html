@@ -1,128 +1,110 @@
 <div class="container">
-    <div class="popular">
-        <h1>Popular now !</h1>
-        <div class="tiles">
-           <a routerLink="/tile/{{movie?.id}}" *ngFor="let movie of movies">
-              <div class="tile">
-                <img src="../../../assets/images/{{movie?.cover}}.jpg" alt="Avatar" class="tile-image">
-                <span class="tile-title">{{movie?.name}}</span><br>
-                <span class="tile-year">{{movie?.year}}</span>
-            </div>
-           </a>
+  <div class="popular">
+    <h1>Popular now !</h1>
+    <div class="tiles">
+      <a routerLink="/tile/{{movie?.id}}" *ngFor="let movie of movies">
+        <div class="tile">
+          <img src="../../../assets/images/{{movie?.cover}}.jpg" alt="Avatar" class="tile-image">
+          <span class="tile-title">{{movie?.name}}</span><br>
+          <span class="tile-year">{{movie?.year}}</span>
         </div>
+      </a>
     </div>
-    <div class="recommended">
-        <h1>Recomended</h1>
-        <div class="tiles">
-             <div class="tile">
-                <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
-                <span class="tile-title">Avatar: The Way of Water</span><br>
-                <span class="tile-year">2022</span>
-            </div>
-            <div class="tile">
-                <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
-                <span class="tile-title">Avatar: The Way of Water</span><br>
-                <span class="tile-year">2022</span>
-            </div>
-            <div class="tile">
-                <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
-                <span class="tile-title">Avatar: The Way of Water</span><br>
-                <span class="tile-year">2022</span>
-            </div>
-            <div class="tile">
-                <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
-                <span class="tile-title">Avatar: The Way of Water</span><br>
-                <span class="tile-year">2022</span>
-            </div>
-        </div>
+  </div>
+  <div class="recommended">
+    <h1>Recomended</h1>
+    <div class="tiles">
+      <div class="tile">
+        <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
+        <span class="tile-title">Avatar: The Way of Water</span><br>
+        <span class="tile-year">2022</span>
+      </div>
+      <div class="tile">
+        <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
+        <span class="tile-title">Avatar: The Way of Water</span><br>
+        <span class="tile-year">2022</span>
+      </div>
+      <div class="tile">
+        <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
+        <span class="tile-title">Avatar: The Way of Water</span><br>
+        <span class="tile-year">2022</span>
+      </div>
+      <div class="tile">
+        <img src="../../../assets/images/avatar.jpg" alt="Avatar" class="tile-image">
+        <span class="tile-title">Avatar: The Way of Water</span><br>
+        <span class="tile-year">2022</span>
+      </div>
     </div>
-    
-    <br>
-    <h1>All Movie</h1>
-    <section class="">
-        <div class="container-fluid">
-          <div class="slider-wrap">
-            <div class="slider-main">
-              <div class="event" *ngFor="let event of events1" (click)="navigateToMovieDetail(event.eventId)" >
-                <!-- (click)="navigateToMovie(movie.id)" -->
-                <div class="card">
-                  <div class="card-body">
-                    <img src="data:image/png;base64,{{event.image}}" width="165px" height="140px" alt="" />
-                    <h6 class="card-subtitle mb-2 text-muted">rating:{{event.rating}}</h6>
-                    <p class="text-center movieTitle">
-                      <b>{{event.eventName}}</b>
-                    </p>
-                    <p class="releasedate">OnAir{{event.date}}</p>
-                  </div>
+  </div>
+
+  <!-- For Showing All movies -->
+  <br>
+  <h1>Trending Movie</h1>
+  <section class="">
+    <div class="container-fluid">
+      <div class="slider-wrap">
+        <div class="slider-main">
+          <div class="event" *ngFor="let event of events1" (click)="navigateToMovieDetail(event.eventId)">
+            <div class="card">
+              <div class="card-body">
+                <img src="data:image/png;base64,{{event.image}}" width="165px" height="140px" alt="" />
+
+                <div id="name">
+                  <b>{{event.eventName}}</b>
                 </div>
- 
-        
-        </div>
+                <div>Release date-{{event.date}}</div>
+                <div>Rating:{{event.rating}}</div>
+
+
+              </div>
             </div>
-            <div class="button-area">
-              <button type="button" mat-raised-button class="prev preButton" appPrev>
-                <mat-icon>arrow_back_ios</mat-icon>
-              </button>
-              <button type="button" mat-raised-button class="next nexButton" appNext>
-                <mat-icon>arrow_forward_ios</mat-icon>
-              </button>
-            </div>
+
+
           </div>
         </div>
-      <!-- </section>
-    <div class="all" id="all">
-       
-        <a routerLink="/detail/{{event.eventId}}" *ngFor="let event of events1">
-            
-            <div class="event-image" >
-                <img src="data:image/png;base64,{{event.image}}" alt="" style="width:250px; height:250px ">
-            </div>
-            <h1>{{event.eventName}}</h1>
-        
-        </a>
-        
-    
-    </div>
-    <div>
-        <pagination-controls (pageChange)="p=$event"></pagination-controls>
-    </div> -->
-
-
-    <h1>All Event</h1>
-    <section class="">
-        <div class="container-fluid">
-          <div class="slider-wrap">
-            <div class="slider-main">
-              <div class="event" *ngFor="let event of events2" (click)="navigateToMovieDetail(event.eventId)" >
-                <!-- (click)="navigateToMovie(movie.id)" -->
-                <div class="card">
-                  <div class="card-body">
-                    <img src="data:image/png;base64,{{event.image}}" width="165px" height="140px" alt="" />
-                
-                    <h6 class="card-subtitle mb-2 text-muted"> rating:{{event.rating}}</h6>
-                    
-                    <p class="text-center movieTitle">
-                      <b>{{event.eventName}}</b>
-                    </p>
-                    <p class="releasedate">OnAir{{event.date}}</p>
-                  </div>
-                </div>
- 
-        
+        <div class="button-area">
+          <button type="button" mat-raised-button class="prev preButton" appPrev>
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <button type="button" mat-raised-button class="next nexButton" appNext>
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
         </div>
-            </div>
-            <div class="button-area">
-              <button type="button" mat-raised-button class="prev preButton" appPrev>
-                <mat-icon>arrow_back_ios</mat-icon>
-              </button>
-              <button type="button" mat-raised-button class="next nexButton" appNext>
-                <mat-icon>arrow_forward_ios</mat-icon>
-              </button>
+      </div>
+    </div>
+
+
+
+    <!-- For Showing All events -->
+    <h1>Event Happening Near You</h1>
+    <section class="">
+      <div class="container-fluid">
+        <div class="slider-wrap">
+          <div class="slider-main">
+            <div class="event" *ngFor="let event of events2" (click)="navigateToMovieDetail(event.eventId)">
+
+              <div class="card">
+                <div class="card-body">
+                  <img src="data:image/png;base64,{{event.image}}" width="165px" height="140px" alt="" />
+                  <div id="name">
+                    <b>{{event.eventName}}</b>
+                  </div>
+
+                  <div>Show date-{{event.date}}</div>
+                  <div>Rating:{{event.rating}}</div>
+                </div>
+              </div>
+
+
             </div>
           </div>
+          <div class="button-area">
+            <button type="button" mat-raised-button class="prev preButton" appPrev>
+              <mat-icon>arrow_back_ios</mat-icon>
+            </button>
+            <button type="button" mat-raised-button class="next nexButton" appNext>
+              <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+          </div>
         </div>
-   
-    
-            
-
-        
+      </div>

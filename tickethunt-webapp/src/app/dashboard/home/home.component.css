@@ -48,6 +48,7 @@ a{
 .events{
     padding: 20px 0px;
     margin-top: 0px;
+   
 }
 .slider-wrap{
     position: relative;
@@ -61,45 +62,31 @@ a{
 }
 .event{
     display: inline-block;
-    width: 195px;
+    width: 310px;
     height: 180px;
     position: relative;
     margin: 0px 12px;
-  
+    padding: 7px;
+    
 }
-/* .text{
-    position: absolute;
-
-} */
 
 .card{
     cursor: pointer;
     text-align: center;
     height: 320px;
-    /* background-color: rgb(200, 202, 197); */
     box-shadow: 0px 10px 10px rgba(0,0,0,0.8);
-   /* border: 3px solid green; */
+    background-color:peru;
+    padding-top: 10px;
+    border-radius: 10px;
+
     
 }
 img{
-    border-radius: 10px;
-    height: 200px;
-}p{
-    color: rgb(8, 8, 8);
+    border-radius: 20px;
+    height: 230px;
+    width: 250px;
+    
 }
-.releasedate{
-    color: rgb(52, 41, 41);
-    font-style:oblique;
-    font-weight: 500;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 12px;
-    line-height: 2px;  
-}
-.card-body{
-    height: fit-content;
-}
-
-
 
 .prev{
     position: absolute;
@@ -122,13 +109,15 @@ mat-raised-button{
 
 
 h1 {
-    color: #bed9e3;
+    color: #0eade7;
     font-family: arial, sans-serif;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: bold;
-    margin-top: 3px;
-    margin-bottom: 1px;
-    margin-left: 500px; 
-    position: relative;
+    margin-top: 10px;
+    margin-bottom:10px;
+    text-align: center;
+    padding: 10px;
    
+}#name{
+    font-size: 20px;
 }
