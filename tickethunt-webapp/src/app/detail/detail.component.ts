@@ -23,12 +23,11 @@ export class DetailComponent {
         this.dataService.getEvent1(id).subscribe(data => {
               console.log(data);
               this.event = data;
-              localStorage.setItem("eventName", this.event.eventName);
+             /*  localStorage.setItem("eventName", this.event.eventName);
               localStorage.setItem("date", this.event.date);
-              localStorage.setItem("venue", this.event.venue);
+              localStorage.setItem("venue", this.event.venue); */
 
-
-
+              localStorage.setItem("price", this.event.price)
               console.log(data);
              })
       }

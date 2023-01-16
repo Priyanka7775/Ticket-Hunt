@@ -1,6 +1,6 @@
-package com.preproject.authentication.service;
+package com.project.authentication.service;
 
-import com.preproject.authentication.model.User;
+import com.project.authentication.model.User;
 
 import java.util.Map;
 

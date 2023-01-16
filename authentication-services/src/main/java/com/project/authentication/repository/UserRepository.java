@@ -1,9 +1,9 @@
-package com.preproject.authentication.repository;
+package com.project.authentication.repository;
 /*
 JPA Repository is mainly used for managing the data in a Spring Boot Application.
 The goal of Spring Data repository abstraction is to significantly reduce the amount of boilerplate code required to implement data access layers for various persistence stores.
 */
-import com.preproject.authentication.model.User;
+import com.project.authentication.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

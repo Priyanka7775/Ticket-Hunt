@@ -21,7 +21,7 @@ export class BookingComponent implements OnInit {
   public seats: Array<any> = [];
   public seatAvailable: Array<any> = [];
   booking!: FormGroup;
-  price = 0;
+  price : any;
 
   currentDate: any = new Date();
 
@@ -171,7 +171,7 @@ export class BookingComponent implements OnInit {
 
   totalprice() {
     if (this.selectedSeats.length == 1) {
-      this.price = 350;
+      this.price = localStorage.getItem("price");
     }
     let totalCost = this.price * this.selectedSeats.length;
 
