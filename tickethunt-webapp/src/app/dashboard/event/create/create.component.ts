@@ -95,7 +95,6 @@ export class CreateComponent implements OnInit {
       // Use this data to save into database
       this.eventService.post(eventData, this.files[0]).subscribe(data =>
         console.log(data))
-        
         this.route.navigateByUrl("event/view")
 
 
