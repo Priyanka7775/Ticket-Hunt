@@ -57,11 +57,11 @@ public class EventServiceImpl implements EventService {
     public Event addEvent1(CommonUser commonUser) {
 
         BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                commonUser.getImage(), commonUser.getTotalSeat(), commonUser.getEventType());
+                commonUser.getImage(), commonUser.getTotalSeats(), commonUser.getEventType());
         producer.sendDtoToQueue(bookingDTO);
 
         Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                commonUser.getImage(), commonUser.getTotalSeat(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
+                commonUser.getImage(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
 
         return eventRepository.insert(event);
     }
@@ -133,8 +133,8 @@ public class EventServiceImpl implements EventService {
         if (event.getVenue() != null) {
             existingEvent.setVenue(event.getVenue());
         }
-        if (event.getTotalSeat() != -1) {
-            existingEvent.setTotalSeat(event.getTotalSeat());
+        if (event.getTotalSeats() != -1) {
+            existingEvent.setTotalSeats(event.getTotalSeats());
         }
         return eventRepository.save(existingEvent);
     }

@@ -23,7 +23,7 @@ public class Event {
     private String time;
     private String venue;
     private byte[] image;
-    private int totalSeat;
+    private int totalSeats;
     private String eventType;
     private String description;
     private int price;

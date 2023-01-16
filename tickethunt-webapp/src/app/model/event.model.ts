@@ -8,11 +8,11 @@ export type EventData = {
     time?: String,
     venue?: String,
     organizerName?: String,
-    totalSeat?: Number,
+    totalSeats?: Number,
     eventType?: string,
     description?:string
     price?: Number,
-    rating?:Number
+    rating?:string
     // image?: any,
     
 }

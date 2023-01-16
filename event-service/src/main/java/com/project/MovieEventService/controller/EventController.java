@@ -136,7 +136,7 @@ public class EventController {
                                        @RequestParam("time") String time,
                                        @RequestParam("venue") String venue,
                                        @RequestParam(required = false, value = "image") MultipartFile image,
-                                       @RequestParam("totalSeat") int totalSeat,
+                                       @RequestParam("totalSeat") int totalSeats,
                                        @RequestParam("eventType") String eventType) {
         try {
             Event event = new Event();
@@ -148,7 +148,7 @@ public class EventController {
             event.setTime(time);
             event.setVenue(venue);
             event.setImage(image.getBytes());
-            event.setTotalSeat(totalSeat);
+            event.setTotalSeats(totalSeats);
             event.setEventType(eventType);
             eventService.saveImage(event);
             return new ResponseEntity<>(event, HttpStatus.OK);

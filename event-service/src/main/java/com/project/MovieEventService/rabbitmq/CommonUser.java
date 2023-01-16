@@ -14,13 +14,13 @@ public class CommonUser {
     private String time;
     private String venue;
     private byte[] image;
-    private int totalSeat;
+    private int totalSeats;
     private String eventType;
     private String description;
     private int price;
     private String rating;
 
-    public CommonUser(String eventId, String email, String eventName, String organizerName, String date, String time, String venue, byte[] image, int totalSeat, String eventType, String description, int price, String rating) {
+    public CommonUser(String eventId, String email, String eventName, String organizerName, String date, String time, String venue, byte[] image, int totalSeats, String eventType, String description, int price, String rating) {
         this.eventId = eventId;
         this.email = email;
         this.eventName = eventName;
@@ -29,7 +29,7 @@ public class CommonUser {
         this.time = time;
         this.venue = venue;
         this.image = image;
-        this.totalSeat = totalSeat;
+        this.totalSeats = totalSeats;
         this.eventType = eventType;
         this.description = description;
         this.price = price;
