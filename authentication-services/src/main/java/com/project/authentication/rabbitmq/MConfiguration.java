@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MConfiguration {
     @Bean
-    public Jackson2JsonMessageConverter getMessageProducer()
-    {
+    public Jackson2JsonMessageConverter getMessageProducer() {
         return new Jackson2JsonMessageConverter();
     }
 }

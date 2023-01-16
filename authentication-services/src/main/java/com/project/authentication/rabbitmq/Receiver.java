@@ -11,13 +11,16 @@ import org.springframework.stereotype.Component;
 public class Receiver {
     @Autowired
     private UserService userService;
-    @RabbitListener(queues = "que")
-    public void getDTOAndAddToDB(RegistrationDTO regDTO) throws UserAlreadyExistsException{
-        User user =new User();
+
+    @RabbitListener(queues = "queue")
+    public void getDTOAndAddToDB(RegistrationDTO regDTO) throws UserAlreadyExistsException {
+        User user = new User();
         user.setEmail(regDTO.getEmailID());
         user.setPassword(regDTO.getPassword());
         user.setRole(regDTO.getRole());
-        User user1 =userService.addUser(user);
+
+        User user1 = userService.addUser(user);
+        System.out.println("Result =  " + user1);
     }
 
 }

@@ -4,15 +4,15 @@ public class RegistrationDTO {
     private String emailID;
     private String password;
     private String role;
-    public RegistrationDTO()
-    {
+
+    public RegistrationDTO() {
 
     }
-    public RegistrationDTO(String emailID, String password, String role)
-    {
-        this.emailID=emailID;
-        this.password=password;
-        this.role=role;
+
+    public RegistrationDTO(String emailID, String password, String role) {
+        this.emailID = emailID;
+        this.password = password;
+        this.role = role;
     }
 
     public String getEmailID() {
