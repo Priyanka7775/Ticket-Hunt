@@ -1,10 +1,10 @@
 <div class="container">
     <h1>Add an Event</h1>
     <div class="main">
-        <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+        <mat-stepper class="bg-img" orientation="vertical" [linear]="isLinear" #stepper>
 
             <!-- First form  -->
-
+            <div >
             <mat-step [stepControl]="basic">
                 <form [formGroup]="basic" enctype="multipart/form-data" id="event-info">
                     <ng-template matStepLabel>Fill out event information</ng-template>
@@ -98,9 +98,6 @@
                         <mat-label>Total Seats</mat-label>
                         <input matInput  type="number" required formControlName="seats" min="1"
                             max="150" readonly [(ngModel)] = "totalSeats">
-
-                        <!-- <input matInput  placeholder="eg 62" type="number" required formControlName="seats" min="1"
-                            max="150" readonly value="50"> -->
                         <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('required')">Total seats is
                             required</mat-error>
                         <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('max')">Total seats cannot
@@ -129,6 +126,7 @@
                     <button mat-button (click)="stepper.reset()" mat-raised-button>Reset</button>
                 </div>
             </mat-step>
+        </div>
         </mat-stepper>
 
         <!-- Animations for form -->

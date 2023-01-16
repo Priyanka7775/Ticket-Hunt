@@ -7,6 +7,7 @@ import { EventData } from 'src/app/model/event.model';
 import { FileHandle } from 'src/app/model/file-handle.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EventService } from 'src/app/service/event.service';
+import { Router } from '@angular/router';
 
 
 interface HTMLInputEvent extends Event {
@@ -22,7 +23,7 @@ interface HTMLInputEvent extends Event {
 export class CreateComponent implements OnInit {
 
   random:any=Math.floor(Math.random()*1000)
-  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService) {
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService,private route:Router) {
     this.eventId?.setValue(this.random)
    }
   ngOnInit(): void {
@@ -88,11 +89,15 @@ export class CreateComponent implements OnInit {
         eventType: secondry.get('eventType')?.value,
         description: secondry.get('description')?.value,
        price: secondry.get('price')?.value
+       
       }
       console.log(eventData.eventId)
       // Use this data to save into database
       this.eventService.post(eventData, this.files[0]).subscribe(data =>
         console.log(data))
+        
+        this.route.navigateByUrl("event/view")
+
 
     
 
