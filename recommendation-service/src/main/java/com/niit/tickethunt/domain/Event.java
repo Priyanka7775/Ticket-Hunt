@@ -23,4 +23,7 @@ public class Event {
     private String organizer;
     private String seats;
     private double price;
+    private String type;
+    private String description;
+    private String rating;
 }

@@ -1,6 +1,5 @@
 package com.niit.tickethunt.service;
 
-import com.niit.tickethunt.domain.Booking;
 import com.niit.tickethunt.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

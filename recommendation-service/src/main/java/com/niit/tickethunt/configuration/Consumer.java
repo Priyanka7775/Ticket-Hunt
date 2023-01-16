@@ -3,6 +3,7 @@ package com.niit.tickethunt.configuration;
 
 import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.domain.User;
+import com.niit.tickethunt.service.EventService;
 import com.niit.tickethunt.service.UserService;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -11,15 +12,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Consumer {
-    private UserService userService;
+    private final UserService userService;
+    private EventService eventService;
 
     @Autowired
-    public Consumer(UserService userService) {
+    public Consumer(UserService userService, EventService eventService) {
         this.userService = userService;
+        this.eventService = eventService;
     }
 
     @RabbitListener(queuesToDeclare = @Queue("user_data_queue"))
-    public void getUserData(UserDTO userDTO){
+    public void getUserData(UserDTO userDTO) {
         User user = new User();
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
@@ -31,14 +34,17 @@ public class Consumer {
     }
 
     @RabbitListener(queuesToDeclare = @Queue("event_data_queue"))
-    public void getEventData(EventDTO eventDTO){
+    public void getEventData(EventDTO eventDTO) {
         Event event = new Event();
         event.setName(eventDTO.getEventName());
         event.setOrganizer(eventDTO.getOrganizerName());
         event.setDate(eventDTO.getDate());
         event.setTime(eventDTO.getTime());
         event.setVenue(eventDTO.getVenue());
-        event.setSeats(String.valueOf(eventDTO.getTotalSeat()));
-
+        event.setSeats(String.valueOf(eventDTO.getTotalSeats()));
+        event.setPrice(eventDTO.getPrice());
+        event.setDescription(eventDTO.getDescription());
+        event.setRating(eventDTO.getRating());
+        eventService.save(event);
     }
 }

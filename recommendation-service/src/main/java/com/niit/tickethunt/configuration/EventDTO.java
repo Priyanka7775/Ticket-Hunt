@@ -16,22 +16,28 @@ public class EventDTO {
     private String date;
     private String time;
     private String venue;
-    private int totalSeat;
+    private int totalSeats;
     private String eventType;
+    private String description;
+    private int price;
+    private String rating;
     private JSONObject jsonObject;
 
     public EventDTO() {
     }
 
-    public EventDTO(String email, String eventName, String organizerName, String date, String time, String venue, int totalSeat, String eventType) {
+    public EventDTO(String email, String eventName, String organizerName, String date, String time, String venue, int totalSeats, String eventType, String description, int price, String rating) {
         this.email = email;
         this.eventName = eventName;
         this.organizerName = organizerName;
         this.date = date;
         this.time = time;
         this.venue = venue;
-        this.totalSeat = totalSeat;
+        this.totalSeats = totalSeats;
         this.eventType = eventType;
+        this.description = description;
+        this.price = price;
+        this.rating = rating;
     }
 
     public String getEmail() {
@@ -82,12 +88,12 @@ public class EventDTO {
         this.venue = venue;
     }
 
-    public int getTotalSeat() {
-        return totalSeat;
+    public int getTotalSeats() {
+        return totalSeats;
     }
 
-    public void setTotalSeat(int totalSeat) {
-        this.totalSeat = totalSeat;
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
     }
 
     public String getEventType() {
@@ -96,6 +102,30 @@ public class EventDTO {
 
     public void setEventType(String eventType) {
         this.eventType = eventType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public JSONObject getJsonObject() {

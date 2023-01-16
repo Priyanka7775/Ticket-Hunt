@@ -1,10 +1,8 @@
 package com.niit.tickethunt.controller;
 
-import com.niit.tickethunt.domain.Booking;
 import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.domain.User;
 import com.niit.tickethunt.exception.EventNotFoundException;
-import com.niit.tickethunt.exception.UserNotFoundException;
 import com.niit.tickethunt.service.BookingService;
 import com.niit.tickethunt.service.EventService;
 import com.niit.tickethunt.service.UserService;
