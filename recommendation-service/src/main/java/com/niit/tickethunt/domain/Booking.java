@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.util.List;
 
@@ -19,9 +20,11 @@ public class Booking {
     @Id
     @GeneratedValue
     private Long id;
-    private List<Seats> seatList;
     private int totalSeats;
     private String date;
     private String email;
     private String payment;
+    @Relationship(type = "BOOKING", direction = Relationship.Direction.INCOMING)
+    private List<Seats> seatList;
+
 }

@@ -1,18 +1,40 @@
 package com.niit.tickethunt.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-
-import java.util.Date;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Seats {
     private String seatNumber;
     private double price;
     private String dateOfBooking;
+
+    public Seats(String seatNumber, double price, String dateOfBooking) {
+        this.seatNumber = seatNumber;
+        this.price = price;
+        this.dateOfBooking = dateOfBooking;
+    }
+
+    public Seats() {
+    }
+
+    public String getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(String seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDateOfBooking() {
+        return dateOfBooking;
+    }
+
+    public void setDateOfBooking(String dateOfBooking) {
+        this.dateOfBooking = dateOfBooking;
+    }
 }

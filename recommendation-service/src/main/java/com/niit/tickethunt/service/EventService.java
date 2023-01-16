@@ -2,7 +2,6 @@ package com.niit.tickethunt.service;
 
 import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.exception.EventNotFoundException;
-import com.niit.tickethunt.exception.UserNotFoundException;
 import com.niit.tickethunt.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +37,16 @@ public class EventService implements IGlobalService<Event> {
 
     @Override
     public Event update(Event event) {
+        Event eventUpdate = new Event();
+        if(!event.getName().isEmpty()){
+            eventUpdate.setName(event.getName());
+        }
+        if(!event.getDate().isEmpty()){
+            eventUpdate.setDate(event.getDate());
+        }
+        if(event.getPrice() < 0){
+            eventUpdate.setPrice(event.getPrice());
+        }
         return null;
     }
 }
