@@ -17,6 +17,7 @@ export class EditEventComponent {
   
   
   ngOnInit(): void {
+    
     this.activatedRoute.paramMap.subscribe(
      
       params=>{

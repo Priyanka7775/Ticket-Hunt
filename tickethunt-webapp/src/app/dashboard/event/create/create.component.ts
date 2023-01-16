@@ -8,6 +8,7 @@ import { FileHandle } from 'src/app/model/file-handle.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EventService } from 'src/app/service/event.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 interface HTMLInputEvent extends Event {
@@ -74,7 +75,10 @@ export class CreateComponent implements OnInit {
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
-    alert("check")
+    setTimeout(()=>{
+    
+   
+    
     console.log(this.eventId?.value)
     // Converted this data to event type data
       let eventData: EventData = {
@@ -96,8 +100,18 @@ export class CreateComponent implements OnInit {
       this.eventService.post(eventData, this.files[0]).subscribe(data =>
         console.log(data))
         this.route.navigateByUrl("event/view")
+        
 
-
+      },5000)
+      Swal.fire({
+        title: 'Event Added!!!',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
     
 
   }
