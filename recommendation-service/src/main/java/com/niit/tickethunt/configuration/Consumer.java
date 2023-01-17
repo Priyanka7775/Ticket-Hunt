@@ -21,7 +21,7 @@ public class Consumer {
         this.eventService = eventService;
     }
 
-    @RabbitListener(queuesToDeclare = @Queue("user_data_queue"))
+    @RabbitListener(queuesToDeclare = @Queue("user_routing"))
     public void getUserData(UserDTO userDTO) {
         User user = new User();
         user.setName(userDTO.getName());
@@ -33,7 +33,7 @@ public class Consumer {
         userService.save(user);
     }
 
-    @RabbitListener(queuesToDeclare = @Queue("event_data_queue"))
+    @RabbitListener(queuesToDeclare = @Queue("booking_routing"))
     public void getEventData(EventDTO eventDTO) {
         Event event = new Event();
         event.setName(eventDTO.getEventName());

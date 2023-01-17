@@ -3,7 +3,6 @@ package com.niit.tickethunt.controller;
 import com.niit.tickethunt.domain.Event;
 import com.niit.tickethunt.domain.User;
 import com.niit.tickethunt.exception.EventNotFoundException;
-import com.niit.tickethunt.service.BookingService;
 import com.niit.tickethunt.service.EventService;
 import com.niit.tickethunt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,11 @@ public class GlobalController {
     private final EventService eventService;
     private final UserService userService;
 
-    private final BookingService bookingService;
 
     @Autowired
-    public GlobalController(EventService eventService, UserService userService, BookingService bookingService) {
+    public GlobalController(EventService eventService, UserService userService) {
         this.eventService = eventService;
         this.userService = userService;
-        this.bookingService = bookingService;
     }
 
     /* Event CRUD related APIs */
