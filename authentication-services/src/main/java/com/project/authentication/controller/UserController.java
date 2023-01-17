@@ -18,7 +18,7 @@ import java.util.Map;
 //enables cross-origin resource sharing only for this specific method
 @RestController
 //This annotation is used at the class level and allows the class to handle the requests made by the client.
-@RequestMapping("/niit/auth")
+@RequestMapping("/niit/auth/")
 //This annotation can be applied to class-level and/or method-level in a controller.
 //The class-level annotation maps a specific request path or pattern onto a controller.
 //You can then apply additional method-level annotations to make mappings more specific to handler methods.
@@ -28,26 +28,26 @@ public class UserController {
     @Autowired
     private UserSecurityTokenGenerator userSecurityTokenGenerator;
 
-    @GetMapping("/get")
-    public ResponseEntity<?>getAllUser(){
+    @GetMapping("get")
+    public ResponseEntity<?> getAllUser() {
         return new ResponseEntity<>(userService.getUser(), HttpStatus.FOUND);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<?>insertUser(@RequestBody User user){
+    @PostMapping("register")
+    public ResponseEntity<?> insertUser(@RequestBody User user) {
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?>userAuth(@RequestBody User user){
-        User userObj = userService.authCheck(user.getEmail(),user.getPassword());
+    @PostMapping("login")
+    public ResponseEntity<?> userAuth(@RequestBody User user) {
+        User userObj = userService.authCheck(user.getEmail(), user.getPassword());
 
-        if(userObj!=null){
-            Map<String,String> key = userSecurityTokenGenerator.tokenGenerator(user);
-            return new ResponseEntity<>(key,HttpStatus.OK);
-        }else{
+        if (userObj != null) {
+            Map<String, String> key = userSecurityTokenGenerator.tokenGenerator(user);
+            return new ResponseEntity<>(key, HttpStatus.OK);
+        } else {
 
-            return new ResponseEntity<>("User not authorized",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User not authorized", HttpStatus.NOT_FOUND);
         }
     }
 }

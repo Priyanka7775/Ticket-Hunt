@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface UserSecurityTokenGenerator {
 
-    Map<String,String> tokenGenerator(User user);
+    Map<String, String> tokenGenerator(User user);
 }

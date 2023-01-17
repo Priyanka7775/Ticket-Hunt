@@ -15,16 +15,16 @@ public class UserSecurityTokenGeneratorImpl implements UserSecurityTokenGenerato
     @Override
     public Map<String, String> tokenGenerator(User user) {
 
-        Map<String,String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         String jwtToken = Jwts.builder().setIssuer("myApp")
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS512,"mysecret")
+                .signWith(SignatureAlgorithm.HS512, "mysecret")
                 .compact();
-        Map<String,Object> map2 = new HashMap<>();
-        map.put("token",jwtToken);
+        Map<String, Object> map2 = new HashMap<>();
+        map.put("token", jwtToken);
         map.put("userEmail", String.valueOf(user));
-        map.put("Message","LoggedIn successfully");
-        map2.put("user",user);
+        map.put("Message", "LoggedIn successfully");
+        map2.put("user", user);
         return map;
     }
 }

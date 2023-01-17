@@ -14,10 +14,12 @@ public class UserServiceImpl implements UserService {
     //declaring all the bean dependencies in a Spring configuration file, Spring container can autowire relationships between collaborating beans.
     //marks a Constructor, Setter method, Properties and Config() method as to be autowired that is ‘injecting beans'(Objects) at runtime by Spring Dependency Injection mechanism
     private UserRepository userRepository;
+
     @Override
-    public List<User> getUser(){
+    public List<User> getUser() {
         return userRepository.findAll();
     }
+
     @Override
     public User addUser(User user) {
         user.setRole("USER_ROLE");
@@ -26,14 +28,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User authCheck(String email, String pass) {
-        if(userRepository.findById(email).isPresent()){
+        if (userRepository.findById(email).isPresent()) {
             User user = userRepository.findById(email).get();
-            if(user.getPassword().equals(pass)){
+            if (user.getPassword().equals(pass)) {
                 return user;
-            }else{
+            } else {
                 return null;
             }
-        }else{
+        } else {
             return null;
         }
     }
