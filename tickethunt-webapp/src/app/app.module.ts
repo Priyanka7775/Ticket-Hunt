@@ -43,6 +43,7 @@ import { NgxPaginationModule} from 'ngx-pagination';
 import { DetailComponent } from './detail/detail.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { PrevDirective } from './prev.directive';
     MatNativeDateModule,
     NgxMatTimepickerModule,
     MatTableModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

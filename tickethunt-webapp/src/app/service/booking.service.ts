@@ -15,9 +15,9 @@ export class BookingServiceService {
 
   id = localStorage.getItem('id');
 
-  bookSeat = `http://localhost:8081/bookings/book/1/qqq`;
+  bookSeat = `http://localhost:8081/bookings/book/1/rohitsnarnaware7@gmail.com`;
 
-  bookingHistory = "http://localhost:8081/bookings/qqq"
+  bookingHistory = "http://localhost:8081/bookings/rohitsnarnaware7@gmail.com"
 
   cancel = "http://localhost:8081/bookings/cancel/1/qqq/"
 
@@ -45,7 +45,7 @@ export class BookingServiceService {
 
   cancelSeats(seat: any, eventId: any) : Observable<any> {
 
-    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/qqq/${seat}`)
+    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/rohitsnarnaware7@gmail.com/${seat}`)
 
   }
 

@@ -6,7 +6,9 @@ import { RouteService } from '../service/route.service';
 import { ActivatedRoute } from '@angular/router';
 import { BookingServiceService } from '../service/booking.service';
 import { Seats } from '../model/bookings';
-import { delay } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var Razorpay: any;
 
@@ -53,7 +55,8 @@ export class PaymentComponent {
     private routeService: RouteService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private bookseat: BookingServiceService) {
+    private bookseat: BookingServiceService,
+    private spinner: NgxSpinnerService) {
 
   }
 
@@ -156,34 +159,30 @@ export class PaymentComponent {
     );
   }
 
+  
+
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
+    let index = 0
     console.log(this.selectedSeats.length);
-    
-  
-    let transactionId = event.detail.razorpay_order_id
-    let seatsBooked = 0;
-    console.log(this.selectedSeats);
-    
-    for (let seat of this.selectedSeats) {
-    
-    let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
-    console.log(seats)
-    this.bookseat
-    .bookSeats(seats, this.id)
-    .subscribe((response: any) => {
-       if (response.error) {
-        alert(`Error: ${response.error}`);
-      } else { 
-        console.log(seat)
-       /*  alert(`Booked seat: ${seat}`); */
-        seatsBooked++;
+    let transactionId = event.detail.razorpay_order_id;
+    this.spinner.show();
+    from(this.selectedSeats).pipe(
+        concatMap(seat => {
+            let seats = new Seats(seat, this.totalPrice, new Date, transactionId);
+            return this.bookseat.bookSeats(seats, this.id);
+        })
+    ).subscribe((response: any) => {
+        if (response.error) {
+            alert(`Error: ${response.error}`);
+        } else {
+            console.log(response);
+            index++
 
-        if (seatsBooked === this.selectedSeats.length) {
-          this.routeService.toConfirmation(); 
+            if(index === this.selectedSeats.length)
+            this.routeService.toConfirmation();
         }
-    }
-  })}
+    });
 }
 }
