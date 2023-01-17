@@ -1,3 +1,8 @@
+/*
+ * Author Name: Mohini
+ * Date: 1/18/2023
+ * Created With: IntelliJ IDEA Community Edition
+ */
 package com.niit.jdp.userservice.rabbitmqproducer;
 
 public class UserDTO {
@@ -49,4 +54,6 @@ public class UserDTO {
                 ", role='" + role + '\'' +
                 '}';
     }
+
+
 }

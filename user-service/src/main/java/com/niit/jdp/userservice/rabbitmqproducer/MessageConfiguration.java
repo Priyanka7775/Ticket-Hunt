@@ -1,6 +1,9 @@
+/*
+ * Author Name: Mohini
+ * Date: 1/18/2023
+ * Created With: IntelliJ IDEA Community Edition
+ */
 package com.niit.jdp.userservice.rabbitmqproducer;
-
-
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
@@ -44,5 +47,4 @@ public class MessageConfiguration {
 
         return rabbitTemplate;
     }
-
 }

@@ -1,7 +1,10 @@
+/*
+ * Author Name: Mohini
+ * Date: 1/17/2023
+ * Created With: IntelliJ IDEA Community Edition
+ */
 package com.niit.jdp.userservice.rabbitmqproducer;
-
 import java.util.List;
-
 public class CommonUser {
     private String id;
     private String name;
@@ -101,6 +104,7 @@ public class CommonUser {
                 ", role='" + role + '\'' +
                 ", interest=" + interest +
                 ", phone=" + phone +
-                '}';
-    }
+                '}';}
+
+
 }
