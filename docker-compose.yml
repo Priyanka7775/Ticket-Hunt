@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  recommendation-service:
+    image: recommendation_service
+    container_name: recommendation-service
+    build: recommendation-service
+    networks:
+      - mysql-net
+    ports:
+      - "8086:8086"
+    depends_on:
+      - neo4jService
+  neo4jService:
+    image: neo4j:latest
+    container_name: neo4jService
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/rishabh123
+      NEO4J_dbms_default__database: users
+    networks:
+      - mysql-net
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    networks:
+      - mysql-net
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
