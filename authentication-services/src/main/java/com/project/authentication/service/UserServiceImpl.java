@@ -3,6 +3,8 @@ package com.project.authentication.service;
 import com.project.authentication.model.User;
 import com.project.authentication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,8 @@ public class UserServiceImpl implements UserService {
     //declaring all the bean dependencies in a Spring configuration file, Spring container can autowire relationships between collaborating beans.
     //marks a Constructor, Setter method, Properties and Config() method as to be autowired that is ‘injecting beans'(Objects) at runtime by Spring Dependency Injection mechanism
     private UserRepository userRepository;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Override
     public List<User> getUser() {
@@ -28,15 +32,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User authCheck(String email, String pass) {
-        if (userRepository.findById(email).isPresent()) {
-            User user = userRepository.findById(email).get();
-            if (user.getPassword().equals(pass)) {
-                return user;
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
+//        if (userRepository.findById(email).isPresent()) {
+//            User user = userRepository.findById(email).get();
+//            if (user.getPassword().equals(pass)) {
+//                return user;
+//            } else {
+//                return null;
+//            }
+//        } else {
+//            return null;
+//        }
+        User user = userRepository.findById(email).get();
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+        msg.setSubject("Login");
+        msg.setText("You have successfully logged in!!!!.");
+        javaMailSender.send(msg);
+        return user;
     }
 }
