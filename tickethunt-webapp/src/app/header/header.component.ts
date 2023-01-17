@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     this.validateLogin();
   }
 
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
   role: string = '';
 
   toggle() {
@@ -42,5 +42,9 @@ export class HeaderComponent implements OnInit {
     setInterval(() => {
       this.isLoggedIn = this.authService.isUserLogedIn;
     }, 500);
+  }
+  
+  logout() {
+    this.isLoggedIn = false;
   }
 }
