@@ -30,7 +30,7 @@
               'seat-disabled': isSeatReserved(row + '' + seat)
             }"
             [ngStyle]="{'background-color': getSeatColor(row + '' + seat)}"            (click)="seatSelect(row + '' + seat)"
-
+            class="seat"
           >
             {{ row + "" + seat }}
           </div>

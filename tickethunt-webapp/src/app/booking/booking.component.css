@@ -3,7 +3,7 @@ table {
     border: 2px solid;
     margin: auto;
     width: 80% !important;
-    height: 70% !important;
+    height:  80% !important;
     margin-left: 75px;
   }
   
@@ -14,19 +14,18 @@ table {
     margin: 10px;
     padding: 10px;
     text-align: center;
-    color: black;
     font-size: 30px;
   }
   
   .seat-selected {
     cursor: pointer;
     background: rgba(74, 158, 74, 0.582);
-    color: black;
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
     text-align: center;
     font-size:30px;
+    width: 30px; height: 30px;text-align: center;
   }
   
   .seat-disabled {
@@ -39,12 +38,21 @@ table {
     text-align: center;
      font-size: 30px;
   }
+
+  .seat{
+    border-radius: 3px;
+    margin: 10px;
+    padding: 10px;  
+    font-size: 30px;
+  
+  }
   
   #submitButton {
     display: block;
     margin: auto;
     margin-top: 5px;
     font-size: 21px;
+    
   }
   
   
