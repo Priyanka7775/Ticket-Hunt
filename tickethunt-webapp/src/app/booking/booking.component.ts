@@ -134,7 +134,7 @@ export class BookingComponent implements OnInit {
   getSeatColor(seatNumber: string) {
     if (this.occupiedSeats.includes(seatNumber)) {
 
-      return 'rgba(212, 43, 43, 0.767)';
+      return 'grey';
 
     }
     if (!this.selectedSeats.includes(seatNumber)) {

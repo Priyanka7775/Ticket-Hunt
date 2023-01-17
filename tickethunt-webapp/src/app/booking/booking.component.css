@@ -30,13 +30,13 @@ table {
   
   .seat-disabled {
     cursor: not-allowed;
-    background: rgba(212, 43, 43, 0.767);
+    background: grey;
     color: black;
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
     text-align: center;
-     font-size: 30px;
+    font-size: 30px;
   }
 
   .seat{
@@ -44,6 +44,7 @@ table {
     margin: 10px;
     padding: 10px;  
     font-size: 30px;
+    width: 60px; height: 60px;
   
   }
   
@@ -128,4 +129,51 @@ table {
 .image{
 
   background-image: url(../../assets/images/seats.png);
+  background-repeat: inherit;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+  overflow-x: scroll;
+  }
+  table {
+  width: 100%;
+  table-layout: fixed;
+  }
+  .seat {
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  }
+  }
+  
+/*   @media only screen and (min-width: 768px) and (max-width: 992px) {
+  .container {
+  overflow-x: scroll;
+  }
+  table {
+  width: 100%;
+  table-layout: fixed;
+  }
+  .seat {
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  }
+  }
+  
+  @media only screen and (min-width: 992px) {
+  .container {
+  overflow-x: scroll;
+  }
+  table {
+  width: 100%;
+  table-layout: fixed;
+  }
+  .seat {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  }
+  } */
