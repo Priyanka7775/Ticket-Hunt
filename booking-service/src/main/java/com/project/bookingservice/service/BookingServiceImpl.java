@@ -6,6 +6,8 @@ import com.project.bookingservice.exceptions.*;
 import com.project.bookingservice.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -17,10 +19,12 @@ public class BookingServiceImpl implements BookingService {
 
     private ResponseEntity responseEntity;
     private BookingRepository bookingRepository;
-
+    private JavaMailSender javaMailSender;
     @Autowired
-    private BookingServiceImpl(BookingRepository bookingRepository) {
+    private BookingServiceImpl(BookingRepository bookingRepository, JavaMailSender javaMailSender) {
         this.bookingRepository = bookingRepository;
+        this.javaMailSender = javaMailSender;
+
     }
 
 
@@ -56,6 +60,13 @@ public class BookingServiceImpl implements BookingService {
             seatsList.add(seats);
             booking.setSeatList(seatsList);
         }
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+        msg.setSubject("Booking Details");
+        msg.setText("You have successfully booked your seat!!!!.");
+        javaMailSender.send(msg);
+
 
         return bookingRepository.save(booking);
     }

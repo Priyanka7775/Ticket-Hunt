@@ -164,6 +164,8 @@ export class PaymentComponent {
   
     let transactionId = event.detail.razorpay_order_id
     let seatsBooked = 0;
+    console.log(this.selectedSeats);
+    
     for (let seat of this.selectedSeats) {
     
     let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
@@ -177,6 +179,7 @@ export class PaymentComponent {
         console.log(seat)
        /*  alert(`Booked seat: ${seat}`); */
         seatsBooked++;
+
         if (seatsBooked === this.selectedSeats.length) {
           this.routeService.toConfirmation(); 
         }
