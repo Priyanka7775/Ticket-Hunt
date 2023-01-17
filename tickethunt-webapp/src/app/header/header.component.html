@@ -15,9 +15,13 @@
     </div>
     <a routerLink="/"></a>
   </nav>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="login" color="primary" title="Login"
+  <button *ngIf="!isLoggedIn"mat-icon-button class="example-icon favorite-icon" aria-label="login" color="primary" title="Login"
     routerLink="/login">
     <mat-icon>person</mat-icon>
+  </button>
+  <button *ngIf="isLoggedIn" mat-icon-button class="example-icon favorite-icon" aria-label="login" color="primary" title="Login"
+    routerLink="/login">
+    <mat-icon>logout</mat-icon>
   </button>
   <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
