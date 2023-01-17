@@ -13,7 +13,7 @@ public interface BookingRepository extends MongoRepository<Booking, String> {
 
     List<Booking> findByEmail(String email);
 
-////   Booking findBySeatListSeatNumber(String evenId, String seatNumber);
+    ////   Booking findBySeatListSeatNumber(String evenId, String seatNumber);
 //
 //    Booking findByEventIdAndSeatListSeatNumber(String evenId, String seatNumber);
 //

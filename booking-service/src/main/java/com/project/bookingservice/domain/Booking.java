@@ -4,6 +4,7 @@ package com.project.bookingservice.domain;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 @Data
@@ -21,7 +22,6 @@ public class Booking {
     private int totalSeats;
     private String date;
     private String time;
-
 
 
 }
