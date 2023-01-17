@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
+  constructor(private authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.toggleTimeout();
+    this.validateLogin();
   }
-  
+
+  isLoggedIn: boolean = false;
+  role: string = '';
+
   toggle() {
     const menu = document.getElementById('event-menu');
     if (menu?.classList.contains('menu-active')) {
@@ -22,7 +27,7 @@ export class HeaderComponent implements OnInit {
       menu?.classList.add('menu-active');
     }
   }
-  
+
   toggleTimeout() {
     const menu = document.getElementById('event-menu');
     setInterval(() => {
@@ -33,4 +38,9 @@ export class HeaderComponent implements OnInit {
     }, 5000);
   }
 
+  validateLogin() {
+    setInterval(() => {
+      this.isLoggedIn = this.authService.isUserLogedIn;
+    }, 500);
+  }
 }
