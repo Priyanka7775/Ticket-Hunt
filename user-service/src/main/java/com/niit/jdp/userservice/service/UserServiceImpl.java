@@ -8,6 +8,9 @@ package com.niit.jdp.userservice.service;
 import com.niit.jdp.userservice.domain.User;
 import com.niit.jdp.userservice.exception.UserAlreadyExistsException;
 import com.niit.jdp.userservice.exception.UserNotFoundException;
+import com.niit.jdp.userservice.rabbitmqproducer.CommonUser;
+import com.niit.jdp.userservice.rabbitmqproducer.Producer;
+import com.niit.jdp.userservice.rabbitmqproducer.UserDTO;
 import com.niit.jdp.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +21,12 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
+    private Producer producer;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, Producer producer) {
         this.userRepository = userRepository;
+        this.producer = producer;
     }
 
     @Override
@@ -76,5 +81,17 @@ public class UserServiceImpl implements IUserService {
             existingUser.setPhone(user.getPhone());
         }
         return userRepository.save(existingUser);
+    }
+
+    @Override
+    public User addUser1(CommonUser commonUser) {
+        UserDTO userDTO = new UserDTO(commonUser.getEmail(), commonUser.getPassword(), commonUser.getRole());
+        producer.sendDTOToQueue(userDTO);
+
+        User user = new User(commonUser.getId(), commonUser.getName(), commonUser.getEmail(),
+                commonUser.getPassword(), commonUser.getCity(), commonUser.getRole(),
+                commonUser.getInterest(), commonUser.getPhone());
+
+        return userRepository.insert(user);
     }
 }

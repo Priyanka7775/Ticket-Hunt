@@ -8,6 +8,7 @@ package com.niit.jdp.userservice.controller;
 import com.niit.jdp.userservice.domain.User;
 import com.niit.jdp.userservice.exception.UserAlreadyExistsException;
 import com.niit.jdp.userservice.exception.UserNotFoundException;
+import com.niit.jdp.userservice.rabbitmqproducer.CommonUser;
 import com.niit.jdp.userservice.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -65,6 +66,11 @@ public class UserController {
     @PutMapping("update/{email}")
     public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable String email) throws UserNotFoundException {
         return new ResponseEntity<>(iUserService.updateUser(email, user), HttpStatus.OK);
+    }
+
+    @PostMapping("commonUser")
+    public ResponseEntity<?> addUserDetails(@RequestBody CommonUser commonUser) {
+        return new ResponseEntity<>(iUserService.addUser1(commonUser), HttpStatus.OK);
     }
 
 }
