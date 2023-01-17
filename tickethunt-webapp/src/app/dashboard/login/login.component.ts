@@ -25,9 +25,12 @@ export class LoginComponent {
           response=>{
             console.log(response);
             this.responseData=response;
+            console.log(response)
             console.log("token : "+this.responseData.token);
             sessionStorage.setItem('jwtkey',this.responseData.token);
             sessionStorage.setItem('userEmail',this.responseData.userEmail);
+            let email = this.responseData.userEmail.split('=')[1].split(',')[0];
+            sessionStorage.setItem('emailId', email);
             alert("Welcome to our app, user!");
             if(this.authService.isUserLogedIn==true){
               this.router.navigateByUrl("/home")

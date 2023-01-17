@@ -3,7 +3,7 @@ table {
     border: 2px solid;
     margin: auto;
     width: 80% !important;
-    height: 70% !important;
+    height:  80% !important;
     margin-left: 75px;
   }
   
@@ -14,30 +14,38 @@ table {
     margin: 10px;
     padding: 10px;
     text-align: center;
-    color: black;
     font-size: 30px;
   }
   
   .seat-selected {
     cursor: pointer;
     background: rgba(74, 158, 74, 0.582);
-    color: black;
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
     text-align: center;
     font-size:30px;
+    width: 30px; height: 30px;text-align: center;
   }
   
   .seat-disabled {
     cursor: not-allowed;
-    background: rgba(212, 43, 43, 0.767);
+    background: grey;
     color: black;
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
     text-align: center;
-     font-size: 30px;
+    font-size: 30px;
+  }
+
+  .seat{
+    border-radius: 3px;
+    margin: 10px;
+    padding: 10px;  
+    font-size: 30px;
+    width: 60px; height: 60px;
+  
   }
   
   #submitButton {
@@ -45,6 +53,7 @@ table {
     margin: auto;
     margin-top: 5px;
     font-size: 21px;
+    
   }
   
   
@@ -120,4 +129,51 @@ table {
 .image{
 
   background-image: url(../../assets/images/seats.png);
+  background-repeat: inherit;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+  overflow-x: scroll;
+  }
+  table {
+  width: 100%;
+  table-layout: fixed;
+  }
+  .seat {
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  }
+  }
+  
+/*   @media only screen and (min-width: 768px) and (max-width: 992px) {
+  .container {
+  overflow-x: scroll;
+  }
+  table {
+  width: 100%;
+  table-layout: fixed;
+  }
+  .seat {
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  }
+  }
+  
+  @media only screen and (min-width: 992px) {
+  .container {
+  overflow-x: scroll;
+  }
+  table {
+  width: 100%;
+  table-layout: fixed;
+  }
+  .seat {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  }
+  } */

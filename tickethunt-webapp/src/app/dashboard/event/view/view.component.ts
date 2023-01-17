@@ -83,7 +83,10 @@ export class ViewEventComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         )
-        location.reload();
+        setTimeout(()=>{
+          location.reload();
+        },4000)
+        
       }
     })
     

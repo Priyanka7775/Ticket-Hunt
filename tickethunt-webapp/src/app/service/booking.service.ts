@@ -15,11 +15,20 @@ export class BookingServiceService {
 
   id = localStorage.getItem('id');
 
-  bookSeat = `http://localhost:8081/bookings/book/1/qqq`;
+  email = sessionStorage.getItem('emailId')
 
-  bookingHistory = "http://localhost:8081/bookings/qqq"
+ /*  bookSeat = `http://localhost:8081/bookings/book/1/rohitsnarnaware7@gmail.com`;
 
-  cancel = "http://localhost:8081/bookings/cancel/1/qqq/"
+  bookingHistory = "http://localhost:8081/bookings/rohitsnarnaware7@gmail.com"
+
+  cancel = "http://localhost:8081/bookings/cancel/1/qqq/" */
+
+
+
+  addBookingForNewEmail(booking :any){
+  
+    return this.http.post<any>(`http://localhost:8081/bookings/addBooking`, booking)
+  }
 
   getParticularBookings(eventId: any) : Observable<any>{
     return this.http.get<Bookings>(this.url+eventId);
@@ -32,7 +41,7 @@ export class BookingServiceService {
 
   bookSeats(seat: Seats, id: any) : Observable<any> {
 
-    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/a`, seat);
+    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/${this.email}`, seat);
 
 
   }
@@ -40,13 +49,18 @@ export class BookingServiceService {
 
   bookingHistoryOfUser() : Observable<any> {
 
-    return this.http.get<Bookings>(this.bookingHistory)
+    return this.http.get<Bookings>(`http://localhost:8081/bookings/${this.email}`)
   }
 
   cancelSeats(seat: any, eventId: any) : Observable<any> {
 
-    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/qqq/${seat}`)
+    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/${this.email}/${seat}`)
 
+  }
+
+  findByEmail(email: any): Observable<any> {
+
+    return this.http.get<any>(`http://localhost:8081/bookings/${email}`)
   }
 
 }

@@ -6,8 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public  class BookingDTO {
-
+public class BookingDTO {
 
 
     private String email;

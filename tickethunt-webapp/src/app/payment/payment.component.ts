@@ -6,7 +6,9 @@ import { RouteService } from '../service/route.service';
 import { ActivatedRoute } from '@angular/router';
 import { BookingServiceService } from '../service/booking.service';
 import { Seats } from '../model/bookings';
-import { delay } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var Razorpay: any;
 
@@ -16,6 +18,8 @@ declare var Razorpay: any;
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+
+  emailId = sessionStorage.getItem('emailId');
 
   paymentForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -53,7 +57,8 @@ export class PaymentComponent {
     private routeService: RouteService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private bookseat: BookingServiceService) {
+    private bookseat: BookingServiceService,
+    private spinner: NgxSpinnerService) {
 
   }
 
@@ -72,6 +77,7 @@ export class PaymentComponent {
     this.id = this.route.snapshot.queryParams['id'];
 
     console.log(this.date)
+
     
     this.paymentForm.controls['amount'].setValue(this.totalPrice)
 
@@ -79,6 +85,7 @@ export class PaymentComponent {
 
   paymentId: string = '';
   error: string = '';
+
 
   options = {
     "key": "",
@@ -156,31 +163,30 @@ export class PaymentComponent {
     );
   }
 
+  
+
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
+    let index = 0
     console.log(this.selectedSeats.length);
-    
-  
-    let transactionId = event.detail.razorpay_order_id
-    let seatsBooked = 0;
-    for (let seat of this.selectedSeats) {
-    
-    let  seats = new Seats(seat, this.totalPrice, new Date, transactionId)
-    console.log(seats)
-    this.bookseat
-    .bookSeats(seats, this.id)
-    .subscribe((response: any) => {
-       if (response.error) {
-        alert(`Error: ${response.error}`);
-      } else { 
-        console.log(seat)
-       /*  alert(`Booked seat: ${seat}`); */
-        seatsBooked++;
-        if (seatsBooked === this.selectedSeats.length) {
-          this.routeService.toConfirmation(); 
+    let transactionId = event.detail.razorpay_order_id;
+    this.spinner.show();
+    from(this.selectedSeats).pipe(
+        concatMap(seat => {
+            let seats = new Seats(seat, this.totalPrice, new Date, transactionId);
+            return this.bookseat.bookSeats(seats, this.id);
+        })
+    ).subscribe((response: any) => {
+        if (response.error) {
+            alert(`Error: ${response.error}`);
+        } else {
+            console.log(response);
+            index++
+
+            if(index === this.selectedSeats.length)
+            this.routeService.toConfirmation();
         }
-    }
-  })}
+    });
 }
 }

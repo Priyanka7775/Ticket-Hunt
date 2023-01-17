@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -8,6 +7,8 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from '../model/movie.model';
+import { Bookings } from '../model/bookings';
+
 import { BookingServiceService } from '../service/booking.service';
 import { DataService } from '../service/data.service';
 
@@ -41,17 +42,32 @@ export class BookingComponent implements OnInit {
     });
   }
 
+  email:any;
+  newBooking: any
+
   ngOnInit() {
      this.route.paramMap.subscribe((param) => {
       this.id = param.get('id');
     }); 
-   
+     this.email =  sessionStorage.getItem('emailId');
     /* this.loadData(); */
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
     this.seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     this.getSeatsOfEvent(this.id);
+
+    this.newBooking = {
+      email: this.email,
+      eventName: sessionStorage.getItem('eventName'),
+      eventId: sessionStorage.getItem('eventId'),
+      venue: sessionStorage.getItem('venue'),
+      totalSeats: sessionStorage.getItem('totalSeats'),
+      date: sessionStorage.getItem('date'),
+      time: sessionStorage.getItem('time')
    
+   }
+
+
   }
 
   movies: Movie[] = [];
@@ -93,10 +109,24 @@ export class BookingComponent implements OnInit {
 
   bookSeat() {
 /*     const logData = this.booking.value;
- */    let cost = this.price * this.selectedSeats.length;
+ */    
+  
+  let cost = this.price * this.selectedSeats.length;
+ 
+  this.bookingsService.findByEmail(this.email).subscribe(
+    response => {
+      console.log(response);
+      console.log(this.email);
+      
+      (response) ? console.log("Email already exists") : this.bookingsService.addBookingForNewEmail(this.newBooking)
+
+      
+    }
+  )
+    
     
     this.router.navigate(['/payment'], {
-      queryParams: { showName: this.eventName,
+      queryParams: { showName: sessionStorage.getItem('eventName'),
       seats: this.selectedSeats, price: cost,
       date: this.eventDate,
       id: this.id }
@@ -134,7 +164,7 @@ export class BookingComponent implements OnInit {
   getSeatColor(seatNumber: string) {
     if (this.occupiedSeats.includes(seatNumber)) {
 
-      return 'rgba(212, 43, 43, 0.767)';
+      return 'grey';
 
     }
     if (!this.selectedSeats.includes(seatNumber)) {

@@ -10,7 +10,7 @@
   </div>
  
    
-    <div
+    <div 
     style="width: 30px; margin-left: 928px; margin-bottom: 58px; display: block">
     <span [ngClass]="{ 'seat-disabled': true }">reserved</span>
     <span [ngClass]="{ 'seat-selected': true }">selected</span>
@@ -30,7 +30,7 @@
               'seat-disabled': isSeatReserved(row + '' + seat)
             }"
             [ngStyle]="{'background-color': getSeatColor(row + '' + seat)}"            (click)="seatSelect(row + '' + seat)"
-
+            class="seat"
           >
             {{ row + "" + seat }}
           </div>
@@ -91,10 +91,7 @@
       </button>
     </form>
   </div>
-
 </div>
-
-
 
 <div>
   <button
