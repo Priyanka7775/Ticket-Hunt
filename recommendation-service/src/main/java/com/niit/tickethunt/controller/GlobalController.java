@@ -74,17 +74,12 @@ public class GlobalController {
         int eventId = Integer.parseInt(String.valueOf(id).split("")[1]);
         return new ResponseEntity<>(userService.addBooking(eventId, userId), HttpStatus.OK);
     }
-    /* Booking CRUD related APIs */
 
-    @PostMapping("booking/{user}")
-    public ResponseEntity<?> saveBooking(@RequestBody Booking booking, @PathVariable int user){
-        bookingService.save(booking);
-        Booking book  = bookingService.findByEmail(booking.getEmail());
-        return new ResponseEntity<>(bookingService.addRelation(Math.toIntExact(book.getId()), user), HttpStatus.CREATED);
-    }
+    /*
+    * Booking CRUD related APIs
+    * There is no requirement of Booking for Neo4j
+    *
+    */
 
-    @GetMapping("bookings")
-    public ResponseEntity<?> getAll() {
-        return new ResponseEntity<>(bookingService.getAll(), HttpStatus.OK);
-    }
+
 }
