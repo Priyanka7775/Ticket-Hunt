@@ -64,7 +64,7 @@ public class BookingServiceImpl implements BookingService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(email);
         msg.setSubject("Booking Details");
-        msg.setText("You have successfully booked your seat!!!!.");
+        msg.setText("You have successfully booked your seat!!!!."+seats);
         javaMailSender.send(msg);
 
 

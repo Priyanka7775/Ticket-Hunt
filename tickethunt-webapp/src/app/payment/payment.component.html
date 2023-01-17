@@ -45,6 +45,8 @@
         name="email"
         formControlName="email"
         [class.is-invalid]="email?.invalid && email?.touched"
+        readonly
+        [(ngModel)] = "emailId"
       />
 
       <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">

@@ -1,16 +1,11 @@
 export interface Bookings {
-    email: string,
-    eventName: string,
-    eventId: string,
-    venue: string,
-    seatList: {
-        seatNumber: string,
-        price: number,
-        dateOfBooking: Date
-    },
-    totalSeats: number,
-    date: Date,
-    transactionId: string
+    email: any,
+    eventName: any,
+    eventId: any,
+    venue: any,
+    totalSeats: any,
+    time: any,
+    date: any
     
 }
 

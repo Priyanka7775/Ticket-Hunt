@@ -19,6 +19,8 @@ declare var Razorpay: any;
 })
 export class PaymentComponent {
 
+  emailId = sessionStorage.getItem('emailId');
+
   paymentForm = this.formBuilder.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
@@ -75,6 +77,7 @@ export class PaymentComponent {
     this.id = this.route.snapshot.queryParams['id'];
 
     console.log(this.date)
+
     
     this.paymentForm.controls['amount'].setValue(this.totalPrice)
 
@@ -82,6 +85,7 @@ export class PaymentComponent {
 
   paymentId: string = '';
   error: string = '';
+
 
   options = {
     "key": "",
