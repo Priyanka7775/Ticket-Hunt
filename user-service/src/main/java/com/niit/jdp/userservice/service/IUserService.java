@@ -13,8 +13,8 @@ public interface IUserService {
     List<User> getAllUser();
 
     User findByEmail(String email) throws UserNotFoundException;
-     User updateUser(String email , User user) throws UserNotFoundException;
 
+    User updateUser(String email, User user) throws UserNotFoundException;
 
 
 }

@@ -18,16 +18,17 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
-@Autowired
+
+    @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public User addUser(User user) throws UserAlreadyExistsException {
-    if(userRepository.findById(user.getEmail()).isPresent()){
-        throw new UserAlreadyExistsException();
-    }
+        if (userRepository.findById(user.getEmail()).isPresent()) {
+            throw new UserAlreadyExistsException();
+        }
         return userRepository.save(user);
     }
 
@@ -39,33 +40,39 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User findByEmail(String email) throws UserNotFoundException {
-        User user =userRepository.findByEmail(email);
-        if(user== null){
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
             throw new UserNotFoundException();
         }
         return user;
-}
+    }
 
     @Override
     public User updateUser(String email, User user) throws UserNotFoundException {
-        Optional<User> optionalUser=userRepository.findById(email);
-        if(optionalUser.isEmpty()){
+        Optional<User> optionalUser = userRepository.findById(email);
+        if (optionalUser.isEmpty()) {
             return null;
         }
-        User existingUser=optionalUser.get();
-        if (user.getEmail()!=null){
+        User existingUser = optionalUser.get();
+        if (user.getEmail() != null) {
             existingUser.setEmail(user.getEmail());
-        }if (user.getName()!=null){
+        }
+        if (user.getName() != null) {
             existingUser.setName(user.getName());
-        }if (user.getPassword()!=null){
+        }
+        if (user.getPassword() != null) {
             existingUser.setPassword(user.getPassword());
-        }if (user.getCity()!=null){
+        }
+        if (user.getCity() != null) {
             existingUser.setCity(user.getCity());
-        }if (user.getRole()!=null){
+        }
+        if (user.getRole() != null) {
             existingUser.setRole(user.getRole());
-        }if (user.getInterest()!=null){
+        }
+        if (user.getInterest() != null) {
             existingUser.setInterest(user.getInterest());
-        }if (user.getPhone()!=0){
+        }
+        if (user.getPhone() != 0) {
             existingUser.setPhone(user.getPhone());
         }
         return userRepository.save(existingUser);
