@@ -1,6 +1,6 @@
 package com.project.authentication.service;
 
-import com.project.authentication.model.User;
+import com.project.authentication.domain.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-//component is defined as a class file that includes the @Service annotation and allows developers to add business functionalities.
-public class UserSecurityTokenGeneratorImpl implements UserSecurityTokenGenerator {
+public class UserSecurityGeneratorImpl implements UserSecurityTokenGenerator {
     @Override
     public Map<String, String> tokenGenerator(User user) {
-
         Map<String, String> map = new HashMap<>();
         String jwtToken = Jwts.builder().setIssuer("myApp")
                 .setIssuedAt(new Date())

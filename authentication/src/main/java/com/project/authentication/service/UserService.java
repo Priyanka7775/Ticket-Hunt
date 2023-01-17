@@ -1,6 +1,6 @@
 package com.project.authentication.service;
 
-import com.project.authentication.model.User;
+import com.project.authentication.domain.User;
 
 import java.util.List;
 
