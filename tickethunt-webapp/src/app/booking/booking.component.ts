@@ -215,7 +215,7 @@ export class BookingComponent implements OnInit {
 
   totalprice() {
     if (this.selectedSeats.length == 1) {
-      this.price = localStorage.getItem("price");
+      this.price = sessionStorage.getItem("price");
     }
     let totalCost = this.price * this.selectedSeats.length;
 
