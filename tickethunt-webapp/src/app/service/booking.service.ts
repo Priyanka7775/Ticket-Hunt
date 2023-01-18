@@ -22,7 +22,9 @@ export class BookingServiceService {
 
   cancel = "http://localhost:8081/bookings/cancel/1/qqq/" */
 
-
+  sendEmail(email: any, message: any) {
+      return this.http.post<any>(`http://localhost:8081/bookings/${email}/${message}`,"")
+  }
 
   addBookingForNewEmail(booking :any) : Observable<any>{
     alert("called")

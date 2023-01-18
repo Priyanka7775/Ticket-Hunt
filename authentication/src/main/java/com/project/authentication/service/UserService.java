@@ -10,4 +10,6 @@ public interface UserService {
     public User addUser(User user);
 
     public User authCheck(String email, String pass);
+
+
 }

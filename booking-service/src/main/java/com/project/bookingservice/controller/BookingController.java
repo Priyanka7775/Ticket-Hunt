@@ -23,6 +23,8 @@ public class BookingController {
 
     private ResponseEntity responseEntity;
 
+
+
     @PostMapping("/addBooking")
     public ResponseEntity<?> insertBooking(@RequestBody Booking booking) throws EventAlreadyExistException {
 
@@ -45,6 +47,14 @@ public class BookingController {
         }
 
     }
+
+
+    @PostMapping("/{email}/{message}")
+    public void sendConfirmationEmail(@PathVariable String email,@PathVariable String message) {
+          bookingService.sendEmail(email, message);
+    }
+
+
 
     @DeleteMapping("/cancel/{eventId}/{email}/{seats}")
     public ResponseEntity<?> cancelSeats(@PathVariable String eventId, @PathVariable String email, @PathVariable String seats) throws SeatNotFoundException {

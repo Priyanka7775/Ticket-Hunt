@@ -15,11 +15,11 @@ declare var Razorpay: any;
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css']
+  styleUrls: ['./payment.component.css'],
 })
 export class PaymentComponent {
 
-  emailId = sessionStorage.getItem('emailId');;
+  emailId: any = sessionStorage.getItem('emailId');;
 
   paymentForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -58,7 +58,7 @@ export class PaymentComponent {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private bookseat: BookingServiceService,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService){
 
   }
 
@@ -171,6 +171,7 @@ export class PaymentComponent {
     let index = 0
     console.log(this.selectedSeats.length);
     let transactionId = event.detail.razorpay_order_id;
+    let message = `You have succesfully booked seats for the show "${sessionStorage.getItem('eventName')}" on ${sessionStorage.getItem('date')} and your booked seats are ${this.selectedSeats}...`
     this.spinner.show();
     from(this.selectedSeats).pipe(
         concatMap(seat => {
@@ -185,6 +186,13 @@ export class PaymentComponent {
             index++
 
             if(index === this.selectedSeats.length)
+            this.bookseat.sendEmail(this.email?.value, message).subscribe(
+              response => {
+
+                console.log(response);
+                
+              }
+            )
             this.routeService.toConfirmation();
         }
     });
