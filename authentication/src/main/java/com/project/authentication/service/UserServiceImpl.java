@@ -51,4 +51,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public String findRoleUsingEmail(String email) {
+        User user = userRepository.findById(email).get();
+        return user.getRole();
+    }
+
 }
