@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
 
 
     @Override
-    public Booking bookSeats(String eventId, String email, Seats seats) throws EventNotFoundException, UserNotFoundException, SeatAlreadyBookedException {
+    public Booking bookSeats(String eventId, String email, Seats seats) throws EventNotFoundException, UserNotFoundException {
 
         if (bookingRepository.findByEventIdAndEmail(eventId, email) == null) {
             throw new EventNotFoundException();

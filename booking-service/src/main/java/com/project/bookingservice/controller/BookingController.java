@@ -97,8 +97,6 @@ public class BookingController {
 
     }
 
-
-<<<<<<< HEAD
     @GetMapping("/{eventId}/{email}")
     public ResponseEntity<?> getBookingByEventIdAndEmail(@PathVariable String eventId,@PathVariable String email) throws EventNotFoundException {
         try {
@@ -109,11 +107,4 @@ public class BookingController {
         }
 
     }
-
-
-
-
-
-=======
->>>>>>> b0e77323b7a2961316d73599210064a747beb752
 }
