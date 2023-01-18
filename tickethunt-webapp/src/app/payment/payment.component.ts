@@ -19,7 +19,7 @@ declare var Razorpay: any;
 })
 export class PaymentComponent {
 
-  emailId = sessionStorage.getItem('emailId');
+  emailId = sessionStorage.getItem('emailId');;
 
   paymentForm = this.formBuilder.group({
     name: ['', Validators.required],

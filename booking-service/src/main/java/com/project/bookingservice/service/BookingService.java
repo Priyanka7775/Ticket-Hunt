@@ -21,4 +21,6 @@ public interface BookingService {
 
     List<Booking> findByEventId(String evenId);
 
+    Booking findByEventIdAndEmail(String eventId, String email);
+
 }
