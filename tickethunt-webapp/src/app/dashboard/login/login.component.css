@@ -1,29 +1,35 @@
-mat-card{
+mat-card {
     width: 550px;
     margin: auto;
     margin-top: 2rem;
     padding: 30px 20px;
 }
-mat-card-title{
+
+mat-card-title {
     color: #3f51b5;
     text-align: center;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-mat-form-field{
+
+mat-form-field {
     margin: 15px 0;
     width: 100%;
 }
-button{
+
+button {
     margin-top: 20px;
     width: 150px;
 }
-mat-card-footer{
+
+mat-card-footer {
     padding: 20px;
 }
-mat-card-footer a{
+
+mat-card-footer a {
     text-decoration: none;
 }
