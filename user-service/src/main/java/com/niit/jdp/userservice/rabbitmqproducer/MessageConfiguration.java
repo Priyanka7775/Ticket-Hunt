@@ -29,7 +29,6 @@ public class MessageConfiguration {
         String queue1 = "user_queue";
         return new Queue(queue1);
     }
-
     @Bean
     public Jackson2JsonMessageConverter getProducerJacksonConverter() {
         return new Jackson2JsonMessageConverter();
