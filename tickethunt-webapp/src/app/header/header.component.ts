@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
   ngOnInit(): void {
     this.toggleTimeout();
@@ -45,6 +46,9 @@ export class HeaderComponent implements OnInit {
   }
   
   logout() {
-    this.isLoggedIn = false;
+    this.authService.isUserLogedIn==false;
+    sessionStorage.removeItem('jwtkey');
+    sessionStorage.removeItem('userEmail');
+    this.router.navigateByUrl("");
   }
 }
