@@ -1,7 +1,6 @@
 package com.niit.tickethunt.service;
 
 import com.niit.tickethunt.domain.User;
-import com.niit.tickethunt.exception.UserNotFoundException;
 import com.niit.tickethunt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
