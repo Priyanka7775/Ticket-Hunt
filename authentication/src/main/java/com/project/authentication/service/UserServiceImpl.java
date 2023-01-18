@@ -37,7 +37,8 @@ public class UserServiceImpl implements UserService {
                 SimpleMailMessage msg = new SimpleMailMessage();
                 msg.setTo(email);
                 msg.setSubject("Login");
-                msg.setText("You have successfully logged in!!!!.");
+                msg.setText("Welcome To TICKET HUNT...\n\nHEY! You have successfully Logged In.We look forward to serving you real soon.\n \n" +
+                        "In case of any technical difficulty do drop us a mail at tickethunt@gmail.com \n \nThanks! \nTeam TICKET HUNT");
                 javaMailSender.send(msg);
                 return user;
             } else {
