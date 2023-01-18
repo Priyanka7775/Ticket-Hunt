@@ -57,16 +57,16 @@ export class BookingComponent implements OnInit {
     this.getSeatsOfEvent(this.id);
 
     this.newBooking = {
-      email: this.email,
-      eventName: sessionStorage.getItem('eventName'),
-      eventId: sessionStorage.getItem('eventId'),
-      venue: sessionStorage.getItem('venue'),
-      totalSeats: sessionStorage.getItem('totalSeats'),
-      date: sessionStorage.getItem('date'),
-      time: sessionStorage.getItem('time')
+      "email": this.email,
+      "eventName": sessionStorage.getItem('eventName'),
+      "eventId": sessionStorage.getItem('eventId'),
+      "venue": sessionStorage.getItem('venue'),
+      "totalSeats": sessionStorage.getItem('totalSeats'),
+      "date": sessionStorage.getItem('date'),
+      "time": sessionStorage.getItem('time'),
+      "seatList": []
    
    }
-
 
   }
 
@@ -107,20 +107,34 @@ export class BookingComponent implements OnInit {
     }
   }
 
+  data: any;
+
   bookSeat() {
 /*     const logData = this.booking.value;
  */    
   
   let cost = this.price * this.selectedSeats.length;
  
-  this.bookingsService.findByEmail(this.email).subscribe(
+  this.bookingsService.findByEventIdAndEmail(this.id, this.email).subscribe(
     response => {
-      console.log(response);
+      this.data = response 
+      console.log(this.data);
       console.log(this.email);
+      console.log(this.id);
       
-      (response) ? console.log("Email already exists") : this.bookingsService.addBookingForNewEmail(this.newBooking)
 
-      
+      if(this.data === null)     {
+        this.bookingsService.addBookingForNewEmail(this.newBooking).subscribe(
+          res => {
+            console.log(res);
+            
+          }, error => {
+            console.log(error);
+            
+          }
+        )
+        console.log(this.newBooking)
+      }     
     }
   )
     

@@ -106,4 +106,9 @@ public class BookingServiceImpl implements BookingService {
     public  List<Booking> findByEventId(String evenId) {
         return bookingRepository.findByEventId(evenId);
     }
+
+
+    public Booking findByEventIdAndEmail(String eventId, String email) {
+            return bookingRepository.findByEventIdAndEmail(eventId, email);
+    }
 }

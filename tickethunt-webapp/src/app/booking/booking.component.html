@@ -1,5 +1,6 @@
 <div class="image">
-   <div class="title" *ngFor="let data of bookings">
+   <div class="title" *ngFor="let data of bookings; let first = first">
+    <div *ngIf="first">
     Show Name: {{data.eventName}}
     <br>
     <br>
@@ -8,6 +9,7 @@
     <br>
     Show Date: {{data.date}}
   </div>
+</div>
  
    
     <div 

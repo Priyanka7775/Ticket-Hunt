@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthenticationService {
 
   constructor(private httpClient: HttpClient) {}
-  url="http://localhost:8092/niit/auth";
+  url="http://localhost:8084/niit/auth";
   isUserRegistered:boolean=false;
   isUserLogedIn:boolean=false;
   register(userData:any){

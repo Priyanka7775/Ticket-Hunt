@@ -16,7 +16,6 @@ export class BookingServiceService {
   id = localStorage.getItem('id');
 
   email = sessionStorage.getItem('emailId')
-
  /*  bookSeat = `http://localhost:8081/bookings/book/1/rohitsnarnaware7@gmail.com`;
 
   bookingHistory = "http://localhost:8081/bookings/rohitsnarnaware7@gmail.com"
@@ -25,9 +24,9 @@ export class BookingServiceService {
 
 
 
-  addBookingForNewEmail(booking :any){
-  
-    return this.http.post<any>(`http://localhost:8081/bookings/addBooking`, booking)
+  addBookingForNewEmail(booking :any) : Observable<any>{
+    alert("called")
+    return this.http.post<any>('http://localhost:8081/bookings/addBooking', booking);
   }
 
   getParticularBookings(eventId: any) : Observable<any>{
@@ -61,6 +60,11 @@ export class BookingServiceService {
   findByEmail(email: any): Observable<any> {
 
     return this.http.get<any>(`http://localhost:8081/bookings/${email}`)
+  }
+
+  findByEventIdAndEmail(eventId: string, email: string): Observable<any> {
+
+    return this.http.get<any>(`http://localhost:8081/bookings/${eventId}/${email}`)
   }
 
 }
