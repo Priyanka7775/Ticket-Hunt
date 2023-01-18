@@ -62,12 +62,14 @@ public class GlobalController {
         return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("user/booked/{id} ")
+    @GetMapping("user/booked/{id}")
     public ResponseEntity<?> addEvent(@PathVariable String id) {
-        int userId = 1;
+        int userId;
         if (Integer.parseInt(String.valueOf(id).split("")[0]) == 0) {
             userId = 0;
         }
+        System.err.println("Report");
+        userId = Integer.parseInt(String.valueOf(id).split("")[0]);
         int eventId = Integer.parseInt(String.valueOf(id).split("")[1]);
         return new ResponseEntity<>(userService.addBooking(eventId, userId), HttpStatus.OK);
     }

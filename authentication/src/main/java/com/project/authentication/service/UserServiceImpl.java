@@ -31,24 +31,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User authCheck(String email, String pass) {
-//        if (userRepository.findById(email).isPresent()) {
-//            User user = userRepository.findById(email).get();
-//            if (user.getPassword().equals(pass)) {
-//                return user;
-//            } else {
-//                return null;
-//            }
-//        } else {
-//            return null;
-//        }
-        User user = userRepository.findById(email).get();
+        if (userRepository.findById(email).isPresent()) {
+            User user = userRepository.findById(email).get();
+            if (user.getPassword().equals(pass)) {
+                SimpleMailMessage msg = new SimpleMailMessage();
+                msg.setTo(email);
+                msg.setSubject("Login");
+                msg.setText("You have successfully logged in!!!!.");
+                javaMailSender.send(msg);
+                return user;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+        // User user = userRepository.findById(email).get();
 
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(email);
-        msg.setSubject("Login");
-        msg.setText("You have successfully logged in!!!!.");
-        javaMailSender.send(msg);
-        return user;
+    }
+
+    @Override
+    public String findRoleUsingEmail(String email) {
+        User user = userRepository.findById(email).get();
+        return user.getRole();
     }
 
 }
