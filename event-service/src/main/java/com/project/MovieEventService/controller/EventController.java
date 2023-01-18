@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("eventData/")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class EventController {
     private EventService eventService;
