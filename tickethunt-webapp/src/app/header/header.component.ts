@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
   }
   
   logout() {
+    alert("Confirm to LogOut")
     this.authService.isUserLogedIn==false;
     sessionStorage.removeItem('jwtkey');
     sessionStorage.removeItem('userEmail');
