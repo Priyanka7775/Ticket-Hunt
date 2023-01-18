@@ -20,14 +20,13 @@ public class BookingServiceImpl implements BookingService {
     private ResponseEntity responseEntity;
     private BookingRepository bookingRepository;
     private JavaMailSender javaMailSender;
+
     @Autowired
     private BookingServiceImpl(BookingRepository bookingRepository, JavaMailSender javaMailSender) {
         this.bookingRepository = bookingRepository;
         this.javaMailSender = javaMailSender;
 
     }
-
-
 
 
     @Override
@@ -50,7 +49,7 @@ public class BookingServiceImpl implements BookingService {
         }
         System.out.println(seats);
         Booking booking = bookingRepository.findByEventIdAndEmail(eventId, email);
-        if(!booking.getEmail().equals(email)){
+        if (!booking.getEmail().equals(email)) {
             throw new UserNotFoundException();
         }
         if (booking.getSeatList() == null) {
@@ -64,7 +63,7 @@ public class BookingServiceImpl implements BookingService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(email);
         msg.setSubject("Booking Details");
-        msg.setText("You have successfully booked your seat!!!!."+seats);
+        msg.setText("You have successfully booked your seat!!!!." + seats);
         javaMailSender.send(msg);
 
 
@@ -76,7 +75,7 @@ public class BookingServiceImpl implements BookingService {
     public Booking cancelTickets(String eventId, String email, String seatNo) throws EventNotFoundException, SeatNotFoundException, UserNotFoundException {
 
         boolean flag = false;
-        if ( bookingRepository.findByEventIdAndEmail(eventId, email) == null) {
+        if (bookingRepository.findByEventIdAndEmail(eventId, email) == null) {
             throw new EventNotFoundException();
         }
 
@@ -103,7 +102,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public  List<Booking> findByEventId(String evenId) {
+    public List<Booking> findByEventId(String evenId) {
         return bookingRepository.findByEventId(evenId);
     }
 

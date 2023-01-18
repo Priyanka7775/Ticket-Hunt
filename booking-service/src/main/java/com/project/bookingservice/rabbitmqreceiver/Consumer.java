@@ -31,10 +31,7 @@ public class Consumer {
         System.out.println(book);
 
 
-
-
     }
-
 
 
 }

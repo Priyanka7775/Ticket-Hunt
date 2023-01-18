@@ -35,7 +35,7 @@ public class BookingController {
     }
 
     @PostMapping("/book/{eventId}/{email}")
-    public  ResponseEntity<?> bookSeats(@PathVariable String eventId, @PathVariable String email, @RequestBody Seats seats) throws SeatAlreadyBookedException {
+    public ResponseEntity<?> bookSeats(@PathVariable String eventId, @PathVariable String email, @RequestBody Seats seats) throws SeatAlreadyBookedException {
 
         try {
             return new ResponseEntity<>(bookingService.bookSeats(eventId, email, seats), HttpStatus.OK);
@@ -47,15 +47,14 @@ public class BookingController {
     }
 
     @DeleteMapping("/cancel/{eventId}/{email}/{seats}")
-    public ResponseEntity<?> cancelSeats(@PathVariable String eventId,@PathVariable String email,@PathVariable String seats) throws SeatNotFoundException {
+    public ResponseEntity<?> cancelSeats(@PathVariable String eventId, @PathVariable String email, @PathVariable String seats) throws SeatNotFoundException {
 
         try {
             bookingService.cancelTickets(eventId, email, seats);
             responseEntity = new ResponseEntity("Successfully deleted !!!", HttpStatus.OK);
         } catch (SeatNotFoundException e) {
             throw new SeatNotFoundException();
-        }
-        catch (Exception exception){
+        } catch (Exception exception) {
             responseEntity = new ResponseEntity(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
@@ -63,11 +62,11 @@ public class BookingController {
     }
 
     @GetMapping("/bookings")
-    public ResponseEntity<?> getAllBookings(){
+    public ResponseEntity<?> getAllBookings() {
         ResponseEntity responseEntity;
-        try{
+        try {
             responseEntity = new ResponseEntity(bookingService.getAllBookings(), HttpStatus.OK);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             responseEntity = new ResponseEntity(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
@@ -76,7 +75,7 @@ public class BookingController {
 
 
     @GetMapping("/{email}")
-    public  ResponseEntity<?> GetBookingByEmailId(@PathVariable String email) throws EventNotFoundException {
+    public ResponseEntity<?> GetBookingByEmailId(@PathVariable String email) throws EventNotFoundException {
 
         try {
             return new ResponseEntity<>(bookingService.findByEmail(email), HttpStatus.OK);
@@ -99,6 +98,7 @@ public class BookingController {
     }
 
 
+<<<<<<< HEAD
     @GetMapping("/{eventId}/{email}")
     public ResponseEntity<?> getBookingByEventIdAndEmail(@PathVariable String eventId,@PathVariable String email) throws EventNotFoundException {
         try {
@@ -114,4 +114,6 @@ public class BookingController {
 
 
 
+=======
+>>>>>>> b0e77323b7a2961316d73599210064a747beb752
 }
