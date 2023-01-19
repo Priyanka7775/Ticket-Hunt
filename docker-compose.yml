@@ -9,6 +9,7 @@ services:
     ports:
       - "8086:8086"
     depends_on:
+      - eureka-server
       - neo4jService
   neo4jService:
     image: neo4j:latest
@@ -38,7 +39,7 @@ services:
     container_name: mysqlService
     network_mode: mysql-net
     ports:
-      - 3307:3306
+      - "3307:3306"
     expose:
       - 3307
     environment:
@@ -54,27 +55,35 @@ services:
     ports:
       - "27017:27017"
   event-service:
-    image: recommendation_service
-    container_name: recommendation-service
+    image: event_service
+    container_name: event-service
     build: event-service
     networks:
-      -mysql-net:
+      - mysql-net
     ports:
       - "8088:8088"
     depends_on:
+      - eureka-server
       - mongoService
-
   booking-service:
     image: booking_service
     container_name: booking-service
     build: booking-service
     networks:
-      -mysql-net:
+      - mysql-net
     ports:
       - "8081:8081"
     depends_on:
+      - eureka-server
       - mongoService
-
+  eureka-server:
+    image: eureka_server
+    container_name: eureka-server
+    build: Eureka
+    networks:
+      - mysql-net
+    ports:
+      - "8761:8761"
 
 
 networks:
