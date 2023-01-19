@@ -4,6 +4,7 @@ import { EventData } from 'src/app/model/event.model';
 // import { EVENTS } from 'src/app/model/events';
 import Swal from 'sweetalert2'
 import { DataService } from 'src/app/service/data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class ViewEventComponent implements OnInit {
 
-  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) { }
+  constructor(private dataService: DataService,private router: Router, private activatedRoute: ActivatedRoute) { }
 
   eventDetails: any = {};
   retrieveImage: any;
@@ -35,6 +36,8 @@ export class ViewEventComponent implements OnInit {
       this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
     })
 
+    
+
     //console.log(response.length)
 
     //this.base64Data = this.eventDetails.image;
@@ -43,6 +46,15 @@ export class ViewEventComponent implements OnInit {
     //console.log(this.retrieveImage)
   }
 
+  redirectToEventManager(eventId: any) {
+    this.router.navigate([`eventmanager/${eventId}`],
+    {
+      queryParams: {
+        eventId: eventId
+      }
+    });
+}
+ 
 
   // getAllEvents() {
   //   this.dataService.getEvent1(12).subscribe(response => {

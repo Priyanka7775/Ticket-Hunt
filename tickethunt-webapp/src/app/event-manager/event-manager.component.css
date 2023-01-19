@@ -1,0 +1,43 @@
+th {
+
+    font-size: larger;
+}
+
+td{
+    font-size: larger;
+    
+}
+
+table {
+  padding: 70px;    
+}
+
+/* .event-image {
+    position: relative;
+}
+
+.event-image img {
+    width: 40%;
+    padding: 25px;
+} */
+  mat-card-content {
+    padding: 50px;
+   
+
+}
+
+.event{
+
+    margin-top: 90px;
+   text-align: center;
+}
+
+
+span {
+    font-size: 30px;
+    margin-left: 80px; 
+    font-weight: 350;
+}
+
+
+

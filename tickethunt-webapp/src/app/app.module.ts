@@ -44,6 +44,7 @@ import { DetailComponent } from './detail/detail.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { EventManagerComponent } from './event-manager/event-manager.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     DetailComponent,
     NextDirective,
     PrevDirective,
+    EventManagerComponent,
   ],
   imports: [
     BrowserModule,

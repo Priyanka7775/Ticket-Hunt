@@ -14,6 +14,7 @@ import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { DetailComponent } from './detail/detail.component';
+import { EventManagerComponent } from './event-manager/event-manager.component';
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'event/edit/:id',
     component: EditEventComponent
+  },
+  {
+    path: 'eventmanager/:id',
+    component: EventManagerComponent
   },
   {
     path: 'booking/:id',
