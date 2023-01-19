@@ -36,6 +36,7 @@
         <module>payment-service</module>
         <module>user-service</module>
         <module>authentication</module>
+        <module>Eureka</module>
     </modules>
 
     <build>
