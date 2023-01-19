@@ -14,11 +14,8 @@ import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { DetailComponent } from './detail/detail.component';
-<<<<<<< HEAD
 import { EventManagerComponent } from './event-manager/event-manager.component';
-=======
 import { HomePageComponent } from './home-page/home-page.component';
->>>>>>> 93a03e45d29075b55868154744291d4d3cde3184
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
