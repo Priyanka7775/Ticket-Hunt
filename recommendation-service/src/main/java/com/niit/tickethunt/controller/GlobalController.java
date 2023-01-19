@@ -68,7 +68,6 @@ public class GlobalController {
         if (Integer.parseInt(String.valueOf(id).split("")[0]) == 0) {
             userId = 0;
         }
-        System.err.println("Report");
         userId = Integer.parseInt(String.valueOf(id).split("")[0]);
         int eventId = Integer.parseInt(String.valueOf(id).split("")[1]);
         return new ResponseEntity<>(userService.addBooking(eventId, userId), HttpStatus.OK);
