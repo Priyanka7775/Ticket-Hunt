@@ -70,7 +70,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     NextDirective,
     PrevDirective,
     EventManagerComponent,
-    HomePageComponent,
+  
+    HomePageComponent
+
   ],
   imports: [
     BrowserModule,
