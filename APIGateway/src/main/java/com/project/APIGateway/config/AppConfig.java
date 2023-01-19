@@ -33,8 +33,8 @@ public class AppConfig {
                 )
                 .route(p -> p
                         .path("/userData/**")
-                        .uri("http://localhost:8082/"))
-
+                        .uri("http://localhost:8082/")
+                )
                 .build();
     }
 }
