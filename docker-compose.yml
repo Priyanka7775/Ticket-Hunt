@@ -58,6 +58,7 @@ services:
     image: event_service
     container_name: event-service
     build: event-service
+    restart: always
     networks:
       - mysql-net
     ports:
@@ -69,6 +70,7 @@ services:
     image: booking_service
     container_name: booking-service
     build: booking-service
+    restart: always
     networks:
       - mysql-net
     ports:
