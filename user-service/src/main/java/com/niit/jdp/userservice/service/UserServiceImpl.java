@@ -102,7 +102,7 @@ public class UserServiceImpl implements IUserService {
         msg.setSubject("Registration");
 
         msg.setText("Welcome To TICKET HUNT...\n\nHEY! You have successfully Registered, now you can login.We look forward to serving you real soon.\n \n" +
-                "In case of any technical difficulty do drop us a mail at tickethunt@gmail.com \n \nThanks! \nTeam TICKET HUNT");
+                "In case of any technical difficulty do drop us a mail at tickethunt7@gmail.com \n \nThanks! \nTeam TICKET HUNT");
         javaMailSender.send(msg);
 
         return userRepository.insert(user);

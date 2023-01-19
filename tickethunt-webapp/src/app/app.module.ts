@@ -44,11 +44,8 @@ import { DetailComponent } from './detail/detail.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
 import { NgxSpinnerModule } from 'ngx-spinner';
-<<<<<<< HEAD
 import { EventManagerComponent } from './event-manager/event-manager.component';
-=======
 import { HomePageComponent } from './home-page/home-page.component';
->>>>>>> 93a03e45d29075b55868154744291d4d3cde3184
 
 @NgModule({
   declarations: [
@@ -72,11 +69,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     DetailComponent,
     NextDirective,
     PrevDirective,
-<<<<<<< HEAD
     EventManagerComponent,
-=======
     HomePageComponent,
->>>>>>> 93a03e45d29075b55868154744291d4d3cde3184
   ],
   imports: [
     BrowserModule,
