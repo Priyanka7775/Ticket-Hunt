@@ -37,6 +37,7 @@
         <module>user-service</module>
         <module>authentication</module>
         <module>Eureka</module>
+        <module>APIGateway</module>
     </modules>
 
     <build>

@@ -10,6 +10,7 @@
         <module name="payment-service" />
         <module name="booking-service" />
         <module name="user-service" />
+        <module name="APIGateway" />
         <module name="RecommendationService" />
         <module name="Eureka" />
         <module name="MovieEventService" />
@@ -18,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="APIGateway" target="11" />
       <module name="authentication" target="11" />
       <module name="booking-service" target="11" />
       <module name="Eureka" target="11" />
@@ -31,6 +33,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="APIGateway" options="-parameters" />
       <module name="Eureka" options="-parameters" />
       <module name="MovieEventService" options="-parameters" />
       <module name="RecomendationService" options="-parameters" />
