@@ -16,7 +16,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" required>
+                        <input matInput formControlName="email"  readonly [(ngModel)] = "emailId" required>
                         <mat-error class="error" *ngIf="basic.controls['email'].hasError('required')">Event Name is
                             required</mat-error>
                     </mat-form-field>

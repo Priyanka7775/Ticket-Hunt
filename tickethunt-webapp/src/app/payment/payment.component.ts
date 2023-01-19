@@ -171,7 +171,7 @@ export class PaymentComponent {
     let index = 0
     console.log(this.selectedSeats.length);
     let transactionId = event.detail.razorpay_order_id;
-    let message = `You have succesfully booked seats for the show "${sessionStorage.getItem('eventName')}" on ${sessionStorage.getItem('date')} and your booked seats are ${this.selectedSeats}...`
+    let message = `You have succesfully booked seats for the show "${sessionStorage.getItem('eventName')}" on ${sessionStorage.getItem('date')} at ${sessionStorage.getItem('venue')} and your booked seats are ${this.selectedSeats}...`
     this.spinner.show();
     from(this.selectedSeats).pipe(
         concatMap(seat => {
