@@ -22,6 +22,8 @@ export class ViewEventComponent implements OnInit {
   @Input()
   events: any;
 
+  email:any=sessionStorage.getItem('emailId')
+
   event: any = {}
 
   ngOnInit(): void {
@@ -29,7 +31,8 @@ export class ViewEventComponent implements OnInit {
   }
 
   getEventByEmail() {
-    this.dataService.getEventByEmail('a').subscribe(response => {
+    console.log(this.email)
+    this.dataService.getEventByEmail(`${this.email}`).subscribe(response => {
       console.log(response)
       this.eventDetails = response
       this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image

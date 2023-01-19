@@ -14,12 +14,13 @@ import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { DetailComponent } from './detail/detail.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home-page',
     pathMatch: 'full'
   },
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: DetailComponent,
+  },
+  {
+    path: 'home-page',
+    component: HomePageComponent,
   },
 
   {
