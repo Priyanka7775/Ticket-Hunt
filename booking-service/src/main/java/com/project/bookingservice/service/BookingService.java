@@ -23,4 +23,6 @@ public interface BookingService {
 
     Booking findByEventIdAndEmail(String eventId, String email);
 
+    void sendEmail(String email, String message);
+
 }

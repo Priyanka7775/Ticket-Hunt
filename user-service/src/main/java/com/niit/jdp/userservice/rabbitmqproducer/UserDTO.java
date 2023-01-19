@@ -20,9 +20,10 @@ public class UserDTO {
         this.role = role;
     }
 
-
     public String getEmail() {
         return email;
+        
+        
     }
 
     public void setEmail(String email) {

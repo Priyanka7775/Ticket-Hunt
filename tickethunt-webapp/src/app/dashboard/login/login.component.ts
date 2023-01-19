@@ -10,35 +10,42 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 export class LoginComponent {
 
   constructor(private authService: AuthenticationService, private fb: FormBuilder, private router: Router) { }
-  
-    user = this.fb.group({
-        email: ['', Validators.compose([
-              Validators.required,
-              Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
-            ])],
-        password: ['', Validators.required]
-      })
-      responseData: any;
 
-      login(user: FormGroup) {
-        this.authService.login(this.user.value).subscribe(
-          response=>{
-            console.log(response);
-            this.responseData=response;
-            console.log(response)
-            console.log("token : "+this.responseData.token);
-            sessionStorage.setItem('jwtkey',this.responseData.token);
-            sessionStorage.setItem('userEmail',this.responseData.userEmail);
-            let email = this.responseData.userEmail.split('=')[1].split(',')[0];
-            sessionStorage.setItem('emailId', email);
-            alert("Welcome to our app, user!");
-            if(this.authService.isUserLogedIn==true){
-              this.router.navigateByUrl("/home")
-            }
-            else{
-              alert("Wrong Data");
-            }
-          }
-        );
+  user = this.fb.group({
+    email: ['', Validators.compose([
+      Validators.required,
+      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+    ])],
+    password: ['', Validators.required]
+  })
+  responseData: any;
+
+  login(user: FormGroup) {
+    this.authService.login(this.user.value).subscribe({
+      next: response => {
+        this.responseData = response;
+        console.log(response)
+        console.log("token : " + this.responseData.token);
+        sessionStorage.setItem('jwtkey', this.responseData.token);
+        sessionStorage.setItem('userEmail', this.responseData.userEmail);
+        sessionStorage.setItem('role', this.responseData.role)
+        console.log(this.responseData.role)
+        let email = this.responseData.userEmail.split('=')[1].split(',')[0];
+        sessionStorage.setItem('emailId', email);
+        alert("Welcome to our app, user!");
+        if (this.authService.isUserLogedIn == true) {
+          this.router.navigateByUrl("/home")
+        }
+        else {
+          alert("Wrong Data");
+        }
+      },
+
+      error: err => {
+        console.log(err)
+        alert("Kindly Check your Credentials")
       }
+
+    });
+  }
 }

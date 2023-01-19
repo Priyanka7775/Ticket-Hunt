@@ -60,15 +60,12 @@ public class BookingServiceImpl implements BookingService {
             booking.setSeatList(seatsList);
         }
 
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(email);
-        msg.setSubject("Booking Details");
-        msg.setText("You have successfully booked your seat!!!!." + seats);
-        javaMailSender.send(msg);
+
 
 
         return bookingRepository.save(booking);
     }
+
 
 
     @Override
@@ -109,5 +106,15 @@ public class BookingServiceImpl implements BookingService {
 
     public Booking findByEventIdAndEmail(String eventId, String email) {
             return bookingRepository.findByEventIdAndEmail(eventId, email);
+    }
+
+    @Override
+    public void sendEmail(String email, String message) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+        msg.setSubject("Booking Details");
+        msg.setText("Welcome to TICKET HUNT\n\n HEY!!" + message+"\n \nIn case of any technical difficulty do drop us a mail at tickethunt@gmail.com \n \nThanks! \nTeam TICKET HUNT");
+        javaMailSender.send(msg);
+
     }
 }

@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isLoggedIn: boolean = true;
-  role: string = '';
+  role: string = 'event';
 
   toggle() {
     const menu = document.getElementById('event-menu');
