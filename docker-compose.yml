@@ -86,14 +86,6 @@ services:
       - mysql-net
     ports:
       - "8761:8761"
-  web-app:
-    image: web_app
-    container_name: web_app
-    build: tickethunt-webapp
-    networks:
-      - mysql-net
-    ports:
-      - "4200:80"
 networks:
   mysql-net:
     driver: bridge
