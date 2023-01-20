@@ -47,7 +47,7 @@ export class EventManagerComponent {
         this.price = this.eventDetails.price*this.seatNumbers;
 
 
-        console.log(this.eventName);
+        console.log( this.price);
         
  /*      this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
       console.log(this.retrieveImage); */

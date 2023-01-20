@@ -29,4 +29,6 @@ public class BookingDTO {
         this.totalSeats = totalSeats;
         this.eventType = eventType;
     }
+
+
 }
