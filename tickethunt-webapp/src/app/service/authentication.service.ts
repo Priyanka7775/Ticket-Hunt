@@ -11,6 +11,8 @@ export class AuthenticationService {
   isUserRegistered: boolean = false;
   isUserLogedIn: boolean = false;
 
+  isRole : any;
+
 
   register(userData: any) {
     this.isUserRegistered = true;

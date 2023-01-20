@@ -15,6 +15,8 @@ import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { DetailComponent } from './detail/detail.component';
 import { EventManagerComponent } from './event-manager/event-manager.component';
+import { Guard1Guard } from './guard/guard1.guard';
+import { Guard2Guard } from './guard/guard2.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PaymentComponent } from './payment/payment.component';
 
@@ -50,11 +52,11 @@ const routes: Routes = [
   },
   {
     path: 'event/create',
-    component: CreateComponent
+    component: CreateComponent, canActivate: [Guard2Guard]
   },
   {
     path: 'event/view',
-    component: ViewEventComponent
+    component: ViewEventComponent, canActivate: [Guard2Guard]
   },
   {
     path: 'event/edit/:id',
@@ -66,7 +68,7 @@ const routes: Routes = [
   },
   {
     path: 'booking/:id',
-    component: BookingComponent
+    component: BookingComponent, canActivate: [Guard1Guard]
   }
   ,
   {

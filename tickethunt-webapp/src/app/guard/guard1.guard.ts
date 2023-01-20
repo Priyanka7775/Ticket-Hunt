@@ -16,7 +16,7 @@ export class Guard1Guard implements CanActivate {
   constructor(
     private userAuthService: AuthenticationService,
     private router: Router
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -32,7 +32,7 @@ export class Guard1Guard implements CanActivate {
   check() {
     let result = false;
     if (this.userAuthService.isUserLogedIn == false) {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('/login');
       result = false;
     } else result = true;
     return result;

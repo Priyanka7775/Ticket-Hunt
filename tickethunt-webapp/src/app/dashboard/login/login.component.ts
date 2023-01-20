@@ -41,12 +41,13 @@ export class LoginComponent {
           showConfirmButton: false,
           timer: 1500
         })
-        if (this.authService.isUserLogedIn == true) {
-          this.router.navigateByUrl("/home")
+
+        if (this.responseData.role === "event") {
+          this.authService.isRole = "event"
         }
-        else {
-          alert("Wrong Data");
-        }
+        console.log(this.authService.isRole)
+        this.authService.isUserLogedIn == true;
+        this.router.navigateByUrl("/home")
       },
 
       error: err => {
@@ -55,7 +56,7 @@ export class LoginComponent {
           icon: 'error',
           title: 'Oops...',
           text: 'Something went wrong!',
-         
+
         })
       }
 

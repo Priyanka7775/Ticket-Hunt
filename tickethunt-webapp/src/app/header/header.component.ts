@@ -8,15 +8,18 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.toggleTimeout();
     this.validateLogin();
+    // this.role = sessionStorage.getItem('role');
+    // console.log(this.authService.isUserLogedIn)
   }
 
-  isLoggedIn: boolean = true;
-  role: string = 'event';
+   isLoggedIn: boolean = true;
+  // role: any = sessionStorage.getItem('role');
+
 
   toggle() {
     const menu = document.getElementById('event-menu');
@@ -44,10 +47,10 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = this.authService.isUserLogedIn;
     }, 500);
   }
-  
+
   logout() {
     alert("Confirm to LogOut")
-    this.authService.isUserLogedIn==false;
+    this.authService.isUserLogedIn == false;
     sessionStorage.removeItem('jwtkey');
     sessionStorage.removeItem('userEmail');
     this.router.navigateByUrl("/login");
