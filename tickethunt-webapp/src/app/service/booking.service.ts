@@ -27,7 +27,6 @@ export class BookingServiceService {
   }
 
   addBookingForNewEmail(booking :any) : Observable<any>{
-    alert("called")
     return this.http.post<any>('http://localhost:8081/bookings/addBooking', booking);
   }
 
@@ -40,9 +39,8 @@ export class BookingServiceService {
     return this.http.get<Bookings>(this.url);
   }
 
-  bookSeats(seat: Seats, id: any) : Observable<any> {
-
-    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/${this.email}`, seat);
+  bookSeats(seat: Seats, id: any, email:any) : Observable<any> {
+    return this.http.post<Seats>(`http://localhost:8081/bookings/book/${id}/${email}`, seat);
 
 
   }
