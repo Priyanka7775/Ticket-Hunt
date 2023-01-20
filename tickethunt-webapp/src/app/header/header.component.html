@@ -1,8 +1,10 @@
 <mat-toolbar>
   <button mat-icon-button class="example-icon" aria-label="menu" color="primary" title="Menu">
-    <mat-icon>menu</mat-icon>
+    <!-- <mat-icon>menu</mat-icon> -->
   </button>
-  <span class="title" routerLink="/home">Ticket Hunt</span>
+  <span class="title" routerLink="/home">
+     <img src="../../assets/images/logo.png" alt="" width="400px" style="margin-top:-50px; margin-left: -140px;" >
+   </span>
   <span class="spacer"></span>
   <!-- Navbar for for event manager -->
   <nav class="" *ngIf="role==='event'">
