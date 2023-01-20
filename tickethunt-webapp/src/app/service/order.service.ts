@@ -14,7 +14,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   createOrder(name: any, email1: any, phoneNumber: any, amount: any): Observable<any> {
-    return this.http.post("http://localhost:8080/v1/createOrder", {
+    return this.http.post("http://localhost:8085/payment/createOrder", {
       customerName: name,
       email: email1,
       phoneNumber: phoneNumber,

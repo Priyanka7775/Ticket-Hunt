@@ -9,7 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="payment-service" />
         <module name="booking-service" />
+        <module name="APIGateway" />
         <module name="user-service" />
+        <module name="Eureka" />
         <module name="RecommendationService" />
         <module name="MovieEventService" />
         <module name="RecomendationService" />
@@ -17,8 +19,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="APIGateway" target="11" />
       <module name="authentication" target="11" />
       <module name="booking-service" target="11" />
+      <module name="Eureka" target="11" />
       <module name="MovieEventService" target="11" />
       <module name="payment-service" target="11" />
       <module name="RecomendationService" target="11" />
@@ -29,6 +33,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="APIGateway" options="-parameters" />
+      <module name="Eureka" options="-parameters" />
       <module name="MovieEventService" options="-parameters" />
       <module name="RecomendationService" options="-parameters" />
       <module name="RecommendationService" options="-parameters" />

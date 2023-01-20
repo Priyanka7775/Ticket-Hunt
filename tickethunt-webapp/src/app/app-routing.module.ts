@@ -14,12 +14,16 @@ import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { DetailComponent } from './detail/detail.component';
+import { EventManagerComponent } from './event-manager/event-manager.component';
+import { Guard1Guard } from './guard/guard1.guard';
+import { Guard2Guard } from './guard/guard2.guard';
+import { HomePageComponent } from './home-page/home-page.component';
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home-page',
     pathMatch: 'full'
   },
   {
@@ -48,19 +52,23 @@ const routes: Routes = [
   },
   {
     path: 'event/create',
-    component: CreateComponent
+    component: CreateComponent, canActivate: [Guard2Guard]
   },
   {
     path: 'event/view',
-    component: ViewEventComponent
+    component: ViewEventComponent, canActivate: [Guard2Guard]
   },
   {
     path: 'event/edit/:id',
     component: EditEventComponent
   },
   {
+    path: 'eventmanager/:id',
+    component: EventManagerComponent
+  },
+  {
     path: 'booking/:id',
-    component: BookingComponent
+    component: BookingComponent, canActivate: [Guard1Guard]
   }
   ,
   {
@@ -80,6 +88,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: DetailComponent,
+  },
+  {
+    path: 'home-page',
+    component: HomePageComponent,
   },
 
   {

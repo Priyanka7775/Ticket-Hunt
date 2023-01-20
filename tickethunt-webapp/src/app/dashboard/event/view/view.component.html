@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <h1 style="color: azure; font-size: 50px; text-align: center; padding:20px;">Events List</h1>
-        <mat-card *ngFor="let e of eventDetails">
+        <mat-card (click)="redirectToEventManager(e.eventId)" *ngFor="let e of eventDetails">
             <mat-card-title>{{e.eventName}}</mat-card-title>
             <div class="event-info">
                 <mat-card-content>

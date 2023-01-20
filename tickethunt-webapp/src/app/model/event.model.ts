@@ -2,7 +2,7 @@ import { FileHandle } from "./file-handle.model";
 
 export type EventData = {
     eventId?: String|null|undefined,
-    email?: String,
+    email?: string|null,
     eventName?: String,
     date?: String,
     time?: String,

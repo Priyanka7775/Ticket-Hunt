@@ -27,6 +27,8 @@ export class CreateComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService,private route:Router) {
     this.eventId?.setValue(this.random)
    }
+
+   emailId: any = sessionStorage.getItem('emailId');
   ngOnInit(): void {
   }
 

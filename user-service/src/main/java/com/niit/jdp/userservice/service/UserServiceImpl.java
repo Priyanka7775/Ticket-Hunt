@@ -13,6 +13,8 @@ import com.niit.jdp.userservice.rabbitmqproducer.Producer;
 import com.niit.jdp.userservice.rabbitmqproducer.UserDTO;
 import com.niit.jdp.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +25,14 @@ public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
     private Producer producer;
 
+    private JavaMailSender javaMailSender;
+
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, Producer producer) {
+    public UserServiceImpl(UserRepository userRepository, Producer producer,JavaMailSender javaMailSender) {
         this.userRepository = userRepository;
         this.producer = producer;
+        this.javaMailSender=javaMailSender;
     }
 
     @Override
@@ -91,6 +97,13 @@ public class UserServiceImpl implements IUserService {
         User user = new User(commonUser.getId(), commonUser.getName(), commonUser.getEmail(),
                 commonUser.getPassword(), commonUser.getCity(), commonUser.getRole(),
                 commonUser.getInterest(), commonUser.getPhone());
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(user.getEmail());
+        msg.setSubject("Registration");
+
+        msg.setText("Welcome To TICKET HUNT...\n\nHEY! You have successfully Registered, now you can login.We look forward to serving you real soon.\n \n" +
+                "In case of any technical difficulty do drop us a mail at tickethunt7@gmail.com \n \nThanks! \nTeam TICKET HUNT");
+        javaMailSender.send(msg);
 
         return userRepository.insert(user);
     }

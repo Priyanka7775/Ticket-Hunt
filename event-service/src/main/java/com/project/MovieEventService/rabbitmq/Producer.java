@@ -18,6 +18,4 @@ public class Producer {
         rabbitTemplate.convertAndSend(directExchange.getName(),"booking_routing",bookingDTO);
     }
 
-
-
 }

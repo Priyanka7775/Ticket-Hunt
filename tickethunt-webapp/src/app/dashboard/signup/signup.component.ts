@@ -5,6 +5,8 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import { Interest } from 'src/app/model/interest.model';
 import { SignupService } from 'src/app/service/signup.service';
+import { Route, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +16,7 @@ import { SignupService } from 'src/app/service/signup.service';
 export class SignupComponent {
 
   //Constructor
-  constructor(private fb: FormBuilder,private signupService: SignupService) { }
+  constructor(private fb: FormBuilder,private signupService: SignupService,private router:Router) { }
   
   // Basic Information 
   customer = this.fb.group({
@@ -61,7 +63,15 @@ export class SignupComponent {
     }
     // Logging data for testing - Use userData to submit data 
     this.signupService.post(userData).subscribe(next=>{
-      alert('saved')
+      // alert('saved')
+      Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        title: 'You have succesfully Registered!!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.router.navigateByUrl("login");
     })
 
   }

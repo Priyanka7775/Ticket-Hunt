@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,18 +33,31 @@ export class LoginComponent {
         console.log(this.responseData.role)
         let email = this.responseData.userEmail.split('=')[1].split(',')[0];
         sessionStorage.setItem('emailId', email);
-        alert("Welcome to our app, user!");
-        if (this.authService.isUserLogedIn == true) {
-          this.router.navigateByUrl("/home")
+        // alert("Welcome to our app, user!");
+        Swal.fire({
+          // position: 'top-end',
+          icon: 'success',
+          title: 'You have succesfully logged in!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
+        if (this.responseData.role === "event") {
+          this.authService.isRole = "event"
         }
-        else {
-          alert("Wrong Data");
-        }
+        console.log(this.authService.isRole)
+        this.authService.isUserLogedIn == true;
+        this.router.navigateByUrl("/home")
       },
 
       error: err => {
         console.log(err)
-        alert("Kindly Check your Credentials")
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+
+        })
       }
 
     });
