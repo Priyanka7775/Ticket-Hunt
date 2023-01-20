@@ -30,9 +30,8 @@ public class EventController {
     private Producer producer;
 
     @Autowired
-    public EventController(EventService eventService, ResponseEntity responseEntity, Producer producer) {
+    public EventController(EventService eventService, Producer producer) {
         this.eventService = eventService;
-        this.responseEntity = responseEntity;
         this.producer = producer;
     }
 
