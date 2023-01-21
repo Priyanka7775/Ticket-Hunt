@@ -7,15 +7,15 @@ import { Injectable } from '@angular/core';
 export class LocationService {
   constructor(private http: HttpClient) {}
 
-  getLocation(position: GeolocationCoordinates) {
-    let latitude = position.longitude;
-    let longitude = position.longitude;
+  getLocation(position: GeolocationPosition) {
+    let latitude: number = position.coords.latitude;
+    let longitude: number = position.coords.longitude;
     return this.http.get(
-      'http://maps.googleapis.com/maps/api/geocode/json?latlng=' +
+      'https://api.opencagedata.com/geocode/v1/json?q=' +
         latitude +
-        ',' +
+        '%2C+' +
         longitude +
-        '&sensor=true'
+        '&key=d9acb9db4f6d43a199639772e1a9ddd1&pretty=1'
     );
   }
 }
