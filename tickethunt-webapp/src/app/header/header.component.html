@@ -3,8 +3,19 @@
     <!-- <mat-icon>menu</mat-icon> -->
   </button>
   <span class="title" routerLink="/home">
-     <img src="../../assets/images/logo.png" alt="" width="400px" style="margin-top:-50px; margin-left: -140px;" >
-   </span>
+    <img src="../../assets/images/logo.png" alt="" width="400px" style="margin-top:-50px; margin-left: -140px;">
+  </span>
+  <div class="search">
+    <div class="location">
+      <input type="text" placeholder="{{ city }}">
+    </div>
+    <div class="input">
+      <input type="text" name="search" placeholder="Search for Events and Movies...">
+      <span class="icon">
+        <mat-icon class="iocn">search</mat-icon>
+      </span>
+    </div>
+  </div>
   <span class="spacer"></span>
   <!-- Navbar for for event manager -->
   <nav class="">

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   movies: Movie[] = [];
   event:any ={}
   image:string =''
-  
+ 
   ngOnInit(): void {
     this.viewEvent();
     this.viewMovie();
@@ -54,7 +54,5 @@ export class HomeComponent implements OnInit {
   }
   
 
-
- 
 
 }

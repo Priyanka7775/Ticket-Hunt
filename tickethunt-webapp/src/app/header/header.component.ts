@@ -13,13 +13,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.toggleTimeout();
     this.validateLogin();
+    this.getLocation();
     // this.role = sessionStorage.getItem('role');
     // console.log(this.authService.isUserLogedIn)
   }
 
    isLoggedIn: boolean = true;
   // role: any = sessionStorage.getItem('role');
-
+  city: string = '';
 
   toggle() {
     const menu = document.getElementById('event-menu');
@@ -54,5 +55,11 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('jwtkey');
     sessionStorage.removeItem('userEmail');
     this.router.navigateByUrl("/login");
+  }
+
+  getLocation() {
+    navigator.geolocation.getCurrentPosition((value) => {
+      console.log(value)
+    })
   }
 }
