@@ -26,7 +26,18 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = true;
   // role: any = sessionStorage.getItem('role');
   city: string = '';
-
+  // Cities
+  cities: string[] = [
+    'Mumbai',
+    'Pune',
+    'Delhi',
+    'Banglore',
+    'Agra',
+    'Noida',
+    'Dehradun',
+    'Chennie',
+  ];
+  citiesFilter: string[] = [];
   toggle() {
     const menu = document.getElementById('event-menu');
     if (menu?.classList.contains('menu-active')) {
@@ -66,9 +77,16 @@ export class HeaderComponent implements OnInit {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
         this.locationService.getLocation(position).subscribe((city: any) => {
-          console.log(city.results[0].components.state_district);
+          this.city = city.results[0].components.state_district;
         });
       }
+    );
+  }
+
+  getCity() {
+    const value = (document.getElementById('city') as HTMLInputElement).value;
+    this.citiesFilter = this.cities.filter((x) =>
+      x.toLocaleLowerCase().startsWith(value.toLocaleLowerCase().toString())
     );
   }
 }
