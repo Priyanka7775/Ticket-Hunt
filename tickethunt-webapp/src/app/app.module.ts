@@ -15,7 +15,6 @@ import { TileComponent } from './dashboard/tile/tile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './dashboard/user/user.component';
 
-
 // Material Imports
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,6 +30,7 @@ import { CreateComponent } from './dashboard/event/create/create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
@@ -39,7 +39,7 @@ import { BookingComponent } from './booking/booking.component';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
-import { NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailComponent } from './detail/detail.component';
 import { NextDirective } from './next.directive';
 import { PrevDirective } from './prev.directive';
@@ -71,10 +71,9 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     NextDirective,
     PrevDirective,
     EventManagerComponent,
-  
-    HomePageComponent,
-        ProfileComponent
 
+    HomePageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,9 +96,10 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     NgxMatTimepickerModule,
     MatTableModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTabsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
