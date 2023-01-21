@@ -15,7 +15,7 @@ public interface EventService {
 
     Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException;
 
-    Event addEvent1(CommonUser commonUser);
+    Event addEvent1(CommonUser commonUser, MultipartFile file) throws IOException;
     List<Event> viewAllEvents();
 
     List<Event> getAllEventOfUser(String email) throws EventNotFoundException;

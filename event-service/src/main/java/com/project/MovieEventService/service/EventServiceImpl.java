@@ -54,14 +54,14 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event addEvent1(CommonUser commonUser) {
+    public Event addEvent1(CommonUser commonUser,  MultipartFile file) throws IOException {
 
-        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                commonUser.getImage(), commonUser.getTotalSeats(), commonUser.getEventType());
-        producer.sendDtoToQueue(bookingDTO);
-
+        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(),  commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(), commonUser.getTotalSeats());
+        if(eventRepository.findByEventId(commonUser.getEventId()) == null) {
+            producer.sendDtoToQueue(bookingDTO);
+        }
         Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                commonUser.getImage(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
+                file.getBytes(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
 
         return eventRepository.insert(event);
     }

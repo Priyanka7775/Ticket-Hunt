@@ -67,9 +67,21 @@ public class EventController {
     }
 
     @PostMapping("/common")
-    public  ResponseEntity<?> addEvent(@RequestBody CommonUser commonUser) {
+    public  ResponseEntity<?> addEvent(@RequestParam("event") String event, @RequestParam("file") MultipartFile multipartFile) {
 
-        return new ResponseEntity<>(eventService.addEvent1(commonUser), HttpStatus.OK);
+        Gson gson = new Gson();
+        CommonUser eventFileObj = gson.fromJson(event, CommonUser.class);
+        try {
+            Event registeredEvent = eventService.addEvent1(eventFileObj, multipartFile);
+            responseEntity = new ResponseEntity<>(registeredEvent, HttpStatus.OK);
+        } catch (IOException e) {
+            log.error("Error" + e.getMessage());
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            log.error("Exception " + e.getMessage());
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
     }
 
 
