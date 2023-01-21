@@ -46,6 +46,7 @@ import { PrevDirective } from './prev.directive';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { EventManagerComponent } from './event-manager/event-manager.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     PrevDirective,
     EventManagerComponent,
   
-    HomePageComponent
+    HomePageComponent,
+        ProfileComponent
 
   ],
   imports: [
