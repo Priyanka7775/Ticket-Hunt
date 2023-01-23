@@ -16,6 +16,7 @@ public class MessageConfiguration {
 
     private String exchange_name="booking_exchange";
     private String register_queue="booking_queue";
+    private String register_neo = "booking_neo";
 
     @Bean
     public DirectExchange getDirectExchange(){
@@ -25,8 +26,11 @@ public class MessageConfiguration {
 
     @Bean
     public Queue getQueue(){
-        return new Queue(register_queue);
+        return new Queue(register_queue, true);
     }
+
+    @Bean
+    public Queue getNeoQueue(){return new Queue(register_neo, true);}
 
     @Bean
     public Jackson2JsonMessageConverter getProducerJacksonConvertor(){
@@ -34,12 +38,17 @@ public class MessageConfiguration {
     }
 
     @Bean
-    public Binding getBinding(Queue queue, DirectExchange directExchange){
+    public Binding getBinding(){
 
-        return BindingBuilder.bind(queue).to(directExchange).with("booking_routing");
+        return BindingBuilder.bind(getQueue()).to(getDirectExchange()).with("booking_routing");
     }
 
+    @Bean
+    public Binding getNeoBinding(DirectExchange directExchange){
+        return BindingBuilder.bind(getNeoQueue()).to(getDirectExchange()).with("booking_neo");
+    }
 
+    @Bean
     public RabbitTemplate getRabbitTemplate(final ConnectionFactory connectionFactory){
         RabbitTemplate rabbitTemplate=new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(getProducerJacksonConvertor());

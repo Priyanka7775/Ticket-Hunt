@@ -8,6 +8,7 @@ import com.project.MovieEventService.proxy.BookingProxy;
 import com.project.MovieEventService.rabbitmq.BookingDTO;
 import com.project.MovieEventService.rabbitmq.CommonUser;
 import com.project.MovieEventService.rabbitmq.Producer;
+import com.project.MovieEventService.rabbitmq.ProducerMapping;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
 
@@ -30,12 +31,16 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private Producer producer;
 
+    @Autowired
+    private ProducerMapping producerMapping;
+
 
     private BookingProxy bookingProxy;
 
-    public EventServiceImpl(EventRepository eventRepository,  BookingProxy bookingProxy) {
+    public EventServiceImpl(EventRepository eventRepository,  BookingProxy bookingProxy, ProducerMapping producerMapping) {
         this.eventRepository = eventRepository;
         this.bookingProxy =bookingProxy;
+        this.producerMapping = producerMapping;
     }
     @Override
     public Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException {
@@ -60,6 +65,7 @@ public class EventServiceImpl implements EventService {
         if(eventRepository.findByEventId(commonUser.getEventId()) == null) {
             producer.sendDtoToQueue(bookingDTO);
         }
+        producerMapping.sendDtoToQueue(bookingDTO);
         Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
                 file.getBytes(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
 

@@ -33,7 +33,7 @@ public class Consumer {
         userService.save(user);
     }
 
-    @RabbitListener(queuesToDeclare = @Queue("booking_queue"))
+    @RabbitListener(queuesToDeclare = @Queue("booking_neo"))
     public void getEventData(EventDTO eventDTO) {
         Event event = new Event();
         event.setName(eventDTO.getEventName());
