@@ -1,58 +1,73 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventData } from 'src/app/model/event';
 import { Movie } from 'src/app/model/movie.model';
 import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private dataService: DataService,private route: Router) { }
+  constructor(private dataService: DataService, private route: Router) {}
   @Input()
-  events1:any;
-  events2:any;
+  events1: any;
+  events2: any;
 
-  movies: Movie[] = [];
-  event:any ={}
-  image:string =''
- 
+  movies: EventData[] = [];
+  carry: EventData[] = [];
+  event: any = {};
+  image: string = '';
+  i: number = 1;
+
   ngOnInit(): void {
     this.viewEvent();
     this.viewMovie();
-    
+    this.changeSlider();
   }
 
-  viewMovie(){
-    this.dataService.getAllEvents3().subscribe(
-      response=>{
-        console.log("movie")
-        this.events1=response;
-        
+  viewMovie() {
+    this.dataService.getAllEvents3().subscribe((response) => {
+      this.events1 = response;
+    });
+    this.dataService.getAllEvent().subscribe((value) => {
+      value.forEach((element) => {
+        this.movies.push(element);
+      });
+      this.carry.push(this.movies[0]);
+    });
+  }
+
+  viewEvent() {
+    this.dataService.getAllEvents2().subscribe((response) => {
+      console.log('events');
+      this.events2 = response;
+    });
+  }
+  navigateToMovieDetail(eventId: any) {
+    this.route.navigate(['detail', eventId]);
+  }
+
+  changeSlider() {
+    setInterval(() => {
+      let id = this.movies[this.i]?.eventId;
+      let card = document.getElementById(id + '-card');
+      let pop = document.getElementById('event-pop');
+      if (this.i < this.movies.length) {
+        this.carry.pop();
+        pop?.classList.add('pop');
+        this.carry.push(this.movies[this.i]);
+        this.i++;
+        setInterval(() => {
+          pop?.classList.remove('pop');
+        }, 3000);
+      } else {
+        this.i = 0;
+        this.carry.pop();
+        this.carry.push(this.movies[0]);
       }
-      
-    )
-  
-    
+    }, 7000);
   }
-
-  viewEvent(){
-    this.dataService.getAllEvents2().subscribe(
-      response=>{
-        console.log("events")
-        this.events2=response;
-      }
-    )
-  
-    
-  }
-  navigateToMovieDetail(eventId:any){
-    this.route.navigate(["detail",eventId])
-  }
-  
-
-
 }
