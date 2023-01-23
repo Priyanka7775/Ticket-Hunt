@@ -23,7 +23,10 @@ public class MessageConfiguration {
         String exchange_name = "user_exchange";
         return new DirectExchange(exchange_name);
     }
-
+    @Bean Queue secondQueue(){
+        String queue2 = "user_neo_queue";
+        return new Queue(queue2);
+    }
     @Bean
     public Queue firstQueue() {
         String queue1 = "user_queue";
@@ -37,6 +40,11 @@ public class MessageConfiguration {
     @Bean
     public Binding getBinding() {
         return BindingBuilder.bind(firstQueue()).to(getDirectExchange()).with("user_routing");
+    }
+
+    @Bean
+    public Binding getSecondBinding() {
+        return BindingBuilder.bind(secondQueue()).to(getDirectExchange()).with("user_neo");
     }
 
     @Bean

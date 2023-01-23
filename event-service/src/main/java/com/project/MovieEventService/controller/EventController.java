@@ -57,6 +57,7 @@ public class EventController {
         ResponseEntity responseEntity = null;
         try {
             responseEntity = new ResponseEntity<>(eventService.addEvent(event), HttpStatus.CREATED);
+
         } catch (EventAlreadyFoundException eventAlreadyFoundException) {
             throw new EventAlreadyFoundException();
         } catch (Exception exception) {

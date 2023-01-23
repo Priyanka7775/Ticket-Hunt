@@ -16,6 +16,7 @@
         <module name="Eureka" />
         <module name="MovieEventService" />
         <module name="authentication" />
+        <module name="RecomendationService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,6 +27,7 @@
       <module name="MovieEventService" target="11" />
       <module name="payment-service" target="11" />
       <module name="ProductWebApp" target="11" />
+      <module name="RecomendationService" target="11" />
       <module name="RecommendationService" target="11" />
       <module name="tickethunt" target="11" />
       <module name="user-service" target="11" />
@@ -37,6 +39,7 @@
       <module name="Eureka" options="-parameters" />
       <module name="MovieEventService" options="-parameters" />
       <module name="ProductWebApp" options="-parameters" />
+      <module name="RecomendationService" options="-parameters" />
       <module name="RecommendationService" options="-parameters" />
       <module name="authentication" options="-parameters" />
       <module name="booking-service" options="-parameters" />
