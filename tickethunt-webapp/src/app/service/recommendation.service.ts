@@ -20,7 +20,7 @@ export class RecommendationService {
     return this.http.get<Array<User>>('https://localhost:8086/api/v4/users');
   }
 
-  addBooking(user: number[]) {
-    return this.http.post('https://localhost:8086/api/v4/users', user);
+  addBooking(user: string) {
+    return this.http.get('https://localhost:8086/api/v4/user/booked/' + user);
   }
 }
