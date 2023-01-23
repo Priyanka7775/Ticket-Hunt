@@ -75,7 +75,9 @@ a{
     text-align: center;
     height: 320px;
     box-shadow: 0px 10px 10px rgba(0,0,0,0.8);
-    background-color:peru;
+    background-color:rgba(0,0,0,0.8);
+    /* border: 2px dashed white; */
+    color: white;
     padding-top: 10px;
     border-radius: 10px;
 
@@ -85,7 +87,7 @@ img{
     border-radius: 20px;
     height: 230px;
     width: 250px;
-    
+    border: 2px dashed white;
 }
 
 .prev{
@@ -109,7 +111,7 @@ mat-raised-button{
 
 
 h1 {
-    color: #0eade7;
+    color: red;
     font-family: arial, sans-serif;
     font-size: 30px;
     font-weight: bold;

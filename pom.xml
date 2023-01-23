@@ -38,6 +38,7 @@
         <module>authentication</module>
         <module>Eureka</module>
         <module>APIGateway</module>
+        <module>ProductWebApp</module>
     </modules>
 
     <build>

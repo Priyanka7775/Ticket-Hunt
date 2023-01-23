@@ -9,7 +9,7 @@ export class AuthenticationService {
 
   url = "http://localhost:8084/niit/auth";
   isUserRegistered: boolean = false;
-  isUserLogedIn: boolean = false;
+  isUserLogedIn: boolean = true;
 
   isRole : any;
 

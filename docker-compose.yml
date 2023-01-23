@@ -131,6 +131,18 @@ services:
       - mysql-net
     ports:
       - "8761:8761"
+  user-service:
+    image: user_service
+    container_name: user-service
+    build: user-service
+    restart: always
+    networks:
+      - mysql-net
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+      - mongoService
 networks:
   mysql-net:
     driver: bridge
