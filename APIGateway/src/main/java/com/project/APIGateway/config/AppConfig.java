@@ -13,27 +13,27 @@ public class AppConfig {
         return builder.routes().
                 route(p -> p
                         .path("/niit/auth/**")
-                        .uri("http://localhost:8084/")
+                        .uri("http://authentication-service:8084/")
                 )
                 .route(p -> p
                         .path("/bookings/**")
-                        .uri("http://localhost:8081/")
+                        .uri("http://booking-service:8081/")
                 )
                 .route(p -> p
                         .path("/eventData/**")
-                        .uri("http://localhost:8088/")
+                        .uri("http://event-service:8088/")
                 )
                 .route(p -> p
                         .path("/payment/**")
-                        .uri("http://localhost:8085/")
+                        .uri("http://payment-service:8085/")
                 )
                 .route(p -> p
                         .path("/api/v4/**")
-                        .uri("http://localhost:8086/")
+                        .uri("http://recommendation-service:8086/")
                 )
                 .route(p -> p
                         .path("/userData/**")
-                        .uri("http://localhost:8082/")
+                        .uri("http://user-service:8082/")
                 )
                 .build();
     }

@@ -11,6 +11,64 @@ services:
     depends_on:
       - eureka-server
       - neo4jService
+  authentication-service:
+    image: authentication_service
+    container_name: authentication-service
+    build: authentication
+    restart: always
+    networks:
+      - mysql-net
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka-server
+      - mysqlService
+  booking-service:
+    image: booking_service
+    container_name: booking-service
+    build: booking-service
+    restart: always
+    networks:
+      - mysql-net
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+      - mongoService
+  user-service:
+    image: user_service
+    container_name: user-service
+    build: user-service
+    restart: always
+    networks:
+      - mysql-net
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+      - mongoService
+  api-service:
+    image: api_service
+    container_name: api-service
+    build: APIGateway
+    restart: always
+    networks:
+      - mysql-net
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+  payment-service:
+    image: payment_service
+    container_name: payment-service
+    build: payment-service
+    restart: always
+    networks:
+      - mysql-net
+    ports:
+      - "8085:8085"
+    depends_on:
+      - eureka-server
   neo4jService:
     image: neo4j:latest
     container_name: neo4jService
@@ -37,11 +95,10 @@ services:
   mysqlService:
     image: mysql:latest
     container_name: mysqlService
-    network_mode: mysql-net
+    networks: 
+      - mysql-net
     ports:
       - "3307:3306"
-    expose:
-      - 3307
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_USERNAME: root
@@ -54,14 +111,6 @@ services:
       - mysql-net
     ports:
       - "27017:27017"
-  api-service:
-    image: api_service
-    container_name: api-service
-    build: APIGateway
-    networks:
-      - mysql-net
-    ports:
-      - "8080:8080"
   event-service:
     image: event_service
     container_name: event-service
@@ -74,53 +123,6 @@ services:
     depends_on:
       - eureka-server
       - mongoService
-  booking-service:
-    image: booking_service
-    container_name: booking-service
-    build: booking-service
-    restart: always
-    networks:
-      - mysql-net
-    ports:
-      - "8081:8081"
-    depends_on:
-      - eureka-server
-      - mongoService
-  authentication-service:
-    image:  authentication_service
-    container_name: authentication-service
-    build: authentication
-    restart: always
-    networks:
-      - mysql-net
-    ports:
-      - "8084:8084"
-    depends_on:
-      - eureka-server
-      - mysqlService
-  user-service:
-    image: user_service
-    container_name: user-service
-    build: user-service
-    restart: always
-    networks:
-      - mysql-net
-    ports:
-      - "8082:8082"
-    depends_on:
-      - eureka-server
-      - mongoService
-  payment-service:
-    image: payment_service
-    container_name: payment-service
-    build: payment-service
-    restart: always
-    networks:
-      - mysql-net
-    ports:
-      - "8085:8085"
-    depends_on:
-      - eureka-server
   eureka-server:
     image: eureka_server
     container_name: eureka-server
