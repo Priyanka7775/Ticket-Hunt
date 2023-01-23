@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
+import { LocationService } from '../service/location.service';
 
 @Component({
   selector: 'app-header',
@@ -8,19 +9,35 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private locationService: LocationService
+  ) {}
 
   ngOnInit(): void {
     this.toggleTimeout();
     this.validateLogin();
+    this.getLocation();
     // this.role = sessionStorage.getItem('role');
     // console.log(this.authService.isUserLogedIn)
   }
 
-   isLoggedIn: boolean = true;
+  isLoggedIn: boolean = true;
   // role: any = sessionStorage.getItem('role');
-
-
+  city: string = '';
+  // Cities
+  cities: string[] = [
+    'Mumbai',
+    'Pune',
+    'Delhi',
+    'Banglore',
+    'Agra',
+    'Noida',
+    'Dehradun',
+    'Chennie',
+  ];
+  citiesFilter: string[] = [];
   toggle() {
     const menu = document.getElementById('event-menu');
     if (menu?.classList.contains('menu-active')) {
@@ -49,10 +66,27 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    alert("Confirm to LogOut")
+    alert('Confirm to LogOut');
     this.authService.isUserLogedIn == false;
     sessionStorage.removeItem('jwtkey');
     sessionStorage.removeItem('userEmail');
-    this.router.navigateByUrl("/login");
+    this.router.navigateByUrl('/login');
+  }
+
+  getLocation() {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        this.locationService.getLocation(position).subscribe((city: any) => {
+          this.city = city.results[0].components.state_district;
+        });
+      }
+    );
+  }
+
+  getCity() {
+    const value = (document.getElementById('city') as HTMLInputElement).value;
+    this.citiesFilter = this.cities.filter((x) =>
+      x.toLocaleLowerCase().startsWith(value.toLocaleLowerCase().toString())
+    );
   }
 }

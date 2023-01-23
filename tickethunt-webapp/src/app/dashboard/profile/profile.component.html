@@ -1,0 +1,37 @@
+<div class="container">
+    <mat-card>
+        <mat-tab-group>
+            <mat-tab label="Profile">
+                <mat-card class="card profile">
+                    <mat-card-title>Rishabh Gist</mat-card-title>
+                    <mat-card-content>
+                        <div class="profile-img">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                alt="Profile Pic">
+                        </div>
+                        <div class="profile-info">
+                            <p class="city"><i class="fa-solid fa-location-pin"></i> Noida</p>
+                            <p class="email"><i class="fa-solid fa-envelope"></i> rishabhgist@gmail.com</p>
+                            <p class="phone"><i class="fa-solid fa-mobile-button"></i> +91-7983294650</p>
+                            <p class="interest"><i class="fa-solid fa-star"></i>
+                                <mat-chip disabled>Orange</mat-chip>
+                            </p>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <button mat-raised-button color="primary">Change Password</button>
+                        <button mat-raised-button>Edit Profile</button>
+                        <button mat-raised-button color="accent" routerLink="/booking-history">Booking History</button>
+                    </mat-card-footer>
+                </mat-card>
+            </mat-tab>
+           <!--  <mat-tab label="Bookings" routerLink="/booking-history">
+                <mat-card class="card bookings">
+                    <mat-card-title >Bookings</mat-card-title>
+                </mat-card>
+            </mat-tab> -->
+
+
+        </mat-tab-group>
+    </mat-card>
+</div>

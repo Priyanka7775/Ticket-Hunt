@@ -10,6 +10,7 @@ import { ViewEventComponent } from './dashboard/event/view/view.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { LoginComponent } from './dashboard/login/login.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
 import { SignupComponent } from './dashboard/signup/signup.component';
 import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
@@ -93,7 +94,10 @@ const routes: Routes = [
     path: 'home-page',
     component: HomePageComponent,
   },
-
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
   {
     path: '404',
     component: NotFoundComponent

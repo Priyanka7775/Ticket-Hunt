@@ -39,15 +39,18 @@ export class EventManagerComponent {
     this.dataService.getEvent1(`${this.id}`).subscribe(response => {
       console.log(response)
       this.eventDetails = response
+
+      console.log(this.eventDetails);
+      
      
         this.eventName = this.eventDetails.eventName;
         this.date = this.eventDetails.date;
         this.time = this.eventDetails.time;
         this.venue = this.eventDetails.venue;
-        this.price = this.eventDetails.price*this.seatNumbers;
+        this.price = this.eventDetails.price;
 
 
-        console.log( this.price);
+        console.log(this.eventDetails.price);
         
  /*      this.retrieveImage = 'data:image/png;base64,' + this.eventDetails.image
       console.log(this.retrieveImage); */
@@ -60,11 +63,24 @@ export class EventManagerComponent {
       .getParticularBookings(id)
       .subscribe((booking: any) => {
         this.dataSource = booking.filter((booking: any) => booking.seatList.length > 0);
-        this.seatNumbers = this.dataSource.map((booking: any) => booking.seatList.length);
+        this.seatNumbers = this.dataSource.map((booking: any) => booking.seatList);
+        
         console.log(this.seatNumbers);
+
+        
         
     });
   }
+   totalPrice: any;
+  getTotalPrice(eventId: string, email: string, price: number): number {
+    
+    const filteredData = this.dataSource.filter((booking:any) => booking.eventId === eventId && booking.email === email);
+    if (filteredData.length > 0) {
+        this.totalPrice = filteredData[0].seatList.length * price;
+    }
+    return this.totalPrice;
+}
+
 
 
 

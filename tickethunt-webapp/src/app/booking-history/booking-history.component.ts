@@ -20,15 +20,19 @@ this.getData();
   }
 
   bookingData: any;
+  seatNumbers: any;
+  price:any;
+  displayedColumns: string[] = ['eventName', 'venue', 'date', 'seatList', 'price', 'dateOfBooking'];
 
 getData(){
 
   this.bookingsService.bookingHistoryOfUser().subscribe(
     (response:any) => {
 
-      
-      this.bookingData = response;
+      this.bookingData = response.filter((booking: any) => booking.seatList.length > 0);
       console.log(response);
+      this.seatNumbers = this.bookingData.map((booking: any) => booking.seatList.length);
+      console.log(this.seatNumbers);
       
     
 
