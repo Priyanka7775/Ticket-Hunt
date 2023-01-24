@@ -11,7 +11,7 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private dataService: DataService, private route: Router) {}
+  constructor(private dataService: DataService, private route: Router) { }
   @Input()
   events1: any;
   events2: any;
