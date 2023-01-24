@@ -47,7 +47,8 @@ export class CreateComponent implements OnInit {
     seats: ['', Validators.required],
     eventType: ['', Validators.required],
     description: ['', Validators.required],
-    price: ['', Validators.required]
+    price: ['', Validators.required],
+    rating: ['', Validators.required]
   });
   isLinear = false;
   get eventId() {
@@ -79,8 +80,6 @@ export class CreateComponent implements OnInit {
   save(basic: FormGroup, secondry: FormGroup) {
     setTimeout(() => {
 
-
-
       console.log(this.eventId?.value)
       // Converted this data to event type data
       let eventData: EventData = {
@@ -94,7 +93,8 @@ export class CreateComponent implements OnInit {
         totalSeats: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
         description: secondry.get('description')?.value,
-        price: secondry.get('price')?.value
+        price: secondry.get('price')?.value,
+        rating: secondry.get('rating')?.value
 
       }
       console.log(eventData.eventId)

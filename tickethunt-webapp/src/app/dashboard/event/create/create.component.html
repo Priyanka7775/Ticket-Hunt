@@ -18,7 +18,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Email</mat-label>
                             <input matInput formControlName="email" readonly [(ngModel)]="emailId" required>
-                            <mat-error class="error" *ngIf="basic.controls['email'].hasError('required')">Event Name is
+                            <mat-error class="error" *ngIf="basic.controls['email'].hasError('required')">Email is
                                 required</mat-error>
                         </mat-form-field>
                         <!-- <mat-form-field appearance="fill">
@@ -68,7 +68,7 @@
 
 
                         <mat-form-field appearance="fill">
-                            <mat-label>Oragnizer name</mat-label>
+                            <mat-label>Organizer Name</mat-label>
                             <input matInput placeholder="Organizer name" required formControlName="organizerName">
                             <mat-error class="error"
                                 *ngIf="secondry.controls['organizerName'].hasError('required')">Organizer's
@@ -93,8 +93,8 @@
                             <mat-label>Event description</mat-label>
                             <input matInput placeholder="description" required formControlName="description">
                             <mat-error class="error"
-                                *ngIf="secondry.controls['description'].hasError('required')">Organizer's
-                                name is required</mat-error>
+                                *ngIf="secondry.controls['description'].hasError('required')">Description is
+                                required</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
                             <mat-label>Total Seats</mat-label>
@@ -105,7 +105,7 @@
                                 required</mat-error>
                             <mat-error class="error" *ngIf="secondry.controls['seats'].hasError('max')">Total seats
                                 cannot
-                                exceed more than 150</mat-error>
+                                exceed more than 50</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
                             <mat-label>Price of one seat</mat-label>
@@ -118,6 +118,15 @@
                             <mat-error class="error" *ngIf="secondry.controls['price'].hasError('max')"> Price cannot
                                 exceed more than &#8377; 800</mat-error>
                         </mat-form-field>
+
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Rating</mat-label>
+                            <input matInput placeholder="rating" required formControlName="rating">
+                            <mat-error class="error" *ngIf="secondry.controls['rating'].hasError('required')">Rating is
+                                required</mat-error>
+                        </mat-form-field>
+
                         <div>
                             <button mat-button matStepperPrevious mat-raised-button>Back</button>
                             <button mat-button matStepperNext mat-raised-button>Next</button>
