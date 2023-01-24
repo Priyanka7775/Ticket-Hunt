@@ -58,15 +58,15 @@ export class PaymentComponent {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private bookseat: BookingServiceService,
-    private spinner: NgxSpinnerService){
+    private spinner: NgxSpinnerService) {
 
   }
 
-  showName= "";
-  selectedSeats= "";
+  showName = "";
+  selectedSeats = "";
   totalPrice = 0;
   date = "";
-  id="";
+  id = "";
 
 
   ngOnInit() {
@@ -78,7 +78,7 @@ export class PaymentComponent {
 
     console.log(this.date)
 
-    
+
     this.paymentForm.controls['amount'].setValue(this.totalPrice)
 
   }
@@ -164,40 +164,40 @@ export class PaymentComponent {
     );
   }
 
-  
+
 
   @HostListener('window:payment.success', ['$event'])
   onPaymentSuccess(event: { detail: any; }): void {
 
     let index = 0
     console.log(this.selectedSeats.length);
-    let price:any = sessionStorage.getItem("price");
+    let price: any = sessionStorage.getItem("price");
     let transactionId = event.detail.razorpay_order_id;
     let message = `You have succesfully booked seats for the show "${sessionStorage.getItem('eventName')}" on ${sessionStorage.getItem('date')} at ${sessionStorage.getItem('venue')} and your booked seats are ${this.selectedSeats}...`
     this.spinner.show();
     this.loading = true;
     from(this.selectedSeats).pipe(
-        concatMap(seat => {
-            let seats = new Seats(seat, price, new Date, transactionId);
-            return this.bookseat.bookSeats(seats, this.id, `${sessionStorage.getItem('emailId')}`);
-        })
+      concatMap(seat => {
+        let seats = new Seats(seat, price, new Date, transactionId);
+        return this.bookseat.bookSeats(seats, this.id, `${sessionStorage.getItem('emailId')}`);
+      })
     ).subscribe((response: any) => {
-        if (response.error) {
-            alert(`Error: ${response.error}`);
-        } else {
-            console.log(response);
-            index++
+      if (response.error) {
+        alert(`Error: ${response.error}`);
+      } else {
+        console.log(response);
+        index++
 
-            if(index === this.selectedSeats.length)
-            this.bookseat.sendEmail(this.email?.value, message).subscribe(
-              response => {
+        if (index === this.selectedSeats.length)
+          this.bookseat.sendEmail(this.email?.value, message).subscribe(
+            response => {
 
-                console.log(response);
-                
-              }
-            )
-            this.routeService.toConfirmation();
-        }
+              console.log(response);
+
+            }
+          )
+        this.routeService.toConfirmation();
+      }
     });
-}
+  }
 }

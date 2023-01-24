@@ -16,7 +16,7 @@ export class Guard1Guard implements CanActivate {
   constructor(
     private userAuthService: AuthenticationService,
     private router: Router
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,

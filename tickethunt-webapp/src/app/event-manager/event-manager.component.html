@@ -3,19 +3,19 @@
  -->
   <mat-card-content class="event">
     <div class="card">
-    <h1>Show Name: {{ eventName }}</h1>
+      <h1>Show Name: {{ eventName }}</h1>
 
-    <h2>Show Date: {{ date }}</h2>
+      <h2>Show Date: {{ date }}</h2>
 
-    <h2>Show Time: {{ time }}</h2>
+      <h2>Show Time: {{ time }}</h2>
 
-    <h2>Show Venue: {{ venue }}</h2>
-  </div>
+      <h2>Show Venue: {{ venue }}</h2>
+    </div>
   </mat-card-content>
-  <table mat-table [dataSource]="dataSource" class="table-style" >
+  <table mat-table [dataSource]="dataSource" class="table-style">
     <mat-card-title>{{ eventDetails.eventName }}</mat-card-title>
     <ng-container matColumnDef="emailId">
-      <th mat-header-cell *matHeaderCellDef >Email Id</th>
+      <th mat-header-cell *matHeaderCellDef>Email Id</th>
       <td mat-cell *matCellDef="let element">{{ element.email }}</td>
     </ng-container>
     <ng-container matColumnDef="dateofbooking">
@@ -37,9 +37,9 @@
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Total Price</th>
       <td mat-cell *matCellDef="let element">
-          {{ "\u20B9" + element.seatList.length * price }}
+        {{ "\u20B9" + element.seatList.length * price }}
       </td>
-  </ng-container>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns" ngClass="separator"></tr>
   </table>

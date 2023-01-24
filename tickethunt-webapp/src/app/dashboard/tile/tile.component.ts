@@ -9,12 +9,12 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./tile.component.css']
 })
 export class TileComponent implements OnInit {
-  
-  constructor(private route: ActivatedRoute, private dataService:DataService, private router:Router) { }
- 
+
+  constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
+
   @Input()
-  events1:any;
-  
+  events1: any;
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
       this.id = param.get('id');
@@ -22,9 +22,9 @@ export class TileComponent implements OnInit {
     this.getMovie();
   }
   id: any;
-  event:any ={}
+  event: any = {}
 
-  movies: Movie[]  = [];
+  movies: Movie[] = [];
 
   getMovie() {
     let id = parseInt(this.id);

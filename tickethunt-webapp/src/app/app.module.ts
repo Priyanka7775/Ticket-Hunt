@@ -102,4 +102,4 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

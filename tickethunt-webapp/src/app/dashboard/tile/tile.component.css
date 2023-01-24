@@ -1,27 +1,33 @@
-mat-card{
+mat-card {
     width: 800px;
     margin-left: 30px;
     margin-top: 30px;
 }
-mat-card-title{
+
+mat-card-title {
     padding: 20px 15px;
     text-transform: capitalize;
 }
-mat-card-title span{
+
+mat-card-title span {
     font-size: 15px;
 }
-mat-card-title button{
+
+mat-card-title button {
     float: right;
     top: -30px;
 }
-mat-card-footer{
+
+mat-card-footer {
     padding: 10px;
     margin: 15px;
 }
-mat-chip{
+
+mat-chip {
     margin: 0 5px;
 }
-.tile-image{
+
+.tile-image {
     width: 100%;
     margin-bottom: 15px;
 }
@@ -29,30 +35,33 @@ mat-chip{
 /* Media Query */
 
 @media only screen and (max-width: 1400px) {
-    mat-card{
+    mat-card {
         width: 640px;
         margin: auto;
         margin-top: 30px;
     }
-    mat-card-title{
+
+    mat-card-title {
         padding: 10px 15px;
     }
-        
+
 }
 
 @media only screen and (max-width: 900px) {
-    mat-card{
+    mat-card {
         width: 340px;
         margin: auto;
         margin-top: 30px;
     }
-    mat-card-title{
+
+    mat-card-title {
         padding: 10px 15px;
         font-size: 17px;
     }
-    mat-card-title button{
-      top: -40px;
-      right: -10px;  
+
+    mat-card-title button {
+        top: -40px;
+        right: -10px;
     }
-      
+
 }
