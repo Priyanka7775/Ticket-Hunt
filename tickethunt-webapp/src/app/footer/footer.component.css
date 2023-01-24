@@ -4,6 +4,7 @@
   height: max-content;
   background-color: rgba(0, 0, 0, 0.7);
   overflow: hidden;
+  bottom: 0;
 }
 .menu{
   margin: 30px 250px 30px 150px;
