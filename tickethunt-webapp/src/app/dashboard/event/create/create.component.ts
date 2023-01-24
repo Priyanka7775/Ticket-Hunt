@@ -23,12 +23,12 @@ interface HTMLInputEvent extends Event {
 
 export class CreateComponent implements OnInit {
 
-  random:any=Math.floor(Math.random()*1000)
-  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService,private route:Router) {
+  random: any = Math.floor(Math.random() * 1000)
+  constructor(private _formBuilder: FormBuilder, private sanitizer: DomSanitizer, private eventService: EventService, private route: Router) {
     this.eventId?.setValue(this.random)
-   }
+  }
 
-   emailId: any = sessionStorage.getItem('emailId');
+  emailId: any = sessionStorage.getItem('emailId');
   ngOnInit(): void {
   }
 
@@ -47,10 +47,10 @@ export class CreateComponent implements OnInit {
     seats: ['', Validators.required],
     eventType: ['', Validators.required],
     description: ['', Validators.required],
-     price: ['', Validators.required]
+    price: ['', Validators.required]
   });
   isLinear = false;
-  get eventId(){
+  get eventId() {
     return this.basic.get('eventId')
   }
 
@@ -73,16 +73,16 @@ export class CreateComponent implements OnInit {
   fileHandler: FileHandle[] = [];
   file1: any;
   files: any[] = [];
-  totalSeats=50;
+  totalSeats = 50;
 
   // Method to be called when form is submitted
   save(basic: FormGroup, secondry: FormGroup) {
-    setTimeout(()=>{
-    
-   
-    
-    console.log(this.eventId?.value)
-    // Converted this data to event type data
+    setTimeout(() => {
+
+
+
+      console.log(this.eventId?.value)
+      // Converted this data to event type data
       let eventData: EventData = {
         eventId: this.eventId?.value,
         email: basic.get('email')?.value,
@@ -94,27 +94,27 @@ export class CreateComponent implements OnInit {
         totalSeats: secondry.get('seats')?.value,
         eventType: secondry.get('eventType')?.value,
         description: secondry.get('description')?.value,
-       price: secondry.get('price')?.value
-       
+        price: secondry.get('price')?.value
+
       }
       console.log(eventData.eventId)
       // Use this data to save into database
       this.eventService.post(eventData, this.files[0]).subscribe(data =>
         console.log(data))
-        this.route.navigateByUrl("event/view")
-        
+      this.route.navigateByUrl("event/view")
 
-      },5000)
-      Swal.fire({
-        title: 'Event Added!!!',
-        showClass: {
-          popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
-      })
-    
+
+    }, 5000)
+    Swal.fire({
+      title: 'Event Added!!!',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+
 
   }
 

@@ -22,7 +22,7 @@ export class BookingComponent implements OnInit {
   public seats: Array<any> = [];
   public seatAvailable: Array<any> = [];
   booking!: FormGroup;
-  price : any;
+  price: any;
 
   currentDate: any = new Date();
 
@@ -42,14 +42,14 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  email:any;
+  email: any;
   newBooking: any
 
   ngOnInit() {
-     this.route.paramMap.subscribe((param) => {
+    this.route.paramMap.subscribe((param) => {
       this.id = param.get('id');
-    }); 
-     this.email =  sessionStorage.getItem('emailId');
+    });
+    this.email = sessionStorage.getItem('emailId');
     /* this.loadData(); */
     // Hardcoded for now to create seat arrangement for the first time
     this.rows = ['A', 'B', 'C', 'D', 'E'];
@@ -65,8 +65,8 @@ export class BookingComponent implements OnInit {
       "date": sessionStorage.getItem('date'),
       "time": sessionStorage.getItem('time'),
       "seatList": []
-   
-   }
+
+    }
 
   }
 
@@ -89,7 +89,7 @@ export class BookingComponent implements OnInit {
         console.log(response);
         this.updateOccupiedSeats();
         console.log(this.bookings)
-      
+
       });
   }
 
@@ -98,13 +98,13 @@ export class BookingComponent implements OnInit {
   }
 
   updateOccupiedSeats(): void {
-   
-    
-      for(const data of this.bookings){
+
+
+    for (const data of this.bookings) {
 /*         this.eventDate = data.date
- */        for(const seat of data.seatList) {
-    
-      this.occupiedSeats.push(seat.seatNumber);
+ */        for (const seat of data.seatList) {
+
+        this.occupiedSeats.push(seat.seatNumber);
       }
     }
   }
@@ -112,48 +112,50 @@ export class BookingComponent implements OnInit {
   data: any;
 
   bookSeat() {
-/*     const logData = this.booking.value;
- */    
-  
-  let cost = this.price * this.selectedSeats.length;
- 
-  this.bookingsService.findByEventIdAndEmail(this.id, this.email).subscribe(
-    response => {
-      this.data = response 
-      console.log(this.data);
-      console.log(this.email);
-      console.log(this.id);
-      
+    /*     const logData = this.booking.value;
+     */
 
-      if(this.data === null)     {
-        this.bookingsService.addBookingForNewEmail(this.newBooking).subscribe(
-          res => {
-            console.log(res);
-            
-          }, error => {
-            console.log(error);
-            
-          }
-        )
-        console.log(this.newBooking)
-      }     
-    }
-  )
-    
-    
+    let cost = this.price * this.selectedSeats.length;
+
+    this.bookingsService.findByEventIdAndEmail(this.id, this.email).subscribe(
+      response => {
+        this.data = response
+        console.log(this.data);
+        console.log(this.email);
+        console.log(this.id);
+
+
+        if (this.data === null) {
+          this.bookingsService.addBookingForNewEmail(this.newBooking).subscribe(
+            res => {
+              console.log(res);
+
+            }, error => {
+              console.log(error);
+
+            }
+          )
+          console.log(this.newBooking)
+        }
+      }
+    )
+
+
     this.router.navigate(['/payment'], {
-      queryParams: { showName: sessionStorage.getItem('eventName'),
-      seats: this.selectedSeats, price: cost,
-      date: this.eventDate,
-      id: this.id }
+      queryParams: {
+        showName: sessionStorage.getItem('eventName'),
+        seats: this.selectedSeats, price: cost,
+        date: this.eventDate,
+        id: this.id
+      }
     })
-    
+
 
     this.booking.controls['price'].setValue(this.price);
 
     for (let seat of this.selectedSeats) {
       this.booking.controls['seatNumber'].setValue(seat);
-     /*  alert('selected seats are=>' + seat); */
+      /*  alert('selected seats are=>' + seat); */
       /* this.bookingsService
         .bookSeats(this.booking.value, this.id)
         .subscribe((response: any) => {
@@ -187,7 +189,7 @@ export class BookingComponent implements OnInit {
 
       return 'whitesmoke';
     }
-    
+
     else {
       return "rgba(74, 158, 74, 0.582)";
     }
@@ -209,7 +211,7 @@ export class BookingComponent implements OnInit {
         this.selectedSeats = this.selectedSeats.filter((s) => s !== seatNumber);
       } else {
         /*  this.selectedSeats.push(seatNumber);  */
-  
+
         this.booking.controls['seatNumber'].setValue(this.selectedSeats);
       }
     }

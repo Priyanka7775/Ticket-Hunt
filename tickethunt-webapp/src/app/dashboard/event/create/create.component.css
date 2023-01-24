@@ -1,35 +1,41 @@
-.container{
-    padding: 30px;
-   /* background-image: url(../../../../assets/images/Image20230116131137.jpg);
+.container {
+  padding: 30px;
+  /* background-image: url(../../../../assets/images/Image20230116131137.jpg);
    background-size: 1000px;
    */
-   
+
 }
+
 mat-stepper {
-    width: 700px;
+  width: 700px;
 }
-button{
+
+button {
   margin: 0 10px;
 }
-#event-info{
-    display: flex;
-    flex-direction: column;
+
+#event-info {
+  display: flex;
+  flex-direction: column;
 }
-.main{
-    display: flex;
-    /* margin-left: 400px;
+
+.main {
+  display: flex;
+  /* margin-left: 400px;
      */
 }
 
 /* Slider */
-.image-shift{
+.image-shift {
   width: 65%;
 }
-#img-one{
+
+#img-one {
   width: 570px;
   margin: auto;
 }
-#img-one img{
+
+#img-one img {
   width: 100%;
 }
 
@@ -46,18 +52,21 @@ button{
 } */
 
 /* Style for image upload */
-.upload-image{
-    margin: 15px 0;
+.upload-image {
+  margin: 15px 0;
 }
-.file-input{
-    border-bottom: 1px solid #c5c5c5;
-    width: 100%;
-    margin-top: 10px;
-    background-color: #ECECEC;
+
+.file-input {
+  border-bottom: 1px solid #c5c5c5;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #ECECEC;
 }
+
 .file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
+
 .file-input::before {
   content: 'Select cover';
   display: inline-block;
@@ -74,15 +83,17 @@ button{
   font-weight: 700;
   font-size: 10pt;
 }
+
 .file-input:hover::before {
   border-color: black;
 }
+
 .file-input:active::before {
   background: -webkit-linear-gradient(top, #d4d4d4, #d4d4d4);
 }
 
-h1{
- 
+h1 {
+
   text-align: center;
   font-size: 30px;
 }

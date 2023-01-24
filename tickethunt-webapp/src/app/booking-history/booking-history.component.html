@@ -1,4 +1,3 @@
-
 <h1>Your Booking History</h1>
 <table mat-table [dataSource]="bookingData" class="mat-elevation-z8">
   <ng-container matColumnDef="eventName" class="column-style">
@@ -30,7 +29,8 @@
     <td mat-cell *matCellDef="let data">
       <ng-container *ngFor="let seat of data.seatList; let i = index">
         {{ seat.dateOfBooking | date }}
-        <button class="cancel-button"  (click)="delete(seat.seatNumber,data.eventId)" mat-button color="warn">Cancel</button>
+        <button class="cancel-button" (click)="delete(seat.seatNumber,data.eventId)" mat-button
+          color="warn">Cancel</button>
 
         <br>
         <br>

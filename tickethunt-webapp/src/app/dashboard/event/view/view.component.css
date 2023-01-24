@@ -50,10 +50,12 @@ button {
     -moz-user-select: none;
     user-select: none;
     -webkit-user-drag: none;
-}.row{
+}
+
+.row {
     background-image: url(../../../../assets/images/filmmaker-profession-clapperboard-video-tape-260nw-1467057335.jpg);
     margin: -30px;
-    padding-bottom:250px;
-    
-    background-size:1550px ;
+    padding-bottom: 250px;
+
+    background-size: 1550px;
 }
