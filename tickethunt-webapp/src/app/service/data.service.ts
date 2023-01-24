@@ -8,7 +8,7 @@ import { EventData } from '../model/event';
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllMovies() {
     return this.http.get<Array<Movie>>('http://localhost:8080/movies');

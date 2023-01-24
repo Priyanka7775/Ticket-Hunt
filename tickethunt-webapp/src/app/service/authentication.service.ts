@@ -11,7 +11,7 @@ export class AuthenticationService {
   isUserRegistered: boolean = false;
   isUserLogedIn: boolean = false;
 
-  isRole : any;
+  isRole: any;
 
 
   register(userData: any) {
