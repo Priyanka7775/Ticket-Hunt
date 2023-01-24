@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
-  constructor( private router:Router ) { }
+  constructor(private router: Router) { }
   ngOnInit(): void {
   }
-  home(){
+  home() {
     this.router.navigateByUrl("home");
   }
 }

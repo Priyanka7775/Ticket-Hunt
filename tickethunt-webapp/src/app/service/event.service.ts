@@ -12,8 +12,8 @@ export class EventService {
     const data: FormData = new FormData();
     data.append('file', images);
     data.append('event', JSON.stringify(event));
-/* "http://localhost:8088/eventData/common" */
-    return this.http.post('http://localhost:8088/eventData/common', data);
+    /* "http://localhost:8088/eventData/common" */
+    return this.http.post('http://localhost:8080/eventData/common', data);
     // let params1 = new HttpParams();
 
     // params1 = params1.append('eventId', eventData.eventId)

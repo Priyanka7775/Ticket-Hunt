@@ -10,7 +10,7 @@ import { SignupService } from 'src/app/service/signup.service';
 export class ProfileComponent {
   profile: User[] = [];
 
-  constructor(private signupService: SignupService) {}
+  constructor(private signupService: SignupService) { }
   // Get user info when loggin
 
   getUser(email: string) {

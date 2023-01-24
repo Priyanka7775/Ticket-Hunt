@@ -8,19 +8,19 @@ import { User } from '../model/user.model';
   providedIn: 'root',
 })
 export class RecommendationService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllEvents(): Observable<Array<RecEvent>> {
     return this.http.get<Array<RecEvent>>(
-      'https://localhost:8086/api/v4/events'
+      'https://localhost:8080/api/v4/events'
     );
   }
 
   getAllUsers(): Observable<Array<User>> {
-    return this.http.get<Array<User>>('https://localhost:8086/api/v4/users');
+    return this.http.get<Array<User>>('https://localhost:8080/api/v4/users');
   }
 
   addBooking(user: string) {
-    return this.http.get('https://localhost:8086/api/v4/user/booked/' + user);
+    return this.http.get('https://localhost:8080/api/v4/user/booked/' + user);
   }
 }

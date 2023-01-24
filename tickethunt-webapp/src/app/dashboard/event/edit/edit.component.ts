@@ -10,29 +10,29 @@ import Swal from 'sweetalert2';
 })
 export class EditEventComponent {
 
-  constructor(private dataService: DataService,private activatedRoute: ActivatedRoute, private router:Router ) { }
-  event:any ={}
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  event: any = {}
   @Input()
-  events:any;
-  
-  
+  events: any;
+
+
   ngOnInit(): void {
-    
+
     this.activatedRoute.paramMap.subscribe(
-     
-      params=>{
+
+      params => {
         let id = params.get("id");
         console.log(id);
         this.dataService.getEvent1(id).subscribe(data => {
-              console.log(data);
-              this.event = data;
-             })
+          console.log(data);
+          this.event = data;
+        })
       }
     )
-    
+
   }
   editNote() {
-    this.dataService.editPost(this.event.eventId,this.event).subscribe(data => {
+    this.dataService.editPost(this.event.eventId, this.event).subscribe(data => {
       this.event = data;
       Swal.fire({
         // position: 'top-end',
@@ -43,10 +43,10 @@ export class EditEventComponent {
       })
       this.router.navigateByUrl("event/view");
     })
-    
-  }
-  
 
- 
+  }
+
+
+
 
 }

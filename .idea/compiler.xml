@@ -15,8 +15,8 @@
         <module name="RecommendationService" />
         <module name="Eureka" />
         <module name="MovieEventService" />
-        <module name="authentication" />
         <module name="RecomendationService" />
+        <module name="authentication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

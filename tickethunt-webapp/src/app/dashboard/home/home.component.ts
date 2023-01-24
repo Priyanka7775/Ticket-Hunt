@@ -12,7 +12,11 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+<<<<<<< HEAD
   constructor(private dataService: DataService, private route: Router, private authService: AuthenticationService) {}
+=======
+  constructor(private dataService: DataService, private route: Router) { }
+>>>>>>> fb544483fedd8a32dbf056cb3e4048f7e3f75e9c
   @Input()
   events1: any;
   events2: any;

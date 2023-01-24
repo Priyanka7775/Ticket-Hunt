@@ -5,10 +5,7 @@ import com.project.MovieEventService.domain.Event;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.proxy.BookingProxy;
-import com.project.MovieEventService.rabbitmq.BookingDTO;
-import com.project.MovieEventService.rabbitmq.CommonUser;
-import com.project.MovieEventService.rabbitmq.Producer;
-import com.project.MovieEventService.rabbitmq.ProducerMapping;
+import com.project.MovieEventService.rabbitmq.*;
 import com.project.MovieEventService.repository.EventRepository;
 //import com.project.MovieEventService.repository.MovieRepository;
 
@@ -19,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +59,8 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event addEvent1(CommonUser commonUser,  MultipartFile file) throws IOException {
 
-        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(),  commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(), commonUser.getTotalSeats());
+        List<SeatsDTO> seatsDTOList = new ArrayList<>();
+        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(),  commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(), seatsDTOList, commonUser.getTotalSeats());
         if(eventRepository.findByEventId(commonUser.getEventId()) == null) {
             producer.sendDtoToQueue(bookingDTO);
         }

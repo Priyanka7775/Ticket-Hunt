@@ -6,16 +6,16 @@ export interface Bookings {
     totalSeats: any,
     time: any,
     date: any
-    
+
 }
 
 
 export class Seats {
     public seatNumber: String;
-    public  price: number;
-     public  dateOfBooking: Date;
-     public transactionId: String;
-    
+    public price: number;
+    public dateOfBooking: Date;
+    public transactionId: String;
+
 
     constructor(seatNum: String, price: number,
         dateOfBooking: Date, transactionId: String) {

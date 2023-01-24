@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private locationService: LocationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.toggleTimeout();

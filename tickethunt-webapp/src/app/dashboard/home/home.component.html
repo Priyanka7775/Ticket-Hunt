@@ -26,6 +26,7 @@
   </div>
   <hr>
   <div class="recommended">
+<<<<<<< HEAD
     <div class="recommendation" *ngIf="isLoggedIn">
       <h1>Recommended</h1>
     </div>
@@ -34,6 +35,15 @@
     <br>
     <h1>Trending Movies</h1>
     <section class="section">
+=======
+    <h1>Recommendations</h1>
+    <hr>
+
+    <!-- For Showing All movies -->
+    <br>
+    <h1>Trending Movies</h1>
+    <section class="">
+>>>>>>> fb544483fedd8a32dbf056cb3e4048f7e3f75e9c
       <div class="container-fluid">
         <div class="slider-wrap">
           <div class="slider-main">
@@ -45,8 +55,8 @@
                   <div id="name">
                     {{event.eventName}}
                   </div>
-                  <div>Release date-{{event.date}}</div>
-                  <div>Rating:{{event.rating}}</div>
+                  <div>Release Date: {{event.date}}</div>
+                  <div>Rating: {{event.rating}}</div>
 
 
                 </div>
@@ -72,7 +82,11 @@
 
       <!-- For Showing All events -->
       <h1>Events Happening Near You</h1>
+<<<<<<< HEAD
       <section class="section">
+=======
+      <section class="">
+>>>>>>> fb544483fedd8a32dbf056cb3e4048f7e3f75e9c
         <div class="container-fluid">
           <div class="slider-wrap">
             <div class="slider-main">
@@ -85,8 +99,8 @@
                       {{event.eventName}}
                     </div>
 
-                    <div>Show date-{{event.date}}</div>
-                    <div>Rating:{{event.rating}}</div>
+                    <div>Show Date: {{event.date}}</div>
+                    <!-- <div>Rating:{{event.rating}}</div> -->
                   </div>
                 </div>
 

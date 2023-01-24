@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, ValidationErrors, ValidatorFn, Validators, AbstractControl, FormGroup} from '@angular/forms';
+import { FormBuilder, ValidationErrors, ValidatorFn, Validators, AbstractControl, FormGroup } from '@angular/forms';
 import { User } from 'src/app/model/user.model';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { Interest } from 'src/app/model/interest.model';
 import { SignupService } from 'src/app/service/signup.service';
 import { Route, Router } from '@angular/router';
@@ -16,34 +16,34 @@ import Swal from 'sweetalert2';
 export class SignupComponent {
 
   //Constructor
-  constructor(private fb: FormBuilder,private signupService: SignupService,private router:Router) { }
-  
+  constructor(private fb: FormBuilder, private signupService: SignupService, private router: Router) { }
+
   // Basic Information 
   customer = this.fb.group({
     name: ['', Validators.required],
-    city: ['', Validators.required], 
-     phone: ['',
+    city: ['', Validators.required],
+    phone: ['',
       Validators.compose([
         Validators.required,
         Validators.pattern('(9|8|7)[0-9]{9}'),
       ])],
-      email: ['', Validators.compose([
-            Validators.required,
-            Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
-          ])],
-      password: ['', Validators.compose([
-            Validators.required,
-            Validators.pattern(
-              '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\W]{8,63}$'
-            ),
-          ])],
-      cnfPassword:['', Validators.required]
+    email: ['', Validators.compose([
+      Validators.required,
+      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+    ])],
+    password: ['', Validators.compose([
+      Validators.required,
+      Validators.pattern(
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\W]{8,63}$'
+      ),
+    ])],
+    cnfPassword: ['', Validators.required]
   }, { validator: verifypwd('password', 'cnfPassword') });
 
   // Second form Data 
   interestData = this.fb.group({
-    interest: ['', Validators.required], 
-     role: ['', Validators.required],
+    interest: ['', Validators.required],
+    role: ['', Validators.required],
   });
 
   isEditable = false;
@@ -51,18 +51,18 @@ export class SignupComponent {
   // Once form is subbmited below method is called
   saveUser(customer: FormGroup, interest: FormGroup) {
 
-      // Saving all data to user
-      const userData: User = {
-       name: customer.get('name')?.value, 
-       email: customer.get('email')?.value,
-        password: customer.get('password')?.value, 
-        city: customer.get('city')?.value,
-        phone: customer.get('phone')?.value,
-        interest: this.interests,
-       role: interest.get('role')?.value
+    // Saving all data to user
+    const userData: User = {
+      name: customer.get('name')?.value,
+      email: customer.get('email')?.value,
+      password: customer.get('password')?.value,
+      city: customer.get('city')?.value,
+      phone: customer.get('phone')?.value,
+      interest: this.interests,
+      role: interest.get('role')?.value
     }
     // Logging data for testing - Use userData to submit data 
-    this.signupService.post(userData).subscribe(next=>{
+    this.signupService.post(userData).subscribe(next => {
       // alert('saved')
       Swal.fire({
         // position: 'top-end',
@@ -131,7 +131,7 @@ export function verifypwd(pass: string, cnfPass: string): ValidatorFn {
       const err = { 'noMatch': true };
       control.get(cnfPass)?.setErrors(err);
       return err;
-    } 
+    }
     return null;
   }
 }

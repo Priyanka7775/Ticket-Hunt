@@ -12,7 +12,7 @@ import java.math.BigInteger;
 
 @RestController
 @RequestMapping("/payment/")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class RazorPayController {
 
     private RazorpayClient client;
