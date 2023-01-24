@@ -205,7 +205,6 @@ h1 {
 .move-left {
   animation: left 1s;
 }
-
 .pop {
   animation: scale 0.3s;
 }
@@ -278,6 +277,7 @@ h1 {
     margin-left: 70px;
   }
 }
+
 
 @media only screen and (max-width: 1200px) {
   .event-pop {

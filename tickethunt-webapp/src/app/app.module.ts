@@ -47,6 +47,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { EventManagerComponent } from './event-manager/event-manager.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 
     HomePageComponent,
     ProfileComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
