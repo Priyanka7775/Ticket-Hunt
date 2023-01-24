@@ -2,9 +2,9 @@
   <div class="popular">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="blur"
-        style="background-image: url(https://images.unsplash.com/photo-1533138610295-13ac1d8cdb09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2luZW1hdGljJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&w=1000&q=80)">
+        style="background-image: url(../../../assets/images/bg2.jpg)">
       </div>
-      <div class="event-pop" *ngFor="let movie of carry" id="event-pop">
+      <div class="event-pop" *ngFor="let movie of carry" id="event-pop" (click)="navigateToMovieDetail(movie.eventId)">
         <img src="data:image/png;base64, {{movie.image}}" class="banner" alt="" />
         <div class="info">
           <p class="title">{{movie.eventName}}</p>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="event-grid">
-        <div class="event-grid-item" *ngFor="let event of movies | slice:0:4;" id="{{event.eventId}}-card">
+        <div class="event-grid-item" *ngFor="let event of movies | slice:0:4;" id="{{event.eventId}}-card" (click)="navigateToMovieDetail(event.eventId)">
           <img src="data:image/png;base64,{{event.image}}" class="banner" alt="" />
           <div class="info">
             <p class="box">{{event.eventName}}</p>
@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
-  <hr>
   <div class="recommended">
     <div class="recommendation" *ngIf="isLoggedIn">
       <h1>Recommended</h1>
@@ -32,6 +31,7 @@
     <hr *ngIf="isLoggedIn">
     <!-- For Showing All movies -->
     <br>
+    <hr width="90%">
     <h1>Trending Movies</h1>
     <section class="section">
       <div class="container-fluid">
@@ -67,12 +67,12 @@
       </div>
       <br>
       <br>
-      <hr>
+      <hr width="90%">
 
 
       <!-- For Showing All events -->
-      <h1>Events Happening Near You</h1>
-      <section class="section">
+      <h1 class="event-title">Events Happening Near You</h1>
+      <section class="section section-event">
         <div class="container-fluid">
           <div class="slider-wrap">
             <div class="slider-main">
