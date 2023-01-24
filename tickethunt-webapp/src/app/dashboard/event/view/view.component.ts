@@ -99,7 +99,7 @@ export class ViewEventComponent implements OnInit {
           'success'
         )
         setTimeout(()=>{
-          location.reload();
+          // location.reload();
         },4000)
         
       }

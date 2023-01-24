@@ -9,14 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="payment-service" />
         <module name="booking-service" />
+        <module name="ProductWebApp" />
         <module name="APIGateway" />
         <module name="user-service" />
-        <module name="ProductWebApp" />
         <module name="RecommendationService" />
         <module name="Eureka" />
         <module name="MovieEventService" />
-        <module name="authentication" />
         <module name="RecomendationService" />
+        <module name="authentication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
