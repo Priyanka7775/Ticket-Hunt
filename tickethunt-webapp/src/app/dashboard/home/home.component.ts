@@ -21,12 +21,15 @@ export class HomeComponent implements OnInit {
   carry: EventData[] = [];
   event: any = {};
   image: string = '';
+  
   i: number = 1;
+
   isLoggedIn: boolean = false;
+
   ngOnInit(): void {
     this.viewEvent();
     this.viewMovie();
-    // this.changeSlider();
+    this.changeSlider();
     this.verifyUser();
   }
 
