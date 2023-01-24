@@ -9,29 +9,29 @@ import { Bookings, Seats } from '../model/bookings';
 })
 export class BookingServiceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   url = "http://localhost:8080/bookings/view/";
 
   id = localStorage.getItem('id');
 
   email = sessionStorage.getItem('emailId')
- /*  bookSeat = `http://localhost:8081/bookings/book/1/rohitsnarnaware7@gmail.com`;
-
-  bookingHistory = "http://localhost:8081/bookings/rohitsnarnaware7@gmail.com"
-
-  cancel = "http://localhost:8081/bookings/cancel/1/qqq/" */
+  /*  bookSeat = `http://localhost:8081/bookings/book/1/rohitsnarnaware7@gmail.com`;
+ 
+   bookingHistory = "http://localhost:8081/bookings/rohitsnarnaware7@gmail.com"
+ 
+   cancel = "http://localhost:8081/bookings/cancel/1/qqq/" */
 
   sendEmail(email: any, message: any) {
-      return this.http.post<any>(`http://localhost:8080/bookings/${email}/${message}`,"")
+    return this.http.post<any>(`http://localhost:8080/bookings/${email}/${message}`, "")
   }
 
-  addBookingForNewEmail(booking :any) : Observable<any>{
+  addBookingForNewEmail(booking: any): Observable<any> {
     return this.http.post<any>('http://localhost:8080/bookings/addBooking', booking);
   }
 
-  getParticularBookings(eventId: any) : Observable<any>{
-    return this.http.get<Bookings>(this.url+eventId);
+  getParticularBookings(eventId: any): Observable<any> {
+    return this.http.get<Bookings>(this.url + eventId);
   }
 
   getAllBookings(): Observable<any> {
@@ -39,19 +39,19 @@ export class BookingServiceService {
     return this.http.get<Bookings>(this.url);
   }
 
-  bookSeats(seat: Seats, id: any, email:any) : Observable<any> {
+  bookSeats(seat: Seats, id: any, email: any): Observable<any> {
     return this.http.post<Seats>(`http://localhost:8080/bookings/book/${id}/${email}`, seat);
 
 
   }
 
 
-  bookingHistoryOfUser() : Observable<any> {
+  bookingHistoryOfUser(): Observable<any> {
 
     return this.http.get<Bookings>(`http://localhost:8080/bookings/${this.email}`)
   }
 
-  cancelSeats(seat: any, eventId: any) : Observable<any> {
+  cancelSeats(seat: any, eventId: any): Observable<any> {
 
     return this.http.delete<any>(`http://localhost:8080/bookings/cancel/${eventId}/${this.email}/${seat}`)
 

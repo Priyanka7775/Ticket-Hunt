@@ -7,7 +7,7 @@ import { User } from '../model/user.model';
   providedIn: 'root',
 })
 export class SignupService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   post(user: User) {
     return this.http.post('http://localhost:8080/userData/commonUser', user);
   }

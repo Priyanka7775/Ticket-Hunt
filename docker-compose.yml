@@ -98,11 +98,11 @@ services:
     networks: 
       - mysql-net
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_USERNAME: root
-      MYSQL_PASSWORD: admin
+      MYSQL_PASSWORD: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   mongoService:
     image: mongo:latest

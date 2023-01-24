@@ -8,7 +8,7 @@ import { User } from '../model/user.model';
   providedIn: 'root',
 })
 export class RecommendationService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllEvents(): Observable<Array<RecEvent>> {
     return this.http.get<Array<RecEvent>>(
