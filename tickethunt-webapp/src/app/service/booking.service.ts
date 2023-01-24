@@ -48,23 +48,23 @@ export class BookingServiceService {
 
   bookingHistoryOfUser() : Observable<any> {
 
-    return this.http.get<Bookings>(`http://localhost:8081/bookings/${this.email}`)
+    return this.http.get<Bookings>(`http://localhost:8080/bookings/${this.email}`)
   }
 
   cancelSeats(seat: any, eventId: any) : Observable<any> {
 
-    return this.http.delete<any>(`http://localhost:8081/bookings/cancel/${eventId}/${this.email}/${seat}`)
+    return this.http.delete<any>(`http://localhost:8080/bookings/cancel/${eventId}/${this.email}/${seat}`)
 
   }
 
   findByEmail(email: any): Observable<any> {
 
-    return this.http.get<any>(`http://localhost:8081/bookings/${email}`)
+    return this.http.get<any>(`http://localhost:8080/bookings/${email}`)
   }
 
   findByEventIdAndEmail(eventId: string, email: string): Observable<any> {
 
-    return this.http.get<any>(`http://localhost:8081/bookings/${eventId}/${email}`)
+    return this.http.get<any>(`http://localhost:8080/bookings/${eventId}/${email}`)
   }
 
 }

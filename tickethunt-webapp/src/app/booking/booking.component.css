@@ -206,7 +206,7 @@ table {
     .indicator{
       width: 30px; 
       position: relative; 
-      margin-left: 800px; 
+      margin-left: 880px; 
       margin-bottom: 58px; 
       font-size: 30px;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -240,6 +240,7 @@ table {
     td {
       width: 15%;
     }
+    
   
     .seat {
       width: 60px;
