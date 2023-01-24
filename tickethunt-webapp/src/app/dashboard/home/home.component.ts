@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventData } from 'src/app/model/event';
 import { Movie } from 'src/app/model/movie.model';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 import { DataService } from 'src/app/service/data.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private dataService: DataService, private route: Router) {}
+  constructor(private dataService: DataService, private route: Router, private authService: AuthenticationService) {}
   @Input()
   events1: any;
   events2: any;
@@ -21,11 +22,12 @@ export class HomeComponent implements OnInit {
   event: any = {};
   image: string = '';
   i: number = 1;
-
+  isLoggedIn: boolean = false;
   ngOnInit(): void {
     this.viewEvent();
     this.viewMovie();
-    this.changeSlider();
+    // this.changeSlider();
+    this.verifyUser();
   }
 
   viewMovie() {
@@ -49,7 +51,11 @@ export class HomeComponent implements OnInit {
   navigateToMovieDetail(eventId: any) {
     this.route.navigate(['detail', eventId]);
   }
-
+  verifyUser(){
+    setInterval(() => {
+      this.isLoggedIn = this.authService.isUserLogedIn;
+    }, 1000)
+  }
   changeSlider() {
     setInterval(() => {
       let id = this.movies[this.i]?.eventId;
@@ -57,12 +63,12 @@ export class HomeComponent implements OnInit {
       let pop = document.getElementById('event-pop');
       if (this.i < this.movies.length) {
         this.carry.pop();
-        pop?.classList.add('pop');
+        // pop?.classList.add('pop');
         this.carry.push(this.movies[this.i]);
         this.i++;
-        setInterval(() => {
-          pop?.classList.remove('pop');
-        }, 3000);
+        // setInterval(() => {
+        //   pop?.classList.remove('pop');
+        // }, 3000);
       } else {
         this.i = 0;
         this.carry.pop();

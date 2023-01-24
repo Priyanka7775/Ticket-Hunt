@@ -26,13 +26,14 @@
   </div>
   <hr>
   <div class="recommended">
-    <h1>Recomended</h1>
-    <hr>
-
+    <div class="recommendation" *ngIf="isLoggedIn">
+      <h1>Recommended</h1>
+    </div>
+    <hr *ngIf="isLoggedIn">
     <!-- For Showing All movies -->
     <br>
-    <h1>Trending Movie</h1>
-    <section class="">
+    <h1>Trending Movies</h1>
+    <section class="section">
       <div class="container-fluid">
         <div class="slider-wrap">
           <div class="slider-main">
@@ -42,7 +43,7 @@
                   <img src="data:image/png;base64,{{event.image}}" width="165px" height="140px" alt="" />
 
                   <div id="name">
-                    <b>{{event.eventName}}</b>
+                    {{event.eventName}}
                   </div>
                   <div>Release date-{{event.date}}</div>
                   <div>Rating:{{event.rating}}</div>
@@ -55,11 +56,11 @@
             </div>
           </div>
           <div class="button-area">
-            <button type="button" mat-raised-button class="prev preButton" appPrev>
-              <mat-icon>arrow_back_ios</mat-icon>
+            <button type="button" mat-icon-button class="prev preButton" appPrev title="Previous">
+              <mat-icon class="icon">arrow_back_ios</mat-icon>
             </button>
-            <button type="button" mat-raised-button class="next nexButton" appNext>
-              <mat-icon>arrow_forward_ios</mat-icon>
+            <button type="button" mat-icon-button class="next nexButton" appNext title="Next">
+              <mat-icon class="icon">arrow_forward_ios</mat-icon>
             </button>
           </div>
         </div>
@@ -70,8 +71,8 @@
 
 
       <!-- For Showing All events -->
-      <h1>Event Happening Near You</h1>
-      <section class="">
+      <h1>Events Happening Near You</h1>
+      <section class="section">
         <div class="container-fluid">
           <div class="slider-wrap">
             <div class="slider-main">
@@ -81,7 +82,7 @@
                   <div class="card-body">
                     <img src="data:image/png;base64,{{event.image}}" width="165px" height="140px" alt="" />
                     <div id="name">
-                      <b>{{event.eventName}}</b>
+                      {{event.eventName}}
                     </div>
 
                     <div>Show date-{{event.date}}</div>
@@ -93,10 +94,10 @@
               </div>
             </div>
             <div class="button-area">
-              <button type="button" mat-raised-button class="prev preButton" appPrev>
+              <button type="button" mat-icon-button class="prev preButton" appPrev>
                 <mat-icon>arrow_back_ios</mat-icon>
               </button>
-              <button type="button" mat-raised-button class="next nexButton" appNext>
+              <button type="button" mat-icon-button class="next nexButton" appNext>
                 <mat-icon>arrow_forward_ios</mat-icon>
               </button>
             </div>

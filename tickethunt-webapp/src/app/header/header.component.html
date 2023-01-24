@@ -20,7 +20,7 @@
   <span class="spacer"></span>
   <!-- Navbar for for event manager -->
   <nav class="">
-    <a type="button" (click)="toggle()"><span>Event</span><mat-icon class="icon">expand_more</mat-icon></a>
+    <a type="button" (click)="toggle()" *ngIf="isLoggedIn"><span>Event</span><mat-icon class="icon">expand_more</mat-icon></a>
     <div id="event-menu" class="menu-inactive">
       <ul>
         <li><a routerLink="event/create">Add Event</a></li>

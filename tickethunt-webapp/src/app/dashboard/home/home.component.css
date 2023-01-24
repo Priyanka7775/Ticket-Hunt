@@ -47,49 +47,48 @@ a {
   position: relative;
   overflow: hidden;
   overflow-inline: hidden;
-  height: 340px;
+  height: 440px;
 }
 .slider-main {
   position: absolute;
   width: 3000%;
+  padding: 0px 75px;
 }
 .event {
   display: inline-block;
   width: 310px;
   height: 180px;
   position: relative;
-  margin: 0px 12px;
   padding: 7px;
 }
 
 .card {
   cursor: pointer;
-  text-align: center;
+  /* text-align: center; */
   height: 320px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.8);
-  background-color: rgba(0, 0, 0, 0.8);
+  /* box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8); */
   /* border: 2px dashed white; */
-  color: white;
+  /* color: white; */
   padding-top: 10px;
   border-radius: 10px;
 }
 img {
-  border-radius: 20px;
-  height: 230px;
+  border-radius: 5px;
+  height: 340px;
   width: 250px;
-  border: 2px dashed white;
 }
 
 .prev {
   position: absolute;
   left: 36px;
-  top: 120px;
+  top: 200px;
   transform: translate(-50%, -50%);
 }
 .next {
   position: absolute;
   right: -5px;
-  top: 120px;
+  top: 200px;
   transform: translate(-50%, -50%);
 }
 .heading {
@@ -100,17 +99,19 @@ mat-raised-button {
 }
 
 h1 {
-  color: red;
-  font-family: arial, sans-serif;
-  font-size: 30px;
+  color: #000;
+  font-family: "Raleway", sans-serif;
+  font-size: 19px;
   font-weight: bold;
   margin-top: 10px;
   margin-bottom: 10px;
-  text-align: center;
+  margin-left: 140px;
   padding: 10px;
 }
 #name {
   font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 .carousel {
   overflow: hidden;
@@ -134,8 +135,8 @@ h1 {
   width: 100%;
   height: 800px;
   background-size: cover;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  filter: blur(5px);
+  -webkit-filter: blur(4px);
   background-repeat: no-repeat;
 }
 
@@ -221,5 +222,29 @@ h1 {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+/* Media Query */
+
+@media only screen and (max-width: 1366px) {
+  .banner {
+    width: 320px;
+    height: 440px;
+  }
+  .event-pop {
+    margin-left: 100px;
+  }
+  .event-grid {
+    margin-left: 350px;
+  }
+  .section {
+    padding: 0px 156px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .event-pop {
+    display: none;
   }
 }
