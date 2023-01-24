@@ -86,6 +86,7 @@ export class BookingComponent implements OnInit {
       .getParticularBookings(id)
       .subscribe((response: any) => {
         this.bookings = response;
+        console.log(response);
         this.updateOccupiedSeats();
         console.log(this.bookings)
       
@@ -102,6 +103,7 @@ export class BookingComponent implements OnInit {
       for(const data of this.bookings){
 /*         this.eventDate = data.date
  */        for(const seat of data.seatList) {
+    
       this.occupiedSeats.push(seat.seatNumber);
       }
     }
