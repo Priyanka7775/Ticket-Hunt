@@ -61,10 +61,13 @@ public class EventServiceImpl implements EventService {
 
         List<SeatsDTO> seatsDTOList = new ArrayList<>();
         BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(),  commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(), seatsDTOList, commonUser.getTotalSeats());
+        BookingDTO bookingDTO2 = new BookingDTO(commonUser.getEmail(), commonUser.getEventName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
+                commonUser.getTotalSeats(),commonUser.getPrice(),commonUser.getDescription(),commonUser.getRating(),commonUser.getEventType());
+
         if(eventRepository.findByEventId(commonUser.getEventId()) == null) {
             producer.sendDtoToQueue(bookingDTO);
         }
-        producerMapping.sendDtoToQueue(bookingDTO);
+        producerMapping.sendDtoToQueue(bookingDTO2);
         Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
                 file.getBytes(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
 

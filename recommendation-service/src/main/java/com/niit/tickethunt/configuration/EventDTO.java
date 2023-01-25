@@ -19,7 +19,7 @@ public class EventDTO {
     private int totalSeats;
     private String eventType;
     private String description;
-    private int price;
+    private double price;
     private String rating;
     private JSONObject jsonObject;
 
@@ -112,11 +112,11 @@ public class EventDTO {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

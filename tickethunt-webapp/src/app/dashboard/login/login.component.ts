@@ -35,12 +35,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user.value).subscribe({
       next: (response) => {
         this.responseData = response;
-        console.log(response);
-        console.log('token : ' + this.responseData.token);
         sessionStorage.setItem('jwtkey', this.responseData.token);
         sessionStorage.setItem('userEmail', this.responseData.userEmail);
         sessionStorage.setItem('role', this.responseData.role);
-        console.log(this.responseData.role);
         let email = this.responseData.userEmail.split('=')[1].split(',')[0];
         sessionStorage.setItem('emailId', email);
         // alert("Welcome to our app, user!");
@@ -55,13 +52,13 @@ export class LoginComponent implements OnInit {
         if (this.responseData.role === 'event') {
           this.authService.isRole = 'event';
         }
-        console.log(this.authService.isRole);
-        this.authService.isUserLogedIn == true;
+        this.authService.isUserLogedIn = true;
         this.router.navigateByUrl('/home');
       },
 
       error: (err) => {
         console.log(err);
+        this.authService.isUserLogedIn = false;
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -71,7 +68,8 @@ export class LoginComponent implements OnInit {
     });
   }
   verifyLogin() {
-    if (sessionStorage.getItem('userEmail')) {
+    let email = sessionStorage.getItem('userEmail');
+    if (email) {
       this.router.navigate(['/home']);
       this.authService.isUserLogedIn = true;
     }

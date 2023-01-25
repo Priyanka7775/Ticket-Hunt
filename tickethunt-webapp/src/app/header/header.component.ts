@@ -61,19 +61,23 @@ export class HeaderComponent implements OnInit {
 
   validateLogin() {
     setInterval(() => {
+      let email = sessionStorage.getItem('emailId')
       if (this.authService.isUserLogedIn) {
         this.isLoggedIn = this.authService.isUserLogedIn;
-      } else if (sessionStorage.getItem('userEmail')) {
+      } else if (email != null) {
         this.isLoggedIn = true;
-      }
-    }, 500);
+      } else {
+        this.isLoggedIn = false;
+      }    
+    }, 1000);
   }
 
   logout() {
     alert('Confirm to LogOut');
-    this.authService.isUserLogedIn == false;
+    this.authService.isUserLogedIn = false;
     sessionStorage.removeItem('jwtkey');
     sessionStorage.removeItem('userEmail');
+    sessionStorage.clear();
     this.router.navigateByUrl('/login');
   }
 
