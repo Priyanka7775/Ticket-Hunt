@@ -13,7 +13,7 @@ export class SignupService {
   }
   getUser(email: string): Observable<Array<User>> {
     return this.http.get<Array<User>>(
-      'http://localhost:8082/userData/email/' + email
+      'http://localhost:8080/userData/email/' + email
     );
   }
 }

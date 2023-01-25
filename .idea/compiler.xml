@@ -9,11 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="payment-service" />
         <module name="booking-service" />
-        <module name="APIGateway" />
         <module name="user-service" />
+        <module name="APIGateway" />
         <module name="ProductWebApp" />
-        <module name="RecommendationService" />
         <module name="Eureka" />
+        <module name="RecommendationService" />
         <module name="MovieEventService" />
         <module name="RecomendationService" />
         <module name="authentication" />
