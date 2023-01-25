@@ -54,7 +54,7 @@ public class UserController {
     public ResponseEntity<?> fetchUserByEmail(@PathVariable String email) throws UserNotFoundException {
         ResponseEntity responseEntity = null;
         try {
-            responseEntity = new ResponseEntity(iUserService.findByEmail(email), HttpStatus.NOT_FOUND);
+            responseEntity = new ResponseEntity(iUserService.findByEmail(email), HttpStatus.OK);
         } catch (UserNotFoundException exception) {
             throw new UserNotFoundException();
         } catch (Exception e) {
