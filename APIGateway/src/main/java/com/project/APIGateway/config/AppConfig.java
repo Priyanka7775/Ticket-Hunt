@@ -35,6 +35,10 @@ public class AppConfig {
                         .path("/userData/**")
                         .uri("http://user-service:8082/")
                 )
+                .route(p -> p
+                        .path("/**")
+                        .uri("http://webapp-service:4200/")
+                )
                 .build();
     }
 }
