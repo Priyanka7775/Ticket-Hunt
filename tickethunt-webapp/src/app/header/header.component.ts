@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   // role: any = sessionStorage.getItem('role');
   city: string = '';
+  role: string = '';
   // Cities
   cities: string[] = [
     'Mumbai',
@@ -61,13 +62,17 @@ export class HeaderComponent implements OnInit {
 
   validateLogin() {
     setInterval(() => {
-      let email = sessionStorage.getItem('emailId')
-      if (this.authService.isUserLogedIn) {
+      let email = sessionStorage.getItem('emailId');
+      let role = sessionStorage.getItem('role');
+      if (this.authService.isUserLogedIn && role) {
         this.isLoggedIn = this.authService.isUserLogedIn;
-      } else if (email != null) {
+        this.role = role;
+      } else if (email && role) {
         this.isLoggedIn = true;
+        this.role = role;
       } else {
         this.isLoggedIn = false;
+        this.role = '';
       }    
     }, 1000);
   }
