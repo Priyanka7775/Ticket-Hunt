@@ -8,12 +8,12 @@
 
             <h1 id="des">{{event.description}}</h1>
             <span id="rating">
-                <mat-icon>star</mat-icon><span>{{event.rating}}</span>
+                <span class="fa fa-star checked"></span><span> {{event.rating}}</span>
 
             </span>
             <br>
-            <span id="date">{{event.date}}</span>
-            <h1 id="time">{{event.time}}</h1>
+            <span id="date"><i class='far fa-calendar-alt' style='font-size:24px'></i> {{event.date}}</span>
+            <h1 id="time"><i class='far fa-clock' style='font-size:22px'></i>  {{event.time}}</h1>
             <mat-card-footer id="button">
                 <button mat-raised-button (click)="book()">Book now</button>
             </mat-card-footer>
