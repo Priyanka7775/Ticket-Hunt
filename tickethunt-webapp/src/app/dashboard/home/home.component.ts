@@ -12,7 +12,11 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private dataService: DataService, private route: Router, private authService: AuthenticationService) { }
+  constructor(
+    private dataService: DataService,
+    private route: Router,
+    private authService: AuthenticationService
+  ) {}
   @Input()
   events2: any;
   events1: any;
@@ -21,7 +25,7 @@ export class HomeComponent implements OnInit {
   carry: EventData[] = [];
   event: any = {};
   image: string = '';
-  
+
   i: number = 1;
 
   isLoggedIn: boolean = false;
@@ -47,31 +51,24 @@ export class HomeComponent implements OnInit {
 
   viewEvent() {
     this.dataService.getAllEvents2().subscribe((response) => {
-      console.log('events');
       this.events2 = response;
     });
   }
   navigateToMovieDetail(eventId: any) {
     this.route.navigate(['detail', eventId]);
   }
-  verifyUser(){
+  verifyUser() {
     setInterval(() => {
       this.isLoggedIn = this.authService.isUserLogedIn;
-    }, 1000)
+    }, 1000);
   }
   changeSlider() {
     setInterval(() => {
       let id = this.movies[this.i]?.eventId;
-      let card = document.getElementById(id + '-card');
-      let pop = document.getElementById('event-pop');
       if (this.i < this.movies.length) {
         this.carry.pop();
-        // pop?.classList.add('pop');
         this.carry.push(this.movies[this.i]);
         this.i++;
-        // setInterval(() => {
-        //   pop?.classList.remove('pop');
-        // }, 3000);
       } else {
         this.i = 0;
         this.carry.pop();
