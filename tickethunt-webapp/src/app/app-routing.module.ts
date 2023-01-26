@@ -12,7 +12,6 @@ import { LoginComponent } from './dashboard/login/login.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { SignupComponent } from './dashboard/signup/signup.component';
-import { TileComponent } from './dashboard/tile/tile.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { DetailComponent } from './detail/detail.component';
 import { EventManagerComponent } from './event-manager/event-manager.component';
@@ -25,7 +24,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home-page',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -33,58 +32,56 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'signup',
-    component: SignupComponent
-  },
-  {
-    path: 'tile/:id',
-    component: TileComponent,
+    component: SignupComponent,
   },
   {
     path: 'user',
-    component: UserComponent
+    component: UserComponent,
   },
   {
     path: 'event',
-    component: EventComponent
+    component: EventComponent,
   },
   {
     path: 'event/create',
-    component: CreateComponent, canActivate: [Guard2Guard]
+    component: CreateComponent,
+    canActivate: [Guard2Guard],
   },
   {
     path: 'event/view',
-    component: ViewEventComponent, canActivate: [Guard2Guard]
+    component: ViewEventComponent,
+    canActivate: [Guard2Guard],
   },
   {
     path: 'event/edit/:id',
-    component: EditEventComponent
+    component: EditEventComponent,
   },
   {
     path: 'eventmanager/:id',
-    component: EventManagerComponent
+    component: EventManagerComponent,
   },
   {
     path: 'booking/:id',
-    component: BookingComponent, canActivate: [Guard1Guard]
-  }
-  ,
+    component: BookingComponent,
+    canActivate: [Guard1Guard],
+  },
   {
     path: 'booking-history',
-    component: BookingHistoryComponent
+    component: BookingHistoryComponent,
   },
 
   {
     path: 'payment',
-    component: PaymentComponent
+    component: PaymentComponent,
   },
 
   {
     path: 'confirmation',
-    component: ConfirmationComponent
+    component: ConfirmationComponent,
   },
   {
     path: 'detail/:id',
@@ -96,16 +93,16 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
   },
   {
     path: '**',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
