@@ -24,7 +24,10 @@ body {
   transform-box: fill-box;
 
 }
-
+.row{
+  width: 1200px;
+  margin: 80px auto;
+}
 #zero {
   transform-origin: bottom;
   transform-box: fill-box;

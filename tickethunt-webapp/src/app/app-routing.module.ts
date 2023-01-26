@@ -99,7 +99,7 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: '404',
+    path: '**',
     component: NotFoundComponent
   }
 ];
