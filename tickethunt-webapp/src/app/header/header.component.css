@@ -90,9 +90,98 @@ a {
   font-style: italic;
 
 }
+/* Search bar */
+
+.results{
+    position: absolute;
+    width: 500px;
+    z-index: 999;
+    transition: .5s;
+    opacity: 0;
+    top: 15px;
+    display: none;
+}
+.result-image img{
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin: 20px 20px 20px 0;
+  object-fit: cover;
+}
+.result-info{
+  height: 70px;
+  position: relative;
+}
+.result-info .title{
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  margin: 2px 0;
+}
+.result-info p{
+  font-size: 14px;
+}
+.auto{
+  animation: ease-in .5s;
+  opacity: 1;
+  top: 66px;
+  height: max-content;
+  display: block;
+}
+
+.main{
+  display:flex;
+  align-items: center;
+}
+.main-item {
+  padding: 10px;
+  width: 300px;
+}
+.res-main{
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 7px 11px rgba(0, 0, 0, 0.3);
+  padding: 0px 10px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0
+  }
+  100% {
+    background-position: 800px 0
+  }
+}
+
+
+/* Search animation */
+.animated-background {
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background-color: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  height: 70px;
+  position: relative;
+}
+
+.sub-rect {
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin: 20px 20px 20px 0;
+}
+
 
 @media only screen and (max-width: 1366px) {
   .search{
       margin-left: 130px;
   }
 }
+

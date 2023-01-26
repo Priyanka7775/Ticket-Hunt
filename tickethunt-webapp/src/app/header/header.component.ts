@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventData } from '../model/event';
 import { AuthenticationService } from '../service/authentication.service';
+import { DataService } from '../service/data.service';
 import { LocationService } from '../service/location.service';
 
 @Component({
@@ -12,8 +14,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private locationService: LocationService
-  ) { }
+    private locationService: LocationService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit(): void {
     this.toggleTimeout();
@@ -27,6 +30,8 @@ export class HeaderComponent implements OnInit {
   // role: any = sessionStorage.getItem('role');
   city: string = '';
   role: string = '';
+  movies: EventData[] = [];
+
   // Cities
   cities: string[] = [
     'Mumbai',
@@ -73,7 +78,7 @@ export class HeaderComponent implements OnInit {
       } else {
         this.isLoggedIn = false;
         this.role = '';
-      }    
+      }
     }, 1000);
   }
 
@@ -101,5 +106,32 @@ export class HeaderComponent implements OnInit {
     this.citiesFilter = this.cities.filter((x) =>
       x.toLocaleLowerCase().startsWith(value.toLocaleLowerCase().toString())
     );
+  }
+  navigateToMovieDetail(eventId: any) {
+    this.router.navigate(['detail', eventId]);
+    (document.getElementById('search') as HTMLInputElement).value = '';
+    this.removeAnimation();
+  }
+  search() {
+    const input = (document.getElementById('search') as HTMLInputElement).value;
+    const result = document.getElementById('results');
+    if (input) {
+      this.dataService.getAllEvent().subscribe((value) => {
+      this.movies = value.filter((x) =>
+        x.eventName?.toLowerCase().startsWith(input.toLowerCase())
+      );
+    });
+    } else {
+      this.movies = [];
+    }
+  }
+  animate() {
+    const result = document.getElementById('results');
+    result?.classList.add('auto');
+  }
+  removeAnimation() {
+    const result = document.getElementById('results');
+    this.movies = [];
+    result?.classList.remove('auto');
   }
 }
