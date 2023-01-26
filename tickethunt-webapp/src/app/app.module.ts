@@ -11,7 +11,6 @@ import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TileComponent } from './dashboard/tile/tile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './dashboard/user/user.component';
 
@@ -58,7 +57,6 @@ import { FooterComponent } from './footer/footer.component';
     NotFoundComponent,
     HeaderComponent,
     DashboardComponent,
-    TileComponent,
     UserComponent,
     EventComponent,
     CreateComponent,
