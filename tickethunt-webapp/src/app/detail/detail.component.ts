@@ -9,7 +9,6 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent {
-  
   constructor(
     private activatedRoute: ActivatedRoute,
     private dataService: DataService,
@@ -25,9 +24,7 @@ export class DetailComponent {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       let id = params.get('id');
-      console.log(id);
       this.dataService.getEvent1(id).subscribe((data) => {
-        console.log(data);
         this.event = data;
         sessionStorage.setItem('eventName', this.event.eventName);
         sessionStorage.setItem('eventId', this.event.eventId);
@@ -41,9 +38,9 @@ export class DetailComponent {
     });
   }
 
-  getRecomendation(id:any) {
+  getRecomendation(id: any) {
     this.dataService.getAllEvent().subscribe((value) => {
-      this.movies = value.filter(x=>x.eventId != id);
+      this.movies = value.filter((x) => x.eventId != id);
     });
   }
 
