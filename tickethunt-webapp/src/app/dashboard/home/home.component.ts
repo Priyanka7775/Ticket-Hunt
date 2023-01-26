@@ -2,7 +2,6 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventData } from 'src/app/model/event';
-import { Movie } from 'src/app/model/movie.model';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { DataService } from 'src/app/service/data.service';
 
@@ -22,6 +21,7 @@ export class HomeComponent implements OnInit {
   events1: any;
 
   movies: EventData[] = [];
+  recommended: EventData[] = [];
   carry: EventData[] = [];
   event: any = {};
   image: string = '';
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
         this.movies.push(element);
       });
       this.carry.push(this.movies[0]);
+      this.recommended = shuffle(this.movies);
     });
   }
 
@@ -58,8 +59,14 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['detail', eventId]);
   }
   verifyUser() {
+    let email = sessionStorage.getItem('emailId')
     setInterval(() => {
-      this.isLoggedIn = this.authService.isUserLogedIn;
+      if (email) {
+        this.isLoggedIn = true;
+      }else {
+        this.isLoggedIn = false;
+      }
+      
     }, 1000);
   }
   changeSlider() {
@@ -77,3 +84,23 @@ export class HomeComponent implements OnInit {
     }, 7000);
   }
 }
+
+export function shuffle<EventData>(array: EventData[]): EventData[] {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};

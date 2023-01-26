@@ -133,7 +133,6 @@ services:
       - mysql-net
     ports:
       - "8761:8761"
-
   webapp-service:
     image: webapp_service
     container_name: webapp-service
@@ -142,19 +141,6 @@ services:
       - mysql-net
     ports:
       - "4200:4200"
-
-#  user-service:
-#    image: user_service
-#    container_name: user-service
-#    build: user-service
-#    restart: always
-#    networks:
-#      - mysql-net
-#    ports:
-#      - "8082:8082"
-#    depends_on:
-#      - eureka-server
-#      - mongoService
 
 networks:
   mysql-net:
