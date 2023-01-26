@@ -115,19 +115,42 @@ export class HeaderComponent implements OnInit {
   search() {
     const input = (document.getElementById('search') as HTMLInputElement).value;
     const result = document.getElementById('results');
-    if (input) {
+    const noItem = document.getElementById('no-item');
+    const loader = document.getElementById('load');
+    if (input != '') {
       this.dataService.getAllEvent().subscribe((value) => {
       this.movies = value.filter((x) =>
         x.eventName?.toLowerCase().startsWith(input.toLowerCase())
       );
+      result?.classList.add('auto');
+      // Loader related property
+        if (this.movies.length <= 0) {
+          loader?.style.setProperty('display', 'flex');
+          noItem?.style.setProperty('display', 'none');
+        setTimeout(() => {
+          loader?.style.setProperty('display', 'none');
+          noItem?.style.setProperty('display', 'block');
+        }, 1000);
+      }
     });
     } else {
       this.movies = [];
+      this.animate();
+      setTimeout(() => {
+        result?.classList.remove('auto');
+      }, 1000);
     }
   }
   animate() {
     const result = document.getElementById('results');
+    const noItem = document.getElementById("no-item");
+    const loader = document.getElementById('load');
     result?.classList.add('auto');
+    setTimeout(() => {
+         noItem?.style.setProperty('display', 'block');
+         loader?.style.setProperty('display', 'none');
+    }, 2000);
+    result?.classList.remove('auto');
   }
   removeAnimation() {
     const result = document.getElementById('results');

@@ -28,10 +28,18 @@
             <p>Release date - {{movie.date}} </p>
           </div>
         </div>
-        <!-- <div class="sub-rect animated-background"></div>
-        <div class="main-item">
-          <div class="animated-background"></div>
-        </div> -->
+      </div>
+      <div class="main res-main-load" *ngIf="movies.length <= 0">
+          <div id="load">
+            <div class="sub-rect animated-background"></div>
+            <div class="main-item">
+              <div class="animated-background"></div>
+            </div>
+          </div>
+          <div id="no-item">
+            <h3>Oops...</h3>
+            <p>No result found !!</p>
+        </div>
       </div>
     </div>
   </div>
