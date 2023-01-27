@@ -9,7 +9,7 @@ import { SignupService } from 'src/app/service/signup.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  profile: User[] = [];
+  profile: any = [];
 
   constructor(private signupService: SignupService, private router:Router) { }
   ngOnInit(): void {
