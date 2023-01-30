@@ -64,7 +64,7 @@
                     <form [formGroup]="interestData">
                         <ng-template matStepLabel>Interests </ng-template>
                         <mat-form-field class="example-chip-list" appearance="fill">
-                            <mat-label>Favorite Geners</mat-label>
+                            <mat-label>Favorite Genres</mat-label>
                             <mat-chip-grid #chipGrid aria-label="Enter fruits" formControlName="interest">
                                 <mat-chip-row *ngFor="let value of interests" (removed)="remove(value)"
                                     [editable]="true" (edited)="edit(value, $event)">
