@@ -17,6 +17,6 @@ export class SignupService {
     );
   }
   updateUser(user:any) {
-    return this.http.post('', user);
+    return this.http.post('http://localhost:8082/userData/email{email}', user);
   }
 }
