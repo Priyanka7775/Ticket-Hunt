@@ -59,6 +59,7 @@ export class ProfileComponent implements OnInit {
     this.user.controls['name'].setValue(this.profile.name);
     this.user.controls['city'].setValue(this.profile.city);
     this.user.controls['phone'].setValue(this.profile.phone);
+    this.interests = [];
     this.profile.interest.forEach((value: string) => {
       this.interests.push(value);
     });
@@ -74,10 +75,11 @@ export class ProfileComponent implements OnInit {
       interest: this.interests,
     };
     // Use this data to send update
-    this.profile = userUpdate;
-    this.editEnable = false;
-    this.openSnackBar("Profile Updated", "Success")
-    console.log(userUpdate);
+    this.signupService.updateUser(userUpdate).subscribe((next) => {
+       this.profile = userUpdate;
+       this.editEnable = false;
+       this.openSnackBar('Profile Updated', 'Success');
+    }, (error)=> console.log(error))
   }
 
   openSnackBar(message: string, action: string) {
