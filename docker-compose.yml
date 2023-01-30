@@ -47,6 +47,7 @@ services:
     depends_on:
       - eureka-server
       - mongoService
+
   api-service:
     image: api_service
     container_name: api-service

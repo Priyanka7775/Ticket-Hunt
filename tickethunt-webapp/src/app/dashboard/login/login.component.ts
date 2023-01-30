@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private http:HttpClient
   ) {}
 
   ngOnInit() {
@@ -73,5 +75,11 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/home']);
       this.authService.isUserLogedIn = true;
     }
+  }
+  updateProfile(data: any){
+    this.http.post(`https://indentifytoolkit.googleapis.com/v1/accounts:update?key=[API_KEY]`,
+    {
+
+    })
   }
 }

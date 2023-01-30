@@ -1,6 +1,7 @@
-.container{
+.container {
     height: 70vh;
 }
+
 mat-card {
     width: 550px;
     margin: auto;
@@ -35,4 +36,17 @@ mat-card-footer {
 
 mat-card-footer a {
     text-decoration: none;
+}
+
+#button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: left;
 }
