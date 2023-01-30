@@ -30,7 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { EditEventComponent } from './dashboard/event/edit/edit.component';
 import { ViewEventComponent } from './dashboard/event/view/view.component';
@@ -101,8 +101,9 @@ import { HttpClient } from '@angular/common/http';
     NgxPaginationModule,
     NgxSpinnerModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
