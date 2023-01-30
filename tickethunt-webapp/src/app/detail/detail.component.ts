@@ -13,7 +13,7 @@ export class DetailComponent {
     private activatedRoute: ActivatedRoute,
     private dataService: DataService,
     private router: Router
-  ) {}
+  ) { }
   event: any = {};
 
   @Input()

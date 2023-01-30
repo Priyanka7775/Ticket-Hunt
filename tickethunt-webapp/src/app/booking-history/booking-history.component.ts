@@ -35,11 +35,9 @@ export class BookingHistoryComponent implements OnInit {
         console.log(this.seatNumbers);
 
 
-
       }
     )
   }
-
 
 
 
@@ -52,8 +50,8 @@ export class BookingHistoryComponent implements OnInit {
       showConfirmButton: false,
       timer: 4500
     })
-/*   alert("successfully canceled seat =>"+seat)
- */  window.location.reload();
+    // alert("successfully canceled seat =>" + seat)
+    // window.location.reload();
     this.bookingsService.cancelSeats(seat, eventId).subscribe(
       (response: any) => {
 
@@ -61,6 +59,5 @@ export class BookingHistoryComponent implements OnInit {
 
     )
   }
-
 
 }
