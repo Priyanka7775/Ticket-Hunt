@@ -35,11 +35,12 @@ public class EventServiceImpl implements EventService {
 
     private BookingProxy bookingProxy;
 
-    public EventServiceImpl(EventRepository eventRepository,  BookingProxy bookingProxy, ProducerMapping producerMapping) {
+    public EventServiceImpl(EventRepository eventRepository, BookingProxy bookingProxy, ProducerMapping producerMapping) {
         this.eventRepository = eventRepository;
-        this.bookingProxy =bookingProxy;
+        this.bookingProxy = bookingProxy;
         this.producerMapping = producerMapping;
     }
+
     @Override
     public Event registerEvent(Event event, MultipartFile file) throws EventAlreadyFoundException, IOException {
         log.debug("Entered the register profile()");
@@ -57,19 +58,19 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event addEvent1(CommonUser commonUser,  MultipartFile file) throws IOException {
+    public Event addEvent1(CommonUser commonUser, MultipartFile file) throws IOException {
 
         List<SeatsDTO> seatsDTOList = new ArrayList<>();
-        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(),  commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(), seatsDTOList, commonUser.getTotalSeats());
+        BookingDTO bookingDTO = new BookingDTO(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(), seatsDTOList, commonUser.getTotalSeats());
         BookingDTO bookingDTO2 = new BookingDTO(commonUser.getEmail(), commonUser.getEventName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                commonUser.getTotalSeats(),commonUser.getPrice(),commonUser.getDescription(),commonUser.getRating(),commonUser.getEventType());
+                commonUser.getTotalSeats(), commonUser.getPrice(), commonUser.getDescription(), commonUser.getRating(), commonUser.getEventType());
 
-        if(eventRepository.findByEventId(commonUser.getEventId()) == null) {
+        if (eventRepository.findByEventId(commonUser.getEventId()) == null) {
             producer.sendDtoToQueue(bookingDTO);
         }
         producerMapping.sendDtoToQueue(bookingDTO2);
         Event event = new Event(commonUser.getEventId(), commonUser.getEmail(), commonUser.getEventName(), commonUser.getOrganizerName(), commonUser.getDate(), commonUser.getTime(), commonUser.getVenue(),
-                file.getBytes(), commonUser.getTotalSeats(), commonUser.getEventType(),commonUser.getDescription(),commonUser.getPrice(),commonUser.getRating());
+                file.getBytes(), commonUser.getTotalSeats(), commonUser.getEventType(), commonUser.getDescription(), commonUser.getPrice(), commonUser.getRating());
 
         return eventRepository.insert(event);
     }
@@ -99,7 +100,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public boolean deleteEvent(String eventId) throws EventNotFoundException {
-        boolean result = false;
+//        boolean result = false;
         if (eventRepository.findById(eventId).isEmpty()) {
             throw new EventNotFoundException();
         } else {

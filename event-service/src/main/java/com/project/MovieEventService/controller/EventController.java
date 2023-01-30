@@ -68,7 +68,7 @@ public class EventController {
     }
 
     @PostMapping("/common")
-    public  ResponseEntity<?> addEvent(@RequestParam("event") String event, @RequestParam("file") MultipartFile multipartFile) {
+    public ResponseEntity<?> addEvent(@RequestParam("event") String event, @RequestParam("file") MultipartFile multipartFile) {
 
         Gson gson = new Gson();
         CommonUser eventFileObj = gson.fromJson(event, CommonUser.class);
@@ -172,6 +172,7 @@ public class EventController {
             //return ResponseEntity.ok().build();
         } catch (Exception e) {
             // Handle exception
+            e.printStackTrace();
         }
         return null;
     }
