@@ -19,8 +19,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-
-  // Get user info when loggin
+// Get user info when loggin
 
   getUser(email: string) {
     if (email != '') {
