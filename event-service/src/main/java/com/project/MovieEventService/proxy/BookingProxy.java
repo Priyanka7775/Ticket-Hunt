@@ -6,12 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name="booking-service", url = "http://booking-service:8081")
+@FeignClient(name = "booking-service", url = "http://booking-service:8081")
 public interface BookingProxy {
 
     @PostMapping("/bookings/addBooking")
-    public ResponseEntity<?> saveBooking(@RequestBody Event booking);
-
+    ResponseEntity<?> saveBooking(@RequestBody Event booking);
 
 
 }

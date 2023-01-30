@@ -5,7 +5,6 @@ import com.project.bookingservice.domain.Seats;
 import com.project.bookingservice.exceptions.*;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BookingService {
 

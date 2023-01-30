@@ -76,10 +76,4 @@ export class LoginComponent implements OnInit {
       this.authService.isUserLogedIn = true;
     }
   }
-  updateProfile(data: any){
-    this.http.post(`https://indentifytoolkit.googleapis.com/v1/accounts:update?key=[API_KEY]`,
-    {
-
-    })
-  }
 }
