@@ -19,7 +19,6 @@ public class Event {
     private String date;
     private String time;
     private String venue;
-    private String image;
     private String organizer;
     private String seats;
     private double price;
