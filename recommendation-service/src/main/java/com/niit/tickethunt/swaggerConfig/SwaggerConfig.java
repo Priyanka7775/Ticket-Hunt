@@ -1,4 +1,4 @@
-package com.niit.tickethunt.configuration;
+package com.niit.tickethunt.swaggerConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,11 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.niit.tickethunt"))
+                .paths(PathSelectors.any())
+                .build();
     }
 
 }
