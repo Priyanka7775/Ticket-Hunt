@@ -41,15 +41,17 @@
 .profile-info i {
   margin-right: 10px;
 }
-.profile-info{
+
+.profile-info {
   width: 600px;
 }
-mat-chip{
+
+mat-chip {
   margin-right: 5px;
 }
 
 /* Update Component */
-.profile-info form{
+.profile-info form {
   display: flex;
   flex-direction: column;
 }

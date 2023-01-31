@@ -20,28 +20,31 @@
                         <div class="profile-info" *ngIf="editEnable">
                             <form [formGroup]="user">
                                 <mat-form-field>
-                                    <input type="text" name="city" matInput placeholder="Enter your name" formControlName="name">
+                                    <input type="text" name="city" matInput placeholder="Enter your name"
+                                        formControlName="name">
                                 </mat-form-field>
                                 <mat-form-field>
-                                    <input type="text" name="city" matInput formControlName="city" placeholder="Enter City name"  >
+                                    <input type="text" name="city" matInput formControlName="city"
+                                        placeholder="Enter City name">
                                 </mat-form-field>
                                 <p class="email"><i class="fa-solid fa-envelope"></i> {{profile.email}}</p>
                                 <mat-form-field>
-                                    <input type="text" name="phone" matInput formControlName="phone" placeholder="Enter phone number" >
+                                    <input type="text" name="phone" matInput formControlName="phone"
+                                        placeholder="Enter phone number">
                                 </mat-form-field>
                                 <mat-form-field class="example-chip-list" appearance="fill">
                                     <mat-label>Favorite Genres</mat-label>
                                     <mat-chip-grid #chipGrid aria-label="Enter fruits" formControlName="interest">
-                                        <mat-chip-row *ngFor="let value of interests" (removed)="remove(value)" [editable]="true"
-                                            (edited)="edit(value, $event)">
+                                        <mat-chip-row *ngFor="let value of interests" (removed)="remove(value)"
+                                            [editable]="true" (edited)="edit(value, $event)">
                                             {{value}}
                                             <button matChipRemove [attr.aria-label]="'remove ' + value">
                                                 <mat-icon>cancel</mat-icon>
                                             </button>
                                         </mat-chip-row>
                                         <input placeholder="Action, Comedy, Drama etc...." [matChipInputFor]="chipGrid"
-                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                                            (matChipInputTokenEnd)="add($event)"/>
+                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
                                     </mat-chip-grid>
                                 </mat-form-field>
                             </form>
@@ -50,7 +53,8 @@
                     <mat-card-footer>
                         <button mat-raised-button color="primary">Change Password</button>
                         <button mat-raised-button *ngIf="!editEnable" (click)="enableEdit()">Edit Profile</button>
-                        <button mat-raised-button *ngIf="editEnable" (click)="updateProfile(user)">Update Profile</button>
+                        <button mat-raised-button *ngIf="editEnable" (click)="updateProfile(user)">Update
+                            Profile</button>
                         <button mat-raised-button color="accent" routerLink="/booking-history">Booking History</button>
                     </mat-card-footer>
                 </mat-card>

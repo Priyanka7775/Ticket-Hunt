@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar
-  ) {}
+  ) { }
   ngOnInit(): void {
     let email = sessionStorage.getItem('emailId');
     if (email) {
@@ -29,11 +29,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
-// Get user info when loggin
-=======
   // Get user info when loggin
->>>>>>> 3e65e7e5fb5b85310858c2dd40876cbd42da6793
 
   user = this.fb.group({
     name: ['', Validators.required],
@@ -79,11 +75,11 @@ export class ProfileComponent implements OnInit {
       interest: this.interests,
     };
     // Use this data to send update
-    this.signupService.updateUser(userUpdate).subscribe((next) => {
-       this.profile = userUpdate;
-       this.editEnable = false;
-       this.openSnackBar('Profile Updated', 'Success');
-    }, (error)=> console.log(error))
+    this.signupService.updateUser(this.profile.email, userUpdate).subscribe((next) => {
+      this.profile = userUpdate;
+      this.editEnable = false;
+      this.openSnackBar('Profile Updated', 'Success');
+    }, (error) => console.log(error))
   }
 
   openSnackBar(message: string, action: string) {
