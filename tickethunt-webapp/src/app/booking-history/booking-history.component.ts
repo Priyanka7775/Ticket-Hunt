@@ -48,10 +48,10 @@ export class BookingHistoryComponent implements OnInit {
       icon: 'success',
       title: 'Successfully cancelled=> ' + seat,
       showConfirmButton: false,
-      timer: 4500
+      timer: 4000
     })
     // alert("successfully canceled seat =>" + seat)
-    // window.location.reload();
+    window.location.reload();
     this.bookingsService.cancelSeats(seat, eventId).subscribe(
       (response: any) => {
 

@@ -49,7 +49,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { FooterComponent } from './footer/footer.component'; 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -103,7 +103,7 @@ import { HttpClient } from '@angular/common/http';
     MatTabsModule,
     MatSnackBarModule,
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
