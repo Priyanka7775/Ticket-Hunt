@@ -11,13 +11,13 @@
         Show Date: {{data.date}}
       </div>
     </div>
-  
+
     <div class="indicator">
       <span [ngClass]="{ 'seat-disabled': true }">reserved</span>
       <span [ngClass]="{ 'seat-selected': true }">selected</span>
       <span [ngClass]="{ 'seat-select': true }">available</span>
     </div>
-  
+
     <div class="container">
       <table>
         <tr *ngFor="let row of rows">
@@ -36,7 +36,7 @@
         </tr>
       </table>
     </div>
-  
+
     <div class="form">
       <form [formGroup]="booking" (ngSubmit)="bookSeat()" class="form-container">
         <div class="form-group">
@@ -70,7 +70,7 @@
       </form>
     </div>
   </div>
-  
+
   <!-- <div>
     <button
       routerLink="/booking-history"

@@ -14,13 +14,13 @@
     </div>
     <div class="input">
       <input type="text" name="search" id="search" autocomplete="off" placeholder="Search for Events and Movies..."
-        class="search-input" (keyup)="search()" (focus)="animate()"/>
+        class="search-input" (keyup)="search()" (focus)="animate()" />
       <mat-icon class="iocn">search</mat-icon>
     </div>
     <div class="results" id="results">
       <div class="main res-main" *ngFor="let movie of movies" (click)="navigateToMovieDetail(movie.eventId)">
         <div class="result-image">
-            <img src="data:image/png;base64, {{movie.image}}" alt="{{movie.eventName}}">
+          <img src="data:image/png;base64, {{movie.image}}" alt="{{movie.eventName}}">
         </div>
         <div class="main-item">
           <div class="result-info">
@@ -30,15 +30,15 @@
         </div>
       </div>
       <div class="main res-main-load" *ngIf="movies.length <= 0">
-          <div id="load">
-            <div class="sub-rect animated-background"></div>
-            <div class="main-item">
-              <div class="animated-background"></div>
-            </div>
+        <div id="load">
+          <div class="sub-rect animated-background"></div>
+          <div class="main-item">
+            <div class="animated-background"></div>
           </div>
-          <div id="no-item">
-            <h3>Oops...</h3>
-            <p>No result found !!</p>
+        </div>
+        <div id="no-item">
+          <h3>Oops...</h3>
+          <p>No result found !!</p>
         </div>
       </div>
     </div>

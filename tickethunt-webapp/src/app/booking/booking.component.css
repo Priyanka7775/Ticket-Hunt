@@ -1,9 +1,11 @@
-.container{
+.container {
   height: 100%;
 }
-.form{
+
+.form {
   padding: 20px;
 }
+
 table {
   border: 2px solid;
   margin: auto;

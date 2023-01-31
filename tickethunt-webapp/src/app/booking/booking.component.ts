@@ -129,7 +129,7 @@ export class BookingComponent implements OnInit {
           this.bookingsService.addBookingForNewEmail(this.newBooking).subscribe(
             res => {
               console.log(res);
-              
+
             }, error => {
               console.log(error);
 
