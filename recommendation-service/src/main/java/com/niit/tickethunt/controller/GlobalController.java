@@ -74,10 +74,10 @@ public class GlobalController {
     }
 
     /*
-    * Booking CRUD related APIs
-    * There is no requirement of Booking for Neo4j
-    *
-    */
+     * Booking CRUD related APIs
+     * There is no requirement of Booking for Neo4j
+     *
+     */
 
 
 }

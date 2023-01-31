@@ -13,7 +13,8 @@ import org.springframework.data.neo4j.core.schema.Node;
 @NoArgsConstructor
 public class Event {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String date;

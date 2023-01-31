@@ -11,7 +11,7 @@ import com.project.MovieEventService.repository.EventRepository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,12 +47,12 @@ public class EventServiceImpl implements EventService {
         Event registeredEvent = new Event();
         Optional<Event> registerEvent = eventRepository.findById(event.getEventName());
         if (registerEvent.isPresent()) {
-            log.error("Property is already present");
+            log.error("Event is already present");
             throw new EventAlreadyFoundException();
         } else {
             event.setImage(file.getBytes());
             registeredEvent = eventRepository.save(event);
-            ResponseEntity re = bookingProxy.saveBooking(event);
+            bookingProxy.saveBooking(event);
             return registeredEvent;
         }
     }

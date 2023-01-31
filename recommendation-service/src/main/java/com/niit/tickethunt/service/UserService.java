@@ -37,7 +37,7 @@ public class UserService implements IGlobalService<User> {
         return userRepository.save(user);
     }
 
-    public String addBooking(int eventId, int userId){
+    public String addBooking(int eventId, int userId) {
         if (findById(userId).isEmpty()) {
             return "failed";
         }
