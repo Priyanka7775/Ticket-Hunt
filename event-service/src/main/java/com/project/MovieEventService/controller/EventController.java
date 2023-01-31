@@ -6,7 +6,7 @@ import com.project.MovieEventService.domain.Event;
 import com.project.MovieEventService.exception.EventAlreadyFoundException;
 import com.project.MovieEventService.exception.EventNotFoundException;
 import com.project.MovieEventService.rabbitmq.CommonUser;
-import com.project.MovieEventService.rabbitmq.Producer;
+//import com.project.MovieEventService.rabbitmq.Producer;
 import com.project.MovieEventService.service.EventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +27,10 @@ public class EventController {
 
     private ResponseEntity responseEntity;
 
-    private Producer producer;
 
     @Autowired
-    public EventController(EventService eventService, Producer producer) {
+    public EventController(EventService eventService) {
         this.eventService = eventService;
-        this.producer = producer;
     }
 
     @PostMapping("registerEvent")
