@@ -48,13 +48,11 @@ const routes: Routes = [
   },
   {
     path: 'event/create',
-    component: CreateComponent,
-    canActivate: [Guard2Guard],
+    component: CreateComponent
   },
   {
     path: 'event/view',
-    component: ViewEventComponent,
-    canActivate: [Guard2Guard],
+    component: ViewEventComponent
   },
   {
     path: 'event/edit/:id',
