@@ -4,6 +4,7 @@ services:
     image: recommendation_service
     container_name: recommendation-service
     build: recommendation-service
+    restart: always
     networks:
       - mysql-net
     ports:
