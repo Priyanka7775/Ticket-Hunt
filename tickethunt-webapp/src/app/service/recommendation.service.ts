@@ -12,15 +12,15 @@ export class RecommendationService {
 
   getAllEvents(): Observable<Array<RecEvent>> {
     return this.http.get<Array<RecEvent>>(
-      'https://localhost:8080/api/v4/events'
+      'https://tickethunt.stackroute.io/api/v4/events'
     );
   }
 
   getAllUsers(): Observable<Array<User>> {
-    return this.http.get<Array<User>>('https://localhost:8080/api/v4/users');
+    return this.http.get<Array<User>>('https://tickethunt.stackroute.io/api/v4/users');
   }
 
   addBooking(user: string) {
-    return this.http.get('https://localhost:8080/api/v4/user/booked/' + user);
+    return this.http.get('https://tickethunt.stackroute.io/api/v4/user/booked/' + user);
   }
 }

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
-  url = 'http://localhost:8080/niit/auth';
+  url = 'https://tickethunt.stackroute.io/niit/auth';
   isUserRegistered: boolean = false;
   isUserLogedIn: boolean = false;
 

@@ -11,7 +11,7 @@ export class BookingServiceService {
 
   constructor(private http: HttpClient) { }
 
-  url = "http://localhost:8080/bookings/view/";
+  url = "https://tickethunt.stackroute.io/bookings/view/";
 
   id = localStorage.getItem('id');
 
@@ -23,11 +23,11 @@ export class BookingServiceService {
    cancel = "http://localhost:8081/bookings/cancel/1/qqq/" */
 
   sendEmail(email: any, message: any) {
-    return this.http.post<any>(`http://localhost:8080/bookings/${email}/${message}`, "")
+    return this.http.post<any>(`https://tickethunt.stackroute.io/bookings/${email}/${message}`, "")
   }
 
   addBookingForNewEmail(booking: any): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/bookings/addBooking', booking);
+    return this.http.post<any>('https://tickethunt.stackroute.io/bookings/addBooking', booking);
   }
 
   getParticularBookings(eventId: any): Observable<any> {
@@ -40,7 +40,7 @@ export class BookingServiceService {
   }
 
   bookSeats(seat: Seats, id: any, email: any): Observable<any> {
-    return this.http.post<Seats>(`http://localhost:8080/bookings/book/${id}/${email}`, seat);
+    return this.http.post<Seats>(`https://tickethunt.stackroute.io/bookings/book/${id}/${email}`, seat);
 
 
   }
@@ -48,23 +48,23 @@ export class BookingServiceService {
 
   bookingHistoryOfUser(): Observable<any> {
 
-    return this.http.get<Bookings>(`http://localhost:8080/bookings/${this.email}`)
+    return this.http.get<Bookings>(`https://tickethunt.stackroute.io/bookings/${this.email}`)
   }
 
   cancelSeats(seat: any, eventId: any): Observable<any> {
 
-    return this.http.delete<any>(`http://localhost:8080/bookings/cancel/${eventId}/${this.email}/${seat}`)
+    return this.http.delete<any>(`https://tickethunt.stackroute.io/bookings/cancel/${eventId}/${this.email}/${seat}`)
 
   }
 
   findByEmail(email: any): Observable<any> {
 
-    return this.http.get<any>(`http://localhost:8080/bookings/${email}`)
+    return this.http.get<any>(`https://tickethunt.stackroute.io/bookings/${email}`)
   }
 
   findByEventIdAndEmail(eventId: string, email: string): Observable<any> {
 
-    return this.http.get<any>(`http://localhost:8080/bookings/${eventId}/${email}`)
+    return this.http.get<any>(`https://tickethunt.stackroute.io/bookings/${eventId}/${email}`)
   }
 
 }

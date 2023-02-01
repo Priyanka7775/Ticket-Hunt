@@ -10,17 +10,17 @@ export class SignupService {
   constructor(private http: HttpClient) { }
 
   post(user: User) {
-    return this.http.post('http://localhost:8080/userData/commonUser', user);
+    return this.http.post('https://tickethunt.stackroute.io/userData/commonUser', user);
   }
 
 
   getUser(email: string): Observable<Array<User>> {
     return this.http.get<Array<User>>(
-      'http://localhost:8080/userData/email/' + email);
+      'https://tickethunt.stackroute.io/userData/email/' + email);
   }
 
 
   updateUser(email: any, user: any) {
-    return this.http.put('http://localhost:8080/userData/update/' + email, user);
+    return this.http.put('https://tickethunt.stackroute.io/userData/update/' + email, user);
   }
 }
